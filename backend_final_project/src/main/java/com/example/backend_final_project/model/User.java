@@ -65,4 +65,153 @@ public class User {
     @OneToMany(mappedBy="wishlish",fetch=FetchType.EAGER)
     private Collection<Wishlish> Wishlish;
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getFullname() {
+        return Fullname;
+    }
+
+    public void setFullname(String fullname) {
+        Fullname = fullname;
+    }
+
+    public boolean isGender() {
+        return Gender;
+    }
+
+    public void setGender(boolean gender) {
+        Gender = gender;
+    }
+
+    public Date getBirthday() {
+        return Birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        Birthday = birthday;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public boolean isIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public Date getUpdate_date() {
+        return Update_date;
+    }
+
+    public void setUpdate_date(Date update_date) {
+        Update_date = update_date;
+    }
+
+    public Collection<com.example.backend_final_project.model.Invoice> getInvoice() {
+        return Invoice;
+    }
+
+    public void setInvoice(Collection<com.example.backend_final_project.model.Invoice> invoice) {
+        Invoice = invoice;
+    }
+
+    public Collection<com.example.backend_final_project.model.Cart> getCart() {
+        return Cart;
+    }
+
+    public void setCart(Collection<com.example.backend_final_project.model.Cart> cart) {
+        Cart = cart;
+    }
+
+    public Collection<com.example.backend_final_project.model.Comment> getComment() {
+        return Comment;
+    }
+
+    public void setComment(Collection<com.example.backend_final_project.model.Comment> comment) {
+        Comment = comment;
+    }
+
+    public Collection<com.example.backend_final_project.model.Wishlish> getWishlish() {
+        return Wishlish;
+    }
+
+    public void setWishlish(Collection<com.example.backend_final_project.model.Wishlish> wishlish) {
+        Wishlish = wishlish;
+    }
+
+    public User(int id, String username, String password, String email, String fullname, boolean gender, Date birthday, String phone, String address, boolean isdelete, Date created_date, Date update_date, Collection<com.example.backend_final_project.model.Invoice> invoice, Collection<com.example.backend_final_project.model.Cart> cart, Collection<com.example.backend_final_project.model.Comment> comment, Collection<com.example.backend_final_project.model.Wishlish> wishlish) {
+        Id = id;
+        Username = username;
+        Password = password;
+        Email = email;
+        Fullname = fullname;
+        Gender = gender;
+        Birthday = birthday;
+        Phone = phone;
+        Address = address;
+        this.isdelete = isdelete;
+        Created_date = created_date;
+        Update_date = update_date;
+        Invoice = invoice;
+        Cart = cart;
+        Comment = comment;
+        Wishlish = wishlish;
+    }
+
+    public User() {
+    }
 }

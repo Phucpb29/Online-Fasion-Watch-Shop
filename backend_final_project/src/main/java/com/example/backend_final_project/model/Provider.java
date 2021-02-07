@@ -15,19 +15,19 @@ public class Provider {
     @Column(name = "Id")
     private int Id;
 
-    @Column(name ="name")
+    @Column(name = "name")
     private String Name;
 
-    @Column(name ="email")
+    @Column(name = "email")
     private String Email;
 
-    @Column(name ="phone")
+    @Column(name = "phone")
     private String Phone;
 
-    @Column(name ="address")
+    @Column(name = "address")
     private String Address;
 
-    @Column(name ="isdelete")
+    @Column(name = "isdelete")
     private boolean isdelete;
 
     @Column(name = "created_date")
@@ -43,9 +43,114 @@ public class Provider {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date Updated_date;
 
-    @Column(name ="update_by")
+    @Column(name = "update_by")
     private String Updated_by;
 
-    @OneToMany(mappedBy="Storage",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "Storage", fetch = FetchType.EAGER)
     private Collection<Storage> Storage;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public boolean isIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public String getCreated_by() {
+        return Created_by;
+    }
+
+    public void setCreated_by(String created_by) {
+        Created_by = created_by;
+    }
+
+    public Date getUpdated_date() {
+        return Updated_date;
+    }
+
+    public void setUpdated_date(Date updated_date) {
+        Updated_date = updated_date;
+    }
+
+    public String getUpdated_by() {
+        return Updated_by;
+    }
+
+    public void setUpdated_by(String updated_by) {
+        Updated_by = updated_by;
+    }
+
+    public Collection<com.example.backend_final_project.model.Storage> getStorage() {
+        return Storage;
+    }
+
+    public void setStorage(Collection<com.example.backend_final_project.model.Storage> storage) {
+        Storage = storage;
+    }
+
+    public Provider(int id, String name, String email, String phone, String address, boolean isdelete, Date created_date, String created_by, Date updated_date, String updated_by, Collection<com.example.backend_final_project.model.Storage> storage) {
+        Id = id;
+        Name = name;
+        Email = email;
+        Phone = phone;
+        Address = address;
+        this.isdelete = isdelete;
+        Created_date = created_date;
+        Created_by = created_by;
+        Updated_date = updated_date;
+        Updated_by = updated_by;
+        Storage = storage;
+    }
+
+    public Provider() {
+    }
 }

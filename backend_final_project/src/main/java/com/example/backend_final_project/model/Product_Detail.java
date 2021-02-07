@@ -41,4 +41,73 @@ public class Product_Detail {
 
     @Column(name ="update_by")
     private String Updated_by;
+
+  public int getId() {
+    return Id;
+  }
+
+  public void setId(int id) {
+    Id = id;
+  }
+
+  public com.example.backend_final_project.model.Product getProduct() {
+    return Product;
+  }
+
+  public void setProduct(com.example.backend_final_project.model.Product product) {
+    Product = product;
+  }
+
+  public String getContent() {
+    return Content;
+  }
+
+  public void setContent(String content) {
+    Content = content;
+  }
+
+  public Date getCreated_date() {
+    return Created_date;
+  }
+
+  public void setCreated_date(Date created_date) {
+    Created_date = created_date;
+  }
+
+  public String getCreated_by() {
+    return Created_by;
+  }
+
+  public void setCreated_by(String created_by) {
+    Created_by = created_by;
+  }
+
+  public Date getUpdated_date() {
+    return Updated_date;
+  }
+
+  public void setUpdated_date(Date updated_date) {
+    Updated_date = updated_date;
+  }
+
+  public String getUpdated_by() {
+    return Updated_by;
+  }
+
+  public void setUpdated_by(String updated_by) {
+    Updated_by = updated_by;
+  }
+
+  public Product_Detail(int id, com.example.backend_final_project.model.Product product, String content, Date created_date, String created_by, Date updated_date, String updated_by) {
+    Id = id;
+    Product = product;
+    Content = content;
+    Created_date = created_date;
+    Created_by = created_by;
+    Updated_date = updated_date;
+    Updated_by = updated_by;
+  }
+
+  public Product_Detail() {
+  }
 }

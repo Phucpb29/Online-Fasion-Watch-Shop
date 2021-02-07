@@ -75,6 +75,189 @@ public class Product {
     @OneToMany(mappedBy="wishlish",fetch=FetchType.EAGER)
     private Collection<Wishlish> Wishlish;
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getCode() {
+        return Code;
+    }
+
+    public void setCode(String code) {
+        Code = code;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public float getPrice() {
+        return Price;
+    }
+
+    public void setPrice(float price) {
+        Price = price;
+    }
+
+    public float getPrice_slae() {
+        return Price_slae;
+    }
+
+    public void setPrice_slae(float price_slae) {
+        Price_slae = price_slae;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public Product_type getProductType() {
+        return productType;
+    }
+
+    public void setProductType(Product_type productType) {
+        this.productType = productType;
+    }
+
+    public com.example.backend_final_project.model.Brand getBrand() {
+        return Brand;
+    }
+
+    public void setBrand(com.example.backend_final_project.model.Brand brand) {
+        Brand = brand;
+    }
+
+    public boolean isIssale() {
+        return Issale;
+    }
+
+    public void setIssale(boolean issale) {
+        Issale = issale;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public String getCreatd_by() {
+        return Creatd_by;
+    }
+
+    public void setCreatd_by(String creatd_by) {
+        Creatd_by = creatd_by;
+    }
+
+    public boolean isIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+
+    public Collection<com.example.backend_final_project.model.Product_Detail> getProduct_Detail() {
+        return Product_Detail;
+    }
+
+    public void setProduct_Detail(Collection<com.example.backend_final_project.model.Product_Detail> product_Detail) {
+        Product_Detail = product_Detail;
+    }
+
+    public Collection<com.example.backend_final_project.model.Product_Image> getProduct_Image() {
+        return Product_Image;
+    }
+
+    public void setProduct_Image(Collection<com.example.backend_final_project.model.Product_Image> product_Image) {
+        Product_Image = product_Image;
+    }
+
+    public Collection<com.example.backend_final_project.model.Product_Property_Detail> getProduct_Property_Detail() {
+        return Product_Property_Detail;
+    }
+
+    public void setProduct_Property_Detail(Collection<com.example.backend_final_project.model.Product_Property_Detail> product_Property_Detail) {
+        Product_Property_Detail = product_Property_Detail;
+    }
+
+    public Collection<com.example.backend_final_project.model.Invoice_Detail> getInvoice_Detail() {
+        return Invoice_Detail;
+    }
+
+    public void setInvoice_Detail(Collection<com.example.backend_final_project.model.Invoice_Detail> invoice_Detail) {
+        Invoice_Detail = invoice_Detail;
+    }
+
+    public Collection<com.example.backend_final_project.model.Cart_Detail> getCart_Detail() {
+        return Cart_Detail;
+    }
+
+    public void setCart_Detail(Collection<com.example.backend_final_project.model.Cart_Detail> cart_Detail) {
+        Cart_Detail = cart_Detail;
+    }
+
+    public Collection<com.example.backend_final_project.model.Comment> getComment() {
+        return Comment;
+    }
+
+    public void setComment(Collection<com.example.backend_final_project.model.Comment> comment) {
+        Comment = comment;
+    }
+
+    public Collection<com.example.backend_final_project.model.Storage> getStorage() {
+        return Storage;
+    }
+
+    public void setStorage(Collection<com.example.backend_final_project.model.Storage> storage) {
+        Storage = storage;
+    }
+
+    public Collection<com.example.backend_final_project.model.Wishlish> getWishlish() {
+        return Wishlish;
+    }
+
+    public void setWishlish(Collection<com.example.backend_final_project.model.Wishlish> wishlish) {
+        Wishlish = wishlish;
+    }
+
+    public Product(int ID, String code, String name, float price, float price_slae, String description, Product_type productType, com.example.backend_final_project.model.Brand brand, boolean issale, Date created_date, String creatd_by, boolean isdelete, Collection<com.example.backend_final_project.model.Product_Detail> product_Detail, Collection<com.example.backend_final_project.model.Product_Image> product_Image, Collection<com.example.backend_final_project.model.Product_Property_Detail> product_Property_Detail, Collection<com.example.backend_final_project.model.Invoice_Detail> invoice_Detail, Collection<com.example.backend_final_project.model.Cart_Detail> cart_Detail, Collection<com.example.backend_final_project.model.Comment> comment, Collection<com.example.backend_final_project.model.Storage> storage, Collection<com.example.backend_final_project.model.Wishlish> wishlish) {
+        this.ID = ID;
+        Code = code;
+        Name = name;
+        Price = price;
+        Price_slae = price_slae;
+        Description = description;
+        this.productType = productType;
+        Brand = brand;
+        Issale = issale;
+        Created_date = created_date;
+        Creatd_by = creatd_by;
+        this.isdelete = isdelete;
+        Product_Detail = product_Detail;
+        Product_Image = product_Image;
+        Product_Property_Detail = product_Property_Detail;
+        Invoice_Detail = invoice_Detail;
+        Cart_Detail = cart_Detail;
+        Comment = comment;
+        Storage = storage;
+        Wishlish = wishlish;
+    }
+
     public Product() {
     }
 }

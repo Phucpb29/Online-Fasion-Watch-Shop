@@ -39,4 +39,82 @@ public class Delivery {
 
     @Column(name ="update_by")
     private String Updated_by;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public com.example.backend_final_project.model.Invoice getInvoice() {
+        return Invoice;
+    }
+
+    public void setInvoice(com.example.backend_final_project.model.Invoice invoice) {
+        Invoice = invoice;
+    }
+
+    public int getDelivery_Status() {
+        return Delivery_Status;
+    }
+
+    public void setDelivery_Status(int delivery_Status) {
+        Delivery_Status = delivery_Status;
+    }
+
+    public String getUser_note() {
+        return User_note;
+    }
+
+    public void setUser_note(String user_note) {
+        User_note = user_note;
+    }
+
+    public String getDelivery_Message() {
+        return Delivery_Message;
+    }
+
+    public void setDelivery_Message(String delivery_Message) {
+        Delivery_Message = delivery_Message;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public Date getUpdated_date() {
+        return Updated_date;
+    }
+
+    public void setUpdated_date(Date updated_date) {
+        Updated_date = updated_date;
+    }
+
+    public String getUpdated_by() {
+        return Updated_by;
+    }
+
+    public void setUpdated_by(String updated_by) {
+        Updated_by = updated_by;
+    }
+
+    public Delivery(int id, com.example.backend_final_project.model.Invoice invoice, int delivery_Status, String user_note, String delivery_Message, Date created_date, Date updated_date, String updated_by) {
+        Id = id;
+        Invoice = invoice;
+        Delivery_Status = delivery_Status;
+        User_note = user_note;
+        Delivery_Message = delivery_Message;
+        Created_date = created_date;
+        Updated_date = updated_date;
+        Updated_by = updated_by;
+    }
+
+    public Delivery() {
+    }
 }

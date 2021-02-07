@@ -41,5 +41,81 @@ public class Product_Property_Detail {
     @Column(name ="update_by")
     private String Updated_by;
 
+    public int getID() {
+        return ID;
+    }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public com.example.backend_final_project.model.Product getProduct() {
+        return Product;
+    }
+
+    public void setProduct(com.example.backend_final_project.model.Product product) {
+        Product = product;
+    }
+
+    public com.example.backend_final_project.model.Product_Property getProduct_Property() {
+        return Product_Property;
+    }
+
+    public void setProduct_Property(com.example.backend_final_project.model.Product_Property product_Property) {
+        Product_Property = product_Property;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public String getCreated_by() {
+        return Created_by;
+    }
+
+    public void setCreated_by(String created_by) {
+        Created_by = created_by;
+    }
+
+    public Date getUpdated_date() {
+        return Updated_date;
+    }
+
+    public void setUpdated_date(Date updated_date) {
+        Updated_date = updated_date;
+    }
+
+    public String getUpdated_by() {
+        return Updated_by;
+    }
+
+    public void setUpdated_by(String updated_by) {
+        Updated_by = updated_by;
+    }
+
+    public Product_Property_Detail(int ID, com.example.backend_final_project.model.Product product, com.example.backend_final_project.model.Product_Property product_Property, String description, Date created_date, String created_by, Date updated_date, String updated_by) {
+        this.ID = ID;
+        Product = product;
+        Product_Property = product_Property;
+        Description = description;
+        Created_date = created_date;
+        Created_by = created_by;
+        Updated_date = updated_date;
+        Updated_by = updated_by;
+    }
+
+    public Product_Property_Detail() {
+    }
 }

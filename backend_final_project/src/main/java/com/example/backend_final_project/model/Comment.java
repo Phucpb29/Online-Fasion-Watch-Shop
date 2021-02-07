@@ -39,4 +39,82 @@ public class Comment {
 
     @Column(name ="isdelete")
     private boolean isdelete;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public com.example.backend_final_project.model.Cart getCart() {
+        return Cart;
+    }
+
+    public void setCart(com.example.backend_final_project.model.Cart cart) {
+        Cart = cart;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public String getContent() {
+        return Content;
+    }
+
+    public void setContent(String content) {
+        Content = content;
+    }
+
+    public int getRate() {
+        return Rate;
+    }
+
+    public void setRate(int rate) {
+        Rate = rate;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public Date getUpdate_Date() {
+        return Update_Date;
+    }
+
+    public void setUpdate_Date(Date update_Date) {
+        Update_Date = update_Date;
+    }
+
+    public boolean isIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+
+    public Comment(int id, com.example.backend_final_project.model.Cart cart, Product product, String content, int rate, Date created_date, Date update_Date, boolean isdelete) {
+        Id = id;
+        Cart = cart;
+        this.product = product;
+        Content = content;
+        Rate = rate;
+        Created_date = created_date;
+        Update_Date = update_Date;
+        this.isdelete = isdelete;
+    }
+
+    public Comment() {
+    }
 }

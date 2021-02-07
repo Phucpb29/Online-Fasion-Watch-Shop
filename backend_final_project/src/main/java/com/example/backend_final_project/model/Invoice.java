@@ -55,4 +55,127 @@ public class Invoice {
 
     @OneToMany(mappedBy="delivery",fetch=FetchType.EAGER)
     private Collection<Delivery> Delivery;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getCode() {
+        return Code;
+    }
+
+    public void setCode(String code) {
+        Code = code;
+    }
+
+    public float getTotal() {
+        return Total;
+    }
+
+    public void setTotal(float total) {
+        Total = total;
+    }
+
+    public com.example.backend_final_project.model.Voucher getVoucher() {
+        return Voucher;
+    }
+
+    public void setVoucher(com.example.backend_final_project.model.Voucher voucher) {
+        Voucher = voucher;
+    }
+
+    public com.example.backend_final_project.model.User getUser() {
+        return User;
+    }
+
+    public void setUser(com.example.backend_final_project.model.User user) {
+        User = user;
+    }
+
+    public String getPayment() {
+        return Payment;
+    }
+
+    public void setPayment(String payment) {
+        Payment = payment;
+    }
+
+    public int getStatus() {
+        return Status;
+    }
+
+    public void setStatus(int status) {
+        Status = status;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public Date getUpdate_Date() {
+        return Update_Date;
+    }
+
+    public void setUpdate_Date(Date update_Date) {
+        Update_Date = update_Date;
+    }
+
+    public String getUpdate_by() {
+        return Update_by;
+    }
+
+    public void setUpdate_by(String update_by) {
+        Update_by = update_by;
+    }
+
+    public Boolean getIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(Boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+
+    public Collection<com.example.backend_final_project.model.Invoice_Detail> getInvoice_Detail() {
+        return Invoice_Detail;
+    }
+
+    public void setInvoice_Detail(Collection<com.example.backend_final_project.model.Invoice_Detail> invoice_Detail) {
+        Invoice_Detail = invoice_Detail;
+    }
+
+    public Collection<com.example.backend_final_project.model.Delivery> getDelivery() {
+        return Delivery;
+    }
+
+    public void setDelivery(Collection<com.example.backend_final_project.model.Delivery> delivery) {
+        Delivery = delivery;
+    }
+
+    public Invoice(int ID, String code, float total, com.example.backend_final_project.model.Voucher voucher, com.example.backend_final_project.model.User user, String payment, int status, Date created_date, Date update_Date, String update_by, Boolean isdelete, Collection<com.example.backend_final_project.model.Invoice_Detail> invoice_Detail, Collection<com.example.backend_final_project.model.Delivery> delivery) {
+        this.ID = ID;
+        Code = code;
+        Total = total;
+        Voucher = voucher;
+        User = user;
+        Payment = payment;
+        Status = status;
+        Created_date = created_date;
+        Update_Date = update_Date;
+        Update_by = update_by;
+        this.isdelete = isdelete;
+        Invoice_Detail = invoice_Detail;
+        Delivery = delivery;
+    }
+
+    public Invoice() {
+    }
 }

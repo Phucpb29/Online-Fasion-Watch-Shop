@@ -42,6 +42,90 @@ public class Product_type {
    @OneToMany(mappedBy="voucher",fetch = FetchType.EAGER)
    private Collection<Voucher> Voucher;
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public String getCreated_by() {
+        return Created_by;
+    }
+
+    public void setCreated_by(String created_by) {
+        Created_by = created_by;
+    }
+
+    public Date getUpdate_Date() {
+        return Update_Date;
+    }
+
+    public void setUpdate_Date(Date update_Date) {
+        Update_Date = update_Date;
+    }
+
+    public String getUpdate_by() {
+        return Update_by;
+    }
+
+    public void setUpdate_by(String update_by) {
+        Update_by = update_by;
+    }
+
+    public Boolean getIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(Boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+
+    public Collection<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(Collection<Product> product) {
+        this.product = product;
+    }
+
+    public Collection<com.example.backend_final_project.model.Voucher> getVoucher() {
+        return Voucher;
+    }
+
+    public void setVoucher(Collection<com.example.backend_final_project.model.Voucher> voucher) {
+        Voucher = voucher;
+    }
+
+    public Product_type(int id, String name, Date created_date, String created_by, Date update_Date, String update_by, Boolean isdelete, Collection<Product> product, Collection<com.example.backend_final_project.model.Voucher> voucher) {
+        Id = id;
+        Name = name;
+        Created_date = created_date;
+        Created_by = created_by;
+        Update_Date = update_Date;
+        Update_by = update_by;
+        this.isdelete = isdelete;
+        this.product = product;
+        Voucher = voucher;
+    }
+
     public Product_type() {
     }
 }

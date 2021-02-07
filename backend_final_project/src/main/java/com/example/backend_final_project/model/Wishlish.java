@@ -31,4 +31,55 @@ public class Wishlish {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date Update_Date;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public com.example.backend_final_project.model.Cart getCart() {
+        return Cart;
+    }
+
+    public void setCart(com.example.backend_final_project.model.Cart cart) {
+        Cart = cart;
+    }
+
+    public Date getCreated_date() {
+        return Created_date;
+    }
+
+    public void setCreated_date(Date created_date) {
+        Created_date = created_date;
+    }
+
+    public Date getUpdate_Date() {
+        return Update_Date;
+    }
+
+    public void setUpdate_Date(Date update_Date) {
+        Update_Date = update_Date;
+    }
+
+    public Wishlish(int ID, Product product, com.example.backend_final_project.model.Cart cart, Date created_date, Date update_Date) {
+        this.ID = ID;
+        this.product = product;
+        Cart = cart;
+        Created_date = created_date;
+        Update_Date = update_Date;
+    }
+
+    public Wishlish() {
+    }
 }
