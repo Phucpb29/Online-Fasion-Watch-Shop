@@ -15,7 +15,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name ="user_id")
-    private Cart Cart;
+    private   User User;
 
     @ManyToOne
     @JoinColumn(name ="product_id")
@@ -48,12 +48,12 @@ public class Comment {
         Id = id;
     }
 
-    public com.example.backend_final_project.model.Cart getCart() {
-        return Cart;
+    public User getCart() {
+        return User;
     }
 
-    public void setCart(com.example.backend_final_project.model.Cart cart) {
-        Cart = cart;
+    public void setCart(User cart) {
+        User = cart;
     }
 
     public Product getProduct() {
@@ -104,9 +104,9 @@ public class Comment {
         this.isdelete = isdelete;
     }
 
-    public Comment(int id, com.example.backend_final_project.model.Cart cart, Product product, String content, int rate, Date created_date, Date update_Date, boolean isdelete) {
+    public Comment(int id, User user, Product product, String content, int rate, Date created_date, Date update_Date, boolean isdelete) {
         Id = id;
-        Cart = cart;
+        User = user;
         this.product = product;
         Content = content;
         Rate = rate;

@@ -51,9 +51,9 @@ public class Voucher {
 
     @Column(name ="update_by")
     private String Updated_by;
-
-    @OneToMany(mappedBy="invoice",fetch=FetchType.EAGER)
-    private Collection<Invoice> Invoice;
+//
+//    @OneToMany(mappedBy="invoice",fetch=FetchType.EAGER)
+//    private Collection<Invoice> Invoice;
 
     public int getID() {
         return ID;
@@ -143,15 +143,31 @@ public class Voucher {
         Updated_by = updated_by;
     }
 
-    public Collection<com.example.backend_final_project.model.Invoice> getInvoice() {
-        return Invoice;
-    }
+//    public Collection<Invoice> getInvoice() {
+//        return Invoice;
+//    }
+//
+//    public void setInvoice(Collection<Invoice> invoice) {
+//        Invoice = invoice;
+//    }
 
-    public void setInvoice(Collection<com.example.backend_final_project.model.Invoice> invoice) {
-        Invoice = invoice;
-    }
+//    public Voucher(int ID, String code, int value, boolean status, int limit_use, Product_type productType, Date expiration_date, Date created_date, String created_by, Date updated_date, String updated_by, Collection<Invoice> invoice) {
+//        this.ID = ID;
+//        Code = code;
+//        Value = value;
+//        Status = status;
+//        Limit_use = limit_use;
+//        ProductType = productType;
+//        Expiration_date = expiration_date;
+//        Created_date = created_date;
+//        Created_by = created_by;
+//        Updated_date = updated_date;
+//        Updated_by = updated_by;
+//        Invoice = invoice;
+//    }
 
-    public Voucher(int ID, String code, int value, boolean status, int limit_use, Product_type productType, Date expiration_date, Date created_date, String created_by, Date updated_date, String updated_by, Collection<com.example.backend_final_project.model.Invoice> invoice) {
+
+    public Voucher(int ID, String code, int value, boolean status, int limit_use, Product_type productType, Date expiration_date, Date created_date, String created_by, Date updated_date, String updated_by) {
         this.ID = ID;
         Code = code;
         Value = value;
@@ -163,7 +179,6 @@ public class Voucher {
         Created_by = created_by;
         Updated_date = updated_date;
         Updated_by = updated_by;
-        Invoice = invoice;
     }
 
     public Voucher() {

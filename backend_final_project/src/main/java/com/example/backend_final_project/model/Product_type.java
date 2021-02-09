@@ -36,11 +36,11 @@ public class Product_type {
     @Column(name = "isdelete")
     private Boolean isdelete;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private Collection<Product> product;
+//    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+//    private Collection<Product> product;
 
-   @OneToMany(mappedBy="voucher",fetch = FetchType.EAGER)
-   private Collection<Voucher> Voucher;
+//   @OneToMany(mappedBy="voucher",fetch = FetchType.EAGER)
+//   private Collection<Voucher> Voucher;
 
     public int getId() {
         return Id;
@@ -98,23 +98,36 @@ public class Product_type {
         this.isdelete = isdelete;
     }
 
-    public Collection<Product> getProduct() {
-        return product;
-    }
+//    public Collection<Product> getProduct() {
+//        return product;
+//    }
+//
+//    public void setProduct(Collection<Product> product) {
+//        this.product = product;
+//    }
 
-    public void setProduct(Collection<Product> product) {
-        this.product = product;
-    }
+//    public Collection<Voucher> getVoucher() {
+//        return Voucher;
+//    }
+//
+//    public void setVoucher(Collection<Voucher> voucher) {
+//        Voucher = voucher;
+//    }
 
-    public Collection<com.example.backend_final_project.model.Voucher> getVoucher() {
-        return Voucher;
-    }
+//    public Product_type(int id, String name, Date created_date, String created_by, Date update_Date, String update_by, Boolean isdelete, Collection<Product> product, Collection<Voucher> voucher) {
+//        Id = id;
+//        Name = name;
+//        Created_date = created_date;
+//        Created_by = created_by;
+//        Update_Date = update_Date;
+//        Update_by = update_by;
+//        this.isdelete = isdelete;
+//        this.product = product;
+//        Voucher = voucher;
+//    }
 
-    public void setVoucher(Collection<com.example.backend_final_project.model.Voucher> voucher) {
-        Voucher = voucher;
-    }
 
-    public Product_type(int id, String name, Date created_date, String created_by, Date update_Date, String update_by, Boolean isdelete, Collection<Product> product, Collection<com.example.backend_final_project.model.Voucher> voucher) {
+    public Product_type(int id, String name, Date created_date, String created_by, Date update_Date, String update_by, Boolean isdelete) {
         Id = id;
         Name = name;
         Created_date = created_date;
@@ -122,8 +135,6 @@ public class Product_type {
         Update_Date = update_Date;
         Update_by = update_by;
         this.isdelete = isdelete;
-        this.product = product;
-        Voucher = voucher;
     }
 
     public Product_type() {

@@ -48,11 +48,11 @@ public class Delivery {
         Id = id;
     }
 
-    public com.example.backend_final_project.model.Invoice getInvoice() {
+    public Invoice getInvoice() {
         return Invoice;
     }
 
-    public void setInvoice(com.example.backend_final_project.model.Invoice invoice) {
+    public void setInvoice(Invoice invoice) {
         Invoice = invoice;
     }
 
@@ -104,7 +104,7 @@ public class Delivery {
         Updated_by = updated_by;
     }
 
-    public Delivery(int id, com.example.backend_final_project.model.Invoice invoice, int delivery_Status, String user_note, String delivery_Message, Date created_date, Date updated_date, String updated_by) {
+    public Delivery(int id, Invoice invoice, int delivery_Status, String user_note, String delivery_Message, Date created_date, Date updated_date, String updated_by) {
         Id = id;
         Invoice = invoice;
         Delivery_Status = delivery_Status;

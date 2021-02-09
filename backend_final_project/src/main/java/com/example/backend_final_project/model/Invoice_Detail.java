@@ -48,19 +48,19 @@ public class Invoice_Detail {
         this.ID = ID;
     }
 
-    public com.example.backend_final_project.model.Invoice getInvoice() {
+    public Invoice getInvoice() {
         return Invoice;
     }
 
-    public void setInvoice(com.example.backend_final_project.model.Invoice invoice) {
+    public void setInvoice(Invoice invoice) {
         Invoice = invoice;
     }
 
-    public com.example.backend_final_project.model.Product getProduct() {
+    public Product getProduct() {
         return Product;
     }
 
-    public void setProduct(com.example.backend_final_project.model.Product product) {
+    public void setProduct(Product product) {
         Product = product;
     }
 
@@ -104,7 +104,7 @@ public class Invoice_Detail {
         Update_Date = update_Date;
     }
 
-    public Invoice_Detail(int ID, com.example.backend_final_project.model.Invoice invoice, com.example.backend_final_project.model.Product product, int product_Price, int quantity, float total, Date created_date, Date update_Date) {
+    public Invoice_Detail(int ID, Invoice invoice, Product product, int product_Price, int quantity, float total, Date created_date, Date update_Date) {
         this.ID = ID;
         Invoice = invoice;
         Product = product;

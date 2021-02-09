@@ -49,19 +49,19 @@ public class Product_Property_Detail {
         this.ID = ID;
     }
 
-    public com.example.backend_final_project.model.Product getProduct() {
+    public Product getProduct() {
         return Product;
     }
 
-    public void setProduct(com.example.backend_final_project.model.Product product) {
+    public void setProduct(Product product) {
         Product = product;
     }
 
-    public com.example.backend_final_project.model.Product_Property getProduct_Property() {
+    public Product_Property getProduct_Property() {
         return Product_Property;
     }
 
-    public void setProduct_Property(com.example.backend_final_project.model.Product_Property product_Property) {
+    public void setProduct_Property(Product_Property product_Property) {
         Product_Property = product_Property;
     }
 
@@ -105,7 +105,7 @@ public class Product_Property_Detail {
         Updated_by = updated_by;
     }
 
-    public Product_Property_Detail(int ID, com.example.backend_final_project.model.Product product, com.example.backend_final_project.model.Product_Property product_Property, String description, Date created_date, String created_by, Date updated_date, String updated_by) {
+    public Product_Property_Detail(int ID, Product product, Product_Property product_Property, String description, Date created_date, String created_by, Date updated_date, String updated_by) {
         this.ID = ID;
         Product = product;
         Product_Property = product_Property;

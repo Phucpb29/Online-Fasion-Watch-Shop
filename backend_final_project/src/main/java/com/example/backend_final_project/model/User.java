@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,17 +53,17 @@ public class User {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date Update_date;
 
-   @OneToMany(mappedBy="invoice",fetch=FetchType.EAGER)
-    private Collection<Invoice> Invoice;
-
-    @OneToMany(mappedBy="cart",fetch=FetchType.EAGER)
-    private Collection<Cart> Cart;
-
-    @OneToMany(mappedBy="comment",fetch=FetchType.EAGER)
-    private Collection<Comment> Comment;
-
-    @OneToMany(mappedBy="wishlish",fetch=FetchType.EAGER)
-    private Collection<Wishlish> Wishlish;
+//   @OneToMany(mappedBy="invoice",fetch=FetchType.EAGER)
+//    private Collection<Invoice> Invoice;
+//
+//    @OneToMany(mappedBy="cart",fetch=FetchType.EAGER)
+//    private Collection<Cart> Cart;
+//
+//    @OneToMany(mappedBy="comment",fetch=FetchType.EAGER)
+//    private Collection<Comment> Comment;
+//
+//    @OneToMany(mappedBy="wishlish",fetch=FetchType.EAGER)
+//    private Collection<Wishlish> Wishlish;
 
     public int getId() {
         return Id;
@@ -161,39 +161,59 @@ public class User {
         Update_date = update_date;
     }
 
-    public Collection<com.example.backend_final_project.model.Invoice> getInvoice() {
-        return Invoice;
-    }
+//    public Collection<Invoice> getInvoice() {
+//        return Invoice;
+//    }
+//
+//    public void setInvoice(Collection<Invoice> invoice) {
+//        Invoice = invoice;
+//    }
+//
+//    public Collection<Cart> getCart() {
+//        return Cart;
+//    }
+//
+//    public void setCart(Collection<Cart> cart) {
+//        Cart = cart;
+//    }
+//
+//    public Collection<Comment> getComment() {
+//        return Comment;
+//    }
+//
+//    public void setComment(Collection<Comment> comment) {
+//        Comment = comment;
+//    }
+//
+//    public Collection<Wishlish> getWishlish() {
+//        return Wishlish;
+//    }
+//
+//    public void setWishlish(Collection<Wishlish> wishlish) {
+//        Wishlish = wishlish;
+//    }
 
-    public void setInvoice(Collection<com.example.backend_final_project.model.Invoice> invoice) {
-        Invoice = invoice;
-    }
+//    public User(int id, String username, String password, String email, String fullname, boolean gender, Date birthday, String phone, String address, boolean isdelete, Date created_date, Date update_date, Collection<Invoice> invoice, Collection<Cart> cart, Collection<Comment> comment, Collection<Wishlish> wishlish) {
+//        Id = id;
+//        Username = username;
+//        Password = password;
+//        Email = email;
+//        Fullname = fullname;
+//        Gender = gender;
+//        Birthday = birthday;
+//        Phone = phone;
+//        Address = address;
+//        this.isdelete = isdelete;
+//        Created_date = created_date;
+//        Update_date = update_date;
+//        Invoice = invoice;
+//        Cart = cart;
+//        Comment = comment;
+//        Wishlish = wishlish;
+//    }
 
-    public Collection<com.example.backend_final_project.model.Cart> getCart() {
-        return Cart;
-    }
 
-    public void setCart(Collection<com.example.backend_final_project.model.Cart> cart) {
-        Cart = cart;
-    }
-
-    public Collection<com.example.backend_final_project.model.Comment> getComment() {
-        return Comment;
-    }
-
-    public void setComment(Collection<com.example.backend_final_project.model.Comment> comment) {
-        Comment = comment;
-    }
-
-    public Collection<com.example.backend_final_project.model.Wishlish> getWishlish() {
-        return Wishlish;
-    }
-
-    public void setWishlish(Collection<com.example.backend_final_project.model.Wishlish> wishlish) {
-        Wishlish = wishlish;
-    }
-
-    public User(int id, String username, String password, String email, String fullname, boolean gender, Date birthday, String phone, String address, boolean isdelete, Date created_date, Date update_date, Collection<com.example.backend_final_project.model.Invoice> invoice, Collection<com.example.backend_final_project.model.Cart> cart, Collection<com.example.backend_final_project.model.Comment> comment, Collection<com.example.backend_final_project.model.Wishlish> wishlish) {
+    public User(int id, String username, String password, String email, String fullname, boolean gender, Date birthday, String phone, String address, boolean isdelete, Date created_date, Date update_date) {
         Id = id;
         Username = username;
         Password = password;
@@ -206,10 +226,6 @@ public class User {
         this.isdelete = isdelete;
         Created_date = created_date;
         Update_date = update_date;
-        Invoice = invoice;
-        Cart = cart;
-        Comment = comment;
-        Wishlish = wishlish;
     }
 
     public User() {

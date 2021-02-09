@@ -33,8 +33,8 @@ public class Product_Property {
     @Column(name ="update_by")
     private String Updated_by;
 
-    @OneToMany(mappedBy="product_property_detail")
-    private Collection<Product_Property_Detail> Product_Property_Detail;
+//    @OneToMany(mappedBy="product_property_detail")
+//    private Collection<Product_Property_Detail> Product_Property_Detail;
 
     public int getID() {
         return ID;
@@ -84,22 +84,32 @@ public class Product_Property {
         Updated_by = updated_by;
     }
 
-    public Collection<com.example.backend_final_project.model.Product_Property_Detail> getProduct_Property_Detail() {
-        return Product_Property_Detail;
-    }
+//    public Collection<Product_Property_Detail> getProduct_Property_Detail() {
+//        return Product_Property_Detail;
+//    }
+//
+//    public void setProduct_Property_Detail(Collection<Product_Property_Detail> product_Property_Detail) {
+//        Product_Property_Detail = product_Property_Detail;
+//    }
 
-    public void setProduct_Property_Detail(Collection<com.example.backend_final_project.model.Product_Property_Detail> product_Property_Detail) {
-        Product_Property_Detail = product_Property_Detail;
-    }
+//    public Product_Property(int ID, String name, Date created_date, String created_by, Date updated_date, String updated_by, Collection<Product_Property_Detail> product_Property_Detail) {
+//        this.ID = ID;
+//        Name = name;
+//        Created_date = created_date;
+//        Created_by = created_by;
+//        Updated_date = updated_date;
+//        Updated_by = updated_by;
+//        Product_Property_Detail = product_Property_Detail;
+//    }
 
-    public Product_Property(int ID, String name, Date created_date, String created_by, Date updated_date, String updated_by, Collection<com.example.backend_final_project.model.Product_Property_Detail> product_Property_Detail) {
+
+    public Product_Property(int ID, String name, Date created_date, String created_by, Date updated_date, String updated_by) {
         this.ID = ID;
         Name = name;
         Created_date = created_date;
         Created_by = created_by;
         Updated_date = updated_date;
         Updated_by = updated_by;
-        Product_Property_Detail = product_Property_Detail;
     }
 
     public Product_Property() {

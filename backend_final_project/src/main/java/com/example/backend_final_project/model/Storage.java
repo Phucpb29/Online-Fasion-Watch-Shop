@@ -56,11 +56,11 @@ public class Storage {
         this.product = product;
     }
 
-    public com.example.backend_final_project.model.Provider getProvider() {
+    public Provider getProvider() {
         return Provider;
     }
 
-    public void setProvider(com.example.backend_final_project.model.Provider provider) {
+    public void setProvider(Provider provider) {
         Provider = provider;
     }
 
@@ -104,7 +104,7 @@ public class Storage {
         Updated_by = updated_by;
     }
 
-    public Storage(int id, Product product, com.example.backend_final_project.model.Provider provider, int quantity, Date created_date, String created_by, Date updated_date, String updated_by) {
+    public Storage(int id, Product product, Provider provider, int quantity, Date created_date, String created_by, Date updated_date, String updated_by) {
         Id = id;
         this.product = product;
         Provider = provider;

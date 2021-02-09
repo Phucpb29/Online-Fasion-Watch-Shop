@@ -31,8 +31,8 @@ public class Cart {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date Update_Date;
 
-    @OneToMany(mappedBy="cart_detail",fetch=FetchType.EAGER)
-    private Collection<Cart_Detail> Cart_Detail;
+//    @OneToMany(mappedBy="cart_detail",fetch=FetchType.EAGER)
+//    private Collection<Cart_Detail> Cart_Detail;
 
     public int getId() {
         return Id;
@@ -42,11 +42,11 @@ public class Cart {
         Id = id;
     }
 
-    public com.example.backend_final_project.model.User getUser() {
+    public User getUser() {
         return User;
     }
 
-    public void setUser(com.example.backend_final_project.model.User user) {
+    public void setUser(User user) {
         User = user;
     }
 
@@ -74,21 +74,30 @@ public class Cart {
         Update_Date = update_Date;
     }
 
-    public Collection<com.example.backend_final_project.model.Cart_Detail> getCart_Detail() {
-        return Cart_Detail;
-    }
+//    public Collection<Cart_Detail> getCart_Detail() {
+//        return Cart_Detail;
+//    }
+//
+//    public void setCart_Detail(Collection<Cart_Detail> cart_Detail) {
+//        Cart_Detail = cart_Detail;
+//    }
 
-    public void setCart_Detail(Collection<com.example.backend_final_project.model.Cart_Detail> cart_Detail) {
-        Cart_Detail = cart_Detail;
-    }
+//    public Cart(int id, User user, float total, Date created_date, Date update_Date, Collection<Cart_Detail> cart_Detail) {
+//        Id = id;
+//        User = user;
+//        Total = total;
+//        Created_date = created_date;
+//        Update_Date = update_Date;
+//        Cart_Detail = cart_Detail;
+//    }
 
-    public Cart(int id, com.example.backend_final_project.model.User user, float total, Date created_date, Date update_Date, Collection<com.example.backend_final_project.model.Cart_Detail> cart_Detail) {
+
+    public Cart(int id, com.example.backend_final_project.model.User user, float total, Date created_date, Date update_Date) {
         Id = id;
         User = user;
         Total = total;
         Created_date = created_date;
         Update_Date = update_Date;
-        Cart_Detail = cart_Detail;
     }
 
     public Cart() {

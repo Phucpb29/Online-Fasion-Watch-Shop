@@ -48,11 +48,11 @@ public class Wishlish {
         this.product = product;
     }
 
-    public com.example.backend_final_project.model.Cart getCart() {
+    public Cart getCart() {
         return Cart;
     }
 
-    public void setCart(com.example.backend_final_project.model.Cart cart) {
+    public void setCart(Cart cart) {
         Cart = cart;
     }
 
@@ -72,7 +72,7 @@ public class Wishlish {
         Update_Date = update_Date;
     }
 
-    public Wishlish(int ID, Product product, com.example.backend_final_project.model.Cart cart, Date created_date, Date update_Date) {
+    public Wishlish(int ID, Product product, Cart cart, Date created_date, Date update_Date) {
         this.ID = ID;
         this.product = product;
         Cart = cart;

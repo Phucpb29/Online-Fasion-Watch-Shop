@@ -50,11 +50,11 @@ public class Product_Detail {
     Id = id;
   }
 
-  public com.example.backend_final_project.model.Product getProduct() {
+  public Product getProduct() {
     return Product;
   }
 
-  public void setProduct(com.example.backend_final_project.model.Product product) {
+  public void setProduct(Product product) {
     Product = product;
   }
 
@@ -98,7 +98,7 @@ public class Product_Detail {
     Updated_by = updated_by;
   }
 
-  public Product_Detail(int id, com.example.backend_final_project.model.Product product, String content, Date created_date, String created_by, Date updated_date, String updated_by) {
+  public Product_Detail(int id, Product product, String content, Date created_date, String created_by, Date updated_date, String updated_by) {
     Id = id;
     Product = product;
     Content = content;

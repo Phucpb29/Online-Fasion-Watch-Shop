@@ -46,8 +46,8 @@ public class Provider {
     @Column(name = "update_by")
     private String Updated_by;
 
-    @OneToMany(mappedBy = "Storage", fetch = FetchType.EAGER)
-    private Collection<Storage> Storage;
+//    @OneToMany(mappedBy = "Storage", fetch = FetchType.EAGER)
+//    private Collection<Storage> Storage;
 
     public int getId() {
         return Id;
@@ -129,15 +129,29 @@ public class Provider {
         Updated_by = updated_by;
     }
 
-    public Collection<com.example.backend_final_project.model.Storage> getStorage() {
-        return Storage;
-    }
+//    public Collection<Storage> getStorage() {
+//        return Storage;
+//    }
+//
+//    public void setStorage(Collection<Storage> storage) {
+//        Storage = storage;
+//    }
 
-    public void setStorage(Collection<com.example.backend_final_project.model.Storage> storage) {
-        Storage = storage;
-    }
+//    public Provider(int id, String name, String email, String phone, String address, boolean isdelete, Date created_date, String created_by, Date updated_date, String updated_by, Collection<Storage> storage) {
+//        Id = id;
+//        Name = name;
+//        Email = email;
+//        Phone = phone;
+//        Address = address;
+//        this.isdelete = isdelete;
+//        Created_date = created_date;
+//        Created_by = created_by;
+//        Updated_date = updated_date;
+//        Updated_by = updated_by;
+//        Storage = storage;
+//    }
 
-    public Provider(int id, String name, String email, String phone, String address, boolean isdelete, Date created_date, String created_by, Date updated_date, String updated_by, Collection<com.example.backend_final_project.model.Storage> storage) {
+    public Provider(int id, String name, String email, String phone, String address, boolean isdelete, Date created_date, String created_by, Date updated_date, String updated_by) {
         Id = id;
         Name = name;
         Email = email;
@@ -148,7 +162,6 @@ public class Provider {
         Created_by = created_by;
         Updated_date = updated_date;
         Updated_by = updated_by;
-        Storage = storage;
     }
 
     public Provider() {

@@ -23,14 +23,14 @@ public class Invoice {
     @ManyToOne
     @JoinColumn(name ="voucher_id")
     private Voucher Voucher;
-    
+
     @ManyToOne
     @JoinColumn(name ="user_id")
     private User User;
-    
+
     @Column(name ="payment")
     private String Payment;
-    
+
     @Column(name="status")
     private int Status;
 
@@ -50,11 +50,11 @@ public class Invoice {
     @Column(name = "isdelete")
     private Boolean isdelete;
 
-    @OneToMany(mappedBy="invoice_detail",fetch=FetchType.EAGER)
-    private Collection<Invoice_Detail> Invoice_Detail;
+//    @OneToMany(mappedBy="invoice_detail",fetch=FetchType.EAGER)
+//    private Collection<Invoice_Detail> Invoice_Detail;
 
-    @OneToMany(mappedBy="delivery",fetch=FetchType.EAGER)
-    private Collection<Delivery> Delivery;
+//    @OneToMany(mappedBy="delivery",fetch=FetchType.EAGER)
+//    private Collection<Delivery> Delivery;
 
     public int getID() {
         return ID;
@@ -80,19 +80,19 @@ public class Invoice {
         Total = total;
     }
 
-    public com.example.backend_final_project.model.Voucher getVoucher() {
+    public Voucher getVoucher() {
         return Voucher;
     }
 
-    public void setVoucher(com.example.backend_final_project.model.Voucher voucher) {
+    public void setVoucher(Voucher voucher) {
         Voucher = voucher;
     }
 
-    public com.example.backend_final_project.model.User getUser() {
+    public User getUser() {
         return User;
     }
 
-    public void setUser(com.example.backend_final_project.model.User user) {
+    public void setUser(User user) {
         User = user;
     }
 
@@ -144,23 +144,40 @@ public class Invoice {
         this.isdelete = isdelete;
     }
 
-    public Collection<com.example.backend_final_project.model.Invoice_Detail> getInvoice_Detail() {
-        return Invoice_Detail;
-    }
+//    public Collection<Invoice_Detail> getInvoice_Detail() {
+//        return Invoice_Detail;
+//    }
+//
+//    public void setInvoice_Detail(Collection<Invoice_Detail> invoice_Detail) {
+//        Invoice_Detail = invoice_Detail;
+//    }
 
-    public void setInvoice_Detail(Collection<com.example.backend_final_project.model.Invoice_Detail> invoice_Detail) {
-        Invoice_Detail = invoice_Detail;
-    }
+//    public Collection<Delivery> getDelivery() {
+//        return Delivery;
+//    }
+//
+//    public void setDelivery(Collection<Delivery> delivery) {
+//        Delivery = delivery;
+//    }
 
-    public Collection<com.example.backend_final_project.model.Delivery> getDelivery() {
-        return Delivery;
-    }
+//    public Invoice(int ID, String code, float total, Voucher voucher, User user, String payment, int status, Date created_date, Date update_Date, String update_by, Boolean isdelete, Collection<Invoice_Detail> invoice_Detail, Collection<Delivery> delivery) {
+//        this.ID = ID;
+//        Code = code;
+//        Total = total;
+//        Voucher = voucher;
+//        User = user;
+//        Payment = payment;
+//        Status = status;
+//        Created_date = created_date;
+//        Update_Date = update_Date;
+//        Update_by = update_by;
+//        this.isdelete = isdelete;
+//        Invoice_Detail = invoice_Detail;
+//        Delivery = delivery;
+//    }
 
-    public void setDelivery(Collection<com.example.backend_final_project.model.Delivery> delivery) {
-        Delivery = delivery;
-    }
 
-    public Invoice(int ID, String code, float total, com.example.backend_final_project.model.Voucher voucher, com.example.backend_final_project.model.User user, String payment, int status, Date created_date, Date update_Date, String update_by, Boolean isdelete, Collection<com.example.backend_final_project.model.Invoice_Detail> invoice_Detail, Collection<com.example.backend_final_project.model.Delivery> delivery) {
+    public Invoice(int ID, String code, float total, com.example.backend_final_project.model.Voucher voucher, com.example.backend_final_project.model.User user, String payment, int status, Date created_date, Date update_Date, String update_by, Boolean isdelete) {
         this.ID = ID;
         Code = code;
         Total = total;
@@ -172,8 +189,6 @@ public class Invoice {
         Update_Date = update_Date;
         Update_by = update_by;
         this.isdelete = isdelete;
-        Invoice_Detail = invoice_Detail;
-        Delivery = delivery;
     }
 
     public Invoice() {

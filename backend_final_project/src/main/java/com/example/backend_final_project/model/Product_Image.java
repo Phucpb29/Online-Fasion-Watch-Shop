@@ -71,7 +71,7 @@ public class Product_Image {
         return Product;
     }
 
-    public void setProduct(com.example.backend_final_project.model.Product product) {
+    public void setProduct(Product product) {
         Product = product;
     }
 
@@ -115,7 +115,7 @@ public class Product_Image {
         this.isdelete = isdelete;
     }
 
-    public Product_Image(int ID, String image, int proiority, com.example.backend_final_project.model.Product product, Date created_date, String created_by, Date updated_date, String updated_by, boolean isdelete) {
+    public Product_Image(int ID, String image, int proiority, Product product, Date created_date, String created_by, Date updated_date, String updated_by, boolean isdelete) {
         this.ID = ID;
         Image = image;
         Proiority = proiority;

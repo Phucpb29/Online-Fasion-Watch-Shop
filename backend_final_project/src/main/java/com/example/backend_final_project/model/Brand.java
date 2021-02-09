@@ -11,7 +11,7 @@ import java.util.Date;
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
+    @Column(name = "id")
     private int Id;
 
     @Column(name = "name")
@@ -42,8 +42,8 @@ public class Brand {
     @Column(name = "update_by")
     private String Update_by;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private Collection<Product> product;
+//    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+//    private Collection<Product> product;
 
     public int getId() {
         return Id;
@@ -117,15 +117,28 @@ public class Brand {
         Update_by = update_by;
     }
 
-    public Collection<Product> getProduct() {
-        return product;
-    }
+//    public Collection<Product> getProduct() {
+//        return product;
+//    }
+//
+//    public void setProduct(Collection<Product> product) {
+//        this.product = product;
+//    }
 
-    public void setProduct(Collection<Product> product) {
-        this.product = product;
-    }
+//    public Brand(int id, String name, String description, String logo, Boolean isdelete, Date created_date, String created_by, Date update_date, String update_by, Collection<Product> product) {
+//        Id = id;
+//        Name = name;
+//        Description = description;
+//        Logo = logo;
+//        this.isdelete = isdelete;
+//        Created_date = created_date;
+//        Created_by = created_by;
+//        Update_date = update_date;
+//        Update_by = update_by;
+//        this.product = product;
+//    }
 
-    public Brand(int id, String name, String description, String logo, Boolean isdelete, Date created_date, String created_by, Date update_date, String update_by, Collection<Product> product) {
+    public Brand(int id, String name, String description, String logo, Boolean isdelete, Date created_date, String created_by, Date update_date, String update_by) {
         Id = id;
         Name = name;
         Description = description;
@@ -135,7 +148,6 @@ public class Brand {
         Created_by = created_by;
         Update_date = update_date;
         Update_by = update_by;
-        this.product = product;
     }
 
     public Brand() {
