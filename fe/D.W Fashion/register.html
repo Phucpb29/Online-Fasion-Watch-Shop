@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
+    <title>Đăng ký</title>
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
         integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
@@ -14,7 +14,7 @@
     <!-- reset css -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <!-- style css -->
-    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/register.css">
 </head>
 
 <body>
@@ -79,18 +79,20 @@
             </nav>
         </div>
     </header>
+
     <div class="main">
-        <div class="main__login">
-            <div class="main__login-left">
-                <img src="./assets/image/img-login.jpg" class="login__img" alt="">
-            </div>
-            <div class="main__login-right">
-                <div class="login__logo">
-                    <a href="" class="login__logo-link">
+        <div class="main__register">
+            <div class="main__register-left">
+                <div class="register__logo">
+                    <a href="" class="register__logo-link">
                         <img src="./assets/image/dw-logo.jpg" alt="">
                     </a>
                 </div>
-                <form action="" class="login__form">
+                <form action="" class="register__form">
+                    <div class="form-control">
+                        <box-icon name='user' class="icon icon__name"></box-icon>
+                        <input type="text" class="form__input" placeholder="Họ và tên">
+                    </div>
                     <div class="form-control">
                         <box-icon name='mail-send' class="icon icon__email"></box-icon>
                         <input type="email" class="form__input" placeholder="Email">
@@ -98,31 +100,26 @@
                     <div class="form-control">
                         <box-icon type='solid' name='lock-alt' class="icon icon__password"></box-icon>
                         <input type="password" class="form__input" placeholder="Password">
-                        <a href="" class="form__control-link">
-                            <span class="link__forgotpass">
-                                Quên mật khẩu?
-                            </span>
-                        </a>
-                    </div>
-                    <div class="form-control form__control-checkbox">
-                        <input type="checkbox" class="form__checkbox">
-                        <span>Remember me</span>
                     </div>
                     <div class="form-control">
-                        <button class="button__login">
-                            ĐĂNG NHẬP
+                        <button class="button__register">
+                            ĐĂNG KÝ
                         </button>
                     </div>
                 </form>
-                <div class="login__back">
-                    <span>Bạn chưa có tài khoản?</span>
+                <div class="register__back">
+                    <span>Bạn đã có tài khoản?</span>
                     <a href="" class="link__register">
-                        Đăng ký ngay
+                        Quay lại ngay
                     </a>
                 </div>
             </div>
+            <div class="main__register-right">
+                <img src="./assets/image/img-register.jpg" class="register__img" alt="">
+            </div>
         </div>
     </div>
+
     <footer class="footer">
         <div class="footer__policy">
             <div class="footer__policy-item">
@@ -261,8 +258,8 @@
                 </p>
             </div>
             <div class="footer__certification-img">
-                <img class="img" src="./assets/image/momo-tS5.png" alt="">
-                <img class="img" src="./assets/image/vnpay-bBZ.png" alt="">
+                <img class="img__payment" src="./assets/image/momo-tS5.png" alt="">
+                <img class="img__payment" src="./assets/image/vnpay-bBZ.png" alt="">
                 <img class="img__certification" src="./assets/image/bct-5Sz.png" alt="">
             </div>
         </div>
