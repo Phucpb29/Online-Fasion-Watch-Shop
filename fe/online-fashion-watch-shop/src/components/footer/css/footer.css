@@ -58,6 +58,7 @@
 }
 
 .footer__newsletter .footer__newsletter-form .form-control {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,7 +82,7 @@
   width: 30%;
   z-index: 0;
   overflow: hidden;
-  padding: 10px 20px;
+  padding: 11px 20px;
   border: 0 !important;
   color: var(--color-white);
   background: var(--color-black);
@@ -217,5 +218,6 @@
 .footer__certification .footer__certification-img .img {
   max-width: 60px;
   max-height: 60px;
+  margin-right: 10px;
 }
 /*# sourceMappingURL=footer.css.map */

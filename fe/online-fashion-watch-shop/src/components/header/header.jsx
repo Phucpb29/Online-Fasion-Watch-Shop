@@ -1,17 +1,20 @@
-import React from "react";
+import "boxicons";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../dw-logo.jpg";
 import "./css/header.css";
-import "boxicons";
 
 function Header() {
+  const [isShowUser, setIsShowUser] = useState(false);
+
   return (
-    <React.Fragment>
+    <header className="header">
       <div className="header__main">
         <div className="header__main-left">
           <h1 className="header__logo">
-            <a href="/" className="header__logo-link">
+            <Link to="/" className="header__logo-link">
               <img src={logo} className="logo" alt="" />
-            </a>
+            </Link>
           </h1>
           <ul className="header__category">
             <li className="category__item">
@@ -30,11 +33,36 @@ function Header() {
             </div>
           </form>
         </div>
-        <div className="header__main-right">
+        <div
+          className="header__main-right"
+          onMouseLeave={() => setIsShowUser(false)}
+        >
           <div className="header__icon header__user">
             <a href="/" className="header__icon-link">
-              <box-icon name="user" className="icon"></box-icon>
+              <box-icon
+                name="user"
+                className="icon"
+                onMouseEnter={() => setIsShowUser(true)}
+              ></box-icon>
             </a>
+          </div>
+          <div
+            className={
+              isShowUser
+                ? "header__user-dropdown header__user-active"
+                : "header__user-dropdown"
+            }
+          >
+            <div className="dropdown__item">
+              <Link to="/dangnhap" className="dropdown__item-link">
+                <span>ĐĂNG NHẬP</span>
+              </Link>
+            </div>
+            <div className="dropdown__item">
+              <Link to="/dangky" className="dropdown__item-link">
+                <span>ĐĂNG KÝ</span>
+              </Link>
+            </div>
           </div>
           <div className="header__icon header__cart">
             <button className="header__icon-btn">
@@ -65,7 +93,7 @@ function Header() {
           </ul>
         </nav>
       </div>
-    </React.Fragment>
+    </header>
   );
 }
 

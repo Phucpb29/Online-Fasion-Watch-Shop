@@ -1,20 +1,26 @@
 import React from "react";
+import auth from "../.././assets/image/auth-azY.svg";
+import certification from "../.././assets/image/bct-5Sz.png";
+import momo from "../.././assets/image/momo-tS5.png";
+import shipping from "../.././assets/image/shipping-2xB.svg";
+import vnpay from "../.././assets/image/vnpay-bBZ.png";
+import warranty from "../.././assets/image/warranty-cUS.svg";
 import "./css/footer.css";
 
 function Footer() {
   return (
-    <React.Fragment>
+    <footer className="footer">
       <div class="footer__policy">
         <div class="footer__policy-item">
-          <img src="./assets/image/warranty-cUS.svg" alt="" />
+          <img src={warranty} alt="" />
           <p>BẢO HÀNH 10 NĂM LỖI NHÀ SẢN XUẤT</p>
         </div>
         <div class="footer__policy-item">
-          <img src="./assets/image/shipping-2xB.svg" alt="" />
+          <img src={shipping} alt="" />
           <p>FREESHIP VỚI ĐƠN HÀNG TỪ 700.000 VND</p>
         </div>
         <div class="footer__policy-item">
-          <img src="./assets/image/auth-azY.svg" alt="" />
+          <img src={auth} alt="" />
           <p>CAM KẾT 100% HÀNG CHÍNH HÃNG</p>
         </div>
       </div>
@@ -122,16 +128,12 @@ function Footer() {
           </p>
         </div>
         <div class="footer__certification-img">
-          <img class="img" src="./assets/image/momo-tS5.png" alt="" />
-          <img class="img" src="./assets/image/vnpay-bBZ.png" alt="" />
-          <img
-            class="img__certification"
-            src="./assets/image/bct-5Sz.png"
-            alt=""
-          />
+          <img class="img" src={momo} alt="" />
+          <img class="img" src={vnpay} alt="" />
+          <img class="img__certification" src={certification} alt="" />
         </div>
       </div>
-    </React.Fragment>
+    </footer>
   );
 }
 

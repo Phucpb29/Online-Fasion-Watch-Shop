@@ -1,0 +1,110 @@
+.main__home {
+  padding: 0;
+  margin: 0;
+
+  .home__banner {
+    width: 100%;
+    height: 700px;
+    padding: 90px 100px;
+    color: var(--color-white);
+    background-image: url("../../../assets/image/home-banner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .banner__title {
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 0.2rem;
+    }
+
+    .banner__content {
+      font-size: 1.5rem;
+      padding: 20px 30px;
+      letter-spacing: 0.2rem;
+      font-style: italic;
+    }
+
+    .banner__link {
+      padding: 30px 150px;
+
+      .link__product {
+        position: relative;
+        display: inline-block;
+        padding: 15px 70px;
+        color: var(--color-black);
+        font-weight: bold;
+        z-index: 0;
+        background-color: var(--color-white);
+        overflow: hidden;
+        transition: color 0.7s ease-in-out;
+      }
+
+      .link__product:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -10%;
+        width: 0%;
+        height: 100%;
+        z-index: -1;
+        transform: skew(-25deg);
+        background-color: var(--color-success);
+        transition: width 0.7s ease-in-out;
+      }
+
+      .link__product:hover {
+        color: var(--color-white);
+        transition: color 0.7s ease-in-out;
+      }
+
+      .link__product:hover::before {
+        width: 120%;
+        transition: width 0.7s ease-in-out;
+      }
+    }
+  }
+
+  .home__shop {
+    display: flex;
+    padding: 50px 200px;
+    justify-content: space-around;
+    align-items: center;
+
+    .shop__man {
+      background-image: url("../../../assets/image/watches-man-home.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .shop__woman {
+      background-image: url("../../../assets/image/watches-woman-home.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .shop__link {
+      position: relative;
+      width: 500px;
+      height: 400px;
+
+      .link__title {
+        position: absolute;
+        bottom: 30%;
+        right: 10%;
+        font-size: 2rem;
+        color: var(--color-white);
+      }
+
+      .link__product {
+        position: absolute;
+        bottom: 20%;
+        right: 10%;
+        font-size: 1.2rem;
+        color: var(--color-white);
+      }
+    }
+  }
+}
