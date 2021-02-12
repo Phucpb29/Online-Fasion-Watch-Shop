@@ -7,8 +7,18 @@ import aboutUs1 from "../../assets/image/home-aboutus-1.jpg";
 import aboutUs2 from "../../assets/image/home-aboutus-2.jpg";
 import aboutUs3 from "../../assets/image/home-aboutus-3.jpg";
 import "./css/home.css";
+import PropTypes from "prop-types";
 
-function Home() {
+Home.prototype = {
+  data: PropTypes.array,
+};
+
+Home.defaultProps = {
+  data: [],
+};
+
+function Home(props) {
+  const { data } = props;
   return (
     <div className="main__home">
       <div className="home__banner">
@@ -47,7 +57,28 @@ function Home() {
           </span>
         </Link>
         <div className="seller__product">
-          <div className="product__detail">
+          {data.map((item, index) => (
+            <div className="product__detail" key={index}>
+              <div className="product__img">
+                <img src={movado} alt="" />
+              </div>
+              <div className="product__name">
+                <h3>{item.name}</h3>
+              </div>
+              <div className="product__price">
+                <span>{item.price} đ</span>
+              </div>
+              <div className="product__button">
+                <Link
+                  to={`/sanpham/sanphamchitiet/${item.id}`}
+                  className="product__button-link"
+                >
+                  <span>XEM SẢN PHẨM</span>
+                </Link>
+              </div>
+            </div>
+          ))}
+          {/* <div className="product__detail">
             <div className="product__img">
               <img src={movado} alt="" />
             </div>
@@ -110,7 +141,7 @@ function Home() {
                 <span>XEM SẢN PHẨM</span>
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="home__news">
