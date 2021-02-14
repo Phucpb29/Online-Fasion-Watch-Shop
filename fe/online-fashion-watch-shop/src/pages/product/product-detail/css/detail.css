@@ -251,4 +251,29 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
+
+.main__product .product__comment .comment__content .comment__box .comment__detail .comment__detail-title {
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+  font-size: 1.2rem;
+}
+
+.main__product .product__comment .comment__content .comment__box .comment__detail .comment__detail-content {
+  font-size: 0.8rem;
+  padding-left: 10px;
+  overflow: hidden;
+}
+
+.main__product .product__comment .comment__content .comment__box .comment__detail .comment__detail-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main__product .product__comment .comment__content .comment__box .comment__detail .comment__detail-user p {
+  font-weight: bold;
+}
 /*# sourceMappingURL=detail.css.map */

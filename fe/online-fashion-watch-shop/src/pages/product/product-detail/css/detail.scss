@@ -186,6 +186,27 @@
             width: 100%;
             justify-content: flex-end;
           }
+
+          .comment__detail-title {
+            font-weight: bold;
+            letter-spacing: 0.3rem;
+            font-size: 1.2rem;
+          }
+
+          .comment__detail-content {
+            font-size: 0.8rem;
+            padding-left: 10px;
+            overflow: hidden;
+          }
+
+          .comment__detail-user {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+              font-weight: bold;
+            }
+          }
         }
       }
     }

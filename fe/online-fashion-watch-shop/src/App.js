@@ -48,7 +48,7 @@ function App() {
           <Route path="/dangky">
             <Register />
           </Route>
-          <Route path="/sanpham/gioitinh">
+          <Route path="/sanpham/nam">
             <ProductGender />
           </Route>
           <Route path="/sanpham/banchay">

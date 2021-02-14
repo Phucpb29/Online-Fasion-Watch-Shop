@@ -142,84 +142,16 @@ function ProductDetail() {
         <div className="comment__content">
           <div className="comment__box">
             <div className="comment__detail">
-              <div className="comment__box-date">
+              <div className="comment__detail-date">
                 <span>02 - 12 - 2021</span>
               </div>
-              <div className="comment__box-title">
+              <div className="comment__detail-title">
                 <h3>Title</h3>
               </div>
-              <div className="comment__box-content">
+              <div className="comment__detail-content">
                 <span>Content</span>
               </div>
-              <div className="comment__box-user">
-                <p>Người đánh giá</p>
-                <span>Tên</span>
-              </div>
-            </div>
-          </div>
-          <div className="comment__box">
-            <div className="comment__detail">
-              <div className="comment__box-date">
-                <span>02 - 12 - 2021</span>
-              </div>
-              <div className="comment__box-title">
-                <h3>Title</h3>
-              </div>
-              <div className="comment__box-content">
-                <span>Content</span>
-              </div>
-              <div className="comment__box-user">
-                <p>Người đánh giá</p>
-                <span>Tên</span>
-              </div>
-            </div>
-          </div>
-          <div className="comment__box">
-            <div className="comment__detail">
-              <div className="comment__box-date">
-                <span>02 - 12 - 2021</span>
-              </div>
-              <div className="comment__box-title">
-                <h3>Title</h3>
-              </div>
-              <div className="comment__box-content">
-                <span>Content</span>
-              </div>
-              <div className="comment__box-user">
-                <p>Người đánh giá</p>
-                <span>Tên</span>
-              </div>
-            </div>
-          </div>
-          <div className="comment__box">
-            <div className="comment__detail">
-              <div className="comment__box-date">
-                <span>02 - 12 - 2021</span>
-              </div>
-              <div className="comment__box-title">
-                <h3>Title</h3>
-              </div>
-              <div className="comment__box-content">
-                <span>Content</span>
-              </div>
-              <div className="comment__box-user">
-                <p>Người đánh giá</p>
-                <span>Tên</span>
-              </div>
-            </div>
-          </div>
-          <div className="comment__box">
-            <div className="comment__detail">
-              <div className="comment__box-date">
-                <span>02 - 12 - 2021</span>
-              </div>
-              <div className="comment__box-title">
-                <h3>Title</h3>
-              </div>
-              <div className="comment__box-content">
-                <span>Content</span>
-              </div>
-              <div className="comment__box-user">
+              <div className="comment__detail-user">
                 <p>Người đánh giá</p>
                 <span>Tên</span>
               </div>
@@ -237,11 +169,83 @@ function ProductDetail() {
                 <span>Content</span>
               </div>
               <div className="comment__detail-user">
-                <p>Người đánh giá</p>
+                <p>Người đánh giá:</p>
                 <span>Tên</span>
               </div>
             </div>
           </div>
+          <div className="comment__box">
+            <div className="comment__detail">
+              <div className="comment__detail-date">
+                <span>02 - 12 - 2021</span>
+              </div>
+              <div className="comment__detail-title">
+                <h3>Title</h3>
+              </div>
+              <div className="comment__detail-content">
+                <span>Content</span>
+              </div>
+              <div className="comment__detail-user">
+                <p>Người đánh giá:</p>
+                <span>Tên</span>
+              </div>
+            </div>
+          </div>
+          <div className="comment__box">
+            <div className="comment__detail">
+              <div className="comment__detail-date">
+                <span>02 - 12 - 2021</span>
+              </div>
+              <div className="comment__detail-title">
+                <h3>Title</h3>
+              </div>
+              <div className="comment__detail-content">
+                <span>Content</span>
+              </div>
+              <div className="comment__detail-user">
+                <p>Người đánh giá:</p>
+                <span>Tên</span>
+              </div>
+            </div>
+          </div>
+          <div className="comment__box">
+            <div className="comment__detail">
+              <div className="comment__detail-date">
+                <span>02 - 12 - 2021</span>
+              </div>
+              <div className="comment__detail-title">
+                <h3>Title</h3>
+              </div>
+              <div className="comment__detail-content">
+                <span>Content</span>
+              </div>
+              <div className="comment__detail-user">
+                <p>Người đánh giá:</p>
+                <span>Tên</span>
+              </div>
+            </div>
+          </div>
+          <div className="comment__box">
+            <div className="comment__detail">
+              <div className="comment__detail-date">
+                <span>02 - 12 - 2021</span>
+              </div>
+              <div className="comment__detail-title">
+                <h3>Title</h3>
+              </div>
+              <div className="comment__detail-content">
+                <span>Content</span>
+              </div>
+              <div className="comment__detail-user">
+                <p>Người đánh giá:</p>
+                <span>Tên</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="pagination">
+          <button className="pagination__prev">Prev</button>
+          <button className="pagination__next">Next</button>
         </div>
       </div>
     </div>
