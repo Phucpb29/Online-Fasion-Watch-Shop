@@ -116,7 +116,7 @@ function Order() {
               <span>SẢN PHẨM</span>
               <span>GIÁ</span>
             </div>
-            <div className="col-2-card-order-details">
+            <div className="col-2-card-order-details">                          
               <div className="col-2-card-order-details-grid">
                 <div className="image-container-thumbnail image-container">
                   <img
@@ -135,12 +135,7 @@ function Order() {
                     O RING
                   </span>
                   <span className="orderSummaryItem-category-1bK typography-gothicBody-3Gm" />
-                </div>
-                <dl className="col-2-card-options">
-                  <dt className="productOptions-optionLabel-2fm typography-gothicBody-3Gm">
-                    Ring size : 5
-                  </dt>
-                </dl>
+                </div>                
                 <div className="col-2-card-price">
                   <span className>
                     <span>299</span>
@@ -149,9 +144,77 @@ function Order() {
                     <span>&nbsp;</span>
                     <span>₫</span>
                   </span>
+                  <span class="orderSummaryItem-priceOriginal-2Gn"><span>2</span><span>.</span><span>599</span><span>.</span><span>000</span><span>&nbsp;</span><span>₫</span></span>
                 </div>
               </div>
-            </div>
+              
+            </div>    
+            <div className="col-2-card-order-details">                          
+              <div className="col-2-card-order-details-grid">
+                <div className="image-container-thumbnail image-container">
+                  <img
+                    loading="lazy"
+                    alt="O RING"
+                    className="image-image-2gD image-loaded-SHk"
+                    height={70}
+                    sizes="70px"
+                    src={sub_img}
+                    width={70}
+                  />
+                </div>
+                <span className="col-2-card-badge">1</span>
+                <div className="col-2-card-info">
+                  <span className="orderSummaryItem-name-2CZ typography-gothicBody-3Gm">
+                    O RING
+                  </span>
+                  <span className="orderSummaryItem-category-1bK typography-gothicBody-3Gm" />
+                </div>                
+                <div className="col-2-card-price">
+                  <span className>
+                    <span>299</span>
+                    <span>.</span>
+                    <span>000</span>
+                    <span>&nbsp;</span>
+                    <span>₫</span>
+                  </span>
+                  <span class="orderSummaryItem-priceOriginal-2Gn"><span>2</span><span>.</span><span>599</span><span>.</span><span>000</span><span>&nbsp;</span><span>₫</span></span>
+                </div>
+              </div>
+              
+            </div>   
+            <div className="col-2-card-order-details">                          
+              <div className="col-2-card-order-details-grid">
+                <div className="image-container-thumbnail image-container">
+                  <img
+                    loading="lazy"
+                    alt="O RING"
+                    className="image-image-2gD image-loaded-SHk"
+                    height={70}
+                    sizes="70px"
+                    src={sub_img}
+                    width={70}
+                  />
+                </div>
+                <span className="col-2-card-badge">1</span>
+                <div className="col-2-card-info">
+                  <span className="orderSummaryItem-name-2CZ typography-gothicBody-3Gm">
+                    O RING
+                  </span>
+                  <span className="orderSummaryItem-category-1bK typography-gothicBody-3Gm" />
+                </div>                
+                <div className="col-2-card-price">
+                  <span className>
+                    <span>299</span>
+                    <span>.</span>
+                    <span>000</span>
+                    <span>&nbsp;</span>
+                    <span>₫</span>
+                  </span>
+                  <span class="orderSummaryItem-priceOriginal-2Gn"><span>2</span><span>.</span><span>599</span><span>.</span><span>000</span><span>&nbsp;</span><span>₫</span></span>
+                </div>
+              </div>
+              
+            </div>           
           </div>
           <form className="col-2-form">
             <div>
@@ -192,6 +255,8 @@ function Order() {
                 <span>&nbsp;</span>
                 <span>₫</span>
               </span>
+              <span class="priceSummary-lineItemLabel-3q-">Giảm giá</span>
+              <span class="priceSummary-price-2_b typography-headline2-2Vd priceSummary-priceDiscount-1lC">-<span>59</span><span>.</span><span>800</span><span>&nbsp;</span><span>₫</span></span>
               <div className="priceSummary-dividerTotal-20D priceSummary-divider-3Iz" />
               <span className="priceSummary-totalLabel-3bk priceSummary-lineItemLabel-3q-">
                 Tổng

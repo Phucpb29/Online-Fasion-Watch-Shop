@@ -13,6 +13,7 @@ body {
       box-shadow: 0px 0px 40px rgb(0 0 0 / 10%);
         /* transform: matrix(-1, 0, 0, 1, 0, 0); */    
         margin-top: 20px;
+        margin-bottom: 70px;
     }
     .row {
         padding: 2.5rem 3rem;
@@ -414,4 +415,14 @@ body {
         font-size: 25px;
         color:black;
     }
-    
+    .orderSummaryItem-priceOriginal-2Gn {
+        font-size: 0.9rem;
+        text-decoration: line-through;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    .priceSummary-priceDiscount-1lC {
+        color: red;
+    }
+    .priceSummary-price-2_b {
+        justify-self: end;
+    }
