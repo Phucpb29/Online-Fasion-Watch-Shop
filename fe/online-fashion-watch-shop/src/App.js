@@ -17,6 +17,7 @@ import ProductCategory from "./pages/product/product-category/category";
 import ProductDetail from "./pages/product/product-detail/detail";
 import ProductGender from "./pages/product/product-gender/gender";
 import Register from "./pages/register/register";
+import Order from "./pages/order/order";
 const data = [
   {
     id: 1,
@@ -77,7 +78,10 @@ function App() {
           </Route>
           <Route path="/sanpham/sanphamchitiet/:id">
             <ProductDetail />
-          </Route>
+          </Route>   
+          <Route path="/thanhtoan">
+            <Order />
+          </Route>       
           <Route>
             <Error />
           </Route>
