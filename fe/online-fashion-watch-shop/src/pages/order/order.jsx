@@ -2,6 +2,7 @@ import React from "react";
 import "./css/order.css";
 import sub_img from "../../assets/image/aura_rings_shadow_8_.png";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
+import "boxicons";
 
 function Order() {
   return (
@@ -35,7 +36,7 @@ function Order() {
                   />
                   <label className="label-input100" htmlFor="name">
                     <span>
-                      <i className="fa fa-user" aria-hidden="true" />
+                    <box-icon type="solid" name="user"></box-icon>
                     </span>
                   </label>
                 </div>
@@ -50,7 +51,7 @@ function Order() {
                   />
                   <label className="label-input100" htmlFor="name">
                     <span>
-                      <i className="fa fa-envelope" aria-hidden="true" />
+                    <box-icon name="mail-send"></box-icon>
                     </span>
                   </label>
                 </div>
@@ -65,7 +66,7 @@ function Order() {
                   />
                   <label className="label-input100" htmlFor="name">
                     <span>
-                      <i className="fa fa-phone" aria-hidden="true" />
+                    <box-icon name='phone' type='solid' ></box-icon>
                     </span>
                   </label>
                 </div>
@@ -82,7 +83,7 @@ function Order() {
               />
               <label className="label-input100" htmlFor="name">
                 <span>
-                  <i className="fa fa-map" aria-hidden="true" />
+                <box-icon name='map' type='solid' ></box-icon>
                 </span>
               </label>
             </div>
@@ -97,7 +98,7 @@ function Order() {
           </div>
           <div className="col-1-card-footer">
             <p>
-              *Lưu ý: Curnon sẽ liên lạc lại với bạn trong 24h để xác nhận đơn
+              *Lưu ý: D.W Fashion sẽ liên lạc lại với bạn trong 24h để xác nhận đơn
               hàng.
             </p>
             <br />
