@@ -90,14 +90,15 @@
   color: gray;
   letter-spacing: 0.05rem;
 }
+.register .register__left .register__link .span {
+  color: gray;
+}
 .register .register__right {
   width: 50%;
   height: 630px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
-.register .register__left .register__link .span {
-  color: gray;
-}
+
 .register .register__right .register__img {
   display: block;
   width: 100%;
