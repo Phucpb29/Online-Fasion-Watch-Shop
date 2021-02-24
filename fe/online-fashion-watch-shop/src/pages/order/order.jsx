@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/order.css";
 import sub_img from "../../assets/image/aura_rings_shadow_8_.png";
-import '@fortawesome/fontawesome-free/css/all.min.css';
+// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function Order() {
   return (
@@ -160,7 +160,7 @@ function Order() {
                     id="couponCode"
                     placeholder="Nhập mã giảm giá"
                     className="couponCode-couponCodeEntryField-39M textInput-input-3vj field-input"
-                    name="couponCode"                    
+                    name="couponCode"
                     style={{}}
                   />
                 </span>
