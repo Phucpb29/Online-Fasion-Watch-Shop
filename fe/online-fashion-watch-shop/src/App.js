@@ -12,11 +12,15 @@ import Header from "./components/header/header";
 import OverPlay from "./components/overplay/overplay";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
+import Order from "./pages/order/order";
 import ProductBestSeller from "./pages/product/product-bestSeller/best-seller";
 import ProductCategory from "./pages/product/product-category/category";
 import ProductDetail from "./pages/product/product-detail/detail";
 import ProductGender from "./pages/product/product-gender/gender";
 import Register from "./pages/register/register";
+import Forgotpass from "./pages/forgotpass/forgotpass";
+import Maxacnhan from "./pages/maxacnhan/maxacnhan";
+import Resetpass from "./pages/resetpass/resetpass";
 const data = [
   {
     id: 1,
@@ -66,9 +70,18 @@ function App() {
           <Route path="/dangky">
             <Register />
           </Route>
+          <Route path="/quenmatkhau">
+            <Forgotpass />
+          </Route>
           <Route path="/sanpham/nam">
             <ProductGender />
           </Route>
+          <Route path="/maxacnhan">
+            <Maxacnhan />
+          </Route>
+          <Route path="/resetpass">
+              <Resetpass />
+            </Route>
           <Route path="/sanpham/banchay">
             <ProductBestSeller />
           </Route>
@@ -77,6 +90,9 @@ function App() {
           </Route>
           <Route path="/sanpham/sanphamchitiet/:id">
             <ProductDetail />
+          </Route>
+          <Route path="/thanhtoan">
+            <Order />
           </Route>
           <Route>
             <Error />
