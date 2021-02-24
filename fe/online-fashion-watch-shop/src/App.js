@@ -12,6 +12,7 @@ import Header from "./components/header/header";
 import OverPlay from "./components/overplay/overplay";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
+import Order from "./pages/order/order";
 import ProductBestSeller from "./pages/product/product-bestSeller/best-seller";
 import ProductCategory from "./pages/product/product-category/category";
 import ProductDetail from "./pages/product/product-detail/detail";
@@ -77,6 +78,9 @@ function App() {
           </Route>
           <Route path="/sanpham/sanphamchitiet/:id">
             <ProductDetail />
+          </Route>
+          <Route path="/thanhtoan">
+            <Order />
           </Route>
           <Route>
             <Error />

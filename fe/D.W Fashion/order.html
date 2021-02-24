@@ -59,6 +59,22 @@ background-color: white;
 }
 .col-1-input {
     margin-bottom: 16px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+.input-group-addon {
+    max-width: 42px;
+    text-align: center;
+    background: none;
+    border-bottom: 1px solid #ced4da;
+    padding-right: 5px;
+    border-radius: 0;
 }
 .field-input {
     background: white;   
@@ -70,14 +86,15 @@ background-color: white;
     font-size: 16px;
     height: 2.25rem;
     margin: 0;
-    max-width: 100%;
-    padding: calc(0.375rem - 1px) calc(0.625rem - 1px);
+    max-width: 100%;   
     width: 100%;
     -webkit-appearance: none;
    border-color: #000;
    padding: 15px;
     min-height: 50px;
     border: 1px solid #e5e5e5;
+    border-width: 0 0 1px 0;
+    padding: 0 20px 0 58px;
 }
 .checkoutPage-summaryContainer-QHs {
     grid-column: 2 / span 1;
@@ -363,6 +380,47 @@ dl, ol, ul {
     transition: 0.3s ease all;
     border-color: transparent;
 }
+.validate-input {
+    position: relative;
+}
+.wrap-input100 {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 17px;
+}
+input.input100 {
+    height: 62px;
+    padding: 0 20px 0 58px;
+}
+
+.input100 {
+    display: block;
+    width: 100%;
+    background: 0 0;
+    font-family: Oswald-Medium;
+    font-size: 15px;
+    color: #43383e;
+    line-height: 1.2;
+    padding: 0 5px;
+}
+.label-input100 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 58px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;   
+    font-size: 25px;
+    color:black;
+}
+
 </style>
 </head>
 <body>
@@ -372,42 +430,50 @@ dl, ol, ul {
       <div class="col-1">
         <div class="container">
             <div class="card-col-1"><div class="col-1-card-Header"><h5 class="col-1-card-Title">THÔNG TIN KHÁCH HÀNG</h5></div>
-            <div class="col-1-card-Text">Phương thức vận chuyển là <span style="color: rgb(59, 177, 0); font-weight: bold;">FREESHIP</span> với đơn hàng từ 700.000 VND.</div><div class="oneStep-formArea-2ew">
+            <div class="col-1-card-Text">Cảm ơn bạn đã tin tưởng và mua hàng tại shop D.W Fashion.</div>
+            <div class="col-1-card-Text">Phương thức vận chuyển là <span style="color: rgb(59, 177, 0); font-weight: bold;">FREESHIP</span> với đơn hàng từ 1.500.000 VND.</div><div class="oneStep-formArea-2ew">
                 <form>
-                    <div class="col-1-input">
+                    <div class="col-1-input">                                    
                     <input type="text" name="name" class="field-input" placeholder="Họ tên" required="" autocomplete="name">
+                    <label class="label-input100" for="name">
+                        <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                        </label>                  
                     </div>
                     <div class="col-1-input">
                         <input type="email" name="email" class="field-input" placeholder="Email" required="" autocomplete="email">
-                    </div>
+                        <label class="label-input100" for="name">
+                            <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            </label>   
+                    </div>                                  
                     <div class="col-1-input">
                         <input type="phone" name="phone" class="field-input" placeholder="Số điện thoại" required="" autocomplete="tel">
+                        <label class="label-input100" for="name">
+                            <span><i class="fa fa-phone" aria-hidden="true"></i></span>
+                            </label>                  
+                        </div>
+                    </div>                    
+                    <div class="col-1-input">
+                        <input type="text" name="address" class="field-input" placeholder="Địa chỉ nhận hàng" required="" autocomplete="shipping street-address">
+                    <label class="label-input100" for="name">
+                            <span><i class="fa fa-map" aria-hidden="true"></i></span>
+                            </label>                  
                     </div>
-                    <div class="col-1-input"><input type="text" name="address" class="field-input" placeholder="Địa chỉ nhận hàng" required="" autocomplete="shipping street-address">
                     </div>
                     <div style="text-align: center;"><button type="submit" class="oneStep-formSubmitBtn-yeP button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-bodyBold-2Ua typography-body-1BC typography-body-1BC">ĐẶT HÀNG</button></div>
                 </form>
-            </div>
+          
             <div class="col-1-card-footer">
                 <p>*Lưu ý: Curnon sẽ liên lạc lại với bạn trong 24h để xác nhận đơn hàng.</p><br>
                 <p>HOTLINE: <a href="tel:+0123456789">0123456789</a></p></div>
             </div>             
-        </div>
+       
       </div>
       <div class="col-2">
         <div class="container">
            
-            <h1 class="col-2-card-title">ĐƠN HÀNG</h1>         
-          <div class="col-2-card-order"><div class="col-2-card-titleg"><span>SẢN PHẨM</span><span>GIÁ</span></div><div class="col-2-card-order-details"><div class="col-2-card-order-details-grid"><div class="image-container-thumbnail image-container"><img loading="lazy" alt="O RING" class="image-image-2gD image-loaded-SHk" height="70" sizes="70px" src="https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=70&amp;height=70&amp;fit=cover&amp;method=fit&amp;nocrop=true" srcset="https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=40&amp;height=40&amp;fit=cover&amp;method=fit&amp;nocrop=true 40w,
-            https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=80&amp;height=80&amp;fit=cover&amp;method=fit&amp;nocrop=true 80w,
-            https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=160&amp;height=160&amp;fit=cover&amp;method=fit&amp;nocrop=true 160w,
-            https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=320&amp;height=320&amp;fit=cover&amp;method=fit&amp;nocrop=true 320w,
-            https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=640&amp;height=640&amp;fit=cover&amp;method=fit&amp;nocrop=true 640w,
-            https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=960&amp;height=960&amp;fit=cover&amp;method=fit&amp;nocrop=true 960w,
-            https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=1280&amp;height=1280&amp;fit=cover&amp;method=fit&amp;nocrop=true 1280w,
-            https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=1600&amp;height=1600&amp;fit=cover&amp;method=fit&amp;nocrop=true 1600w,
-            https://curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/a/u/aura_rings_shadow_8_.png?auto=webp&amp;format=png&amp;width=2560&amp;height=2560&amp;fit=cover&amp;method=fit&amp;nocrop=true 2560w" width="70"></div><span class="col-2-card-badge">1</span><div class="col-2-card-info"><span class="orderSummaryItem-name-2CZ typography-gothicBody-3Gm">O RING</span><span class="orderSummaryItem-category-1bK typography-gothicBody-3Gm"></span></div><dl class="col-2-card-options"><dt class="productOptions-optionLabel-2fm typography-gothicBody-3Gm">Ring size : 5</dt></dl><div class="col-2-card-price"><span class=""><span>299</span><span>.</span><span>000</span><span>&nbsp;</span><span>₫</span></span></div></div></div></div>
-          <form class="col-2-form" style=""><div><span class="couponCode-editFormTextInputFieldIconsRoot-1mW fieldIcons-root-1Be" style="--iconsBefore:0; --iconsAfter:0;"><span class="fieldIcons-input-3Eg"><input id="couponCode" placeholder="Nhập mã giảm giá" class="couponCode-couponCodeEntryField-39M textInput-input-3vj field-input" name="couponCode" value="" style=""></span><span class="fieldIcons-before-3Wt"></span><span class="fieldIcons-after-3je"></span></span><p class="message-root-2kZ"></p></div><div class="field-root-3Y5"><button class="couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd" type="submit" style=""><span class="button-content-3AN" style="">Sử dụng</span></button></div></form>
+            <h1 class="col-2-card-title">Giỏ hàng của bạn</h1>         
+          <div class="col-2-card-order"><div class="col-2-card-titleg"><span>SẢN PHẨM</span><span>GIÁ</span></div><div class="col-2-card-order-details"><div class="col-2-card-order-details-grid"><div class="image-container-thumbnail image-container"><img loading="lazy" alt="O RING" class="image-image-2gD image-loaded-SHk" height="70" sizes="70px" src="./assets/image/aura_rings_shadow_8_.png" width="70"></div><span class="col-2-card-badge">1</span><div class="col-2-card-info"><span class="orderSummaryItem-name-2CZ typography-gothicBody-3Gm">O RING</span><span class="orderSummaryItem-category-1bK typography-gothicBody-3Gm"></span></div><dl class="col-2-card-options"><dt class="productOptions-optionLabel-2fm typography-gothicBody-3Gm">Ring size : 5</dt></dl><div class="col-2-card-price"><span class=""><span>299</span><span>.</span><span>000</span><span>&nbsp;</span><span>₫</span></span></div></div></div></div>
+          <form class="col-2-form"><div><span class="couponCode-editFormTextInputFieldIconsRoot-1mW fieldIcons-root-1Be" style="--iconsBefore:0; --iconsAfter:0;"><span class="fieldIcons-input-3Eg"><input id="couponCode" placeholder="Nhập mã giảm giá" class="couponCode-couponCodeEntryField-39M textInput-input-3vj field-input" name="couponCode" value="" style=""></span><span class="fieldIcons-before-3Wt"></span><span class="fieldIcons-after-3je"></span></span><p class="message-root-2kZ"></p></div><div class="field-root-3Y5"><button class="couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd" type="submit" style=""><span class="button-content-3AN" style="">Sử dụng</span></button></div></form>
           <div class="priceSummary-root-L4M"><div class="priceSummary-lineItems-JOi"><span class="priceSummary-lineItemLabel-3q-">Thành tiền</span><span class="priceSummary-price-2_b typography-headline2-2Vd"><span>299</span><span>.</span><span>000</span><span>&nbsp;</span><span>₫</span></span><div class="priceSummary-dividerTotal-20D priceSummary-divider-3Iz"></div><span class="priceSummary-totalLabel-3bk priceSummary-lineItemLabel-3q-">Tổng</span><span class="priceSummary-totalPrice-2pP typography-headline1-1o-"><span>299</span><span>.</span><span>000</span><span>&nbsp;</span><span>₫</span></span></div></div>                                                                        
           <div class="orderSummary-vat_helptext-1uB typography-body-1BC">(Giá đã bao gồm VAT)</div>
        
