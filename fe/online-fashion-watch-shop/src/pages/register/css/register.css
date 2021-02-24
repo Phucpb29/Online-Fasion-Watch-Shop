@@ -1,0 +1,114 @@
+.register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  padding: 50px 400px;
+}
+
+.register .register__left {
+  width: 50%;
+  height: 630px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.register .register__left .register__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register .register__left .register__logo img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.register .register__left .register__form .form__register {
+  padding: 30px 100px;
+}
+
+.register .register__left .register__form .form__register-control {
+  position: relative;
+  margin: 50px 0;
+  border-bottom: 1px solid black;
+}
+
+.register .register__left .register__form .form__register-control box-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.register .register__left .register__form .form__register-control input {
+  width: 100%;
+  padding: 10px 50px;
+  border: 0 !important;
+}
+
+.register .register__form .button {
+  position: relative;
+  width: 100%;
+  padding: 15px 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.1rem;
+  border: 0 !important;
+  background-color: black;
+  color: white;
+  z-index: 1;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.register .register__form .button::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -10%;
+  width: 0%;
+  height: 100%;
+  z-index: -1;
+  transform: skewX(-25deg);
+  background-color: var(--color-success);
+  transition: width 0.7s ease-in-out;
+  cursor: pointer;
+}
+
+.register .register__form .button:hover::before {
+  width: 120%;
+  cursor: pointer;
+}
+
+.register .register__left .register__link {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.register .register__left .register__link .space {
+  margin: 0 10px;
+  color: gray;
+  letter-spacing: 0.05rem;
+}
+.register .register__right {
+  width: 50%;
+  height: 630px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+.register .register__left .register__link .span {
+  color: gray;
+}
+.register .register__right .register__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.register .register__right .register__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=register.css.map */
