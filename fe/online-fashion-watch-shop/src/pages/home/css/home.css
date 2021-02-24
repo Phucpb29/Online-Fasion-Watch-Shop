@@ -163,6 +163,7 @@
 }
 
 .main__home .home__seller .seller__link span {
+  color: var(--color-black);
   padding-bottom: 5px;
   border-bottom: 1px solid var(--color-black);
 }
@@ -355,6 +356,10 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
   padding: 0 100px;
+}
+
+.main__home .home__news .news__text .news__link span {
+  color: var(--color-black);
 }
 
 .main__home .home__news .news__text .news__link box-icon {

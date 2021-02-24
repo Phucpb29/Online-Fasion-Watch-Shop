@@ -1,15 +1,22 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
+import OverPlay from "./components/overplay/overplay";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
-import Register from "./pages/register/register";
-import ProductGender from "./pages/product/product-gender/gender";
-import ProductCategory from "./pages/product/product-category/category";
 import ProductBestSeller from "./pages/product/product-bestSeller/best-seller";
+import ProductCategory from "./pages/product/product-category/category";
 import ProductDetail from "./pages/product/product-detail/detail";
+import ProductGender from "./pages/product/product-gender/gender";
+import Register from "./pages/register/register";
 const data = [
   {
     id: 1,
@@ -34,14 +41,25 @@ const data = [
 ];
 
 function App() {
+  const [isOpenCart, setIsOpenCart] = useState(false);
+
+  const openCart = () => {
+    setIsOpenCart(!isOpenCart);
+  };
+
   return (
     <Router>
-      <Header />
+      <Header openCart={openCart} />
+      <OverPlay isOpenCart={isOpenCart} openCart={openCart} />
+      <CartModal isOpenCart={isOpenCart} openCart={openCart} />
       <div className="main">
         <Switch>
           <Route exact path="/">
             <Home data={data} />
           </Route>
+          <Redirect from="/trangchu" to="/">
+            <Home data={data} />
+          </Redirect>
           <Route path="/dangnhap">
             <Login />
           </Route>
@@ -60,7 +78,7 @@ function App() {
           <Route path="/sanpham/sanphamchitiet/:id">
             <ProductDetail />
           </Route>
-          <Route path="/*">
+          <Route>
             <Error />
           </Route>
         </Switch>

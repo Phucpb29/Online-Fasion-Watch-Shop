@@ -1,11 +1,23 @@
 import "boxicons";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../dw-logo.jpg";
 import "./css/header.css";
 
-function Header() {
+Header.prototype = {
+  openCart: PropTypes.func,
+};
+
+function Header(props) {
+  const { openCart } = props;
   const [isShowUser, setIsShowUser] = useState(false);
+
+  const handleOpenCart = () => {
+    if (openCart) {
+      openCart();
+    }
+  };
 
   return (
     <header className="header">
@@ -64,7 +76,7 @@ function Header() {
               </Link>
             </div>
           </div>
-          <div className="header__icon header__cart">
+          <div className="header__icon header__cart" onClick={handleOpenCart}>
             <button className="header__icon-btn">
               <box-icon name="cart" className="icon"></box-icon>
             </button>
