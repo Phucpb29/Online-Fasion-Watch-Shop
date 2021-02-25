@@ -1,0 +1,76 @@
+.resetpass {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  padding: 100px 600px;
+  width: 100%;
+}
+.resetpass .resetpass__box {
+  width: 100%;
+  height: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.resetpass__box .resetpass__logo {
+  display: flex;
+  justify-content: center;
+}
+.resetpass__box .resetpass__logo img {
+  height: 130px;
+  width: 150px;
+}
+
+.resetpass__box .resetpass__form .form {
+  position: relative;
+  margin: 40px 70px;
+  padding: 20px 110px;
+}
+.resetpass__box .resetpass__form .form .form__control {
+  position: relative;
+  border-bottom: 1px solid black;
+  margin: 10px 0;
+}
+.resetpass__box .resetpass__form .form .form__control ibox-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.resetpass__box .resetpass__form .form .form__control input {
+  width: 70%;
+  padding: 10px 50px;
+  border: 0 !important;
+}
+.resetpass__box .resetpass__form .form button {
+  position: relative;
+  width: 100%;
+  padding: 15px 0px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.1rem;
+  border: 0 !important;
+  background-color: black;
+  color: white;
+  z-index: 1;
+  font-weight: bold;
+  overflow: hidden;
+  margin: 25px 0;
+}
+.resetpass__box .resetpass__form .form button:hover {
+  cursor: pointer;
+}
+.resetpass__box .resetpass__form .form button::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -10%;
+  width: 0%;
+  height: 100%;
+  z-index: -1;
+  transform: skewX(-25deg);
+  background-color: var(--color-success);
+  transition: width 0.7s ease-in-out;
+  cursor: pointer;
+}
+.resetpass__box .resetpass__form .form button:hover::before {
+  width: 120%;
+  cursor: pointer;
+}

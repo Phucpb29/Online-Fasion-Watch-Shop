@@ -19,6 +19,9 @@ import ProductCategory from "./pages/product/product-category/category";
 import ProductDetail from "./pages/product/product-detail/detail";
 import ProductGender from "./pages/product/product-gender/gender";
 import Register from "./pages/register/register";
+import Forgotpass from "./pages/forgotpass/forgotpass";
+import Maxacnhan from "./pages/maxacnhan/maxacnhan";
+import Resetpass from "./pages/resetpass/resetpass";
 const data = [
   {
     id: 1,
@@ -68,12 +71,23 @@ function App() {
           <Route path="/dangky">
             <Register />
           </Route>
+<<<<<<< HEAD
+          <Route path="/quenmatkhau">
+            <Forgotpass />
+=======
           <Route path="/thongtintaikhoan">
             <Account />
+>>>>>>> eb29ae38642f77d4f55f6e28b83a15848110ae79
           </Route>
           <Route path="/sanpham/nam">
             <ProductGender />
           </Route>
+          <Route path="/maxacnhan">
+            <Maxacnhan />
+          </Route>
+          <Route path="/resetpass">
+              <Resetpass />
+            </Route>
           <Route path="/sanpham/banchay">
             <ProductBestSeller />
           </Route>

@@ -1,7 +1,11 @@
 import React from "react";
 import "./css/order.css";
 import sub_img from "../../assets/image/aura_rings_shadow_8_.png";
+<<<<<<< HEAD
+
+=======
 import "boxicons";
+>>>>>>> eb29ae38642f77d4f55f6e28b83a15848110ae79
 
 function Order() {
   return (

@@ -84,10 +84,15 @@
   z-index: 1;
   font-weight: bold;
   overflow: hidden;
+  cursor: pointer;
+}
+.login .login__right .button::hover{
+  cursor: pointer;
 }
 .login .login__right .login__form .form__login .button {
 margin: 30px 0;
 }
+
 .login .login__right .login__form .form__login .button::before {
   position: absolute;
   content: "";

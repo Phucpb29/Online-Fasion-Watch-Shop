@@ -26,7 +26,7 @@ function login() {
                 <box-icon name="lock-alt" type="solid"></box-icon>
                 <input type="Password" placeholder="Password" />
               </div>
-              <a href="/" className="span">
+              <a href="/quenmatkhau" className="span">
                 Quên mật khẩu?
               </a>
             </div>

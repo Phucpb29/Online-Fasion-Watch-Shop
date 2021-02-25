@@ -59,8 +59,11 @@
   z-index: 1;
   font-weight: bold;
   overflow: hidden;
+  cursor: pointer;
 }
-
+.register .register__form .button::hover{
+  cursor: pointer;
+}
 .register .register__form .button::before {
   position: absolute;
   content: "";
