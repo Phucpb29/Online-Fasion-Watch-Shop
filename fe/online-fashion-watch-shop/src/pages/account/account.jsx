@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useRouteMatch
+  useRouteMatch,
 } from "react-router-dom";
 import banner from "../../assets/image/banner.jpg";
 import AccountDetail from "./account-detail/account-detail";
@@ -14,7 +14,7 @@ import "./css/account.css";
 Account.propTypes = {};
 
 function Account(props) {
-  const {path} = useRouteMatch();
+  const { path } = useRouteMatch();
   return (
     <div>
       <Router>

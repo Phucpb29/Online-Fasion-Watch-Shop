@@ -42,7 +42,7 @@ function CartModal(props) {
                 <div className="detail__left">
                   <span className="product__name">Movado</span>
                   <div className="product__quantity">
-                    <input type="number" min="1" max="10" value="1" />
+                    <input type="number" min="1" max="10" />
                   </div>
                 </div>
                 <div className="detail__right">
@@ -61,7 +61,7 @@ function CartModal(props) {
                 <div className="detail__left">
                   <span className="product__name">Movado</span>
                   <div className="product__quantity">
-                    <input type="number" min="1" max="10" value="1" />
+                    <input type="number" min="1" max="10" />
                   </div>
                 </div>
                 <div className="detail__right">
@@ -80,7 +80,7 @@ function CartModal(props) {
                 <div className="detail__left">
                   <span className="product__name">Movado</span>
                   <div className="product__quantity">
-                    <input type="number" min="1" max="10" value="1" />
+                    <input type="number" min="1" max="10" />
                   </div>
                 </div>
                 <div className="detail__right">
@@ -99,7 +99,7 @@ function CartModal(props) {
                 <div className="detail__left">
                   <span className="product__name">Movado</span>
                   <div className="product__quantity">
-                    <input type="number" min="1" max="10" value="1" />
+                    <input type="number" min="1" max="10" />
                   </div>
                 </div>
                 <div className="detail__right">
@@ -118,7 +118,7 @@ function CartModal(props) {
                 <div className="detail__left">
                   <span className="product__name">Movado</span>
                   <div className="product__quantity">
-                    <input type="number" min="1" max="10" value="1" />
+                    <input type="number" min="1" max="10" />
                   </div>
                 </div>
                 <div className="detail__right">
