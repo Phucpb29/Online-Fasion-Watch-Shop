@@ -10,6 +10,7 @@ import Error from "./components/error/error";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import OverPlay from "./components/overplay/overplay";
+import Account from "./pages/account/account";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Order from "./pages/order/order";
@@ -70,8 +71,13 @@ function App() {
           <Route path="/dangky">
             <Register />
           </Route>
+<<<<<<< HEAD
           <Route path="/quenmatkhau">
             <Forgotpass />
+=======
+          <Route path="/thongtintaikhoan">
+            <Account />
+>>>>>>> eb29ae38642f77d4f55f6e28b83a15848110ae79
           </Route>
           <Route path="/sanpham/nam">
             <ProductGender />
