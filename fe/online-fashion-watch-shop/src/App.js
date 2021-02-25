@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  Switch,
+  Switch
 } from "react-router-dom";
 import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
@@ -11,16 +11,16 @@ import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import OverPlay from "./components/overplay/overplay";
 import Account from "./pages/account/account";
+import Forgotpass from "./pages/forgotpass/forgotpass";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
+import Maxacnhan from "./pages/maxacnhan/maxacnhan";
 import Order from "./pages/order/order";
 import ProductBestSeller from "./pages/product/product-bestSeller/best-seller";
 import ProductCategory from "./pages/product/product-category/category";
 import ProductDetail from "./pages/product/product-detail/detail";
 import ProductGender from "./pages/product/product-gender/gender";
 import Register from "./pages/register/register";
-import Forgotpass from "./pages/forgotpass/forgotpass";
-import Maxacnhan from "./pages/maxacnhan/maxacnhan";
 import Resetpass from "./pages/resetpass/resetpass";
 const data = [
   {
@@ -71,13 +71,11 @@ function App() {
           <Route path="/dangky">
             <Register />
           </Route>
-<<<<<<< HEAD
           <Route path="/quenmatkhau">
             <Forgotpass />
-=======
+            </Route>
           <Route path="/thongtintaikhoan">
-            <Account />
->>>>>>> eb29ae38642f77d4f55f6e28b83a15848110ae79
+            <Account/>
           </Route>
           <Route path="/sanpham/nam">
             <ProductGender />
