@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  Switch
+  Switch,
 } from "react-router-dom";
 import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
@@ -16,34 +16,9 @@ import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Maxacnhan from "./pages/maxacnhan/maxacnhan";
 import Order from "./pages/order/order";
-import ProductBestSeller from "./pages/product/product-bestSeller/best-seller";
-import ProductCategory from "./pages/product/product-category/category";
-import ProductDetail from "./pages/product/product-detail/detail";
-import ProductGender from "./pages/product/product-gender/gender";
+import Product from "./pages/product/product";
 import Register from "./pages/register/register";
 import Resetpass from "./pages/resetpass/resetpass";
-const data = [
-  {
-    id: 1,
-    name: "Movado",
-    price: 3000000,
-  },
-  {
-    id: 2,
-    name: "Rolex",
-    price: 3000000,
-  },
-  {
-    id: 3,
-    name: "Ditriot",
-    price: 3000000,
-  },
-  {
-    id: 4,
-    name: "Ted Hug",
-    price: 3000000,
-  },
-];
 
 function App() {
   const [isOpenCart, setIsOpenCart] = useState(false);
@@ -60,10 +35,10 @@ function App() {
       <div className="main">
         <Switch>
           <Route exact path="/">
-            <Home data={data} />
+            <Home />
           </Route>
           <Redirect from="/trangchu" to="/">
-            <Home data={data} />
+            <Home />
           </Redirect>
           <Route path="/dangnhap">
             <Login />
@@ -73,27 +48,18 @@ function App() {
           </Route>
           <Route path="/quenmatkhau">
             <Forgotpass />
-            </Route>
-          <Route path="/thongtintaikhoan">
-            <Account/>
           </Route>
-          <Route path="/sanpham/nam">
-            <ProductGender />
+          <Route exact path="/thongtintaikhoan">
+            <Account />
+          </Route>
+          <Route path="/sanpham">
+            <Product />
           </Route>
           <Route path="/maxacnhan">
             <Maxacnhan />
           </Route>
           <Route path="/resetpass">
-              <Resetpass />
-            </Route>
-          <Route path="/sanpham/banchay">
-            <ProductBestSeller />
-          </Route>
-          <Route exact path="/sanpham/danhmuc">
-            <ProductCategory />
-          </Route>
-          <Route path="/sanpham/sanphamchitiet/:id">
-            <ProductDetail />
+            <Resetpass />
           </Route>
           <Route path="/thanhtoan">
             <Order />
