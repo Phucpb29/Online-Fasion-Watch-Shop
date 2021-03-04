@@ -23,23 +23,24 @@ import Resetpass from "./pages/resetpass/resetpass";
 
 function App() {
   const [isOpenCart, setIsOpenCart] = useState(false);
-  const [isOpenDialog,setIsOpenDiaglog] =useState(false);
+  const [isOpenDialog, setIsOpenDiaglog] = useState(false);
 
   const openCart = () => {
     setIsOpenCart(!isOpenCart);
   };
-  
-  const openDialog=() =>{
-    setIsOpenDiaglog(!isOpenDialog);
 
+  const openDialog = () => {
+    setIsOpenDiaglog(!isOpenDialog);
   };
 
   return (
     <Router>
       <Header openCart={openCart} />
+
       <OverPlay isOpenCart={isOpenCart} openCart={openCart} />
       <CartModal isOpenCart={isOpenCart} openCart={openCart} />
-      <DialogComment isOpenDialog={isOpenDialog}/>
+      <DialogComment isOpenDialog={isOpenDialog} />
+
       <div className="main">
         <Switch>
           <Route exact path="/">
@@ -57,8 +58,8 @@ function App() {
           <Route path="/quenmatkhau">
             <Forgotpass />
           </Route>
-          <Route path="/thongtintaikhoan" openDialog={openDialog}>
-            <Account />
+          <Route path="/thongtintaikhoan">
+            <Account openDialog={openDialog} />
           </Route>
           <Route path="/sanpham">
             <Product />

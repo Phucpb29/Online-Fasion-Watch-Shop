@@ -8,6 +8,7 @@ DialogComment.propTypes = {
 function DialogComment(props) {
   const { isOpenDialog } = props;
   console.log(isOpenDialog);
+
   return <div></div>;
 }
 
