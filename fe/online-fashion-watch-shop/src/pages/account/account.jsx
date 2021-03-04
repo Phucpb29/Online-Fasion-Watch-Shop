@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useRouteMatch,
+  useRouteMatch
 } from "react-router-dom";
 import banner from "../../assets/image/banner.jpg";
 import Error from "../../components/error/error";
@@ -12,9 +13,13 @@ import AccountOrder from "./account-order/account-order";
 import AccountPassword from "./account-password/account-password";
 import "./css/account.css";
 
-Account.propTypes = {};
+Account.propTypes = {
+  openDiaglog: PropTypes.func,
+};
 
 function Account(props) {
+  const {openDiaglog} = props;
+  console.log(openDiaglog);
   const { path } = useRouteMatch();
   console.log("Path", path);
   console.log("useRouteMatch", useRouteMatch());
@@ -60,7 +65,7 @@ function Account(props) {
                 <AccountDetail />
               </Route>
               <Route path={`${path}/lichsumuahang`}>
-                <AccountOrder />
+                <AccountOrder openDiaglog={openDiaglog} />
               </Route>
               <Route path={`${path}/doimatkhau`}>
                 <AccountPassword />

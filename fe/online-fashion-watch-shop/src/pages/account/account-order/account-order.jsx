@@ -2,12 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./css/order.css";
 import Hinh1 from "../../../assets/image/omega.jpg";
-AccountOrder.propTypes = {};
+AccountOrder.propTypes = {
+  openDialog: PropTypes.func,
+};
 
 function AccountOrder(props) {
+  const { openDialog } = props;
+
+  const handleOpenDiaglog = () => {
+    openDialog();
+  };
+  
   return (
     <div>
-    {/* khung 1 */}
+      {/* khung 1 */}
       <div className="account__order">
         <div className="account__order-box ">
           <div className="box__left">
@@ -41,12 +49,13 @@ function AccountOrder(props) {
               <span className="status-product">ĐÃ GIAO</span>
             </div>
             <div className="tongtien">
-            <p>Tổng tiền :</p>
-              <span>
-              100.000.000 VNĐ</span>
+              <p>Tổng tiền :</p>
+              <span>100.000.000 VNĐ</span>
             </div>
             <div className="button">
-              <button className="button__DG">ĐÁNH GIÁ</button>
+              <button className="button__DG" onClick={handleOpenDiaglog}>
+                ĐÁNH GIÁ
+              </button>
               <button className="button__CT">XEM CHI TIẾT</button>
             </div>
           </div>
@@ -84,20 +93,17 @@ function AccountOrder(props) {
               <span className="status-product1">ĐANG CHỜ XÁC NHẬN</span>
             </div>
             <div className="tongtien">
-            <p>Tổng tiền :</p>
-              <span>
-              100.000.000 VNĐ</span>
+              <p>Tổng tiền :</p>
+              <span>100.000.000 VNĐ</span>
             </div>
             <div className="button">
               {/* <button className="button__DG">ĐÁNH GIÁ</button> */}
               <button className="button__CT">XEM CHI TIẾT</button>
             </div>
           </div>
-       
-          
         </div>
-           {/* khung 3 */}
-           <div className="account__order-box ">
+        {/* khung 3 */}
+        <div className="account__order-box ">
           <div className="box__left">
             <div className="image">
               <img src={Hinh1} alt="" />
@@ -129,17 +135,14 @@ function AccountOrder(props) {
               <span className="status-product2">ĐÃ HỦY</span>
             </div>
             <div className="tongtien">
-            <p>Tổng tiền :</p>
-              <span>
-              100.000.000 VNĐ</span>
+              <p>Tổng tiền :</p>
+              <span>100.000.000 VNĐ</span>
             </div>
             <div className="button">
               {/* <button className="button__DG">ĐÁNH GIÁ</button> */}
               <button className="button__CT">XEM CHI TIẾT</button>
             </div>
           </div>
-       
-          
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import OverPlay from "./components/overplay/overplay";
 import Account from "./pages/account/account";
+import DialogComment from "./pages/account/dialog-comment/dialog";
 import Forgotpass from "./pages/forgotpass/forgotpass";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
@@ -22,9 +23,15 @@ import Resetpass from "./pages/resetpass/resetpass";
 
 function App() {
   const [isOpenCart, setIsOpenCart] = useState(false);
+  const [isOpenDialog,setIsOpenDiaglog] =useState(false);
 
   const openCart = () => {
     setIsOpenCart(!isOpenCart);
+  };
+  
+  const openDialog=() =>{
+    setIsOpenDiaglog(!isOpenDialog);
+
   };
 
   return (
@@ -32,6 +39,7 @@ function App() {
       <Header openCart={openCart} />
       <OverPlay isOpenCart={isOpenCart} openCart={openCart} />
       <CartModal isOpenCart={isOpenCart} openCart={openCart} />
+      <DialogComment isOpenDialog={isOpenDialog}/>
       <div className="main">
         <Switch>
           <Route exact path="/">
@@ -49,7 +57,7 @@ function App() {
           <Route path="/quenmatkhau">
             <Forgotpass />
           </Route>
-          <Route path="/thongtintaikhoan">
+          <Route path="/thongtintaikhoan" openDialog={openDialog}>
             <Account />
           </Route>
           <Route path="/sanpham">
