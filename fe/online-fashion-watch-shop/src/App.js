@@ -49,7 +49,7 @@ function App() {
           <Route path="/quenmatkhau">
             <Forgotpass />
           </Route>
-          <Route exact path="/thongtintaikhoan">
+          <Route path="/thongtintaikhoan">
             <Account />
           </Route>
           <Route path="/sanpham">
