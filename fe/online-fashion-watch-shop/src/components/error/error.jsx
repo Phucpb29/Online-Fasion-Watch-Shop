@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import "./css/error.css";
 
 function Error() {
+  console.log(useRouteMatch());
   return (
     <div className="main__error">
       <div className="main__error-box main__error-title">

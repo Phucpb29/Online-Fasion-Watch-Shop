@@ -6,6 +6,7 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import banner from "../../assets/image/banner.jpg";
+import Error from "../../components/error/error";
 import AccountDetail from "./account-detail/account-detail";
 import AccountOrder from "./account-order/account-order";
 import AccountPassword from "./account-password/account-password";
@@ -15,6 +16,8 @@ Account.propTypes = {};
 
 function Account(props) {
   const { path } = useRouteMatch();
+  console.log("Path", path);
+  console.log("useRouteMatch", useRouteMatch());
   return (
     <div>
       <Router>
@@ -61,6 +64,9 @@ function Account(props) {
               </Route>
               <Route path={`${path}/doimatkhau`}>
                 <AccountPassword />
+              </Route>
+              <Route>
+                <Error />
               </Route>
             </Switch>
           </div>
