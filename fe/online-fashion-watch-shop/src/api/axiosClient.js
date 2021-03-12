@@ -1,25 +1,31 @@
-import axios from 'axios';
-import queryString from 'query-string'
+import axios from "axios";
+import queryString from "query-string";
 
 const axiosClient = axios.create({
-    baseURL: 'url',
-    headers: {
-        'content-type': 'application/json'
-    },
-    paramsSerializer: params => queryString.stringify(params)
+  baseURL: "http://172.16.0.76:8080/api/product",
+  headers: {
+    "content-type": "application/json",
+    "Access-Control-Allow-Origin": "http://localhost:3000",
+    "Access-Control-Allow-Headers": "GET",
+    "Access-Control-Allow-Credentials": true,
+  },
+  paramsSerializer: (params) => queryString.stringify(params),
 });
 
 axiosClient.interceptors.request.use(async (config) => {
-    return config;
+  return config;
 });
 
-axiosClient.interceptors.response.use((response) => {
+axiosClient.interceptors.response.use(
+  (response) => {
     if (response && response.data) {
-        return response;
+      return response;
     }
-    return response;
-}, (error) => {
+    return response.data;
+  },
+  (error) => {
     throw error;
-});
+  }
+);
 
 export default axiosClient;

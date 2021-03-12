@@ -137,7 +137,7 @@ function CartModal(props) {
                 <span>3.000.000 đ</span>
               </div>
               <div className="total__button">
-                <Link to="/" className="button__checkout">
+                <Link to="/thanhtoan" className="button__checkout">
                   ĐẶT HÀNG
                 </Link>
               </div>

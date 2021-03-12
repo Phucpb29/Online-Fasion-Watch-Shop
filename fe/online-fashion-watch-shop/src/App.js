@@ -64,6 +64,7 @@ function App() {
           <Route path="/sanpham">
             <Product />
           </Route>
+          <Route path="sanphamchitiet"></Route>
           <Route path="/maxacnhan">
             <Maxacnhan />
           </Route>

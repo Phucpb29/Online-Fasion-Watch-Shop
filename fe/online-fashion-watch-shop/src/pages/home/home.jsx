@@ -1,11 +1,13 @@
 import "boxicons";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import aboutUs1 from "../../assets/image/home-aboutus-1.jpg";
 import aboutUs2 from "../../assets/image/home-aboutus-2.jpg";
 import aboutUs3 from "../../assets/image/home-aboutus-3.jpg";
 import movado from "../../assets/image/movado.jpg";
 import newsProduct from "../../assets/image/news-product-home.png";
+import ProductBestSeller from "../product/product-bestSeller/best-seller";
+import productBestSeller from "../../api/productBestseller-api";
 import "./css/home.css";
 
 const gender = [
@@ -20,6 +22,15 @@ const gender = [
 ];
 
 function Home() {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const productList = await productBestSeller.getAll();
+      console.log(productList);
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <div className="main__home">
       <div className="home__banner">
@@ -180,7 +191,10 @@ function Home() {
               <span>10.000.000 đ</span>
             </div>
             <div className="product__button">
-              <Link to="/" className="product__button-link">
+              <Link
+                to="/sanpham/sanphamchitiet/1"
+                className="product__button-link"
+              >
                 <span>XEM SẢN PHẨM</span>
               </Link>
             </div>

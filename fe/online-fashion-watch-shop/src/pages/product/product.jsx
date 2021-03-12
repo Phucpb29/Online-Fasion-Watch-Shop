@@ -11,8 +11,8 @@ import "./css/product.css";
 import NavBar from "./navbar/navbar";
 import ProductBestSeller from "./product-bestSeller/best-seller";
 import ProductCategory from "./product-category/category";
-import ProductDetail from "./product-detail/detail";
-import ProductGender from "./product-gender/gender";
+import GenderMale from "./product-gender/gender-male";
+import GenderFemale from "./product-gender/gender-female";
 Product.propTypes = {};
 
 function Product(props) {
@@ -42,17 +42,17 @@ function Product(props) {
           </div>
           <div className="product__list">
             <Switch>
-              <Route url={`${url}/gioitinh/:gender`}>
-                <ProductGender data={data} />
+              <Route exact url={`${url}/gioitinh/nam`}>
+                <GenderMale />
               </Route>
-              <Route url={`${url}/thuonghieu/:brand`}>
+              <Route exact url={`${url}/gioitinh/nu`}>
+                <GenderFemale />
+              </Route>
+              <Route exact url={`${url}/thuonghieu/:brand`}>
                 <ProductCategory />
               </Route>
-              <Route url={`${url}/banchay`}>
+              <Route exact url={`${url}/banchay`}>
                 <ProductBestSeller />
-              </Route>
-              <Route url={`${url}/sanphamchitiet/:id`}>
-                <ProductDetail />
               </Route>
             </Switch>
           </div>
