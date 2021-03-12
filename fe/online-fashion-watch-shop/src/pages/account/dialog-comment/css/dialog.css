@@ -1,4 +1,5 @@
 .dialog__comment {
+  display: none !important;
   position: fixed;
   z-index: 10;
   top: 0;

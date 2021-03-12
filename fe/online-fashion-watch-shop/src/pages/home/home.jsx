@@ -22,10 +22,11 @@ const gender = [
 ];
 
 function Home() {
+  const [manProduct, setManProduct] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
       const productList = await productBestSeller.getAll();
-      console.log(productList);
+      setManProduct(productList);
     };
 
     fetchProducts();

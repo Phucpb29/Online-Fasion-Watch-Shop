@@ -20,6 +20,7 @@ import Order from "./pages/order/order";
 import Product from "./pages/product/product";
 import Register from "./pages/register/register";
 import Resetpass from "./pages/resetpass/resetpass";
+import ProductDetail from "./pages/product/product-detail/detail";
 
 function App() {
   const [isOpenCart, setIsOpenCart] = useState(false);
@@ -64,7 +65,9 @@ function App() {
           <Route path="/sanpham">
             <Product />
           </Route>
-          <Route path="sanphamchitiet"></Route>
+          <Route path="/sanphamchitiet/:id">
+            <ProductDetail />
+          </Route>
           <Route path="/maxacnhan">
             <Maxacnhan />
           </Route>
