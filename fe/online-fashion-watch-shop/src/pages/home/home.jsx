@@ -7,31 +7,9 @@ import aboutUs3 from "../../assets/image/home-aboutus-3.jpg";
 import movado from "../../assets/image/movado.jpg";
 import newsProduct from "../../assets/image/news-product-home.png";
 import ProductBestSeller from "../product/product-bestSeller/best-seller";
-import productBestSeller from "../../api/productBestseller-api";
 import "./css/home.css";
 
-const gender = [
-  {
-    id: 1,
-    gender: true,
-  },
-  {
-    id: 2,
-    gender: false,
-  },
-];
-
 function Home() {
-  const [manProduct, setManProduct] = useState([]);
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const productList = await productBestSeller.getAll();
-      setManProduct(productList);
-    };
-
-    fetchProducts();
-  }, []);
-
   return (
     <div className="main__home">
       <div className="home__banner">
@@ -46,20 +24,14 @@ function Home() {
       <div className="home__shop">
         <div className="shop__link shop__man">
           <p className="link__title">ĐỒNG HỒ NAM</p>
-          <Link
-            to={`/sanpham/gioitinh/${gender[0].gender}`}
-            className="link__product"
-          >
+          <Link to="/sanpham/gioitinh/nam" className="link__product">
             <span>MUA NGAY</span>
             <box-icon name="right-arrow-alt" color="#ffffff"></box-icon>
           </Link>
         </div>
         <div className="shop__link shop__woman">
           <p className="link__title">ĐỒNG HỒ NỮ</p>
-          <Link
-            to={`/sanpham/gioitinh/${gender[1].gender}`}
-            className="link__product"
-          >
+          <Link to="/sanpham/gioitinh/nu" className="link__product">
             <span>MUA NGAY</span>
             <box-icon name="right-arrow-alt" color="#ffffff"></box-icon>
           </Link>

@@ -8,7 +8,6 @@ DialogComment.propTypes = {
 
 function DialogComment(props) {
   const { isOpenDialog } = props;
-  console.log(isOpenDialog);
 
   return (
     <div className="dialog__comment">
@@ -56,7 +55,7 @@ function DialogComment(props) {
               <input type="area" />
             </div>
             <div className="text">
-              <p>Cảm ơn bạn đã đánh giá sản phẩm </p> 
+              <p>Cảm ơn bạn đã đánh giá sản phẩm </p>
               <p>của chúng tôi</p>
             </div>
             <div className="button">

@@ -25,10 +25,10 @@ function Product(props) {
         <div className="product__bannner">
           <Router>
             <Switch>
-              <Route url={`${url}/gioitinh/:gender`}>
+              <Route url="/gioitinh/nam">
                 <BannerGender />
               </Route>
-              <Route url={`${url}/gioitinh/:brand`}>
+              <Route url="/gioitinh/nu">
                 <BannerBrand />
               </Route>
             </Switch>

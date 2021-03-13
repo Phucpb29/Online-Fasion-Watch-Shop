@@ -18,9 +18,9 @@ import Login from "./pages/login/login";
 import Maxacnhan from "./pages/maxacnhan/maxacnhan";
 import Order from "./pages/order/order";
 import Product from "./pages/product/product";
+import WrapProductDetai from "./pages/product/wrap-productdetail";
 import Register from "./pages/register/register";
 import Resetpass from "./pages/resetpass/resetpass";
-import ProductDetail from "./pages/product/product-detail/detail";
 
 function App() {
   const [isOpenCart, setIsOpenCart] = useState(false);
@@ -33,6 +33,19 @@ function App() {
   const openDialog = () => {
     setIsOpenDiaglog(!isOpenDialog);
   };
+
+  // useEffect(() => {
+  //   const fetchProductBestSeller = async () => {
+  //     try {
+  //       const productList = await productApi.getBestSellerMale();
+  //       console.log(productList);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchProductBestSeller();
+  // }, []);
 
   return (
     <Router>
@@ -65,8 +78,8 @@ function App() {
           <Route path="/sanpham">
             <Product />
           </Route>
-          <Route path="/sanphamchitiet/:id">
-            <ProductDetail />
+          <Route exact path="/sanphamchitiet/:id">
+            <WrapProductDetai />
           </Route>
           <Route path="/maxacnhan">
             <Maxacnhan />
