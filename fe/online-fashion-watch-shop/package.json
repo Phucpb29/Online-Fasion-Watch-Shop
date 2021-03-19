@@ -5,16 +5,16 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.7.3",
+    "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "axois": "^0.0.1-security",
     "bootstrap": "^4.6.0",
     "boxicons": "^2.0.7",
     "query-string": "^4.3.4",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.5.0",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.1",
-    "react-number-format": "^4.4.4",
+    "react-number-format": "^4.5.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
@@ -44,7 +44,7 @@
     ]
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.2",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "node-sass": "^5.0.0",
     "sass": "^1.32.8"
   }

@@ -1,19 +1,23 @@
+import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import productApi from "../../../../api/productApi";
 
-DetailProperty.propTypes = {};
+DetailProperty.propTypes = {
+  id: PropTypes.number,
+};
 
 function DetailProperty(props) {
-  const [propertyList, setPropertyList] = useState([]);
+  const { id } = props;
 
-  // danh sách thuộc tính sản phẩm
+  // thuộc tính chi tiết sản phẩm
+  const [propertyDetailList, setPropertyDetailList] = useState([]);
   useEffect(() => {
-    const fetchPropertyData = async () => {
-      const response = await productApi.getPropertyRoot();
-      setPropertyList(response.data);
+    const fecthProductDetailData = async () => {
+      const response = await productApi.getPropertyRootById(id);
+      setPropertyDetailList(response.data);
     };
-    fetchPropertyData();
-  }, []);
+    setTimeout(fecthProductDetailData(), 1500);
+  }, [id]);
 
   return (
     <div className="product__property">
@@ -21,13 +25,13 @@ function DetailProperty(props) {
         <span>THÔNG SỐ KĨ THUẬT</span>
       </div>
       <div className="property__content">
-        {propertyList.map((item) => (
-          <div className="content__box" key={item.id}>
+        {propertyDetailList.map((item) => (
+          <div className="content__box" key={item.product_Property.id}>
             <div className="box__title">
-              <span>{item.name}</span>
+              <span>{item.product_Property.name}</span>
             </div>
             <div className="box__content">
-              <span>text</span>
+              <span>{item.description}</span>
             </div>
           </div>
         ))}

@@ -15,7 +15,7 @@ function ProductDetail(props) {
   return (
     <div className="main__product">
       <DetailInfo id={id} />
-      <DetailProperty />
+      <DetailProperty id={id} />
       <DetailComment />
     </div>
   );

@@ -9,16 +9,30 @@ DetailInfo.propTypes = {
 
 function DetailInfo(props) {
   const { id } = props;
-  const [detailData, setDetailData] = useState({});
-
   // thông tin chi tiết sản phẩm
+  const [detailData, setDetailData] = useState({});
   useEffect(() => {
     const fecthProductDetailData = async () => {
       const response = await productApi.getProductDetailById(id);
-      setDetailData(response.data);
+      setDetailData(response.data.product);
     };
-    fecthProductDetailData();
+    setTimeout(fecthProductDetailData(), 1500);
   }, [id]);
+
+  // thêm sản phẩm vào giỏ hàng (lưu vào local storage)
+  const [cart, setCart] = useState([]);
+  const handleAddProduct = (item) => {
+    const cartList = localStorage.getItem("cart");
+    setCart(cartList);
+    console.log("Cart", cart);
+    const newCart = [...cart];
+    console.log("New cart", newCart);
+    newCart.push(item);
+    console.log("Item", item);
+    console.log("New cart 2", newCart);
+    setCart(newCart);
+    localStorage.setItem("cart", cart);
+  };
 
   return (
     <>
@@ -56,6 +70,8 @@ function DetailInfo(props) {
           <div className="product__info-group">
             <div className="product__status">
               <span className="product__title">Tình trạng: </span>
+              {/* <span>{statusProduct ? "Còn hàng" : "Hết hàng"}</span> */}
+              <span></span>
             </div>
           </div>
           <div className="product__info-group">
@@ -69,7 +85,15 @@ function DetailInfo(props) {
             </div>
           </div>
           <div className="product__info-group">
-            <button className="product__button">
+            {/* {statusProduct && (
+              <button className="product__button">
+                <span>THÊM VÀO GIỎ HÀNG</span>
+              </button>
+            )} */}
+            <button
+              className="product__button"
+              onClick={() => handleAddProduct(detailData)}
+            >
               <span>THÊM VÀO GIỎ HÀNG</span>
             </button>
           </div>
@@ -80,7 +104,7 @@ function DetailInfo(props) {
           <span>MÔ TẢ SẢN PHẨM</span>
         </div>
         <div className="description__content">
-          <span></span>
+          {/* <span>{detailData.product.description}</span> */}
         </div>
       </div>
     </>

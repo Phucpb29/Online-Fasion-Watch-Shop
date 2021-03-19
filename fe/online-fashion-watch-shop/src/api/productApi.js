@@ -12,7 +12,7 @@ const productApi = {
   },
 
   getProductDetailById(id) {
-    const url = `/getinfo/${id}`;
+    const url = `/detail/${id}`;
     return axiosProductClient.get(url);
   },
 
@@ -23,6 +23,11 @@ const productApi = {
 
   getPropertyRootById(id) {
     const url = `/property/getBranchPropertyFromProductID/${id}`;
+    return axiosProductClient.get(url);
+  },
+
+  getStatusProductById(id) {
+    const url = `/detail/checkStatus/${id}`;
     return axiosProductClient.get(url);
   },
 };

@@ -9,7 +9,6 @@ function DetailComment(props) {
         <span>ĐÁNH GIÁ SẢN PHẨM</span>
       </div>
       <div className="comment__content">
-        O
         <div className="comment__box">
           <div className="comment__detail">
             <div className="comment__detail-date">
