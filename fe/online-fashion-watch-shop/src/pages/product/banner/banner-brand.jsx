@@ -1,9 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-BannerBrand.propTypes = {};
-
-function BannerBrand(props) {
+function BannerBrand() {
   return <div></div>;
 }
 

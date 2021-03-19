@@ -1,6 +1,6 @@
 import "boxicons";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../dw-logo.jpg";
 import "./css/header.css";
@@ -12,12 +12,23 @@ Header.prototype = {
 function Header(props) {
   const { openCart } = props;
   const [isShowUser, setIsShowUser] = useState(false);
+  const [cart, setCart] = useState([]);
+  const [numberItem, setNumberItem] = useState(0);
 
   const handleOpenCart = () => {
     if (openCart) {
       openCart();
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("cart", cart);
+  }, []);
+
+  useEffect(() => {
+    setCart(localStorage.getItem("cart"));
+    setNumberItem(cart.length);
+  });
 
   return (
     <header className="header">
@@ -80,7 +91,7 @@ function Header(props) {
             <button className="header__icon-btn">
               <box-icon name="cart" className="icon"></box-icon>
             </button>
-            <span className="cart__amount">99</span>
+            <span className="cart__amount">{numberItem}</span>
           </div>
           <div className="header__icon header__wishlist">
             <div className="header__icon-link">

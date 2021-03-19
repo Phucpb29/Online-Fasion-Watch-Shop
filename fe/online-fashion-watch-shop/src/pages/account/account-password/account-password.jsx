@@ -1,8 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./css/password.css";
-
-AccountPassword.propTypes = {};
 
 function AccountPassword(props) {
   return (
@@ -16,16 +13,16 @@ function AccountPassword(props) {
             <div className="form__control-input">
               <input type="text" />
             </div>
-            </div>
-            <div className="form__control">
+          </div>
+          <div className="form__control">
             <div className="form__control-title">
               <span>Mật khẩu mới :</span>
             </div>
             <div className="form__control-input">
               <input type="text" />
             </div>
-            </div>
-            <div className="form__control">
+          </div>
+          <div className="form__control">
             <div className="form__control-title">
               <span>Xác nhận mật khẩu :</span>
             </div>
@@ -33,7 +30,7 @@ function AccountPassword(props) {
               <input type="text" />
             </div>
           </div>
-          
+
           <div className="btn-capnhat">
             <button className="button">CẬP NHẬT</button>
           </div>

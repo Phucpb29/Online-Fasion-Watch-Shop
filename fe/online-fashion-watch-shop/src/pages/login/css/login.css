@@ -3,7 +3,8 @@
   display: -ms-flexbox;
   display: flex;
   justify-content: center;
-  padding: 50px 400px;
+  /* padding: 50px 400px; */
+  padding: 50px 200px;
 }
 
 .login .login__left {

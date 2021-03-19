@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import movado from "../../../assets/image/movado.jpg";
 import "./css/detail.css";
 
 function ProductDetail() {
+  const [cart, setCart] = useState([]);
+
+  const handleAddProduct = () => {
+    const cart = localStorage.getItem("cart");
+    setCart(1);
+    localStorage.setItem("cart", cart);
+  };
+
   return (
     <div className="main__product">
       <div className="product__detail">
@@ -50,7 +58,7 @@ function ProductDetail() {
             </div>
           </div>
           <div className="product__info-group">
-            <button className="product__button">
+            <button className="product__button" onClick={handleAddProduct}>
               <span>THÊM VÀO GIỎ HÀNG</span>
             </button>
           </div>

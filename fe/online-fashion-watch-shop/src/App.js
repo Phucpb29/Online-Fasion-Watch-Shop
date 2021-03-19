@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
 } from "react-router-dom";
+import productApi from "./api/productApi";
 import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
 import Footer from "./components/footer/footer";
@@ -25,6 +26,8 @@ import Resetpass from "./pages/resetpass/resetpass";
 function App() {
   const [isOpenCart, setIsOpenCart] = useState(false);
   const [isOpenDialog, setIsOpenDiaglog] = useState(false);
+  const [bestSellerMaleList, setBestSellerMaleList] = useState([]);
+  // const [quantityItemCart, setQuantityItemCart] = useState("0");
 
   const openCart = () => {
     setIsOpenCart(!isOpenCart);
@@ -34,18 +37,18 @@ function App() {
     setIsOpenDiaglog(!isOpenDialog);
   };
 
-  // useEffect(() => {
-  //   const fetchProductBestSeller = async () => {
-  //     try {
-  //       const productList = await productApi.getBestSellerMale();
-  //       console.log(productList);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchProductBestSeller = async () => {
+      try {
+        const response = await productApi.getBestSellerMale();
+        setBestSellerMaleList(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   fetchProductBestSeller();
-  // }, []);
+    setTimeout(fetchProductBestSeller(), 2000);
+  }, []);
 
   return (
     <Router>
@@ -58,18 +61,18 @@ function App() {
       <div className="main">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home bestSellerMaleList={bestSellerMaleList} />
           </Route>
           <Redirect from="/trangchu" to="/">
             <Home />
           </Redirect>
-          <Route path="/dangnhap">
+          <Route exact path="/dangnhap">
             <Login />
           </Route>
-          <Route path="/dangky">
+          <Route exact path="/dangky">
             <Register />
           </Route>
-          <Route path="/quenmatkhau">
+          <Route exact path="/quenmatkhau">
             <Forgotpass />
           </Route>
           <Route path="/thongtintaikhoan">
@@ -81,13 +84,13 @@ function App() {
           <Route exact path="/sanphamchitiet/:id">
             <WrapProductDetai />
           </Route>
-          <Route path="/maxacnhan">
+          <Route exact path="/maxacnhan">
             <Maxacnhan />
           </Route>
-          <Route path="/resetpass">
+          <Route exact path="/resetpass">
             <Resetpass />
           </Route>
-          <Route path="/thanhtoan">
+          <Route exact path="/thanhtoan">
             <Order />
           </Route>
           <Route>

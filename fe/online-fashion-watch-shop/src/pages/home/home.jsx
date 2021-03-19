@@ -1,15 +1,21 @@
 import "boxicons";
-import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 import { Link } from "react-router-dom";
 import aboutUs1 from "../../assets/image/home-aboutus-1.jpg";
 import aboutUs2 from "../../assets/image/home-aboutus-2.jpg";
 import aboutUs3 from "../../assets/image/home-aboutus-3.jpg";
 import movado from "../../assets/image/movado.jpg";
 import newsProduct from "../../assets/image/news-product-home.png";
-import ProductBestSeller from "../product/product-bestSeller/best-seller";
 import "./css/home.css";
 
-function Home() {
+Home.prototype = {
+  bestSellerMaleList: PropTypes.array,
+};
+
+function Home(props) {
+  const { bestSellerMaleList } = props;
+
   return (
     <div className="main__home">
       <div className="home__banner">
@@ -48,7 +54,7 @@ function Home() {
           </span>
         </Link>
         <div className="seller__product">
-          {/* {data.map((item, index) => (
+          {bestSellerMaleList.map((item, index) => (
             <div className="product__detail" key={index}>
               <div className="product__img">
                 <img src={movado} alt="" />
@@ -61,14 +67,14 @@ function Home() {
               </div>
               <div className="product__button">
                 <Link
-                  to={`/sanpham/sanphamchitiet/${item.id}`}
+                  to={`/sanphamchitiet/${item.id}`}
                   className="product__button-link"
                 >
                   <span>XEM SẢN PHẨM</span>
                 </Link>
               </div>
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
       <div className="home__news">

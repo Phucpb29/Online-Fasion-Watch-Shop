@@ -2,7 +2,7 @@ import axiosClient from "./axiosClient";
 
 const productApi = {
   getBestSellerMale() {
-    const url = "/gender/male/0/16/ASC";
+    const url = "/gender/male/0/4/ASC";
     return axiosClient.get(url);
   },
 };
