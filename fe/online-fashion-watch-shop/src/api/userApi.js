@@ -1,3 +1,4 @@
+import axiosRegister from "./axiosRegister";
 import axiosUserClient from "./axiosUserClient";
 
 const userApi = {
@@ -5,6 +6,11 @@ const userApi = {
     const url = "/signin";
     return axiosUserClient.post(url, body);
   },
+
+  register(body) {
+    const url="/createUser";
+    return axiosRegister.post(url,body);
+  }
 };
 
 export default userApi;
