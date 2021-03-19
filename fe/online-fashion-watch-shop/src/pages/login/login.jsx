@@ -26,7 +26,6 @@ function Login() {
           password: password,
         })
         .then(function (response) {
-          console.log(response);
           if ((response.status = 200)) {
             const { accessToken } = response.data;
             localStorage.setItem("accessToken", accessToken);
