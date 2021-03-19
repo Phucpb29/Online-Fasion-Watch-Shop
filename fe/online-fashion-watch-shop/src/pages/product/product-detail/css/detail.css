@@ -13,6 +13,11 @@
   margin-bottom: 100px;
 }
 
+.main__product .product__detail .product__title {
+  margin-right: 20px;
+  font-weight: bold;
+}
+
 .main__product .product__detail .product__img {
   -webkit-box-flex: 1;
       -ms-flex: 1 1;

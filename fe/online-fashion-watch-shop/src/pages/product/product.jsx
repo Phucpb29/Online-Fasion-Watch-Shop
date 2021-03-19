@@ -4,20 +4,18 @@ import {
   Switch,
   useRouteMatch,
 } from "react-router-dom";
-import productData from "../../api/productApi";
 import BannerBrand from "./banner/banner-brand";
 import BannerGender from "./banner/banner-gender";
 import "./css/product.css";
 import NavBar from "./navbar/navbar";
 import ProductBestSeller from "./product-bestSeller/best-seller";
 import ProductCategory from "./product-category/category";
-import GenderMale from "./product-gender/gender-male";
 import GenderFemale from "./product-gender/gender-female";
+import GenderMale from "./product-gender/gender-male";
 Product.propTypes = {};
 
 function Product(props) {
   const { url } = useRouteMatch();
-  const data = productData;
 
   return (
     <Router>

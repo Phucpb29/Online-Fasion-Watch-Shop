@@ -6,7 +6,10 @@ import ProductDetail from "./product-detail/detail";
 function WrapProductDetai() {
   const params = useParams();
   var intParams = Number(params.id);
-  return <div>{isNaN(intParams) ? <Error /> : <ProductDetail />}</div>;
+
+  return (
+    <div>{isNaN(intParams) ? <Error /> : <ProductDetail id={intParams} />}</div>
+  );
 }
 
 export default WrapProductDetai;

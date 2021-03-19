@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
 } from "react-router-dom";
-import productApi from "./api/productApi";
 import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
 import Footer from "./components/footer/footer";
@@ -26,8 +25,6 @@ import Resetpass from "./pages/resetpass/resetpass";
 function App() {
   const [isOpenCart, setIsOpenCart] = useState(false);
   const [isOpenDialog, setIsOpenDiaglog] = useState(false);
-  const [bestSellerMaleList, setBestSellerMaleList] = useState([]);
-  // const [quantityItemCart, setQuantityItemCart] = useState("0");
 
   const openCart = () => {
     setIsOpenCart(!isOpenCart);
@@ -36,19 +33,6 @@ function App() {
   const openDialog = () => {
     setIsOpenDiaglog(!isOpenDialog);
   };
-
-  useEffect(() => {
-    const fetchProductBestSeller = async () => {
-      try {
-        const response = await productApi.getBestSellerMale();
-        setBestSellerMaleList(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    setTimeout(fetchProductBestSeller(), 2000);
-  }, []);
 
   return (
     <Router>
@@ -61,7 +45,7 @@ function App() {
       <div className="main">
         <Switch>
           <Route exact path="/">
-            <Home bestSellerMaleList={bestSellerMaleList} />
+            <Home />
           </Route>
           <Redirect from="/trangchu" to="/">
             <Home />
