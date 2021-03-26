@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/order.css";
+import movado from "../../assets/image/movado.jpg";
 
 
 
@@ -126,7 +127,7 @@ function Order() {
                     className="image-image-2gD image-loaded-SHk"
                     height={70}
                     sizes="70px"
-                    // src={sub_img}
+                    src={movado}
                     width={70}
                   />
                 </div>
@@ -159,7 +160,7 @@ function Order() {
                     className="image-image-2gD image-loaded-SHk"
                     height={70}
                     sizes="70px"
-                    // src={sub_img}
+                    src={movado}
                     width={70}
                   />
                 </div>
@@ -192,7 +193,7 @@ function Order() {
                     className="image-image-2gD image-loaded-SHk"
                     height={70}
                     sizes="70px"
-                    // src={sub_img}
+                    src={movado}
                     width={70}
                   />
                 </div>
