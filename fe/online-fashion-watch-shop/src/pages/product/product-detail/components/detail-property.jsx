@@ -17,6 +17,9 @@ function DetailProperty(props) {
       setPropertyDetailList(response.data);
     };
     setTimeout(fecthProductDetailData(), 1500);
+    return () => {
+      clearTimeout(fecthProductDetailData());
+    };
   }, [id]);
 
   return (

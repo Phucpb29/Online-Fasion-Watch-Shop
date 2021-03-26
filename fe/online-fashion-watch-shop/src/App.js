@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -25,6 +25,8 @@ import Resetpass from "./pages/resetpass/resetpass";
 function App() {
   const [isOpenCart, setIsOpenCart] = useState(false);
   const [isOpenDialog, setIsOpenDiaglog] = useState(false);
+  const [itemAmout, setItemAmout] = useState(0);
+  const [cartList, setCartList] = useState([]);
 
   const openCart = () => {
     setIsOpenCart(!isOpenCart);
@@ -34,9 +36,33 @@ function App() {
     setIsOpenDiaglog(!isOpenDialog);
   };
 
+  function handleAddProduct(product) {
+    const newCart = JSON.parse(localStorage.getItem("cart"));
+    newCart.push(product);
+    setCartList(newCart);
+  }
+
+  // kiểm tra cartList ở local storage khi render lại trang
+  useEffect(() => {
+    const data = localStorage.getItem("cart");
+    const response = data !== null ? JSON.parse(data) : [];
+    setCartList(response);
+  }, []);
+
+  // kiểm tra item trong cart khi render
+  useEffect(() => {
+    const item = cartList.length;
+    setItemAmout(item);
+  }, [cartList]);
+
+  // update lại local storage khi state cartList thay đổi
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartList));
+  }, [cartList]);
+
   return (
     <Router>
-      <Header openCart={openCart} />
+      <Header openCart={openCart} itemAmount={itemAmout} />
 
       <OverPlay isOpenCart={isOpenCart} openCart={openCart} />
       <CartModal isOpenCart={isOpenCart} openCart={openCart} />
@@ -66,7 +92,7 @@ function App() {
             <Product />
           </Route>
           <Route exact path="/sanphamchitiet/:id">
-            <WrapProductDetai />
+            <WrapProductDetai handleAddProduct={handleAddProduct} />
           </Route>
           <Route exact path="/maxacnhan">
             <Maxacnhan />

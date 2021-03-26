@@ -12,6 +12,9 @@ function FemaleBestSeller(props) {
       setBestSellerList(response.data);
     };
     setTimeout(fetchData(), 1500);
+    return () => {
+      clearTimeout(fetchData());
+    };
   }, []);
 
   return (

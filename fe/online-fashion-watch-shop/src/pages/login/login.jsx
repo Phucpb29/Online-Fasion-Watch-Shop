@@ -4,6 +4,8 @@ import Imgleft from "../../assets/image/img-login.jpg";
 import logoDw from "../../assets/image/dw-logo.jpg";
 import "boxicons";
 import userApi from "../../api/userApi";
+import Swal from "sweetalert2";
+import { Redirect, Route } from "react-router";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -26,10 +28,18 @@ function Login() {
           password: password,
         })
         .then(function (response) {
-          if ((response.status = 200)) {
+          if (response.status === 200) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: "ĐĂNG NHẬP THÀNH CÔNG",
+              icon: "success",
+              showConfirmButton: true,
+            });
             const { accessToken } = response.data;
             localStorage.setItem("accessToken", accessToken);
-          } else if ((response.status = 400)) {
+            return <Redirect to="/" />;
+          }
+          if (response.status === 400) {
             console.log("Sai username hoặc pass");
           }
         });

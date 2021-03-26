@@ -1,33 +1,49 @@
 import "boxicons";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import userApi from "../../api/userApi";
 import logo from "../../dw-logo.jpg";
 import "./css/header.css";
 
 Header.prototype = {
   openCart: PropTypes.func,
+  itemAmount: PropTypes.number,
 };
 
 function Header(props) {
-  const { openCart } = props;
+  const { openCart, itemAmount } = props;
+  const [numberItem, setNumberItem] = useState(itemAmount);
   const [isShowUser, setIsShowUser] = useState(false);
-  const [cart, setCart] = useState([]);
-  const [numberItem, setNumberItem] = useState(0);
+  const [statusToken, setStatusToken] = useState(false);
 
+  // mở giỏ hàng
   const handleOpenCart = () => {
     if (openCart) {
       openCart();
     }
   };
 
+  // re-render số lượng item trong giỏ hàng sau mỗi state itemAmount thay đổi
   useEffect(() => {
-    localStorage.setItem("cart", cart);
-  }, []);
+    setNumberItem(itemAmount);
+  }, [itemAmount]);
 
+  // check valid token sau mỗi lần refresh
   useEffect(() => {
-    setCart(localStorage.getItem("cart"));
-    setNumberItem(cart.length);
+    const checkValidToken = async () => {
+      console.log("Kiểm tra token sau mỗi lần F5");
+      const token = localStorage.getItem("accessToken");
+      if (token == null) return;
+      setStatusToken(true);
+      const response = await userApi.checkValidToken(token);
+      console.log(response.data);
+      if (response.data === true) return;
+      if (response.data === false) {
+        localStorage.removeItem("accessToken");
+      }
+    };
+    checkValidToken();
   });
 
   return (
@@ -76,16 +92,26 @@ function Header(props) {
                 : "header__user-dropdown"
             }
           >
-            <div className="dropdown__item">
-              <Link to="/dangnhap" className="dropdown__item-link">
-                <span>ĐĂNG NHẬP</span>
-              </Link>
-            </div>
-            <div className="dropdown__item">
-              <Link to="/dangky" className="dropdown__item-link">
-                <span>ĐĂNG KÝ</span>
-              </Link>
-            </div>
+            {statusToken ? (
+              <div className="dropdown__item">
+                <Link to="/thongtintaikhoan" className="dropdown__item-link">
+                  <span>TÀI KHOẢN</span>
+                </Link>
+              </div>
+            ) : (
+              <>
+                <div className="dropdown__item">
+                  <Link to="/dangnhap" className="dropdown__item-link">
+                    <span>ĐĂNG NHẬP</span>
+                  </Link>
+                </div>
+                <div className="dropdown__item">
+                  <Link to="/dangky" className="dropdown__item-link">
+                    <span>ĐĂNG KÝ</span>
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
           <div className="header__icon header__cart" onClick={handleOpenCart}>
             <button className="header__icon-btn">

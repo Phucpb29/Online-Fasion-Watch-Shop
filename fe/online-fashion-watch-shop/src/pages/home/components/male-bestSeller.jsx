@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import productApi from "../../../api/productApi";
 import movado from "../../../assets/image/movado.jpg";
 
-function MaleBestSeller(props) {
+function MaleBestSeller() {
   // danh sách sản phẩm bán chạy
   const [bestSellerList, setBestSellerList] = useState([]);
   useEffect(() => {
@@ -12,6 +12,9 @@ function MaleBestSeller(props) {
       setBestSellerList(response.data);
     };
     setTimeout(fetchData(), 1500);
+    return () => {
+      clearTimeout(fetchData());
+    };
   }, []);
 
   return (

@@ -1,13 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import auth from "../.././assets/image/auth-azY.svg";
 import certification from "../.././assets/image/bct-5Sz.png";
 import momo from "../.././assets/image/momo-tS5.png";
 import shipping from "../.././assets/image/shipping-2xB.svg";
 import vnpay from "../.././assets/image/vnpay-bBZ.png";
 import warranty from "../.././assets/image/warranty-cUS.svg";
+import emailApi from "../../api/emailApi";
+import Swal from "sweetalert2";
 import "./css/footer.css";
 
 function Footer() {
+  const [email, setEmail] = useState("");
+
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    try {
+      emailApi.registerEmail({ email: email }).then(function (response) {
+        console.clear();
+        if (response.status === 200) {
+          Swal.fire({
+            title: "THÔNG BÁO",
+            text: response.data,
+            icon: "success",
+            showConfirmButton: true,
+          });
+          setEmail("");
+        }
+        if (response.status === 400) {
+          Swal.fire({
+            title: "THÔNG BÁO",
+            text: response.data,
+            icon: "error",
+            showConfirmButton: true,
+          });
+        }
+      });
+    } catch (error) {
+      // console.log("Lỗi đăng ký nhận tin: ", error);
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer__policy">
@@ -31,11 +67,15 @@ function Footer() {
             NHẬN CÁC TIN TỨC VỀ CHƯƠNG TRÌNH KHUYẾN MÃI VÀ SỚM NHẤT
           </p>
         </div>
-        <form className="footer__newsletter-form">
+        <form className="footer__newsletter-form" onSubmit={handleSubmitForm}>
           <div className="form-control">
             <input
-              type="text"
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChangeEmail}
               placeholder="Nhập email để nhận các tin khuyến mãi"
+              required
             />
             <button className="form__button">ĐĂNG KÝ</button>
           </div>

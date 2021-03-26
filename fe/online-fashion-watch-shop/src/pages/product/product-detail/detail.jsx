@@ -1,22 +1,29 @@
 import PropTypes from "prop-types";
 import React from "react";
-import "./css/detail.css";
 import DetailComment from "./components/detail-comment";
 import DetailInfo from "./components/detail-info";
 import DetailProperty from "./components/detail-property";
+import "./css/detail.css";
 
 ProductDetail.prototype = {
   id: PropTypes.string,
+  handleClickAdd: PropTypes.func,
 };
 
 function ProductDetail(props) {
-  const { id } = props;
+  const { id, handleClickAdd } = props;
+
+  function addProduct(product) {
+    if (handleClickAdd) {
+      handleClickAdd(product);
+    }
+  }
 
   return (
     <div className="main__product">
-      <DetailInfo id={id} />
+      <DetailInfo id={id} addProduct={addProduct} />
       <DetailProperty id={id} />
-      <DetailComment />
+      <DetailComment id={id} />
     </div>
   );
 }
