@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import {
   BrowserRouter as Router,
+  Link,
   Route,
   Switch,
   useRouteMatch,
@@ -18,8 +19,13 @@ Account.propTypes = {
 };
 
 function Account(props) {
+  // const [name, setName] = useState("");
+  // const 
   const { openDialog } = props;
   const { path } = useRouteMatch();
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+  };
 
   return (
     <div>
@@ -51,10 +57,10 @@ function Account(props) {
               </li>
             </ul>
             <div className="navlink__logout">
-              <a href="/" className="btn__logout">
+              <Link to="/" className="btn__logout" onClick={handleLogout}>
                 <span>Đăng xuất</span>
                 <box-icon name="log-in-circle"></box-icon>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="account__box">

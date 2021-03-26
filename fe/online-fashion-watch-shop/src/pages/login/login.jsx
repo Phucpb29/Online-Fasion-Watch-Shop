@@ -35,7 +35,8 @@ function Login() {
               icon: "success",
               showConfirmButton: true,
             });
-            const { accessToken } = response.data;
+            const { id, accessToken } = response.data;
+            localStorage.setItem("id", id);
             localStorage.setItem("accessToken", accessToken);
             return <Redirect to="/" />;
           }
