@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import productApi from "../../../api/productApi";
 import movado from "../../../assets/image/movado.jpg";
+import omega from "../../../assets/image/omega.jpg";
 
 function MaleBestSeller() {
   // danh sách sản phẩm bán chạy
@@ -32,7 +33,7 @@ function MaleBestSeller() {
         {bestSellerList.map((item, index) => (
           <div className="product__detail" key={index}>
             <div className="product__img">
-              <img src={movado} alt="" />
+              <img src={omega} alt="" />
             </div>
             <div className="product__name">
               <h3>{item.name}</h3>
