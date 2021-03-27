@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import "./css/login.css";
-import Imgleft from "../../assets/image/img-login.jpg";
-import logoDw from "../../assets/image/dw-logo.jpg";
 import "boxicons";
-import userApi from "../../api/userApi";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { Redirect, Route } from "react-router";
+import userApi from "../../api/userApi";
+import logoDw from "../../assets/image/dw-logo.jpg";
+import Imgleft from "../../assets/image/img-login.jpg";
+import "./css/login.css";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,10 +35,14 @@ function Login() {
               text: "ĐĂNG NHẬP THÀNH CÔNG",
               icon: "success",
               showConfirmButton: true,
+            }).then((value) => {
+              const { accessToken } = response.data;
+              sessionStorage.setItem("accessToken", accessToken);
+              console.log(value);
+              if (value.value === true) {
+                history.push("/");
+              }
             });
-            const { accessToken } = response.data;
-            localStorage.setItem("accessToken", accessToken);
-            return <Redirect to="/" />;
           }
           if (response.status === 400) {
             console.log("Sai username hoặc pass");
