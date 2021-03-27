@@ -38,7 +38,6 @@ function Login() {
             }).then((value) => {
               const { accessToken } = response.data;
               sessionStorage.setItem("accessToken", accessToken);
-              console.log(value);
               if (value.value === true) {
                 history.push("/");
               }
