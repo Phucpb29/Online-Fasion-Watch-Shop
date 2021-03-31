@@ -4,6 +4,7 @@ import imgRight from "../../assets/image/img-register.jpg";
 import logoDw from "../../assets/image/dw-logo.jpg";
 import "boxicons";
 import userApi from "../../api/userApi";
+import Swal from "sweetalert2";
 
 function Register() {
   const [name, setName] = useState("");
@@ -24,11 +25,30 @@ function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
     try {
-      userApi.register({
-        name: name,
-        email: email,
-        password: password,
-      });
+      userApi
+        .register({
+          name: name,
+          email: email,
+          password: password,
+        })
+        .then(function (response) {
+          if (response.status === 200) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: response.data,
+              icon: "success",
+              showConfirmButton: true,
+            });
+          }
+          if (response.status === 400) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: response.data,
+              icon: "error",
+              showConfirmButton: true,
+            });
+          }
+        });
     } catch (error) {
       console.log(error);
     }
@@ -50,6 +70,7 @@ function Register() {
                 name="name"
                 value={name}
                 onChange={handleChangeName}
+                required
               />
             </div>
             <div className="form__register-control">
@@ -60,6 +81,7 @@ function Register() {
                 name="email"
                 value={email}
                 onChange={handleChangeEmail}
+                required
               />
             </div>
             <div className="form__register-control">
@@ -70,6 +92,7 @@ function Register() {
                 name="password"
                 value={password}
                 onChange={handleChangePassword}
+                required
               />
             </div>
             <button className="button" onClick={handleRegister}>

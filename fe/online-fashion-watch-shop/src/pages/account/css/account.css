@@ -59,6 +59,8 @@
   color: black;
   font-size: 17px;
   position: relative;
+  border: 0 !important;
+  background: none;
 }
 .account .account__navlink .navlink__logout .btn__logout:hover {
   color: gray;

@@ -6,9 +6,15 @@ import logoDw from "../../assets/image/dw-logo.jpg";
 import Imgleft from "../../assets/image/img-login.jpg";
 import "./css/login.css";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function Login() {
+Login.prototype = {
+  handleLogin: PropTypes.func,
+};
+
+function Login(props) {
   let history = useHistory();
+  const { handleLogin } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,7 +26,8 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = (e) => {
+  // đăng nhập tài khoản
+  const handleClickLogin = (e) => {
     e.preventDefault();
     try {
       userApi
@@ -40,11 +47,17 @@ function Login() {
               sessionStorage.setItem("accessToken", accessToken);
               if (value.value === true) {
                 history.push("/");
+                handleLogin();
               }
             });
           }
           if (response.status === 400) {
-            console.log("Sai username hoặc pass");
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: response.data,
+              icon: "error",
+              showConfirmButton: true,
+            });
           }
         });
     } catch (error) {
@@ -94,7 +107,7 @@ function Login() {
               <input type="checkbox" />
               Remember me
             </div>
-            <button className="button" onClick={handleLogin}>
+            <button className="button" onClick={handleClickLogin}>
               ĐĂNG NHẬP
             </button>
             <div className="login__link">

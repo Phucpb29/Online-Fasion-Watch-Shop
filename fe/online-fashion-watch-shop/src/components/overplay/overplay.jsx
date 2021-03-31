@@ -2,22 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 
 OverPlay.propTypes = {
-  isOpenCart: PropTypes.bool,
-  openCart: PropTypes.func,
+  statusCart: PropTypes.bool,
+  closeCart: PropTypes.func,
 };
 
 function OverPlay(props) {
-  const { isOpenCart, openCart } = props;
+  const { statusCart, closeCart } = props;
 
-  const handleOpenCart = () => {
-    if (openCart) {
-      openCart();
+  const handleCloseCart = () => {
+    if (closeCart) {
+      closeCart();
     }
   };
   return (
     <div
-      className={isOpenCart ? "overplay overplay__active" : "overplay"}
-      onClick={handleOpenCart}
+      className={statusCart ? "overplay overplay__active" : "overplay"}
+      onClick={handleCloseCart}
     ></div>
   );
 }

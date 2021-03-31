@@ -3,24 +3,11 @@ import React, { useEffect, useState } from "react";
 import productApi from "../../../../api/productApi";
 
 DetailProperty.propTypes = {
-  id: PropTypes.number,
+  propertyList: PropTypes.array,
 };
 
 function DetailProperty(props) {
-  const { id } = props;
-
-  // thuộc tính chi tiết sản phẩm
-  const [propertyDetailList, setPropertyDetailList] = useState([]);
-  useEffect(() => {
-    const fecthProductDetailData = async () => {
-      const response = await productApi.getPropertyRootById(id);
-      setPropertyDetailList(response.data);
-    };
-    setTimeout(fecthProductDetailData(), 1500);
-    return () => {
-      clearTimeout(fecthProductDetailData());
-    };
-  }, [id]);
+  const { propertyList } = props;
 
   return (
     <div className="product__property">
@@ -28,7 +15,7 @@ function DetailProperty(props) {
         <span>THÔNG SỐ KĨ THUẬT</span>
       </div>
       <div className="property__content">
-        {propertyDetailList.map((item) => (
+        {propertyList.map((item) => (
           <div className="content__box" key={item.product_Property.id}>
             <div className="box__title">
               <span>{item.product_Property.name}</span>

@@ -7,14 +7,15 @@ import omega from "../../../assets/image/omega.jpg";
 function MaleBestSeller() {
   // danh sách sản phẩm bán chạy
   const [bestSellerList, setBestSellerList] = useState([]);
+  const [indexImage, setIndexImage] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       const response = await productApi.getBestSellerMale();
       setBestSellerList(response.data);
     };
-    setTimeout(fetchData(), 1500);
+    fetchData();
     return () => {
-      clearTimeout(fetchData());
+      fetchData();
     };
   }, []);
 
@@ -39,7 +40,12 @@ function MaleBestSeller() {
               <h3>{item.name}</h3>
             </div>
             <div className="product__price">
-              <span>{item.price} đ</span>
+              <span>
+                {new Intl.NumberFormat("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                }).format(item.price)}
+              </span>
             </div>
             <div className="product__button">
               <Link

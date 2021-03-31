@@ -24,7 +24,7 @@ axiosRegister.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    throw error;
+    return error.response;
   }
 );
 

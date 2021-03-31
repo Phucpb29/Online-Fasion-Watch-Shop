@@ -1,7 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
 
-const token = localStorage.getItem("accessToken");
+const token = sessionStorage.getItem("accessToken");
 const axiosDashboardClient = axios.create({
   baseURL: "http://dwhigh.tech:8080/api/dashboard",
   headers: {
@@ -9,8 +9,7 @@ const axiosDashboardClient = axios.create({
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "*",
     "Access-Control-Allow-Credentials": true,
-    "Authorization": `Bearer ${token}`,
-
+    Authorization: `Bearer ${token}`,
   },
   paramsSerializer: (params) => queryString.stringify(params),
 });

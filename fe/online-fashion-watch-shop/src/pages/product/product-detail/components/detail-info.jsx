@@ -1,29 +1,16 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import productApi from "../../../../api/productApi";
+import React from "react";
 
 DetailInfo.propTypes = {
-  id: PropTypes.number,
+  product: PropTypes.object,
+  brand: PropTypes.string,
+  indexImage: PropTypes.string,
+  addtionalImages: PropTypes.array,
   addProduct: PropTypes.func,
 };
 
 function DetailInfo(props) {
-  const { id, addProduct } = props;
-  // thông tin chi tiết sản phẩm
-  const [productDetail, setProductDetail] = useState({}); // thông tin sản phẩm
-  const [indexImage, setIndexImage] = useState(""); // hình chính sản phẩm
-  useEffect(() => {
-    const fecthProductDetailData = async () => {
-      const response = await productApi.getProductDetailById(id);
-      setProductDetail(response.data.product);
-      setIndexImage(response.data.indexImage);
-    };
-    setTimeout(fecthProductDetailData(), 1500);
-    return () => {
-      clearTimeout(fecthProductDetailData());
-    };
-  }, [id]);
-
+  const { product, brand, indexImage, addtionalImages, addProduct } = props;
   // thêm sản phẩm vào cart list local storage
   function handleAddToCart(product) {
     if (addProduct) {
@@ -38,35 +25,47 @@ function DetailInfo(props) {
           <div className="img__main">
             <img src={indexImage} alt="" />
           </div>
-          <div className="img__thumbnail"></div>
+          <div className="img__thumbnail">
+            <ul className="thumbnail__list">
+              {addtionalImages.map((item, index) => (
+                <li className="thumbnail__list-item" key={index}>
+                  <img src={item} alt="" />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="product__info">
           <div className="product__info-group">
-            <h1 className="product__name">{productDetail.name}</h1>
+            <h1 className="product__name">{product.name}</h1>
           </div>
           <div className="product__info-group">
             <div className="product__brand">
               <span className="product__title">Thương hiệu:</span>
+              <span>{brand}</span>
             </div>
           </div>
           <div className="product__info-group">
             <div className="product__gender">
               <span className="product__title">Giới tính:</span>
-              <span>{productDetail.gender ? "Nam" : "Nữ"}</span>
+              <span>{product.gender ? "Nam" : "Nữ"}</span>
             </div>
           </div>
           <div className="product__info-group">
             <div className="product__price">
               <span className="product__title">Giá sản phẩm:</span>
-              <span>{productDetail.price}</span>
+              <span>
+                {new Intl.NumberFormat("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                }).format(product.price)}
+              </span>
             </div>
           </div>
           <div className="product__info-group">
             <div className="product__status">
               <span className="product__title">Tình trạng: </span>
-              <span>
-                {productDetail.quantity > 0 ? "Còn hàng" : "Hết hàng"}
-              </span>
+              <span>{product.quantity > 0 ? "Còn hàng" : "Hết hàng"}</span>
               <span></span>
             </div>
           </div>
@@ -77,10 +76,10 @@ function DetailInfo(props) {
             </div>
           </div>
           <div className="product__info-group">
-            {productDetail.quantity > 0 && (
+            {product.quantity > 0 && (
               <button
                 className="product__button"
-                onClick={() => handleAddToCart(productDetail)}
+                onClick={() => handleAddToCart(product)}
               >
                 <span>THÊM VÀO GIỎ HÀNG</span>
               </button>
@@ -93,7 +92,7 @@ function DetailInfo(props) {
           <span>MÔ TẢ SẢN PHẨM</span>
         </div>
         <div className="description__content">
-          <span>{productDetail.description}</span>
+          <span>{product.description}</span>
         </div>
       </div>
     </>

@@ -1,22 +1,24 @@
 import axios from "axios";
 import queryString from "query-string";
 
-const axiosUserClient = axios.create({
-  baseURL: "http://dwhigh.tech:8080/api/auth/login",
+const token = sessionStorage.getItem("accessToken");
+const axiosCartClient = axios.create({
+  baseURL: "http://dwhigh.tech:8080/api/cart",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "*",
     "Access-Control-Allow-Credentials": true,
+    Authorization: `Bearer ${token}`,
   },
   paramsSerializer: (params) => queryString.stringify(params),
 });
 
-axiosUserClient.interceptors.request.use(async (config) => {
+axiosCartClient.interceptors.request.use(async (config) => {
   return config;
 });
 
-axiosUserClient.interceptors.response.use(
+axiosCartClient.interceptors.response.use(
   (response) => {
     if (response && response.data) {
       return response;
@@ -28,4 +30,4 @@ axiosUserClient.interceptors.response.use(
   }
 );
 
-export default axiosUserClient;
+export default axiosCartClient;

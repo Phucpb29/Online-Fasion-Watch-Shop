@@ -1,21 +1,21 @@
 import "boxicons";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import userApi from "../../api/userApi";
 import logo from "../../dw-logo.jpg";
 import "./css/header.css";
 
 Header.prototype = {
   openCart: PropTypes.func,
   itemAmount: PropTypes.number,
+  statusToken: PropTypes.bool,
 };
 
 function Header(props) {
-  const { openCart, itemAmount } = props;
+  const { openCart, itemAmount, statusToken } = props;
   const [numberItem, setNumberItem] = useState(itemAmount);
   const [isShowUser, setIsShowUser] = useState(false);
-  const [statusToken, setStatusToken] = useState(false);
+  const [valueToken, setValueToken] = useState(statusToken);
 
   // mở giỏ hàng
   const handleOpenCart = () => {
@@ -24,27 +24,32 @@ function Header(props) {
     }
   };
 
+  // re-render valueToken sau mỗi lần refresh
+  useEffect(() => {
+    setValueToken(statusToken);
+  }, [statusToken]);
+
   // re-render số lượng item trong giỏ hàng sau mỗi state itemAmount thay đổi
   useEffect(() => {
     setNumberItem(itemAmount);
   }, [itemAmount]);
 
-  // check valid token sau mỗi lần refresh
-  useEffect(() => {
-    const checkValidToken = async () => {
-      console.log("Kiểm tra token sau mỗi lần F5");
-      const token = localStorage.getItem("accessToken");
-      if (token == null) return;
-      setStatusToken(true);
-      const response = await userApi.checkValidToken(token);
-      console.log(response.data);
-      if (response.data === true) return;
-      if (response.data === false) {
-        localStorage.removeItem("accessToken");
-      }
-    };
-    checkValidToken();
-  });
+  // // check valid token sau mỗi lần refresh
+  // useEffect(() => {
+  //   const checkValidToken = async () => {
+  //     console.log("Kiểm tra token sau mỗi lần F5");
+  //     const token = localStorage.getItem("accessToken");
+  //     if (token == null) return;
+  //     setStatusToken(true);
+  //     const response = await userApi.checkValidToken(token);
+  //     console.log(response.data);
+  //     if (response.data === true) return;
+  //     if (response.data === false) {
+  //       localStorage.removeItem("accessToken");
+  //     }
+  //   };
+  //   checkValidToken();
+  // });
 
   return (
     <header className="header">
@@ -92,7 +97,7 @@ function Header(props) {
                 : "header__user-dropdown"
             }
           >
-            {statusToken ? (
+            {valueToken ? (
               <div className="dropdown__item">
                 <Link to="/thongtintaikhoan" className="dropdown__item-link">
                   <span>TÀI KHOẢN</span>

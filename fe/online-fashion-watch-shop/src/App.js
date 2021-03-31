@@ -5,6 +5,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import Swal from "sweetalert2";
+import cartApi from "./api/cartApi";
 import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
 import Footer from "./components/footer/footer";
@@ -23,24 +25,178 @@ import Register from "./pages/register/register";
 import Resetpass from "./pages/resetpass/resetpass";
 
 function App() {
-  const [isOpenCart, setIsOpenCart] = useState(false);
+  const [statusCart, setStatusCart] = useState(false);
   const [isOpenDialog, setIsOpenDiaglog] = useState(false);
   const [itemAmout, setItemAmout] = useState(0);
   const [cartList, setCartList] = useState([]);
+  const [statusToken, setStatusToken] = useState(false);
 
+  // mở giỏ hàng
   const openCart = () => {
-    setIsOpenCart(!isOpenCart);
+    setStatusCart(true);
+    document.body.style.overflow = "hidden";
   };
 
+  // đóng giỏ hàng
+  const closeCart = () => {
+    setStatusCart(false);
+    document.body.style.overflow = "unset";
+  };
+
+  // mở dialog
   const openDialog = () => {
     setIsOpenDiaglog(!isOpenDialog);
   };
 
-  function handleAddProduct(product) {
-    const newCart = JSON.parse(localStorage.getItem("cart"));
-    newCart.push(product);
-    setCartList(newCart);
+  // đăng nhập tài khoản
+  function handleLogin() {
+    setStatusToken(true);
   }
+
+  // đăng xuất tài khoản
+  function handleLogout() {
+    setStatusToken(false);
+    setCartList([]);
+  }
+
+  // thêm sản phẩm vào local storage
+  const handleAddProductToLocal = (product) => {
+    const quantity = 1;
+    const totalPrice = product.price * quantity;
+    const newCart = [...cartList];
+    newCart.push({ ...product, quantity, totalPrice });
+    setCartList(newCart);
+  };
+
+  // thêm sản phẩm khi chưa đăng nhập
+  const handleAddProductWithoutLogin = (product) => {
+    try {
+      handleAddProductToLocal(product);
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "THÊM SẢN PHẨM THÀNH CÔNG",
+        icon: "success",
+        showConfirmButton: true,
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "THÊM SẢN PHẨM KHÔNG THÀNH CÔNG",
+        icon: "error",
+        showConfirmButton: true,
+      });
+      console.log(error);
+    }
+  };
+
+  // thêm sản phẩm khi đăng nhập
+  const handleAddProductWithLogin = (product) => {
+    try {
+      if (cartList != null) {
+        // thêm sản phẩm
+        cartApi
+          .insertProduct({
+            product_id: product.id,
+            total: product.price * 1,
+            quantity: 1,
+            product_price: product.price,
+          })
+          .then(function (response) {
+            if (response.status === 200) {
+              handleAddProductToLocal(product);
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: "THÊM SẢN PHẨM THÀNH CÔNG",
+                icon: "success",
+                showConfirmButton: true,
+              });
+            } else {
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: "THÊM SẢN PHẨM THẤT BẠI",
+                icon: "error",
+                showConfirmButton: true,
+              });
+            }
+          });
+      } else {
+        // tạo giỏ hàng
+        cartApi.createCart();
+        // thêm sản phẩm
+        cartApi
+          .insertProduct({
+            product_id: product.id,
+            total: product.price * 1,
+            quantity: 1,
+            product_price: product.price,
+          })
+          .then(function (response) {
+            if (response.status === 200) {
+              handleAddProductToLocal(product);
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: "THÊM SẢN PHẨM THÀNH CÔNG",
+                icon: "success",
+                showConfirmButton: true,
+              });
+            } else {
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: "THÊM SẢN PHẨM THẤT BẠI",
+                icon: "error",
+                showConfirmButton: true,
+              });
+            }
+          });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // thêm sản phẩm vào giỏ hàng
+  function handleAddProduct(product) {
+    if (statusToken) {
+      handleAddProductWithLogin(product);
+    } else {
+      handleAddProductWithoutLogin(product);
+    }
+  }
+
+  // cập nhật sản phẩm vào giỏ hàng
+  function handleUpdateProduct(cartList) {
+    console.log(cartList);
+    setCartList(cartList);
+  }
+
+  // kiểm tra token khi render lại trang
+  useEffect(() => {
+    const data = sessionStorage.getItem("accessToken");
+    const response = data != null ? true : false;
+    setStatusToken(response);
+  }, [statusToken]);
+
+  // kiểm tra giỏ hàng khi đăng nhập
+  useEffect(() => {
+    const fetchDataCart = async () => {
+      try {
+        if (statusToken !== true) return;
+        const response = await cartApi.viewCart(); // lấy danh sách sản phẩm trong giỏ hàng
+        if (response.status === 200) {
+          setCartList(response.data);
+        }
+        if (response.status === 400) {
+          setCartList([]);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDataCart();
+    return () => {
+      fetchDataCart();
+    };
+  }, [statusToken]);
 
   // kiểm tra cartList ở local storage khi render lại trang
   useEffect(() => {
@@ -49,7 +205,7 @@ function App() {
     setCartList(response);
   }, []);
 
-  // kiểm tra item trong cart khi render
+  // kiểm tra số lượng item trong cart khi render
   useEffect(() => {
     const item = cartList.length;
     setItemAmout(item);
@@ -62,10 +218,19 @@ function App() {
 
   return (
     <Router>
-      <Header openCart={openCart} itemAmount={itemAmout} />
+      <Header
+        openCart={openCart}
+        itemAmount={itemAmout}
+        statusToken={statusToken}
+      />
 
-      <OverPlay isOpenCart={isOpenCart} openCart={openCart} />
-      <CartModal isOpenCart={isOpenCart} openCart={openCart} />
+      <OverPlay statusCart={statusCart} closeCart={closeCart} />
+      <CartModal
+        statusCart={statusCart}
+        closeCart={closeCart}
+        cartList={cartList}
+        handleUpdateProduct={handleUpdateProduct}
+      />
       <DialogComment isOpenDialog={isOpenDialog} />
 
       <div className="main">
@@ -77,7 +242,7 @@ function App() {
             <Home />
           </Redirect>
           <Route exact path="/dangnhap">
-            <Login />
+            <Login handleLogin={handleLogin} />
           </Route>
           <Route exact path="/dangky">
             <Register />
@@ -86,7 +251,11 @@ function App() {
             <Forgotpass />
           </Route>
           <Route path="/thongtintaikhoan">
-            <Account openDialog={openDialog} />
+            <Account
+              statusToken={statusToken}
+              openDialog={openDialog}
+              handleLogout={handleLogout}
+            />
           </Route>
           <Route path="/sanpham">
             <Product />

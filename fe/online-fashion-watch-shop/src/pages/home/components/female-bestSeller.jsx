@@ -11,9 +11,9 @@ function FemaleBestSeller(props) {
       const response = await productApi.getBestSellerFemale();
       setBestSellerList(response.data);
     };
-    setTimeout(fetchData(), 1500);
+    fetchData();
     return () => {
-      clearTimeout(fetchData());
+      fetchData();
     };
   }, []);
 
@@ -38,7 +38,12 @@ function FemaleBestSeller(props) {
               <h3>{item.name}</h3>
             </div>
             <div className="product__price">
-              <span>{item.price} đ</span>
+              <span>
+                {new Intl.NumberFormat("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                }).format(item.price)}
+              </span>
             </div>
             <div className="product__button">
               <Link

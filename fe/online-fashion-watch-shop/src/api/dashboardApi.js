@@ -2,8 +2,8 @@ import axiosDashboardClient from "./axiosDashboardClient";
 
 const dashboardApi = {
   getInfo() {
-    const url = "viewInfo";
-    return axiosDashboardClient.post(url);
+    const url = "/viewInfo";
+    return axiosDashboardClient.get(url);
   },
 
   updatePassword(body) {
