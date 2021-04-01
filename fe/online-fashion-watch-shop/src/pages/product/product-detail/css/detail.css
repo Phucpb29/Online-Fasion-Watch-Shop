@@ -74,7 +74,7 @@
 .main__product .product__detail .product__img .img__thumbnail .thumbnail__list .thumbnail__list-item img {
   display: block;
   width: 120px;
-  height: auto;
+  height: 120px;
   -o-object-fit: contain;
      object-fit: contain;
   border-radius: 50%;
@@ -348,6 +348,8 @@
 .main__product .product__comment .pagination .pagination__prev,
 .main__product .product__comment .pagination .pagination__next {
   cursor: pointer;
+  font-weight: bold;
+  padding: 0 20px;
   color: var(--color-white);
   border: 0 !important;
   background-color: var(--color-black);
@@ -360,8 +362,9 @@
 }
 
 .main__product .product__comment .pagination .pagination__list .pagination__list-item {
-  padding: 10px 20px;
+  padding: 10px 10px;
   margin: 0 10px;
+  font-weight: bold;
   border: 1px solid var(--color-gray);
   cursor: pointer;
 }
@@ -370,5 +373,15 @@
   border: 0 !important;
   background: none;
   color: var(--color-black);
+  cursor: pointer;
+}
+
+.main__product .product__comment .pagination .pagination__list .pagination__list-item:hover {
+  background-color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.main__product .product__comment .pagination .pagination__list .pagination__list-item:hover button:hover {
+  color: var(--color-white);
 }
 /*# sourceMappingURL=detail.css.map */

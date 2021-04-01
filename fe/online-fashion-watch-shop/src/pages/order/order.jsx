@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import OrderCart from "./components/order-cart";
 import OrderForm from "./components/order-form";
 import "./css/order.css";
 import checkoutApi from "../../api/checkoutApi";
 import Swal from "sweetalert2";
+import dashboardApi from "../../api/dashboardApi";
+import cartApi from "../../api/cartApi";
+import LoadingOverplay from "../../components/loading/loading";
 
 function Order() {
+  const [user, setUser] = useState({
+    isdelete: false,
+    id: "",
+    address: "",
+    birthday: "",
+    fullname: "",
+    email: "",
+    password: "",
+    phone: "",
+    update_date: "",
+    created_date: "",
+    username: "",
+    gender: false,
+  });
+  const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(true);
   // đặt hàng
   function handleOrderSubmit(id, name, phone, address) {
     try {
-      console.log(id, name, phone, address);
       checkoutApi
         .order(id, {
           name: name,
@@ -45,19 +63,45 @@ function Order() {
     }
   }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const dataToken = sessionStorage.getItem("accessToken");
+      const statusToken = dataToken !== null ? true : false;
+      if (statusToken) {
+        const responseInfoUser = await dashboardApi.getInfo();
+        const responseCart = await cartApi.viewCart();
+        setUser(responseInfoUser.data);
+        setCart(responseCart.data);
+      }
+      setLoading(false);
+    };
+    fetchData();
+    return () => {
+      setUser({});
+      setCart([]);
+      setLoading(true);
+    };
+  }, []);
+
   return (
-    <div className="row">
-      <div className="col-1">
-        <div className="container">
-          <OrderForm handleOrderSubmit={handleOrderSubmit} />
+    <>
+      {loading ? (
+        <LoadingOverplay />
+      ) : (
+        <div className="row">
+          <div className="col-1">
+            <div className="container">
+              <OrderForm user={user} handleOrderSubmit={handleOrderSubmit} />
+            </div>
+          </div>
+          <div className="col-2">
+            <div className="container">
+              <OrderCart cart={cart} />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="col-2">
-        <div className="container">
-          <OrderCart />
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

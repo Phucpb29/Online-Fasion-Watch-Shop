@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from "react";
-import dashboardApi from "../../../api/dashboardApi";
 import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 
 OrderForm.prototype = {
+  user: PropTypes.object,
   handleOrderSubmit: PropTypes.func,
 };
 
 function OrderForm(props) {
-  const { handleOrderSubmit } = props;
-  const [user, setUser] = useState({});
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await dashboardApi.getInfo();
-      setUser(response.data);
-      setName(user.fullname);
-      setEmail(user.email);
-      setPhone(user.phone);
-      setAddress(user.address);
-    };
-    fetchData();
-    return () => {
-      fetchData();
-    };
-  }, []);
+  const { user, handleOrderSubmit } = props;
+  const [name, setName] = useState(user.fullname);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone);
+  const [address, setAddress] = useState(user.address);
 
   const handleChangeName = (e) => {
     setName(e.target.value);

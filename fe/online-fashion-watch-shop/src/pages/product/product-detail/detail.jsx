@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import commentApi from "../../../api/commentApi";
 import productApi from "../../../api/productApi";
 import LoadingOverplay from "../../../components/loading/loading";
@@ -15,8 +15,8 @@ ProductDetail.prototype = {
 
 function ProductDetail(props) {
   const { id, handleClickAdd } = props;
+  const size = 6;
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(6);
   const [loading, setLoading] = useState(true);
   const [dataProduct, setDataProduct] = useState({}); // thông tin sản phẩm
   const [propertyDetailList, setPropertyDetailList] = useState([]); // thông tin thuộc tính sản phẩm
@@ -37,6 +37,7 @@ function ProductDetail(props) {
         size,
         id
       );
+
       setDataProduct(productDetail.data);
       setPropertyDetailList(productProperties.data);
       setCommentList(productCommentList.data);
@@ -53,6 +54,18 @@ function ProductDetail(props) {
     if (handleClickAdd) {
       handleClickAdd(product);
     }
+  }
+
+  function handleChangePage(page) {
+    setPage(page);
+  }
+
+  function handleFirstPage() {
+    setPage(0);
+  }
+
+  function handleLastPage() {
+    setPage(countComment);
   }
 
   return (
@@ -72,7 +85,9 @@ function ProductDetail(props) {
           <DetailComment
             countComment={countComment}
             commentList={commentList}
-            id={id}
+            handleFirstPage={handleFirstPage}
+            handleChangePage={handleChangePage}
+            handleLastPage={handleLastPage}
           />
         </div>
       )}

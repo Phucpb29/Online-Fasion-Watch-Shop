@@ -8,14 +8,16 @@ import BannerBrand from "./banner/banner-brand";
 import BannerGender from "./banner/banner-gender";
 import "./css/product.css";
 import NavBar from "./navbar/navbar";
-import ProductBestSeller from "./product-bestSeller/best-seller";
-import ProductCategory from "./product-category/category";
 import GenderFemale from "./product-gender/gender-female";
 import GenderMale from "./product-gender/gender-male";
 Product.propTypes = {};
 
 function Product(props) {
   const { url } = useRouteMatch();
+  const valueLocation = window.location.patname;
+  if (valueLocation.contains("nam")) {
+    console.log("nam");
+  }
 
   return (
     <Router>
@@ -46,12 +48,12 @@ function Product(props) {
               <Route exact url={`${url}/gioitinh/nu`}>
                 <GenderFemale />
               </Route>
-              <Route exact url={`${url}/thuonghieu/:brand`}>
+              {/* <Route exact url={`${url}/thuonghieu/:brand`}>
                 <ProductCategory />
               </Route>
               <Route exact url={`${url}/banchay`}>
                 <ProductBestSeller />
-              </Route>
+              </Route> */}
             </Switch>
           </div>
         </div>

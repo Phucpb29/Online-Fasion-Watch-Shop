@@ -25,14 +25,14 @@ function Header(props) {
   };
 
   // re-render valueToken sau mỗi lần refresh
-  useEffect(() => {
-    setValueToken(statusToken);
-  }, [statusToken]);
+  // useEffect(() => {
+  //   setValueToken(statusToken);
+  // }, [statusToken]);
 
   // re-render số lượng item trong giỏ hàng sau mỗi state itemAmount thay đổi
-  useEffect(() => {
-    setNumberItem(itemAmount);
-  }, [itemAmount]);
+  // useEffect(() => {
+  //   setNumberItem(itemAmount);
+  // }, [itemAmount]);
 
   // // check valid token sau mỗi lần refresh
   // useEffect(() => {
@@ -62,10 +62,14 @@ function Header(props) {
           </h1>
           <ul className="header__category">
             <li className="category__item">
-              <span>ĐỒNG HỒ</span>
+              <Link to="/sanpham/gioitinh/nam" className="item__link">
+                ĐỒNG HỒ NAM
+              </Link>
             </li>
             <li className="category__item">
-              <span>THƯƠNG HIỆU</span>
+              <Link to="/sanpham/gioitinh/nu" className="item__link">
+                ĐỒNG HỒ NỮ
+              </Link>
             </li>
           </ul>
         </div>
@@ -131,7 +135,7 @@ function Header(props) {
           </div>
         </div>
       </div>
-      <div className="header__sub">
+      {/* <div className="header__sub">
         <nav className="navbar nav__bar-watches">
           <ul className="navbar__item">
             <li className="item">
@@ -146,7 +150,7 @@ function Header(props) {
             </li>
           </ul>
         </nav>
-      </div>
+      </div> */}
     </header>
   );
 }

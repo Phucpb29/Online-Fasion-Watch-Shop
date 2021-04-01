@@ -24,6 +24,7 @@
     }
 
     .header__category {
+      width: 100%;
       display: flex;
       justify-content: center;
       align-self: center;
@@ -33,12 +34,13 @@
         font-size: 0.9rem;
         color: var(--color-gray);
 
-        span {
+        .item__link {
           position: relative;
           padding: 8px 0;
+          color: var(--color-gray);
         }
 
-        span:before {
+        .item__link:before {
           content: "";
           position: absolute;
           top: 0;
@@ -51,13 +53,13 @@
           transition: transform 0.5s ease-in-out;
         }
 
-        span:hover {
+        .item__link:hover {
           font-weight: 500;
           color: var(--color-black);
           cursor: pointer;
         }
 
-        span:hover:before {
+        .item__link:hover:before {
           transform: scaleX(1);
           transform-origin: left center;
           transition: transform 0.5s ease-in-out;
@@ -147,7 +149,7 @@
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 
       .dropdown__item {
-          
+
         .dropdown__item-link {
           color: var(--color-black);
           font-size: 0.8rem;

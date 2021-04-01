@@ -9,6 +9,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 30px 30px;
+  height: 20%;
   border-bottom: 1px solid var(--color-gray);
 }
 
@@ -29,6 +30,7 @@
 }
 
 .cart__detail .cart__body {
+  height: 60%;
   padding: 30px 0;
 }
 
@@ -152,16 +154,16 @@
   cursor: pointer;
 }
 
-.cart__detail .cart__body .cart__total {
+.cart__detail .cart__total {
   padding: 50px 30px;
 }
 
-.cart__detail .cart__body .cart__total .total__detail {
+.cart__detail .cart__total .total__detail {
   padding: 20px 0;
   border-top: 1px solid var(--color-gray);
 }
 
-.cart__detail .cart__body .cart__total .total__detail .total__price {
+.cart__detail .cart__total .total__detail .total__price {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -170,21 +172,21 @@
           justify-content: space-between;
 }
 
-.cart__detail .cart__body .cart__total .total__detail .total__price p {
+.cart__detail .cart__total .total__detail .total__price p {
   font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 0.1rem;
 }
 
-.cart__detail .cart__body .cart__total .total__detail .total__price span {
+.cart__detail .cart__total .total__detail .total__price span {
   letter-spacing: 0.1rem;
 }
 
-.cart__detail .cart__body .cart__total .total__detail .total__button {
+.cart__detail .cart__total .total__detail .total__button {
   margin-top: 20px;
 }
 
-.cart__detail .cart__body .cart__total .total__detail .total__button .button__checkout {
+.cart__detail .cart__total .total__detail .total__button .button__checkout {
   position: relative;
   display: block;
   width: 100%;
@@ -198,7 +200,7 @@
   background-color: var(--color-black);
 }
 
-.cart__detail .cart__body .cart__total .total__detail .total__button .button__checkout::before {
+.cart__detail .cart__total .total__detail .total__button .button__checkout::before {
   position: absolute;
   content: "";
   top: 0;
@@ -213,7 +215,7 @@
   transition: width 0.7s ease-in-out;
 }
 
-.cart__detail .cart__body .cart__total .total__detail .total__button .button__checkout:hover::before {
+.cart__detail .cart__total .total__detail .total__button .button__checkout:hover::before {
   width: 120%;
 }
 /*# sourceMappingURL=cart.css.map */

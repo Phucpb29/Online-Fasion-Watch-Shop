@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Swal from "sweetalert2";
 import cartApi from "./api/cartApi";
+import userApi from "./api/userApi";
 import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
 import Footer from "./components/footer/footer";
@@ -49,14 +50,70 @@ function App() {
   };
 
   // đăng nhập tài khoản
-  function handleLogin() {
-    setStatusToken(true);
+  function handleLogin(email, password) {
+    try {
+      userApi
+        .login({
+          username: email,
+          password: password,
+        })
+        .then(function (response) {
+          if (response.status === 200) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: "ĐĂNG NHẬP THÀNH CÔNG",
+              icon: "success",
+              showConfirmButton: true,
+            }).then((value) => {
+              const { accessToken } = response.data;
+              sessionStorage.setItem("accessToken", accessToken);
+              setStatusToken(true);
+              if (value.value === true) {
+                window.location.replace("/");
+              }
+            });
+          }
+          if (response.status === 400) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: response.data,
+              icon: "error",
+              showConfirmButton: true,
+            });
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // đăng xuất tài khoản
   function handleLogout() {
-    setStatusToken(false);
-    setCartList([]);
+    Swal.fire({
+      title: "THÔNG BÁO",
+      text: "BẠN CÓ MUỐN ĐĂNG XUẤT TÀI KHOẢN",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "ĐĂNG XUẤT",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "Đăng xuất thành công. Hẹn gặp lại bạn sau!!!",
+          icon: "success",
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            sessionStorage.removeItem("accessToken");
+            setStatusToken(false);
+            setCartList([]);
+            window.location.replace("/");
+          }
+        });
+      }
+    });
   }
 
   // thêm sản phẩm vào local storage

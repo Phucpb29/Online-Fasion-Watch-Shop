@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from "react";
 import movado from "../../../assets/image/movado.jpg";
 import cartApi from "../../../api/cartApi";
+import PropTypes from "prop-types";
 
-function OrderCart() {
-  const [cart, setCart] = useState([]);
+OrderCart.prototype = {
+  cart: PropTypes.array,
+};
+
+function OrderCart(props) {
+  const { cart } = props;
+  // const [cartList, setCartList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   // render sản phẩm từ giỏ hàng
-  useEffect(() => {
-    const fetchDataCart = async () => {
-      const dataToken = await sessionStorage.getItem("accessToken");
-      const statusToken = (await dataToken) != null ? true : false;
-      if (statusToken) {
-        const response = await cartApi.viewCart();
-        setCart(response.data);
-      } else {
-        const response = await localStorage.getItem("cart");
-        const data = response != null ? JSON.parse(response) : [];
-        setCart(data);
-      }
-    };
-    fetchDataCart();
-  }, []);
+  // useEffect(() => {
+  //   const fetchDataCart = async () => {
+  //     const dataToken = await sessionStorage.getItem("accessToken");
+  //     const statusToken = (await dataToken) != null ? true : false;
+  //     if (statusToken) {
+  //       const response = await cartApi.viewCart();
+  //       setCartList(response.data);
+  //     } else {
+  //       const response = await localStorage.getItem("cart");
+  //       const data = response != null ? JSON.parse(response) : [];
+  //       setCartList(data);
+  //     }
+  //   };
+  //   fetchDataCart();
+  // }, []);
 
   // re-render lại tổng tiền giỏ hàng
   useEffect(() => {
@@ -41,7 +47,7 @@ function OrderCart() {
     };
     fetchTotalPrice();
     return () => {
-      fetchTotalPrice();
+      setTotalPrice(0);
     };
   }, [cart]);
 
@@ -75,7 +81,7 @@ function OrderCart() {
                 <span className="orderSummaryItem-category-1bK typography-gothicBody-3Gm" />
               </div>
               <div className="col-2-card-price">
-                {item.issale === true ? (
+                {item.issale ? (
                   <>
                     <span className>
                       {new Intl.NumberFormat("vi-VN", {

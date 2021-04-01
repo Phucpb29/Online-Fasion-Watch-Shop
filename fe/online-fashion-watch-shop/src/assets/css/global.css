@@ -43,6 +43,9 @@ li {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   z-index: 2;
   padding: 10px 20px;
@@ -92,7 +95,7 @@ li {
   top: 0;
   bottom: 0;
   right: 0;
-  width: 35%;
+  width: 45%;
   height: 100%;
   z-index: 3;
   -webkit-transform: translateX(100%);

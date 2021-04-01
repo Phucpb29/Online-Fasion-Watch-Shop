@@ -1,19 +1,17 @@
 import "boxicons";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import userApi from "../../api/userApi";
 import logoDw from "../../assets/image/dw-logo.jpg";
 import Imgleft from "../../assets/image/img-login.jpg";
 import "./css/login.css";
-import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
 
 Login.prototype = {
   handleLogin: PropTypes.func,
 };
 
 function Login(props) {
-  let history = useHistory();
   const { handleLogin } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,40 +27,42 @@ function Login(props) {
   // đăng nhập tài khoản
   const handleClickLogin = (e) => {
     e.preventDefault();
-    try {
-      userApi
-        .login({
-          username: email,
-          password: password,
-        })
-        .then(function (response) {
-          if (response.status === 200) {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: "ĐĂNG NHẬP THÀNH CÔNG",
-              icon: "success",
-              showConfirmButton: true,
-            }).then((value) => {
-              const { accessToken } = response.data;
-              sessionStorage.setItem("accessToken", accessToken);
-              if (value.value === true) {
-                history.push("/");
-                handleLogin();
-              }
-            });
-          }
-          if (response.status === 400) {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "error",
-              showConfirmButton: true,
-            });
-          }
-        });
-    } catch (error) {
-      console.log(error);
-    }
+    if (handleLogin) {
+      handleLogin(email, password);
+    } // try {
+    //   userApi
+    //     .login({
+    //       username: email,
+    //       password: password,
+    //     })
+    //     .then(function (response) {
+    //       if (response.status === 200) {
+    //         Swal.fire({
+    //           title: "THÔNG BÁO",
+    //           text: "ĐĂNG NHẬP THÀNH CÔNG",
+    //           icon: "success",
+    //           showConfirmButton: true,
+    //         }).then((value) => {
+    //           const { accessToken } = response.data;
+    //           sessionStorage.setItem("accessToken", accessToken);
+    //           if (value.value === true) {
+    //             window.location.replace("/");
+    //             handleLogin();
+    //           }
+    //         });
+    //       }
+    //       if (response.status === 400) {
+    //         Swal.fire({
+    //           title: "THÔNG BÁO",
+    //           text: response.data,
+    //           icon: "error",
+    //           showConfirmButton: true,
+    //         });
+    //       }
+    //     });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (

@@ -2,20 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import productApi from "../../../api/productApi";
 import movado from "../../../assets/image/movado.jpg";
+import PropTypes from "prop-types";
 
+FemaleBestSeller.prototype = {
+  productList: PropTypes.array,
+};
 function FemaleBestSeller(props) {
-  // danh sách sản phẩm bán chạy
-  const [bestSellerList, setBestSellerList] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await productApi.getBestSellerFemale();
-      setBestSellerList(response.data);
-    };
-    fetchData();
-    return () => {
-      fetchData();
-    };
-  }, []);
+  const { productList } = props;
 
   return (
     <div className="home__seller">
@@ -29,25 +22,30 @@ function FemaleBestSeller(props) {
         </span>
       </Link>
       <div className="seller__product">
-        {bestSellerList.map((item, index) => (
+        {productList.map((item, index) => (
           <div className="product__detail" key={index}>
+            <div className="product__wishlist">
+              <button className="product__wishlist-button">
+                <box-icon name="heart"></box-icon>
+              </button>
+            </div>
             <div className="product__img">
-              <img src={movado} alt="" />
+              <img src={item.indexImage} alt="" />
             </div>
             <div className="product__name">
-              <h3>{item.name}</h3>
+              <h3>{item.propduct.name}</h3>
             </div>
             <div className="product__price">
               <span>
                 {new Intl.NumberFormat("vi-VN", {
                   style: "currency",
                   currency: "VND",
-                }).format(item.price)}
+                }).format(item.propduct.price)}
               </span>
             </div>
             <div className="product__button">
               <Link
-                to={`/sanphamchitiet/${item.id}`}
+                to={`/sanphamchitiet/${item.propduct.id}`}
                 className="product__button-link"
               >
                 <span>XEM SẢN PHẨM</span>

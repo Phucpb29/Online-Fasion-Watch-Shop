@@ -5,13 +5,36 @@ import commentApi from "../../../../api/commentApi";
 DetailComment.propTypes = {
   commentList: PropTypes.array,
   countComment: PropTypes.number,
+  handleFirstPage: PropTypes.func,
+  handleChangePage: PropTypes.func,
+  handleLastPage: PropTypes.func,
 };
 
 function DetailComment(props) {
-  const { countComment, commentList } = props;
+  const {
+    countComment,
+    commentList,
+    handleFirstPage,
+    handleChangePage,
+    handleLastPage,
+  } = props;
 
-  const handleClickPageComment = (index) => {
-    console.log(index);
+  const handleClickPageComment = (page) => {
+    if (handleChangePage) {
+      handleChangePage(page);
+    }
+  };
+
+  const handleClickFirstPageComment = () => {
+    if (handleFirstPage) {
+      handleFirstPage();
+    }
+  };
+
+  const handleClickLastPageComment = () => {
+    if (handleLastPage) {
+      handleLastPage();
+    }
   };
 
   return (
@@ -19,7 +42,7 @@ function DetailComment(props) {
       <div className="comment__title">
         <span>ĐÁNH GIÁ SẢN PHẨM</span>
       </div>
-      {commentList !== [] ? (
+      {commentList.length > 0 ? (
         <>
           <div className="comment__content">
             {commentList.map((item, index) => (
@@ -43,7 +66,12 @@ function DetailComment(props) {
             ))}
           </div>
           <div className="pagination">
-            <button className="pagination__prev">Prev</button>
+            <button
+              className="pagination__prev"
+              onClick={handleClickFirstPageComment}
+            >
+              First
+            </button>
             <ul className="pagination__list">
               {[...Array(countComment).keys()].map((index) => (
                 <li
@@ -55,7 +83,12 @@ function DetailComment(props) {
                 </li>
               ))}
             </ul>
-            <button className="pagination__next">Next</button>
+            <button
+              className="pagination__next"
+              onClick={handleClickLastPageComment}
+            >
+              Last
+            </button>
           </div>
         </>
       ) : (

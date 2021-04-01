@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useHistory,
   useRouteMatch,
 } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -25,7 +24,6 @@ Account.propTypes = {
 function Account(props) {
   // const [name, setName] = useState("");
   // const
-  let history = useHistory();
   const { statusToken, openDialog, handleLogout } = props;
   const { path } = useRouteMatch();
   const [valueToken, setValueToken] = useState(statusToken);
@@ -38,30 +36,7 @@ function Account(props) {
   // đăng xuất tài khoản
   const handleClickLogout = () => {
     if (handleLogout) {
-      Swal.fire({
-        title: "THÔNG BÁO",
-        text: "BẠN CÓ MUỐN ĐĂNG XUẤT TÀI KHOẢN",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "ĐĂNG XUẤT",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: "Đăng xuất thành công. Hẹn gặp lại bạn sau!!!",
-            icon: "success",
-            showConfirmButton: true,
-          }).then((result) => {
-            if (result.isConfirmed) {
-              sessionStorage.removeItem("accessToken");
-              history.push("/");
-              handleLogout();
-            }
-          });
-        }
-      });
+      handleLogout();
     }
   };
 

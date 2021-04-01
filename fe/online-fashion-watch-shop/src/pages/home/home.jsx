@@ -22,6 +22,7 @@ function Home() {
       setListProductFemale(responseBSFemale.data);
       setLoading(false);
     };
+    fetchData();
     return () => {
       fetchData();
     };
@@ -58,8 +59,8 @@ function Home() {
               </Link>
             </div>
           </div>
-          <MaleBestSeller />
-          <FemaleBestSeller />
+          <MaleBestSeller productList={listProductMale} />
+          <FemaleBestSeller productList={listProductFemale} />
           <About />
         </div>
       )}

@@ -147,26 +147,26 @@ function CartModal(props) {
               </li>
             ))}
           </ul>
-          <div className="cart__total">
-            <div className="total__detail">
-              <div className="total__price">
-                <p>THÀNH TIỀN: </p>
-                <span>
-                  {new Intl.NumberFormat("vi-VN", {
-                    style: "currency",
-                    currency: "VND",
-                  }).format(totalPrice)}
-                </span>
-              </div>
-              <div className="total__button">
-                <Link
-                  to="/thanhtoan"
-                  className="button__checkout"
-                  onClick={handleCloseCart}
-                >
-                  ĐẶT HÀNG
-                </Link>
-              </div>
+        </div>
+        <div className="cart__total">
+          <div className="total__detail">
+            <div className="total__price">
+              <p>THÀNH TIỀN: </p>
+              <span>
+                {new Intl.NumberFormat("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                }).format(totalPrice)}
+              </span>
+            </div>
+            <div className="total__button">
+              <Link
+                to="/thanhtoan"
+                className="button__checkout"
+                onClick={handleCloseCart}
+              >
+                ĐẶT HÀNG
+              </Link>
             </div>
           </div>
         </div>
