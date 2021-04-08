@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import ReactLoading from "react-loading";
 import "./css/product-list.css";
 
@@ -15,7 +15,6 @@ ProductList.DefaultPropTypes = {
 
 function ProductList(props) {
   const { productList, changeProductList } = props;
-  const [listMale, setListMale] = useState([]);
   return (
     <div className="product__body">
       {changeProductList ? (

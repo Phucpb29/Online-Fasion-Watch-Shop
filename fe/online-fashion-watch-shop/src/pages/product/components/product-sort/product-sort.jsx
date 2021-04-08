@@ -3,15 +3,17 @@ import PropTypes from "prop-types";
 import "./css/product-sort.css";
 
 Sort.propTypes = {
+  productList: PropTypes.array,
   handleChangeSort: PropTypes.func,
 };
 
 Sort.DefaultPropTypes = {
+  productList: [],
   handleChangeSort: null,
 };
 
 function Sort(props) {
-  const { handleChangeSort } = props;
+  const { productList, handleChangeSort } = props;
   function sortItem(e) {
     if (handleChangeSort) {
       handleChangeSort(e.target.value);
@@ -21,7 +23,7 @@ function Sort(props) {
     <div className="product__top">
       <div className="product__top-left">
         <div className="product__quantity">
-          <span>8 sản phẩm</span>
+          <span>{productList.length} sản phẩm</span>
         </div>
       </div>
       <div className="product__top-right">

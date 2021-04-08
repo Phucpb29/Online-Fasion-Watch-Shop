@@ -14,7 +14,6 @@ Banner.DefaultPropTypes = {
 
 function Banner(props) {
   const { gender } = props;
-  console.log(gender);
   return (
     <div className="product__bannner">
       {gender === "male" ? <BannerMale /> : <BannerFemale />}

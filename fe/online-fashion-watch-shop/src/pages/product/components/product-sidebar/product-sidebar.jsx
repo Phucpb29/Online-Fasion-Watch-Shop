@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/product-sidebar.css";
 
 SideBar.propTypes = {
   brands: PropTypes.object,
   cords: PropTypes.object,
+  isChange: PropTypes.bool,
   handleCheckValue: PropTypes.func,
   handleChangePrice: PropTypes.func,
 };
@@ -12,6 +13,7 @@ SideBar.propTypes = {
 SideBar.DefaultPropTypes = {
   brands: {},
   cords: {},
+  isChange: false,
   handleCheckValue: null,
   handleChangePrice: null,
 };
@@ -21,11 +23,17 @@ function SideBar(props) {
   const newArray = [brands, cords];
   const [price, setPrice] = useState(0);
 
+  // truyền giá và status check
   const handleCheckBox = (e) => {
     const { value, checked } = e.target;
     if (handleCheckValue) {
       handleCheckValue(value, checked);
     }
+  };
+
+  // set giá khi kéo
+  const handleChangePriceInput = (e) => {
+    setPrice(e.target.value);
   };
 
   // thay đổi giá khi thả ra
@@ -34,11 +42,6 @@ function SideBar(props) {
       handleChangePrice(price);
     }
   }
-
-  // set giá khi kéo
-  const handleChangePriceInput = (e) => {
-    setPrice(e.target.value);
-  };
 
   return (
     <div className="sidebar__filter">

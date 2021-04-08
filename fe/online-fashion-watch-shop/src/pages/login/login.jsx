@@ -11,6 +11,10 @@ Login.prototype = {
   handleLogin: PropTypes.func,
 };
 
+Login.DefaultPropTypes = {
+  handleLogin: null,
+};
+
 function Login(props) {
   const { handleLogin } = props;
   const [email, setEmail] = useState("");
@@ -44,6 +48,7 @@ function Login(props) {
               const { accessToken } = response.data;
               sessionStorage.setItem("accessToken", accessToken);
               if (value.value === true) {
+                handleLogin();
                 window.location.replace("/");
               }
             });

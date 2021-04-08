@@ -1,9 +1,10 @@
 /* eslint-disable no-const-assign */
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import productApi from "../../api/productApi";
 import LoadingOverplay from "../../components/loading/loading";
 import Banner from "./components/product-banner/product-banner";
+import ProductError from "./components/product-error/product-error";
 import ProductList from "./components/product-list/product-list";
 import Pagination from "./components/product-pagination/product-pagination";
 import SideBar from "./components/product-sidebar/product-sidebar";
@@ -162,7 +163,7 @@ function Product() {
     setIsChange(!isChange);
   }
 
-  // giá sản phẩm
+  // thay đổi giá sản phẩm
   function handleChangePrice(value) {
     setMin(value);
     setPage(0);
@@ -170,39 +171,55 @@ function Product() {
     setIsChange(!isChange);
   }
 
+  // xoá filter
+  function handleClearAllFilter() {
+    window.location.replace(pathname);
+  }
+
   return (
     <>
       {loading ? (
         <LoadingOverplay />
       ) : (
-        <Router>
-          <div className="product">
-            <Banner gender={gender} />
-            <div className="product__main">
-              <div className="product__filter">
-                <SideBar
-                  brands={brands}
-                  cords={cords}
-                  handleCheckValue={handleCheckValue}
-                  handleChangePrice={handleChangePrice}
-                />
-              </div>
-              <div className="product__list">
-                <Sort handleChangeSort={handleChangeSort} />
-                <ProductList
-                  productList={productList}
-                  changeProductList={changeProductList}
-                />
-                <Pagination
-                  count={count}
-                  handleChangeFirstPage={handleChangeFirstPage}
-                  handleChangePage={handleChangePage}
-                  handleChangeLastPage={handleChangeLastPage}
-                />
-              </div>
+        <div className="product">
+          <Banner gender={gender} />
+          <div className="product__main">
+            <div className="product__filter">
+              <SideBar
+                brands={brands}
+                cords={cords}
+                handleCheckValue={handleCheckValue}
+                handleChangePrice={handleChangePrice}
+              />
+            </div>
+            <div className="product__list">
+              <Sort
+                productList={productList}
+                handleChangeSort={handleChangeSort}
+              />
+              {productList.length <= 0 ? (
+                <ProductError handleClearAllFilter={handleClearAllFilter} />
+              ) : (
+                <>
+                  <ProductList
+                    productList={productList}
+                    changeProductList={changeProductList}
+                  />
+                  <>
+                    {count > 1 && (
+                      <Pagination
+                        count={count}
+                        handleChangeFirstPage={handleChangeFirstPage}
+                        handleChangePage={handleChangePage}
+                        handleChangeLastPage={handleChangeLastPage}
+                      />
+                    )}
+                  </>
+                </>
+              )}
             </div>
           </div>
-        </Router>
+        </div>
       )}
     </>
   );

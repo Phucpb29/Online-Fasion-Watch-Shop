@@ -53,7 +53,7 @@ function DetailInfo(props) {
             Swal.fire({
               title: "THÔNG BÁO",
               text: response.data,
-              icon: "success",
+              icon: "error",
               showConfirmButton: true,
             });
           }
