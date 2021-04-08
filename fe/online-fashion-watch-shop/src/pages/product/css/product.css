@@ -3,12 +3,6 @@
   padding: 0;
 }
 
-.product .product__bannner {
-  width: 100%;
-  height: 300px;
-  background-color: gray;
-}
-
 .product .product__main {
   display: -webkit-box;
   display: -ms-flexbox;

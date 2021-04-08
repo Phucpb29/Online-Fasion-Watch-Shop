@@ -7,11 +7,21 @@ import FemaleBestSeller from "./components/female-bestSeller";
 import MaleBestSeller from "./components/male-bestSeller";
 import productApi from "../../api/productApi";
 import LoadingOverplay from "../../components/loading/loading";
+import PropTypes from "prop-types";
 
-function Home() {
+Home.prototype = {
+  handleAddWishlist: PropTypes.func,
+};
+
+Home.DefaultPropTypes = {
+  handleAddWishlist: null,
+};
+
+function Home(props) {
+  const { handleAddWishlist } = props;
   const [listProductMale, setListProductMale] = useState([]);
   const [listProductFemale, setListProductFemale] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // lấy data sản phẩm bán chạy nam và nữ
   useEffect(() => {
@@ -27,6 +37,13 @@ function Home() {
       fetchData();
     };
   }, []);
+
+  // yêu thích sản phẩm
+  function handleClickLike(id) {
+    if (handleAddWishlist) {
+      handleAddWishlist(id);
+    }
+  }
 
   return (
     <>
@@ -59,8 +76,14 @@ function Home() {
               </Link>
             </div>
           </div>
-          <MaleBestSeller productList={listProductMale} />
-          <FemaleBestSeller productList={listProductFemale} />
+          <MaleBestSeller
+            productList={listProductMale}
+            handleClickLike={handleClickLike}
+          />
+          <FemaleBestSeller
+            productList={listProductFemale}
+            handleClickLike={handleClickLike}
+          />
           <About />
         </div>
       )}

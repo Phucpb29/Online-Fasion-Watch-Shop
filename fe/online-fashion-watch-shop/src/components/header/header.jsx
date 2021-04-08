@@ -1,21 +1,27 @@
 import "boxicons";
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../dw-logo.jpg";
 import "./css/header.css";
 
 Header.prototype = {
   openCart: PropTypes.func,
-  itemAmount: PropTypes.number,
   statusToken: PropTypes.bool,
+  cartListSize: PropTypes.array,
+  wishListSize: PropTypes.array,
+};
+
+Header.DefaultPropTypes = {
+  statusToken: false,
+  cartListSize: [],
+  wishListSize: [],
 };
 
 function Header(props) {
-  const { openCart, itemAmount, statusToken } = props;
-  const [numberItem, setNumberItem] = useState(itemAmount);
+  const { openCart, statusToken, cartListSize, wishListSize } = props;
   const [isShowUser, setIsShowUser] = useState(false);
-  const [valueToken, setValueToken] = useState(statusToken);
+  const [keyWord, setKeyWord] = useState("");
 
   // mở giỏ hàng
   const handleOpenCart = () => {
@@ -24,32 +30,17 @@ function Header(props) {
     }
   };
 
-  // re-render valueToken sau mỗi lần refresh
-  // useEffect(() => {
-  //   setValueToken(statusToken);
-  // }, [statusToken]);
+  // handleChange input
+  const handleChangeInput = (e) => {
+    setKeyWord(e.target.value);
+  };
 
-  // re-render số lượng item trong giỏ hàng sau mỗi state itemAmount thay đổi
-  // useEffect(() => {
-  //   setNumberItem(itemAmount);
-  // }, [itemAmount]);
-
-  // // check valid token sau mỗi lần refresh
-  // useEffect(() => {
-  //   const checkValidToken = async () => {
-  //     console.log("Kiểm tra token sau mỗi lần F5");
-  //     const token = localStorage.getItem("accessToken");
-  //     if (token == null) return;
-  //     setStatusToken(true);
-  //     const response = await userApi.checkValidToken(token);
-  //     console.log(response.data);
-  //     if (response.data === true) return;
-  //     if (response.data === false) {
-  //       localStorage.removeItem("accessToken");
-  //     }
-  //   };
-  //   checkValidToken();
-  // });
+  // submit
+  const handleSubmitInput = (e) => {
+    e.preventDefault();
+    console.log(keyWord);
+    window.location.replace("/sanphamyeuthich");
+  };
 
   return (
     <header className="header">
@@ -74,10 +65,17 @@ function Header(props) {
           </ul>
         </div>
         <div className="header__main-center">
-          <form action="" className="form">
+          <form action="" className="form" onSubmit={handleSubmitInput}>
             <div className="form-control">
               <box-icon name="search-alt" className="icon" />
-              <input type="text" placeholder="Tìm kiếm ..." required />
+              <input
+                type="text"
+                name="search"
+                value={keyWord}
+                onChange={handleChangeInput}
+                placeholder="Tìm kiếm ..."
+                required
+              />
             </div>
           </form>
         </div>
@@ -101,7 +99,7 @@ function Header(props) {
                 : "header__user-dropdown"
             }
           >
-            {valueToken ? (
+            {statusToken ? (
               <div className="dropdown__item">
                 <Link to="/thongtintaikhoan" className="dropdown__item-link">
                   <span>TÀI KHOẢN</span>
@@ -126,12 +124,13 @@ function Header(props) {
             <button className="header__icon-btn">
               <box-icon name="cart" className="icon"></box-icon>
             </button>
-            <span className="cart__amount">{numberItem}</span>
+            <span className="cart__amount">{cartListSize}</span>
           </div>
           <div className="header__icon header__wishlist">
-            <div className="header__icon-link">
+            <Link to="/sanphamyeuthich" className="header__icon-link">
               <box-icon name="heart" className="icon"></box-icon>
-            </div>
+              <span className="wishlist__amount">{wishListSize}</span>
+            </Link>
           </div>
         </div>
       </div>

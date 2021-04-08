@@ -1,0 +1,33 @@
+.product__pagination {
+    display: flex;
+    justify-content: center;
+
+    .pagination__first,
+    .pagination__last {
+        padding: 10px 20px;
+        background-color: var(--color-black);
+        color: var(--color-white);
+        border: 0 !important;
+    }
+
+    .pagination__first:hover,
+    .pagination__last:hover {
+        cursor: pointer;
+        background-color: var(--color-success);
+    }
+
+    .pagination__list {
+        display: flex;
+
+        .pagination__item {
+            padding: 10px 20px;
+            border: 1px solid var(--color-gray);
+            margin: 0 10px;
+        }
+
+        .pagination__item:hover {
+            cursor: pointer;
+            background-color: var(--color-success);
+        }
+    }
+}

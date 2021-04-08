@@ -10,6 +10,11 @@ const dashboardApi = {
     const url = `/changePassword`;
     return axiosDashboardClient.post(url, body);
   },
+
+  updateInfo(body) {
+    const url = "updateInfo";
+    return axiosDashboardClient.post(url, body);
+  },
 };
 
 export default dashboardApi;

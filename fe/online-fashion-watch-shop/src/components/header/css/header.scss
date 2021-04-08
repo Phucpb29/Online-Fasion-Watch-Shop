@@ -127,6 +127,22 @@
         color: var(--color-white);
         font-weight: 500;
         top: -10px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-black);
+      }
+
+      .wishlist__amount {
+        position: absolute;
+        font-size: 0.6rem;
+        color: var(--color-white);
+        font-weight: 500;
+        top: -10px;
         right: 0;
         width: 20px;
         height: 20px;

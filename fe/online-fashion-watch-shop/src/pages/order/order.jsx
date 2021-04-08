@@ -7,8 +7,18 @@ import Swal from "sweetalert2";
 import dashboardApi from "../../api/dashboardApi";
 import cartApi from "../../api/cartApi";
 import LoadingOverplay from "../../components/loading/loading";
+import PropTypes from "prop-types";
 
-function Order() {
+Order.prototype = {
+  handleOrderCart: PropTypes.func,
+};
+
+Order.DefaultPropTypes = {
+  handleOrderCart: null,
+};
+
+function Order(props) {
+  const { handleOrderCart } = props;
   const [user, setUser] = useState({
     isdelete: false,
     id: "",
@@ -25,6 +35,7 @@ function Order() {
   });
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
+
   // đặt hàng
   function handleOrderSubmit(id, name, phone, address) {
     try {
@@ -35,13 +46,17 @@ function Order() {
           address: address,
         })
         .then(function (response) {
-          console.log(response.data);
           if (response.status === 200) {
             Swal.fire({
               title: "THÔNG BÁO",
               text: "ĐẶT HÀNG THÀNH CÔNG",
               icon: "success",
               showConfirmButton: true,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                handleOrderCart();
+                window.location.replace("/");
+              }
             });
           }
           if (response.status === 400) {
@@ -63,6 +78,7 @@ function Order() {
     }
   }
 
+  // lấy dữ liệu user khi đăng nhập và giỏ hàng
   useEffect(() => {
     const fetchData = async () => {
       const dataToken = sessionStorage.getItem("accessToken");
@@ -72,15 +88,10 @@ function Order() {
         const responseCart = await cartApi.viewCart();
         setUser(responseInfoUser.data);
         setCart(responseCart.data);
+        setLoading(false);
       }
-      setLoading(false);
     };
     fetchData();
-    return () => {
-      setUser({});
-      setCart([]);
-      setLoading(true);
-    };
   }, []);
 
   return (
@@ -88,18 +99,36 @@ function Order() {
       {loading ? (
         <LoadingOverplay />
       ) : (
-        <div className="row">
-          <div className="col-1">
-            <div className="container">
-              <OrderForm user={user} handleOrderSubmit={handleOrderSubmit} />
+        <>
+          {cart.length > 0 ? (
+            <div className="row">
+              <div className="col-1">
+                <div className="container">
+                  <OrderForm
+                    user={user}
+                    handleOrderSubmit={handleOrderSubmit}
+                  />
+                </div>
+              </div>
+              <div className="col-2">
+                <div className="container">
+                  <OrderCart cart={cart} />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="col-2">
-            <div className="container">
-              <OrderCart cart={cart} />
+          ) : (
+            <div className="order__content">
+              <div className="order__text">
+                <span>BẠN CHƯA CÓ GIỎ HÀNG</span>
+              </div>
+              <div className="order__back">
+                <a href="/" className="order__back-link">
+                  <span>QUAY LẠI TRANG CHỦ</span>
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
+          )}
+        </>
       )}
     </>
   );

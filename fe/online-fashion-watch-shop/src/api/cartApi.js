@@ -16,13 +16,13 @@ const cartApi = {
     return axiosCartClient.put(url, body);
   },
 
-  updateProduct(body) {
-    const url = "/updateProduct";
-    return axiosCartClient.put(url, body);
+  updateProduct(cartDetailID, newQuantity) {
+    const url = `/updateProduct/${cartDetailID}/${newQuantity}`;
+    return axiosCartClient.put(url);
   },
 
   deleteProduct(cartDetailID) {
-    const url = `/${cartDetailID}`;
+    const url = `/removeProduct/${cartDetailID}`;
     return axiosCartClient.delete(url);
   },
 };

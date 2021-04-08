@@ -171,6 +171,28 @@
   color: var(--color-white);
   font-weight: 500;
   top: -10px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--color-black);
+}
+
+.header__main .header__main-right .header__icon .wishlist__amount {
+  position: absolute;
+  font-size: 0.6rem;
+  color: var(--color-white);
+  font-weight: 500;
+  top: -10px;
   right: 0;
   width: 20px;
   height: 20px;

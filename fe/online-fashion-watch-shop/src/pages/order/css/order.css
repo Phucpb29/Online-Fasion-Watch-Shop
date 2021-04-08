@@ -432,3 +432,50 @@ input.input100 {
 .priceSummary-price-2_b {
   justify-self: end;
 }
+
+.order__content {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.order__content .order__text {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  margin: 20px 0;
+}
+
+.order__content .order__back {
+  margin: 20px 0;
+}
+
+.order__content .order__back .order__back-link {
+  display: flex;
+  position: relative;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 10px 50px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.order__content .order__back .order__back-link:before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: -10%;
+  z-index: -1;
+  transform: skew(-25deg);
+  transition: width .7s ease-in-out;
+  background-color: var(--color-success);
+}
+
+.order__content .order__back .order__back-link:hover:before {
+  width: 120%;
+}

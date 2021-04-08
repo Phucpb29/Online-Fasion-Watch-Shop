@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 OrderForm.prototype = {
   user: PropTypes.object,
@@ -8,6 +8,7 @@ OrderForm.prototype = {
 
 function OrderForm(props) {
   const { user, handleOrderSubmit } = props;
+  const [id, setId] = useState(user.id);
   const [name, setName] = useState(user.fullname);
   const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState(user.phone);
@@ -127,7 +128,7 @@ function OrderForm(props) {
       <div style={{ textAlign: "center" }}>
         <button
           type="button"
-          onClick={() => handleSubmitOrder(user.id, name, phone, address)}
+          onClick={() => handleSubmitOrder(id, name, phone, address)}
           className="oneStep-formSubmitBtn-yeP button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-bodyBold-2Ua typography-body-1BC typography-body-1BC"
         >
           ĐẶT HÀNG

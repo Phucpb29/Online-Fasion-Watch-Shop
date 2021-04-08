@@ -1,40 +1,23 @@
-import React, { useEffect, useState } from "react";
-import movado from "../../../assets/image/movado.jpg";
-import cartApi from "../../../api/cartApi";
 import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 
 OrderCart.prototype = {
   cart: PropTypes.array,
 };
 
+OrderCart.DefaultPropTypes = {
+  cart: [],
+};
+
 function OrderCart(props) {
   const { cart } = props;
-  // const [cartList, setCartList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-
-  // render sản phẩm từ giỏ hàng
-  // useEffect(() => {
-  //   const fetchDataCart = async () => {
-  //     const dataToken = await sessionStorage.getItem("accessToken");
-  //     const statusToken = (await dataToken) != null ? true : false;
-  //     if (statusToken) {
-  //       const response = await cartApi.viewCart();
-  //       setCartList(response.data);
-  //     } else {
-  //       const response = await localStorage.getItem("cart");
-  //       const data = response != null ? JSON.parse(response) : [];
-  //       setCartList(data);
-  //     }
-  //   };
-  //   fetchDataCart();
-  // }, []);
 
   // re-render lại tổng tiền giỏ hàng
   useEffect(() => {
     const fetchTotalPrice = async () => {
       const newTotalPrice = await cart.reduce(
-        (total, item) =>
-          Number(total) + Number(item.product_Price * item.quantity),
+        (total, item) => Number(total) + Number(item.totalPrice),
         0
       );
 
@@ -69,7 +52,7 @@ function OrderCart(props) {
                   className="image-image-2gD image-loaded-SHk"
                   height={70}
                   sizes="70px"
-                  src={movado}
+                  src={item.indexImage}
                   width={70}
                 />
               </div>
@@ -83,40 +66,20 @@ function OrderCart(props) {
               <div className="col-2-card-price">
                 {item.issale ? (
                   <>
-                    <span className>
+                    <span>
                       {new Intl.NumberFormat("vi-VN", {
                         style: "currency",
                         currency: "VND",
-                      }).format(item.total)}
-                      {/* <span>{item.total}</span>
-                      <span>299</span>
-                      <span>.</span>
-                      <span>000</span> 
-                      <span>&nbsp;</span>
-                      <span>₫</span> */}
+                      }).format(item.totalPrice)}
                     </span>
-                    <span class="orderSummaryItem-priceOriginal-2Gn">
-                      {/* <span>2</span>
-                      <span>.</span>
-                      <span>599</span>
-                      <span>.</span>
-                      <span>000</span>
-                      <span>&nbsp;</span>
-                      <span>₫</span> */}
-                    </span>
+                    <span className="orderSummaryItem-priceOriginal-2Gn"></span>
                   </>
                 ) : (
-                  <span className>
+                  <span>
                     {new Intl.NumberFormat("vi-VN", {
                       style: "currency",
                       currency: "VND",
-                    }).format(item.total)}
-                    {/* <span>{item.total}</span>
-                    <span>299</span>
-                    <span>.</span>
-                    <span>000</span>
-                    <span>&nbsp;</span>
-                    <span>₫</span> */}
+                    }).format(item.product.price * item.quantity)}
                   </span>
                 )}
               </div>
@@ -133,7 +96,7 @@ function OrderCart(props) {
                 placeholder="Nhập mã giảm giá"
                 className="couponCode-couponCodeEntryField-39M textInput-input-3vj field-input"
                 name="couponCode"
-                style={{}}
+                // style={{}}
               />
             </span>
             <span className="fieldIcons-before-3Wt" />
@@ -145,11 +108,10 @@ function OrderCart(props) {
           <button
             className="couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd"
             type="submit"
-            style={{}}
+            // style={{}}
           >
-            <span className="button-content-3AN" style={{}}>
-              Sử dụng
-            </span>
+            {/* <span className="button-content-3AN" style={{}}> */}
+            <span className="button-content-3AN">Sử dụng</span>
           </button>
         </div>
       </form>

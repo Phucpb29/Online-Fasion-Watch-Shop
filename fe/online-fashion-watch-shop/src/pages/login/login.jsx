@@ -27,42 +27,39 @@ function Login(props) {
   // đăng nhập tài khoản
   const handleClickLogin = (e) => {
     e.preventDefault();
-    if (handleLogin) {
-      handleLogin(email, password);
-    } // try {
-    //   userApi
-    //     .login({
-    //       username: email,
-    //       password: password,
-    //     })
-    //     .then(function (response) {
-    //       if (response.status === 200) {
-    //         Swal.fire({
-    //           title: "THÔNG BÁO",
-    //           text: "ĐĂNG NHẬP THÀNH CÔNG",
-    //           icon: "success",
-    //           showConfirmButton: true,
-    //         }).then((value) => {
-    //           const { accessToken } = response.data;
-    //           sessionStorage.setItem("accessToken", accessToken);
-    //           if (value.value === true) {
-    //             window.location.replace("/");
-    //             handleLogin();
-    //           }
-    //         });
-    //       }
-    //       if (response.status === 400) {
-    //         Swal.fire({
-    //           title: "THÔNG BÁO",
-    //           text: response.data,
-    //           icon: "error",
-    //           showConfirmButton: true,
-    //         });
-    //       }
-    //     });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      userApi
+        .login({
+          username: email,
+          password: password,
+        })
+        .then(function (response) {
+          if (response.status === 200) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: "ĐĂNG NHẬP THÀNH CÔNG",
+              icon: "success",
+              showConfirmButton: true,
+            }).then((value) => {
+              const { accessToken } = response.data;
+              sessionStorage.setItem("accessToken", accessToken);
+              if (value.value === true) {
+                window.location.replace("/");
+              }
+            });
+          }
+          if (response.status === 400) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: response.data,
+              icon: "error",
+              showConfirmButton: true,
+            });
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
