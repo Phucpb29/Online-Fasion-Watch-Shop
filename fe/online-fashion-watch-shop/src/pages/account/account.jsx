@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Link,
   useRouteMatch,
 } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -23,38 +24,33 @@ Account.propTypes = {
   statusToken: PropTypes.bool,
 };
 
+Account.DefaultPropTypes = {
+  openDialog: null,
+  handleLogout: null,
+  statusToken: false,
+};
+
 function Account(props) {
-  // const [name, setName] = useState("");
-  // const
   const { statusToken, openDialog, handleLogout } = props;
   const { path } = useRouteMatch();
-  const [user, setUser] = useState({
-    isdelete: false,
-    id: "",
-    address: "",
-    birthday: "",
-    fullname: "",
-    email: "",
-    password: "",
-    phone: "",
-    update_date: "",
-    created_date: "",
-    username: "",
-    gender: false,
-  });
-  const [valueToken, setValueToken] = useState(statusToken);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
 
-  // kiểm tra user đăng nhập khi gõ url
+  // lấy thông tin user khi đăng nhập
   useEffect(() => {
-    setValueToken(statusToken);
+    const fetchData = async () => {
+      if (statusToken) {
+        const response = await dashboardApi.getInfo();
+        setUser(response.data);
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, [statusToken]);
+
+  const [loading, setLoading] = useState(true);
 
   // đăng xuất tài khoản
   const handleClickLogout = () => {
-    // if (handleLogout) {
-    //   handleLogout();
-    // }
     Swal.fire({
       title: "THÔNG BÁO",
       text: "BẠN CÓ MUỐN ĐĂNG XUẤT TÀI KHOẢN",
@@ -133,24 +129,12 @@ function Account(props) {
           Swal.fire({
             title: "THÔNG BÁO",
             text: response.data,
-            icon: "success",
-            showConfirmButton: false,
+            icon: "error",
+            showConfirmButton: true,
           });
         }
       });
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await dashboardApi.getInfo();
-      setUser(response.data);
-      setLoading(false);
-    };
-    fetchData();
-    return () => {
-      fetchData();
-    };
-  }, [user]);
 
   return (
     <div>
@@ -166,23 +150,23 @@ function Account(props) {
           <div className="account__navlink">
             <ul className="navlink__list">
               <li className="link__item">
-                <a href={path} className="link">
+                <Link to={path} className="link">
                   <span>Thông tin cá nhân</span>
-                </a>
+                </Link>
               </li>
               <li className="link__item">
-                <a href={`${path}/lichsumuahang`} className="link">
+                <Link to={`${path}/lichsumuahang`} className="link">
                   <span>Lịch sử mua hàng</span>
-                </a>
+                </Link>
               </li>
               <li className="link__item">
-                <a href={`${path}/doimatkhau`} className="link">
+                <Link to={`${path}/doimatkhau`} className="link">
                   <span>Đổi mật khẩu</span>
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="navlink__logout">
-              {valueToken && (
+              {statusToken && (
                 <button className="btn__logout" onClick={handleClickLogout}>
                   <span>Đăng xuất</span>
                   <box-icon name="log-in-circle"></box-icon>
@@ -191,7 +175,7 @@ function Account(props) {
             </div>
           </div>
           <div className="account__box">
-            {valueToken ? (
+            {statusToken ? (
               <>
                 {loading ? (
                   <LoadingOverplay />
@@ -203,10 +187,10 @@ function Account(props) {
                         handleUpdateUserInfo={handleUpdateUserInfo}
                       />
                     </Route>
-                    <Route path={`${path}/lichsumuahang`}>
+                    <Route exact path={`${path}/lichsumuahang`}>
                       <AccountOrder openDialog={openDialog} />
                     </Route>
-                    <Route path={`${path}/doimatkhau`}>
+                    <Route exact path={`${path}/doimatkhau`}>
                       <AccountPassword />
                     </Route>
                     <Route>

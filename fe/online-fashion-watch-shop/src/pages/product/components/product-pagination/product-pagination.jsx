@@ -4,6 +4,7 @@ import "./css/product-pagination.css";
 
 Pagination.propTypes = {
   cout: PropTypes.number,
+  page: PropTypes.number,
   handleChangeFirstPage: PropTypes.func,
   handleChangePage: PropTypes.func,
   handleChangeLastPage: PropTypes.func,
@@ -11,6 +12,7 @@ Pagination.propTypes = {
 
 Pagination.DefaultPropTypes = {
   count: 0,
+  page: 0,
   handleChangeFirstPage: null,
   handleChangePage: null,
   handleChangeLastPage: null,
@@ -19,6 +21,7 @@ Pagination.DefaultPropTypes = {
 function Pagination(props) {
   const {
     count,
+    page,
     handleChangeFirstPage,
     handleChangePage,
     handleChangeLastPage,
@@ -46,7 +49,11 @@ function Pagination(props) {
       <ul className="pagination__list">
         {[...Array(count).keys()].map((index) => (
           <li
-            className="pagination__item"
+            className={
+              index === page
+                ? "pagination__item pagination__active"
+                : "pagination__item"
+            }
             key={index}
             onClick={() => changePage(index)}
           >

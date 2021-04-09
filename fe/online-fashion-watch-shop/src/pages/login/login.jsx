@@ -2,6 +2,7 @@ import "boxicons";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import cartApi from "../../api/cartApi";
 import userApi from "../../api/userApi";
 import logoDw from "../../assets/image/dw-logo.jpg";
 import Imgleft from "../../assets/image/img-login.jpg";
@@ -47,8 +48,8 @@ function Login(props) {
             }).then((value) => {
               const { accessToken } = response.data;
               sessionStorage.setItem("accessToken", accessToken);
+              handleLogin();
               if (value.value === true) {
-                handleLogin();
                 window.location.replace("/");
               }
             });

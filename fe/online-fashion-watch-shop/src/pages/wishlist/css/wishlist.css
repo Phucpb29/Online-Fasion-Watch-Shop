@@ -12,7 +12,7 @@
 .wishlist__body .wishlist__banner {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 400px;
   background-image: url("../../../assets/image/wishlist-banner.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,8 +32,15 @@
           align-items: center;
   width: 100%;
   height: 100%;
+}
+
+.wishlist__body .wishlist__banner .wishlist__title span {
+  font-size: 2rem;
   color: var(--color-white);
-  font-size: 2.2rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  padding: 20px;
+  border: 3px solid var(--color-white);
 }
 
 .wishlist__body .wishlist__banner::before {
@@ -93,7 +100,7 @@
 }
 
 .wishlist__body .wishlist__body-box .wishlist__error .wishlist__error-box .wishlist__title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin: 50px 0;
 }
@@ -128,8 +135,8 @@
   -webkit-transform: skew(-25deg);
           transform: skew(-25deg);
   background-color: var(--color-success);
-  -webkit-transition: width .7s ease-in-out;
-  transition: width .7s ease-in-out;
+  -webkit-transition: width 0.7s ease-in-out;
+  transition: width 0.7s ease-in-out;
 }
 
 .wishlist__body .wishlist__body-box .wishlist__error .wishlist__error-box .wishlist__back .link__back:hover:before {
@@ -223,10 +230,10 @@
   background-color: var(--color-white);
   border-radius: 100%;
   z-index: -1;
-  -webkit-transition: -webkit-transform .5s ease-in-out;
-  transition: -webkit-transform .5s ease-in-out;
-  transition: transform .5s ease-in-out;
-  transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
 }
 
 .wishlist__body .wishlist__body-box .wishlist__list .wishlist__list-item .item__wishlist .item__unwishlist .item__unwishlist-button:hover {
@@ -320,8 +327,8 @@
   -webkit-transform: skew(-25deg);
           transform: skew(-25deg);
   background-color: var(--color-success);
-  -webkit-transition: width .7s ease-in-out;
-  transition: width .7s ease-in-out;
+  -webkit-transition: width 0.7s ease-in-out;
+  transition: width 0.7s ease-in-out;
 }
 
 .wishlist__body .wishlist__body-box .wishlist__list .wishlist__list-item .item__wishlist .item__wishlist-detail .item__button .button__more-detail:hover::before {

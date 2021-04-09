@@ -11,15 +11,17 @@ import "./css/detail.css";
 ProductDetail.prototype = {
   id: PropTypes.string,
   addProduct: PropTypes.func,
+  likeProduct: PropTypes.func,
 };
 
 ProductDetail.DefaultPropTypes = {
   id: "",
   addProduct: null,
+  likeProduct: null,
 };
 
 function ProductDetail(props) {
-  const { id, addProduct } = props;
+  const { id, addProduct, likeProduct } = props;
   const size = 6;
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -77,6 +79,12 @@ function ProductDetail(props) {
     }
   }
 
+  function handleLikeProduct() {
+    if (likeProduct) {
+      likeProduct();
+    }
+  }
+
   return (
     <>
       {loading ? (
@@ -89,6 +97,7 @@ function ProductDetail(props) {
             indexImage={dataProduct.indexImage}
             addtionalImages={dataProduct.addtionalImages}
             handleAddProduct={handleAddProduct}
+            handleLikeProduct={handleLikeProduct}
           />
           <DetailProperty propertyList={propertyDetailList} />
           <DetailComment

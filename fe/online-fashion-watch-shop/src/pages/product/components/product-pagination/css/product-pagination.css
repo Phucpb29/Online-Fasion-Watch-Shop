@@ -27,6 +27,11 @@
   display: flex;
 }
 
+.product__pagination .pagination__list .pagination__active {
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
 .product__pagination .pagination__list .pagination__item {
   padding: 10px 20px;
   border: 1px solid var(--color-gray);
@@ -35,6 +40,7 @@
 
 .product__pagination .pagination__list .pagination__item:hover {
   cursor: pointer;
-  background-color: var(--color-success);
+  color: var(--color-white);
+  background-color: var(--color-black);
 }
 /*# sourceMappingURL=product-pagination.css.map */

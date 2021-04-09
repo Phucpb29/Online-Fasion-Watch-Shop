@@ -49,8 +49,8 @@ function CartModal(props) {
         if (response.status === 200) {
           setCart(response.data);
         } else {
-          const newCart = await cartApi.createCart();
-          setCart(newCart.data);
+          await cartApi.createCart();
+          setCart([]);
         }
       }
     };
@@ -60,16 +60,15 @@ function CartModal(props) {
   // re-render lại tổng tiền giỏ hàng
   useEffect(() => {
     const fetchTotalPrice = async () => {
-      const newTotalPrice = await cart.reduce(
-        (total, item) => Number(total) + Number(item.totalPrice),
-        0
-      );
-      setTotalPrice(newTotalPrice);
+      if (cart.length > 0) {
+        const newTotalPrice = await cart.reduce(
+          (total, item) => Number(total) + Number(item.totalPrice),
+          0
+        );
+        setTotalPrice(newTotalPrice);
+      }
     };
     fetchTotalPrice();
-    return () => {
-      fetchTotalPrice();
-    };
   }, [cart]);
 
   // tăng số lượng sản phẩm

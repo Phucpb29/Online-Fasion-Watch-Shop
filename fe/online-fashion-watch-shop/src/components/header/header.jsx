@@ -1,7 +1,7 @@
 import "boxicons";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import logo from "../../dw-logo.jpg";
 import "./css/header.css";
 
@@ -10,16 +10,27 @@ Header.prototype = {
   statusToken: PropTypes.bool,
   cartListSize: PropTypes.array,
   wishListSize: PropTypes.array,
+  handleSearchKeyword: PropTypes.func,
 };
 
 Header.DefaultPropTypes = {
   statusToken: false,
   cartListSize: [],
   wishListSize: [],
+  handleSearchKeyword: null,
 };
 
 function Header(props) {
-  const { openCart, statusToken, cartListSize, wishListSize } = props;
+  const { pathname } = useLocation();
+  const history = useHistory();
+  const activeLink = pathname.slice(pathname.lastIndexOf("/") + 1);
+  const {
+    openCart,
+    statusToken,
+    cartListSize,
+    wishListSize,
+    handleSearchKeyword,
+  } = props;
   const [isShowUser, setIsShowUser] = useState(false);
   const [keyWord, setKeyWord] = useState("");
 
@@ -35,11 +46,11 @@ function Header(props) {
     setKeyWord(e.target.value);
   };
 
-  // submit
+  // submit input
   const handleSubmitInput = (e) => {
     e.preventDefault();
-    console.log(keyWord);
-    window.location.replace("/sanphamyeuthich");
+    handleSearchKeyword(keyWord);
+    history.replace(`/timkiemsanpham/${keyWord}`);
   };
 
   return (
@@ -53,12 +64,24 @@ function Header(props) {
           </h1>
           <ul className="header__category">
             <li className="category__item">
-              <a href="/sanpham/gioitinh/nam" className="item__link">
+              <a
+                href="/sanpham/gioitinh/nam"
+                className={
+                  activeLink === "nam"
+                    ? "item__link item__active"
+                    : "item__link"
+                }
+              >
                 ĐỒNG HỒ NAM
               </a>
             </li>
             <li className="category__item">
-              <a href="/sanpham/gioitinh/nu" className="item__link">
+              <a
+                href="/sanpham/gioitinh/nu"
+                className={
+                  activeLink === "nu" ? "item__link item__active" : "item__link"
+                }
+              >
                 ĐỒNG HỒ NỮ
               </a>
             </li>

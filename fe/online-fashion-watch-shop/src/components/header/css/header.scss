@@ -40,6 +40,12 @@
           color: var(--color-gray);
         }
 
+        .item__active {
+          font-weight: bold;
+          color: var(--color-black);
+          border-bottom: 2px solid var(--color-black);
+        }
+
         .item__link:before {
           content: "";
           position: absolute;
@@ -165,7 +171,6 @@
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 
       .dropdown__item {
-
         .dropdown__item-link {
           color: var(--color-black);
           font-size: 0.8rem;

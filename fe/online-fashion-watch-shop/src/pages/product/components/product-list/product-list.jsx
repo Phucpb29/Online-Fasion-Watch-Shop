@@ -23,7 +23,7 @@ function ProductList(props) {
         </div>
       ) : (
         <ul className="list__product">
-          {productList.map((item, index) => (
+          {productList.map((item) => (
             <li key={item.product.id} className="product__item">
               <div className="product__card">
                 <div className="product__card-detail">

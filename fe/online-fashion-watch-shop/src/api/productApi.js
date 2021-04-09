@@ -70,6 +70,16 @@ const productApi = {
     const url = `/gender/${gender}/totalRecord/${size}/${min}/${max}/${propertyId}`;
     return axiosProductClient.get(url);
   },
+
+  getProductByKeyWord(page, size, sort, keyword) {
+    const url = `search/result/${page}/${size}/${sort}/${keyword}`;
+    return axiosProductClient.get(url);
+  },
+
+  getCountPageProductSearch(size, keyword) {
+    const url = `search/result/totalRecord/${size}/${keyword}`;
+    return axiosProductClient.get(url);
+  },
 };
 
 export default productApi;

@@ -110,6 +110,42 @@
           width: 120%;
           transition: width 0.7s ease-in-out;
         }
+
+        .product__add {
+          margin-left: 20px;
+        }
+
+        .product__like {
+          display: flex;
+          align-items: center;
+          position: relative;
+          padding: 10px 15px;
+          border: 0 !important;
+          z-index: 0;
+          background-color: var(--color-white);
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .product__like::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          transform: scale(0);
+          background-color: gainsboro;
+          transition: transform 0.3s ease-in-out;
+        }
+
+        .product__like:hover {
+          cursor: pointer;
+        }
+
+        .product__like:hover::before {
+          transform: scale(1);
+        }
       }
     }
   }

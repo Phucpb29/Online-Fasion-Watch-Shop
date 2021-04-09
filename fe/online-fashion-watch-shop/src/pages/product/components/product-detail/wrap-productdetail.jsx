@@ -6,14 +6,16 @@ import PropTypes from "prop-types";
 
 WrapProductDetai.prototype = {
   handleAddProduct: PropTypes.func,
+  handleLikeProduct: PropTypes.func,
 };
 
 WrapProductDetai.DefaultPropTypes = {
   handleAddProduct: null,
+  handleLikeProduct: null,
 };
 
 function WrapProductDetai(props) {
-  const { handleAddProduct } = props;
+  const { handleAddProduct, handleLikeProduct } = props;
   const params = useParams();
   var intParams = Number(params.id);
 
@@ -22,12 +24,23 @@ function WrapProductDetai(props) {
       handleAddProduct();
     }
   }
+
+  function likeProduct() {
+    if (handleLikeProduct) {
+      handleLikeProduct();
+    }
+  }
+
   return (
     <div>
       {isNaN(intParams) ? (
         <Error />
       ) : (
-        <ProductDetail id={intParams} addProduct={addProduct} />
+        <ProductDetail
+          id={intParams}
+          addProduct={addProduct}
+          likeProduct={likeProduct}
+        />
       )}
     </div>
   );

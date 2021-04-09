@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import Swal from "sweetalert2";
 import cartApi from "../../../../api/cartApi";
+import "boxicons";
+import wishlistApi from "../../../../api/wishlistApi";
 
 DetailInfo.propTypes = {
   product: PropTypes.object,
@@ -9,6 +11,7 @@ DetailInfo.propTypes = {
   indexImage: PropTypes.string,
   addtionalImages: PropTypes.array,
   handleAddProduct: PropTypes.func,
+  handleLikeProduct: PropTypes.func,
 };
 
 DetailInfo.DefaultPropTypes = {
@@ -17,6 +20,7 @@ DetailInfo.DefaultPropTypes = {
   indexImage: "",
   addtionalImages: [],
   handleAddProduct: null,
+  handleLikeProduct: null,
 };
 
 function DetailInfo(props) {
@@ -26,8 +30,10 @@ function DetailInfo(props) {
     indexImage,
     addtionalImages,
     handleAddProduct,
+    handleLikeProduct,
   } = props;
 
+  // thêm sản phẩm
   function addProduct(product) {
     try {
       cartApi
@@ -60,6 +66,41 @@ function DetailInfo(props) {
         });
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  // yêu thích sản phẩm
+  function likeProduct(id) {
+    try {
+      wishlistApi.like(id).then(function (response) {
+        if (response.status === 200) {
+          Swal.fire({
+            title: "THÔNG BÁO",
+            text: response.data,
+            icon: "success",
+            showConfirmButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              handleLikeProduct();
+            }
+          });
+        } else {
+          Swal.fire({
+            title: "THÔNG BÁO",
+            text: response.data,
+            icon: "error",
+            showConfirmButton: true,
+          });
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "XẢY RA LỖI! VUI LÒNG THỬ LẠI.",
+        icon: "error",
+        showConfirmButton: true,
+      });
     }
   }
 
@@ -121,9 +162,17 @@ function DetailInfo(props) {
             </div>
           </div>
           <div className="product__info-group">
+            <button
+              className="product__button-like product__like"
+              onClick={() => likeProduct(product.id)}
+            >
+              <span>
+                <box-icon name="heart" type="solid"></box-icon>
+              </span>
+            </button>
             {product.quantity > 0 && (
               <button
-                className="product__button"
+                className="product__button product__add"
                 onClick={() => addProduct(product)}
               >
                 <span>THÊM VÀO GIỎ HÀNG</span>

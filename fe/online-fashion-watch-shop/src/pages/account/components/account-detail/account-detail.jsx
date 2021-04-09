@@ -7,6 +7,11 @@ AccountDetail.prototype = {
   handleUpdateUserInfo: PropTypes.func,
 };
 
+AccountDetail.DefaultPropTypes = {
+  user: {},
+  handleUpdateUserInfo: null,
+};
+
 function AccountDetail(props) {
   const { user, handleUpdateUserInfo } = props;
   const [fullname, setFullName] = useState(user.fullname);
@@ -21,7 +26,6 @@ function AccountDetail(props) {
   };
   const handleChangeGender = (e) => {
     setGender(e.target.value);
-    console.log(e.target.value);
   };
   const handleChangeBirthday = (e) => {
     setBirthday(e.target.value);
@@ -37,15 +41,6 @@ function AccountDetail(props) {
   };
   const handleSummitForm = (e) => {
     e.preventDefault();
-    console.log(
-      "User Child",
-      fullname,
-      gender,
-      birthday,
-      email,
-      phone,
-      address
-    );
     if (handleUpdateUserInfo) {
       handleUpdateUserInfo(fullname, gender, phone, birthday, email, address);
     }
@@ -77,7 +72,7 @@ function AccountDetail(props) {
               <input
                 type="radio"
                 name="gender"
-                value="true"
+                value={gender}
                 checked={gender === true}
                 onChange={handleChangeGender}
               />
@@ -85,7 +80,7 @@ function AccountDetail(props) {
               <input
                 type="radio"
                 name="gender"
-                value="false"
+                value={gender}
                 checked={gender === false}
                 onChange={handleChangeGender}
               />
@@ -145,6 +140,7 @@ function AccountDetail(props) {
                 value={email}
                 onChange={handleChangeEmail}
                 required
+                disabled
               />
             </div>
           </div>

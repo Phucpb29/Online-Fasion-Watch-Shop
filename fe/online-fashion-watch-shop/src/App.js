@@ -26,16 +26,18 @@ import WrapProductDetai from "./pages/product/components/product-detail/wrap-pro
 import Register from "./pages/register/register";
 import Resetpass from "./pages/resetpass/resetpass";
 import WishList from "./pages/wishlist/wishlist";
+import ProductSearch from "./pages/product/components/product-search/product-search";
+import WrapProductSearch from "./pages/product/components/product-search/wrap-productsearch";
 
 function App() {
-  const [cartList, setCartList] = useState([]);
-  const [wishList, setWishList] = useState([]);
   const [cartListSize, setCartListSize] = useState(0);
   const [wishListSize, setWishListSize] = useState(0);
   const [cartChange, setCartChange] = useState(false);
+  const [wishChange, setWishChange] = useState(false);
   const [statusCart, setStatusCart] = useState(false);
   const [isOpenDialog, setIsOpenDiaglog] = useState(false);
   const [statusToken, setStatusToken] = useState(false);
+  const [keyword, setKeyword] = useState("");
 
   /* tương tác đóng mở giỏ hàng */
   // mở giỏ hàng
@@ -67,7 +69,6 @@ function App() {
   // đăng xuất tài khoản
   function handleLogout() {
     setStatusToken(false);
-    setCartList([]);
   }
 
   // render lại value khi token thay đổi
@@ -79,92 +80,35 @@ function App() {
   /* đăng nhập và đăng xuất */
 
   /* sản phẩm yêu thích */
-  // lấy danh sách sản phẩm yêu thích khi đăng nhập
+  // render lại số lượng sản phẩm yêu thích khi wishChange thay đổi
   useEffect(() => {
     const fetchData = async () => {
-      const response = await wishlistApi.getAll();
-      const data = response.data;
-      setWishList(data);
-      setWishListSize(data.length);
+      if (statusToken) {
+        const response = await wishlistApi.getAll();
+        const data = response.data;
+        setWishListSize(data.length);
+      }
     };
-    if (statusToken) {
-      fetchData();
-    }
-    return () => {
-      fetchData();
-    };
-  }, [statusToken]);
+    fetchData();
+  });
 
-  // render lại wishlist local storage khi wishList thay đổi
-  useEffect(() => {
-    if (statusToken) {
-      localStorage.setItem("wishList", JSON.stringify(wishList));
-    }
-  }, [wishList, statusToken]);
-
-  // render lại số lượng sản phẩm yêu thích
-  useEffect(() => {
-    if (statusToken) {
-      const response = localStorage.getItem("wishList");
-      const data = response !== null ? JSON.parse(response) : [];
-      setWishListSize(data.length);
-    }
-  }, [wishList, statusToken]);
-
-  // thêm sản phẩm vào danh sách yêu thích
-  function handleAddWishlist(idProduct) {
-    try {
-      // if (statusToken) {
-
-      // } else {
-      //   Swal.fire({
-      //     title: "THÔNG BÁO",
-      //     text: "BẠN CẦN PHẢI ĐĂNG NHẬP",
-      //     icon: "error",
-      //     showConfirmButton: true,
-      //   });
-      // }
-      wishlistApi.like(idProduct).then(function (response) {
-        if (response.status === 200) {
-          console.log(response);
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: "ĐÃ THÍCH SẢN PHẨM",
-            icon: "success",
-            showConfirmButton: true,
-          });
-        }
-        if (response.status === 400) {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: "CÓ LỖI XẢY RA! VUI LÒNG THỬ LẠI",
-            icon: "error",
-            showConfirmButton: true,
-          });
-        }
-      });
-    } catch (error) {
-      Swal.fire({
-        title: "THÔNG BÁO",
-        text: "CÓ LỖI XẢY RA! VUI LÒNG THỬ LẠI",
-        icon: "error",
-        showConfirmButton: true,
-      });
-    }
+  // yêu thích sản phẩm
+  function handleLikeProduct() {
+    setWishChange(!wishChange);
   }
   /* sản phẩm yêu thích */
 
   /* giỏ hàng */
   // render lại số lượng giỏ hàng khi cartChange thay đổi
   useEffect(() => {
-    if (statusToken) {
-      const fetchData = async () => {
+    const fetchData = async () => {
+      if (statusToken) {
         const response = await cartApi.viewCart();
         const data = response.data;
         setCartListSize(data.length);
-      };
-      fetchData();
-    }
+      }
+    };
+    fetchData();
   }, [statusToken, cartChange]);
 
   // thêm sản phẩm
@@ -190,6 +134,13 @@ function App() {
   }
   /* thanh toán */
 
+  /* tìm kiếm */
+  // tìm kiếm theo tên
+  function handleSearchKeyword(keyword) {
+    setKeyword(keyword);
+  }
+  /* tìm kiếm */
+
   return (
     <Router>
       <Header
@@ -197,6 +148,7 @@ function App() {
         statusToken={statusToken}
         cartListSize={cartListSize}
         wishListSize={wishListSize}
+        handleSearchKeyword={handleSearchKeyword}
       />
       <OverPlay statusCart={statusCart} closeCart={closeCart} />
       <CartModal
@@ -208,14 +160,13 @@ function App() {
         handleDeleteProduct={handleDeleteProduct}
       />
       <DialogComment isOpenDialog={isOpenDialog} />
-
       <div className="main">
         <Switch>
           <Route exact path="/">
-            <Home handleAddWishlist={handleAddWishlist} />
+            <Home />
           </Route>
           <Redirect from="/trangchu" to="/">
-            <Home handleAddWishlist={handleAddWishlist} />
+            <Home />
           </Redirect>
           <Route exact path="/dangnhap">
             <Login handleLogin={handleLogin} />
@@ -240,12 +191,17 @@ function App() {
             <Product />
           </Route>
           <Route exact path="/sanphamchitiet/:id">
-            <WrapProductDetai handleAddProduct={handleAddProduct} />
+            <WrapProductDetai
+              handleAddProduct={handleAddProduct}
+              handleLikeProduct={handleLikeProduct}
+            />
           </Route>
           <Route exact path="/sanphamyeuthich">
-            <WishList wishList={wishList} />
+            <WishList statusToken={statusToken} wishChange={wishChange} />
           </Route>
-          <Route exact path="/timkiemsanpham"></Route>
+          <Route exact path="/timkiemsanpham/:keyword">
+            <WrapProductSearch />
+          </Route>
           <Route exact path="/maxacnhan">
             <Maxacnhan />
           </Route>

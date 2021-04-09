@@ -123,7 +123,7 @@ function Product() {
 
   // chuyển tới page cuối
   function handleChangeLastPage() {
-    setPage(count);
+    setPage(count - 1);
     setChangeProductList(true);
     setIsChange(!isChange);
   }
@@ -209,6 +209,7 @@ function Product() {
                     {count > 1 && (
                       <Pagination
                         count={count}
+                        page={page}
                         handleChangeFirstPage={handleChangeFirstPage}
                         handleChangePage={handleChangePage}
                         handleChangeLastPage={handleChangeLastPage}

@@ -60,6 +60,12 @@
   color: var(--color-gray);
 }
 
+.header__main .header__main-left .header__category .category__item .item__active {
+  font-weight: bold;
+  color: var(--color-black);
+  border-bottom: 2px solid var(--color-black);
+}
+
 .header__main .header__main-left .header__category .category__item .item__link:before {
   content: "";
   position: absolute;
