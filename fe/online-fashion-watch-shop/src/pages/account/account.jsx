@@ -34,6 +34,7 @@ function Account(props) {
   const { statusToken, openDialog, handleLogout } = props;
   const { path } = useRouteMatch();
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
 
   // lấy thông tin user khi đăng nhập
   useEffect(() => {
@@ -46,8 +47,6 @@ function Account(props) {
     };
     fetchData();
   }, [statusToken]);
-
-  const [loading, setLoading] = useState(true);
 
   // đăng xuất tài khoản
   const handleClickLogout = () => {
@@ -136,6 +135,13 @@ function Account(props) {
       });
   };
 
+  // mở dialog đánh giá sản phẩm
+  function handleOpenDialog() {
+    if (openDialog) {
+      openDialog();
+    }
+  }
+
   return (
     <div>
       <Router>
@@ -143,8 +149,8 @@ function Account(props) {
           <div className="account__banner">
             <img src={banner} alt="" />
             <div className="banner__text">
-              <p>Xin chào, Thầy</p>
-              <p className="text2">Quản lý tài khoản của bạn</p>
+              <p>Xin chào, {user.fullname}</p>
+              <p className="banner__text-sub">Quản lý tài khoản của bạn</p>
             </div>
           </div>
           <div className="account__navlink">
@@ -188,7 +194,7 @@ function Account(props) {
                       />
                     </Route>
                     <Route exact path={`${path}/lichsumuahang`}>
-                      <AccountOrder openDialog={openDialog} />
+                      <AccountOrder handleOpenDialog={handleOpenDialog} />
                     </Route>
                     <Route exact path={`${path}/doimatkhau`}>
                       <AccountPassword />

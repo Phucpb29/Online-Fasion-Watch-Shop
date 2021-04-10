@@ -69,6 +69,10 @@
           letter-spacing: 0.3rem;
         }
 
+        .product__rate {
+          display: flex;
+        }
+
         .product__brand {
           flex: 1 1;
         }
@@ -264,7 +268,7 @@
           .comment__detail-date {
             display: flex;
             width: 100%;
-            justify-content: flex-end;
+            justify-content: space-between;
           }
 
           .comment__detail-title {

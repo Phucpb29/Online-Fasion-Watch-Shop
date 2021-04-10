@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import ReactStars from "react-rating-stars-component";
 
 DetailComment.propTypes = {
   commentList: PropTypes.array,
@@ -59,6 +60,13 @@ function DetailComment(props) {
               <div className="comment__box" key={index}>
                 <div className="comment__detail">
                   <div className="comment__detail-date">
+                    <ReactStars
+                      size={15}
+                      count={5}
+                      value={item.rate}
+                      edit={false}
+                      isHalf={true}
+                    />
                     <span>{item.created_date}</span>
                   </div>
                   <div className="comment__detail-title">

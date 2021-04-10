@@ -2,16 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./css/order.css";
 import Hinh1 from "../../../../assets/image/omega.jpg";
+
 AccountOrder.propTypes = {
-  openDialog: PropTypes.func,
+  handleOpenDialog: PropTypes.func,
+};
+
+AccountOrder.DefaultPropTypes = {
+  handleOpenDialog: null,
 };
 
 function AccountOrder(props) {
-  const { openDialog } = props;
+  const { handleOpenDialog } = props;
 
-  const handleOpenDiaglog = () => {
-    openDialog();
-  };
+  function openDialog() {
+    if (handleOpenDialog) {
+      handleOpenDialog();
+    }
+  }
 
   return (
     <div>
@@ -53,7 +60,7 @@ function AccountOrder(props) {
               <span>100.000.000 VNĐ</span>
             </div>
             <div className="button">
-              <button className="button__DG" onClick={handleOpenDiaglog}>
+              <button className="button__DG" onClick={openDialog}>
                 ĐÁNH GIÁ
               </button>
               <button className="button__CT">XEM CHI TIẾT</button>

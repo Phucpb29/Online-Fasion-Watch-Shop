@@ -28,9 +28,9 @@
   position: absolute;
   top: 50px;
   left: 8%;
-  font-size: 50px;
+  font-size: 40px;
 }
-.account__banner .text2 {
+.account__banner .banner__text-sub {
   color: seashell;
   position: absolute;
   margin: 30px 0;

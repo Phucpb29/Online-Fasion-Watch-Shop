@@ -32,7 +32,7 @@ function App() {
   const [cartChange, setCartChange] = useState(false);
   const [wishChange, setWishChange] = useState(false);
   const [statusCart, setStatusCart] = useState(false);
-  const [isOpenDialog, setIsOpenDiaglog] = useState(false);
+  const [statusDialog, setStatusDialog] = useState(false);
   const [statusToken, setStatusToken] = useState(false);
 
   /* tương tác đóng mở giỏ hàng */
@@ -52,7 +52,14 @@ function App() {
   /* tương tác đóng mở đánh giá sản phẩm */
   // mở dialog
   const openDialog = () => {
-    setIsOpenDiaglog(!isOpenDialog);
+    setStatusDialog(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  // đóng dialog
+  const closeDialog = () => {
+    setStatusDialog(false);
+    document.body.style.overflow = "unset";
   };
   /* tương tác đóng mở đánh giá sản phẩm */
 
@@ -152,7 +159,7 @@ function App() {
         handleUpdateProduct={handleUpdateProduct}
         handleDeleteProduct={handleDeleteProduct}
       />
-      <DialogComment isOpenDialog={isOpenDialog} />
+      <DialogComment statusDialog={statusDialog} closeDialog={closeDialog} />
       <div className="main">
         <Switch>
           <Route exact path="/">

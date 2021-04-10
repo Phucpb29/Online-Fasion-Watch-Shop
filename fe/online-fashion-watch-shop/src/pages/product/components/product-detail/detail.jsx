@@ -141,6 +141,7 @@ function ProductDetail(props) {
             productInfo={productInfo}
             statusToken={statusToken}
             cartList={cartList}
+            commentList={commentList}
             openCart={openCart}
             handleAddProduct={handleAddProduct}
             handleUpdateProduct={handleUpdateProduct}
