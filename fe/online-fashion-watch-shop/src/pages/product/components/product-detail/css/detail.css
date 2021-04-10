@@ -394,7 +394,6 @@
 .main__product .product__comment .pagination .pagination__prev,
 .main__product .product__comment .pagination .pagination__next {
   cursor: pointer;
-  font-weight: bold;
   padding: 0 20px;
   color: var(--color-white);
   border: 0 !important;
@@ -407,27 +406,20 @@
   display: flex;
 }
 
+.main__product .product__comment .pagination .pagination__list .pagination__active {
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
 .main__product .product__comment .pagination .pagination__list .pagination__list-item {
-  padding: 10px 10px;
+  padding: 10px 20px;
   margin: 0 10px;
-  font-weight: bold;
   border: 1px solid var(--color-gray);
   cursor: pointer;
 }
 
-.main__product .product__comment .pagination .pagination__list .pagination__list-item button {
-  border: 0 !important;
-  background: none;
-  color: var(--color-black);
-  cursor: pointer;
-}
-
 .main__product .product__comment .pagination .pagination__list .pagination__list-item:hover {
-  background-color: var(--color-success);
-  border: 1px solid var(--color-success);
-}
-
-.main__product .product__comment .pagination .pagination__list .pagination__list-item:hover button:hover {
   color: var(--color-white);
+  background-color: var(--color-black);
 }
 /*# sourceMappingURL=detail.css.map */

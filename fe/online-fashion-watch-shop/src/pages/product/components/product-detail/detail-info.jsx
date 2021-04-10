@@ -6,32 +6,51 @@ import "boxicons";
 import wishlistApi from "../../../../api/wishlistApi";
 
 DetailInfo.propTypes = {
-  product: PropTypes.object,
-  brand: PropTypes.string,
-  indexImage: PropTypes.string,
-  addtionalImages: PropTypes.array,
+  productInfo: PropTypes.object,
+  statusToken: PropTypes.bool,
+  cartList: PropTypes.array,
+  wishList: PropTypes.array,
+  openCart: PropTypes.func,
   handleAddProduct: PropTypes.func,
+  handleUpdateProduct: PropTypes.func,
   handleLikeProduct: PropTypes.func,
 };
 
 DetailInfo.DefaultPropTypes = {
-  product: {},
-  brand: "",
-  indexImage: "",
-  addtionalImages: [],
+  productInfo: {},
+  statusToken: false,
+  cartList: [],
+  openCart: null,
   handleAddProduct: null,
+  handleUpdateProduct: null,
   handleLikeProduct: null,
 };
 
 function DetailInfo(props) {
   const {
-    product,
-    brand,
-    indexImage,
-    addtionalImages,
+    productInfo,
+    statusToken,
+    cartList,
+    openCart,
     handleAddProduct,
+    handleUpdateProduct,
     handleLikeProduct,
   } = props;
+  const { product, brand, indexImage, addtionalImages } = productInfo;
+
+  /**
+   * kiểm tra sản phẩm trong giỏ hàng
+   * không có thì thêm vào giỏ hàng
+   * có thì tăng số lượng lên một
+   */
+  function handleCheckProductExist(product) {
+    const item = cartList.filter((item) => item.product.id === product.id);
+    if (item.length > 0) {
+      updateProduct(item[0]);
+    } else {
+      addProduct(product);
+    }
+  }
 
   // thêm sản phẩm
   function addProduct(product) {
@@ -53,6 +72,7 @@ function DetailInfo(props) {
             }).then((value) => {
               if (value.value === true) {
                 handleAddProduct();
+                openCart();
               }
             });
           } else {
@@ -69,37 +89,87 @@ function DetailInfo(props) {
     }
   }
 
-  // yêu thích sản phẩm
-  function likeProduct(id) {
+  // cập nhất số lượng sản phẩm
+  function updateProduct(product) {
     try {
-      wishlistApi.like(id).then(function (response) {
-        if (response.status === 200) {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: response.data,
-            icon: "success",
-            showConfirmButton: true,
-          }).then((result) => {
-            if (result.isConfirmed) {
-              handleLikeProduct();
-            }
-          });
-        } else {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: response.data,
-            icon: "error",
-            showConfirmButton: true,
-          });
-        }
-      });
+      cartApi
+        .updateProduct(product.cartDetailID, product.quantity + 1)
+        .then(function (response) {
+          if (response.status === 200) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: "CẬP NHẬT SỐ LƯỢNG SẢN PHẨM THÀNH CÔNG",
+              icon: "success",
+              showConfirmButton: true,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                handleUpdateProduct();
+                openCart();
+              }
+            });
+          } else {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: "CÓ LỖI XẢY RA! VUI LÒNG THỬ LẠI",
+              icon: "error",
+              showConfirmButton: true,
+            });
+          }
+        });
     } catch (error) {
-      console.log(error);
       Swal.fire({
         title: "THÔNG BÁO",
-        text: "XẢY RA LỖI! VUI LÒNG THỬ LẠI.",
+        text: "CÓ LỖI XẢY RA! VUI LÒNG THỬ LẠI",
         icon: "error",
         showConfirmButton: true,
+      });
+    }
+  }
+
+  // yêu thích sản phẩm
+  function likeProduct(id) {
+    if (statusToken) {
+      try {
+        wishlistApi.like(id).then(function (response) {
+          if (response.status === 200) {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: response.data,
+              icon: "success",
+              showConfirmButton: true,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                handleLikeProduct();
+              }
+            });
+          } else {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: response.data,
+              icon: "error",
+              showConfirmButton: true,
+            });
+          }
+        });
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "XẢY RA LỖI! VUI LÒNG THỬ LẠI.",
+          icon: "error",
+          showConfirmButton: true,
+        });
+      }
+    } else {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "BẠN PHẢI ĐĂNG NHẬP ĐỂ THỰC HIỆN CHỨC NĂNG NÀY",
+        icon: "warning",
+        showConfirmButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.replace("/dangnhap");
+        }
       });
     }
   }
@@ -173,7 +243,7 @@ function DetailInfo(props) {
             {product.quantity > 0 && (
               <button
                 className="product__button product__add"
-                onClick={() => addProduct(product)}
+                onClick={() => handleCheckProductExist(product)}
               >
                 <span>THÊM VÀO GIỎ HÀNG</span>
               </button>

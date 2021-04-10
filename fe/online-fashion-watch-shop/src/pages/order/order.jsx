@@ -8,6 +8,7 @@ import dashboardApi from "../../api/dashboardApi";
 import cartApi from "../../api/cartApi";
 import LoadingOverplay from "../../components/loading/loading";
 import PropTypes from "prop-types";
+import Error from "../../components/error/error";
 
 Order.prototype = {
   handleOrderCart: PropTypes.func,
@@ -117,16 +118,7 @@ function Order(props) {
               </div>
             </div>
           ) : (
-            <div className="order__content">
-              <div className="order__text">
-                <span>BẠN CHƯA CÓ GIỎ HÀNG</span>
-              </div>
-              <div className="order__back">
-                <a href="/" className="order__back-link">
-                  <span>QUAY LẠI TRANG CHỦ</span>
-                </a>
-              </div>
-            </div>
+            <Error text={"BẠN CHƯA CÓ GIỎ HÀNG"} />
           )}
         </>
       )}

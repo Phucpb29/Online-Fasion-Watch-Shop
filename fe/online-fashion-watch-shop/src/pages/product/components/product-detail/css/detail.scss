@@ -298,7 +298,6 @@
       .pagination__prev,
       .pagination__next {
         cursor: pointer;
-        font-weight: bold;
         padding: 0 20px;
         color: var(--color-white);
         border: 0 !important;
@@ -308,28 +307,21 @@
       .pagination__list {
         display: flex;
 
+        .pagination__active {
+          color: var(--color-white);
+          background-color: var(--color-black);
+        }
+
         .pagination__list-item {
-          padding: 10px 10px;
+          padding: 10px 20px;
           margin: 0 10px;
-          font-weight: bold;
           border: 1px solid var(--color-gray);
           cursor: pointer;
-
-          button {
-            border: 0 !important;
-            background: none;
-            color: var(--color-black);
-            cursor: pointer;
-          }
         }
 
         .pagination__list-item:hover {
-          background-color: var(--color-success);
-          border: 1px solid var(--color-success);
-
-          button:hover {
-            color: var(--color-white);
-          }
+          color: var(--color-white);
+          background-color: var(--color-black);
         }
       }
     }

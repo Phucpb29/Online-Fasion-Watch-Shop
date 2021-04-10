@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from "react";
-import "./css/wishlist.css";
-import movado from "../../assets/image/movado.jpg";
 import PropTypes from "prop-types";
-import LoadingOverplay from "../../components/loading/loading";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import wishlistApi from "../../api/wishlistApi";
+import Error from "../../components/error/error";
+import LoadingOverplay from "../../components/loading/loading";
+import "./css/wishlist.css";
 
 WishList.prototype = {
   statusToken: PropTypes.bool,
   wishChange: PropTypes.bool,
+  handleUnlikeProduct: PropTypes.func,
 };
 
 WishList.DefaultPropTypes = {
   statusToken: false,
   wishChange: false,
+  handleUnlikeProduct: null,
 };
 
 function WishList(props) {
-  const { statusToken, wishChange } = props;
+  const { statusToken, wishChange, handleUnlikeProduct } = props;
   const [wishList, setWishList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,6 +35,54 @@ function WishList(props) {
     fetchData();
   }, [statusToken, wishChange]);
 
+  // unlike sản phẩm
+  function unlikeProduct(id) {
+    try {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "BẠN CÓ MUỐN BỎ THÍCH SẢN PHẨM",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "BỎ THÍCH",
+      }).then((confirm) => {
+        if (confirm.isConfirmed) {
+          wishlistApi.unLike(id).then(function (response) {
+            console.log(response);
+            if (response.status === 200) {
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: response.data,
+                icon: "success",
+                showConfirmButton: true,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  handleUnlikeProduct();
+                }
+              });
+            } else {
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: response.data,
+                icon: "error",
+                showConfirmButton: true,
+              });
+            }
+          });
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "XẢY RA LỖI! VUI LÒNG THỬ LẠI.",
+        icon: "error",
+        showConfirmButton: true,
+      });
+    }
+  }
+
   return (
     <>
       {loading ? (
@@ -46,26 +97,20 @@ function WishList(props) {
           </div>
           <div className="wishlist__body-box">
             {wishList.length <= 0 ? (
-              <div className="wishlist__error">
-                <div className="wishlist__error-box">
-                  <div className="wishlist__title">
-                    <p>BẠN CHƯA CÓ SẢN PHẨM YÊU THÍCH</p>
-                  </div>
-                  <div className="wishlist__back">
-                    <a href="/" className="link__back">
-                      <span>QUAY TRỞ LẠI TRANG CHỦ</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <Error text={"BẠN CHƯA CÓ SẢN PHẨM YÊU THÍCH"} />
             ) : (
               <>
                 <div className="wishlist__list">
                   <ul className="wishlist__list-item">
                     {wishList.map((item, index) => (
-                      <li className="item__wishlist">
+                      <li className="item__wishlist" key={index}>
                         <div className="item__unwishlist">
-                          <button className="item__unwishlist-button">
+                          <button
+                            className="item__unwishlist-button"
+                            onClick={() =>
+                              unlikeProduct(item.wishlist_product.id)
+                            }
+                          >
                             <box-icon
                               name="heart"
                               type="solid"
@@ -75,130 +120,30 @@ function WishList(props) {
                         </div>
                         <div className="item__wishlist-detail">
                           <div className="item__img">
-                            <img src={movado} alt="" />
+                            <img src={item.indexImage} alt="" />
                           </div>
                           <div className="item__name">
-                            <span>MOVADO</span>
+                            <span>{item.wishlist_product.product.name}</span>
                           </div>
                           <div className="item__price">
-                            <span>3.000.000.000 đ</span>
+                            <span>
+                              {new Intl.NumberFormat("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              }).format(item.wishlist_product.product.price)}
+                            </span>
                           </div>
                           <div className="item__button">
-                            <a href="/" className="button__more-detail">
+                            <a
+                              href={`/sanphamchitiet/${item.wishlist_product.product.id}`}
+                              className="button__more-detail"
+                            >
                               XEM SẢN PHẨM
                             </a>
                           </div>
                         </div>
                       </li>
                     ))}
-                    {/* <li className="item__wishlist">
-                      <div className="item__unwishlist">
-                        <button className="item__unwishlist-button">
-                          <box-icon
-                            name="heart"
-                            type="solid"
-                            color="#ffffff"
-                          ></box-icon>
-                        </button>
-                      </div>
-                      <div className="item__wishlist-detail">
-                        <div className="item__img">
-                          <img src={movado} alt="" />
-                        </div>
-                        <div className="item__name">
-                          <span>MOVADO</span>
-                        </div>
-                        <div className="item__price">
-                          <span>3.000.000.000 đ</span>
-                        </div>
-                        <div className="item__button">
-                          <a href="/" className="button__more-detail">
-                            XEM SẢN PHẨM
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="item__wishlist">
-                      <div className="item__unwishlist">
-                        <button className="item__unwishlist-button">
-                          <box-icon
-                            name="heart"
-                            type="solid"
-                            color="#ffffff"
-                          ></box-icon>
-                        </button>
-                      </div>
-                      <div className="item__wishlist-detail">
-                        <div className="item__img">
-                          <img src={movado} alt="" />
-                        </div>
-                        <div className="item__name">
-                          <span>MOVADO</span>
-                        </div>
-                        <div className="item__price">
-                          <span>3.000.000.000 đ</span>
-                        </div>
-                        <div className="item__button">
-                          <a href="/" className="button__more-detail">
-                            XEM SẢN PHẨM
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="item__wishlist">
-                      <div className="item__unwishlist">
-                        <button className="item__unwishlist-button">
-                          <box-icon
-                            name="heart"
-                            type="solid"
-                            color="#ffffff"
-                          ></box-icon>
-                        </button>
-                      </div>
-                      <div className="item__wishlist-detail">
-                        <div className="item__img">
-                          <img src={movado} alt="" />
-                        </div>
-                        <div className="item__name">
-                          <span>MOVADO</span>
-                        </div>
-                        <div className="item__price">
-                          <span>3.000.000.000 đ</span>
-                        </div>
-                        <div className="item__button">
-                          <a href="/" className="button__more-detail">
-                            XEM SẢN PHẨM
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="item__wishlist">
-                      <div className="item__unwishlist">
-                        <button className="item__unwishlist-button">
-                          <box-icon
-                            name="heart"
-                            type="solid"
-                            color="#ffffff"
-                          ></box-icon>
-                        </button>
-                      </div>
-                      <div className="item__wishlist-detail">
-                        <div className="item__img">
-                          <img src={movado} alt="" />
-                        </div>
-                        <div className="item__name">
-                          <span>MOVADO</span>
-                        </div>
-                        <div className="item__price">
-                          <span>3.000.000.000 đ</span>
-                        </div>
-                        <div className="item__button">
-                          <a href="/" className="button__more-detail">
-                            XEM SẢN PHẨM
-                          </a>
-                        </div>
-                      </div>
-                    </li> */}
                   </ul>
                 </div>
               </>

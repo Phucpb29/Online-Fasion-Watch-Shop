@@ -4,15 +4,26 @@ import React from "react";
 DetailComment.propTypes = {
   commentList: PropTypes.array,
   countComment: PropTypes.number,
+  page: PropTypes.number,
   handleFirstPage: PropTypes.func,
   handleChangePage: PropTypes.func,
   handleLastPage: PropTypes.func,
+};
+
+DetailComment.DefaultPropTypes = {
+  commentList: [],
+  countComment: 0,
+  page: 0,
+  handleFirstPage: null,
+  handleChangePage: null,
+  handleLastPage: null,
 };
 
 function DetailComment(props) {
   const {
     countComment,
     commentList,
+    page,
     handleFirstPage,
     handleChangePage,
     handleLastPage,
@@ -74,11 +85,15 @@ function DetailComment(props) {
             <ul className="pagination__list">
               {[...Array(countComment).keys()].map((index) => (
                 <li
-                  className="pagination__list-item"
+                  className={
+                    index === page
+                      ? "pagination__list-item pagination__active"
+                      : "pagination__list-item"
+                  }
                   key={index}
                   onClick={() => handleClickPageComment(index)}
                 >
-                  <button>{index}</button>
+                  {index + 1}
                 </li>
               ))}
             </ul>
