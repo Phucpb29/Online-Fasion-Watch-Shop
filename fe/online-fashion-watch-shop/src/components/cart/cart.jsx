@@ -11,8 +11,7 @@ CartModal.propTypes = {
   closeCart: PropTypes.func,
   statusToken: PropTypes.bool,
   cartChange: PropTypes.bool,
-  handleUpdateProduct: PropTypes.func,
-  handleDeleteProduct: PropTypes.func,
+  handleChangeCart: PropTypes.func,
 };
 
 CartModal.DefaultPropTypes = {
@@ -20,8 +19,7 @@ CartModal.DefaultPropTypes = {
   closeCart: false,
   statusToken: false,
   cartChange: false,
-  handleUpdateProduct: null,
-  handleDeleteProduct: null,
+  handleChangeCart: null,
 };
 
 function CartModal(props) {
@@ -30,8 +28,7 @@ function CartModal(props) {
     closeCart,
     statusToken,
     cartChange,
-    handleUpdateProduct,
-    handleDeleteProduct,
+    handleChangeCart,
   } = props;
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -78,7 +75,7 @@ function CartModal(props) {
         quantity = quantity + 1;
         cartApi.updateProduct(cartDetailID, quantity).then(function (response) {
           if (response.status === 200) {
-            handleUpdateProduct();
+            handleChangeCart();
           }
         });
       } else {
@@ -106,7 +103,7 @@ function CartModal(props) {
         quantity = quantity - 1;
         cartApi.updateProduct(cartDetailID, quantity).then(function (response) {
           if (response.status === 200) {
-            handleUpdateProduct();
+            handleChangeCart();
           }
         });
       } else {
@@ -139,7 +136,7 @@ function CartModal(props) {
             showConfirmButton: true,
           }).then((value) => {
             if (value.value) {
-              handleDeleteProduct();
+              handleChangeCart();
             }
           });
         } else {

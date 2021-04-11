@@ -12,8 +12,7 @@ DetailInfo.propTypes = {
   cartList: PropTypes.array,
   commentList: PropTypes.array,
   openCart: PropTypes.func,
-  handleAddProduct: PropTypes.func,
-  handleUpdateProduct: PropTypes.func,
+  handleChangeCart: PropTypes.func,
   handleLikeProduct: PropTypes.func,
 };
 
@@ -23,8 +22,7 @@ DetailInfo.DefaultPropTypes = {
   cartList: [],
   commentList: [],
   openCart: null,
-  handleAddProduct: null,
-  handleUpdateProduct: null,
+  handleChangeCart: null,
   handleLikeProduct: null,
 };
 
@@ -35,8 +33,7 @@ function DetailInfo(props) {
     cartList,
     commentList,
     openCart,
-    handleAddProduct,
-    handleUpdateProduct,
+    handleChangeCart,
     handleLikeProduct,
   } = props;
   const { product, brand, indexImage, addtionalImages } = productInfo;
@@ -91,7 +88,7 @@ function DetailInfo(props) {
               showConfirmButton: true,
             }).then((value) => {
               if (value.value === true) {
-                handleAddProduct();
+                handleChangeCart();
                 openCart();
               }
             });
@@ -123,7 +120,7 @@ function DetailInfo(props) {
               showConfirmButton: true,
             }).then((result) => {
               if (result.isConfirmed) {
-                handleUpdateProduct();
+                handleChangeCart();
                 openCart();
               }
             });

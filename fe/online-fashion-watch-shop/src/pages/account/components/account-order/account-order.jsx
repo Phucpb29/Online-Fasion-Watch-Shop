@@ -1,156 +1,88 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import "./css/order.css";
-import Hinh1 from "../../../../assets/image/omega.jpg";
 
 AccountOrder.propTypes = {
+  orderList: PropTypes.array,
+  openDialog: PropTypes.func,
   handleOpenDialog: PropTypes.func,
 };
 
 AccountOrder.DefaultPropTypes = {
+  orderList: [],
+  openDialog: null,
   handleOpenDialog: null,
 };
 
 function AccountOrder(props) {
-  const { handleOpenDialog } = props;
+  const { orderList, openDialog, handleOpenDialog } = props;
 
-  function openDialog() {
-    if (handleOpenDialog) {
-      handleOpenDialog();
+  function handleOpen(item) {
+    if (openDialog && handleOpenDialog) {
+      openDialog();
+      handleOpenDialog(item);
     }
   }
 
   return (
     <div>
-      {/* khung 1 */}
       <div className="account__order">
-        <div className="account__order-box ">
-          <div className="box__left">
-            <div className="image">
-              <img src={Hinh1} alt="" />
-            </div>
-          </div>
-          <div className="box__mid">
-            <div className="box__mid-name">
-              <span className="name">Tên sản phẩm</span>
-            </div>
-            <div className="box__mid-price-quantity">
-              <div className="box__mid-price">
-                <span>Giá</span>
-                <span>X</span>
-              </div>
-              <div className="box__mid-quantity">
-                <span> Số lượng</span>
+        {orderList.map((item, index) => (
+          <div className="account__order-box" key={index}>
+            <div className="box__left">
+              <div className="image">
+                <img src={item.indexImage} alt="" />
               </div>
             </div>
-            <div className="box__mid-time">
-              <span className="date">Ngày đặt</span>
-              <span>:04/02/2021 </span>
-              <span className="date">Ngày giao</span>
-              <span>:04/02/2021 </span>
-            </div>
-          </div>
-
-          <div className="box__right">
-            <div className="status">
-              <span className="status-product">ĐÃ GIAO</span>
-            </div>
-            <div className="tongtien">
-              <p>Tổng tiền :</p>
-              <span>100.000.000 VNĐ</span>
-            </div>
-            <div className="button">
-              <button className="button__DG" onClick={openDialog}>
-                ĐÁNH GIÁ
-              </button>
-              <button className="button__CT">XEM CHI TIẾT</button>
-            </div>
-          </div>
-        </div>
-        {/* khung2 */}
-        <div className="account__order-box ">
-          <div className="box__left">
-            <div className="image">
-              <img src={Hinh1} alt="" />
-            </div>
-          </div>
-          <div className="box__mid">
-            <div className="box__mid-name">
-              <span className="name">Tên sản phẩm</span>
-            </div>
-            <div className="box__mid-price-quantity">
-              <div className="box__mid-price">
-                <span>Giá</span>
-                <span>X</span>
+            <div className="box__mid">
+              <div className="box__mid-name">
+                <span className="name">
+                  {item.history_purchase.product.name}
+                </span>
               </div>
-              <div className="box__mid-quantity">
-                <span> Số lượng</span>
+              <div className="box__mid-price-quantity">
+                <div className="box__mid-price">
+                  <span>
+                    {new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(item.history_purchase.product_Price)}
+                  </span>
+                  <span>x</span>
+                </div>
+                <div className="box__mid-quantity">
+                  <span>{item.history_purchase.quantity}</span>
+                </div>
+              </div>
+              <div className="box__mid-time">
+                <span className="date">Ngày đặt:</span>
+                <span>{item.history_purchase.created_date}</span>
+                <span className="date">Ngày giao:</span>
+                <span>04/02/2021 </span>
               </div>
             </div>
-            <div className="box__mid-time">
-              <span className="date">Ngày đặt</span>
-              <span>:04/02/2021 </span>
-              <span className="date">Ngày giao</span>
-              <span>:04/02/2021 </span>
-            </div>
-          </div>
-
-          <div className="box__right">
-            <div className="status">
-              <span className="status-product1">ĐANG CHỜ XÁC NHẬN</span>
-            </div>
-            <div className="tongtien">
-              <p>Tổng tiền :</p>
-              <span>100.000.000 VNĐ</span>
-            </div>
-            <div className="button">
-              {/* <button className="button__DG">ĐÁNH GIÁ</button> */}
-              <button className="button__CT">XEM CHI TIẾT</button>
-            </div>
-          </div>
-        </div>
-        {/* khung 3 */}
-        <div className="account__order-box ">
-          <div className="box__left">
-            <div className="image">
-              <img src={Hinh1} alt="" />
-            </div>
-          </div>
-          <div className="box__mid">
-            <div className="box__mid-name">
-              <span className="name">Tên sản phẩm</span>
-            </div>
-            <div className="box__mid-price-quantity">
-              <div className="box__mid-price">
-                <span>Giá</span>
-                <span>X</span>
+            <div className="box__right">
+              <div className="status">
+                <span className="status-product">ĐÃ GIAO</span>
               </div>
-              <div className="box__mid-quantity">
-                <span> Số lượng</span>
+              <div className="tongtien">
+                <p>Tổng tiền :</p>
+                <span>
+                  {new Intl.NumberFormat("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                  }).format(item.history_purchase.total)}
+                </span>
+              </div>
+              <div className="button">
+                <button className="button__DG" onClick={() => handleOpen(item)}>
+                  ĐÁNH GIÁ
+                </button>
+                <button className="button__CT">XEM CHI TIẾT</button>
               </div>
             </div>
-            <div className="box__mid-time">
-              <span className="date">Ngày đặt</span>
-              <span>:04/02/2021 </span>
-              <span className="date">Ngày giao</span>
-              <span>:04/02/2021 </span>
-            </div>
           </div>
-
-          <div className="box__right">
-            <div className="status">
-              <span className="status-product2">ĐÃ HỦY</span>
-            </div>
-            <div className="tongtien">
-              <p>Tổng tiền :</p>
-              <span>100.000.000 VNĐ</span>
-            </div>
-            <div className="button">
-              {/* <button className="button__DG">ĐÁNH GIÁ</button> */}
-              <button className="button__CT">XEM CHI TIẾT</button>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

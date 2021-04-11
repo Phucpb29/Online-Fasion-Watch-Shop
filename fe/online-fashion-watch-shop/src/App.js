@@ -13,7 +13,6 @@ import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import OverPlay from "./components/overplay/overplay";
 import Account from "./pages/account/account";
-import DialogComment from "./pages/account/components/dialog-comment/dialog";
 import Forgotpass from "./pages/forgotpass/forgotpass";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
@@ -32,7 +31,6 @@ function App() {
   const [cartChange, setCartChange] = useState(false);
   const [wishChange, setWishChange] = useState(false);
   const [statusCart, setStatusCart] = useState(false);
-  const [statusDialog, setStatusDialog] = useState(false);
   const [statusToken, setStatusToken] = useState(false);
 
   /* tương tác đóng mở giỏ hàng */
@@ -48,20 +46,6 @@ function App() {
     document.body.style.overflow = "unset";
   };
   /* tương tác đóng mở giỏ hàng */
-
-  /* tương tác đóng mở đánh giá sản phẩm */
-  // mở dialog
-  const openDialog = () => {
-    setStatusDialog(true);
-    document.body.style.overflow = "hidden";
-  };
-
-  // đóng dialog
-  const closeDialog = () => {
-    setStatusDialog(false);
-    document.body.style.overflow = "unset";
-  };
-  /* tương tác đóng mở đánh giá sản phẩm */
 
   /* đăng nhập và đăng xuất */
   // đăng nhập tài khoản
@@ -119,28 +103,11 @@ function App() {
     fetchData();
   }, [statusToken, cartChange]);
 
-  // thêm sản phẩm
-  function handleAddProduct() {
-    setCartChange(!cartChange);
-  }
-
-  // xoá sản phẩm
-  function handleDeleteProduct() {
-    setCartChange(!cartChange);
-  }
-
-  // cập nhật số lượng sản phẩm
-  function handleUpdateProduct() {
+  // thay đổi giỏ hàng (thêm, xoá, sửa, thanh toán)
+  function handleChangeCart() {
     setCartChange(!cartChange);
   }
   /* giỏ hàng */
-
-  /* thanh toán */
-  // thanh toán giỏ hàng
-  function handleOrderCart() {
-    setCartChange(!cartChange);
-  }
-  /* thanh toán */
 
   return (
     <Router>
@@ -156,10 +123,8 @@ function App() {
         closeCart={closeCart}
         statusToken={statusToken}
         cartChange={cartChange}
-        handleUpdateProduct={handleUpdateProduct}
-        handleDeleteProduct={handleDeleteProduct}
+        handleChangeCart={handleChangeCart}
       />
-      <DialogComment statusDialog={statusDialog} closeDialog={closeDialog} />
       <div className="main">
         <Switch>
           <Route exact path="/">
@@ -178,11 +143,7 @@ function App() {
             <Forgotpass />
           </Route>
           <Route path="/thongtintaikhoan">
-            <Account
-              statusToken={statusToken}
-              openDialog={openDialog}
-              handleLogout={handleLogout}
-            />
+            <Account statusToken={statusToken} handleLogout={handleLogout} />
           </Route>
           <Route exact path="/sanpham/gioitinh/nam">
             <Product />
@@ -195,8 +156,7 @@ function App() {
               statusToken={statusToken}
               cartChange={cartChange}
               openCart={openCart}
-              handleAddProduct={handleAddProduct}
-              handleUpdateProduct={handleUpdateProduct}
+              handleChangeCart={handleChangeCart}
               handleLikeProduct={handleLikeProduct}
             />
           </Route>
@@ -217,7 +177,10 @@ function App() {
             <Resetpass />
           </Route>
           <Route exact path="/thanhtoan">
-            <Order handleOrderCart={handleOrderCart} />
+            <Order
+              cartChange={cartChange}
+              handleChangeCart={handleChangeCart}
+            />
           </Route>
           <Route>
             <Error />

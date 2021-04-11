@@ -48,6 +48,10 @@
   padding: 15px 30px;
   border-left: 1px solid gray;
 }
+.account .account__navlink .navlink__list .link__active {
+  font-weight: bold;
+  border-bottom: 2px solid var(--color-black);
+}
 .account .account__navlink .navlink__logout {
   display: flex;
   width: 30%;

@@ -8,8 +8,7 @@ WrapProductDetai.prototype = {
   statusToken: PropTypes.bool,
   cartChange: PropTypes.bool,
   openCart: PropTypes.func,
-  handleAddProduct: PropTypes.func,
-  handleUpdateProduct: PropTypes.func,
+  handleChangeCart: PropTypes.func,
   handleLikeProduct: PropTypes.func,
 };
 
@@ -17,8 +16,7 @@ WrapProductDetai.DefaultPropTypes = {
   statusToken: false,
   cartChange: false,
   openCart: null,
-  handleAddProduct: null,
-  handleUpdateProduct: null,
+  handleChangeCart: null,
   handleLikeProduct: null,
 };
 
@@ -27,8 +25,7 @@ function WrapProductDetai(props) {
     statusToken,
     cartChange,
     openCart,
-    handleAddProduct,
-    handleUpdateProduct,
+    handleChangeCart,
     handleLikeProduct,
   } = props;
   const params = useParams();
@@ -41,17 +38,10 @@ function WrapProductDetai(props) {
     }
   }
 
-  // thêm sản phẩm
-  function addProduct() {
-    if (handleAddProduct) {
-      handleAddProduct();
-    }
-  }
-
-  // cập nhất số lượng sản phẩm
-  function updateProduct() {
-    if (handleUpdateProduct) {
-      handleUpdateProduct();
+  // thay đổi giỏ hàng
+  function changeCart() {
+    if (handleChangeCart) {
+      handleChangeCart();
     }
   }
 
@@ -72,8 +62,7 @@ function WrapProductDetai(props) {
           statusToken={statusToken}
           cartChange={cartChange}
           handleOpenCart={handleOpenCart}
-          addProduct={addProduct}
-          updateProduct={updateProduct}
+          changeCart={changeCart}
           likeProduct={likeProduct}
         />
       )}

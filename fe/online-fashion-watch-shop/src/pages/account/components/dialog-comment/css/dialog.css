@@ -53,9 +53,10 @@
 
 .dialog__comment .form__comment .form__body .form__control .form__control-img {
   display: block;
-  width: 40%;
+  width: 35%;
   height: 100%;
   margin: 15px 0;
+  margin-left: 25px;
 }
 .dialog__comment
   .form__comment
@@ -79,6 +80,9 @@
 }
 .dialog__comment .form__comment .form__body .form__control .form__control-sp p {
   font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  line-height: 2rem;
   color: var(--color-black);
   justify-content: center;
   margin: 50px 20px;
