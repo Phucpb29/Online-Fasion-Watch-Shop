@@ -173,7 +173,7 @@ function App() {
           <Route exact path="/maxacnhan">
             <Maxacnhan />
           </Route>
-          <Route exact path="/resetpass">
+          <Route path="/resetpass/*">
             <Resetpass />
           </Route>
           <Route exact path="/thanhtoan">
