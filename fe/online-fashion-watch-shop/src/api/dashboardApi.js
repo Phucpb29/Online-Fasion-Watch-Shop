@@ -12,7 +12,17 @@ const dashboardApi = {
   },
 
   updateInfo(body) {
-    const url = "updateInfo";
+    const url = "/updateInfo";
+    return axiosDashboardClient.post(url, body);
+  },
+
+  viewOrderHistory() {
+    const url = "/viewPurchaseHistory";
+    return axiosDashboardClient.get(url);
+  },
+
+  commentOrder(body) {
+    const url = "/rateProduct";
     return axiosDashboardClient.post(url, body);
   },
 };

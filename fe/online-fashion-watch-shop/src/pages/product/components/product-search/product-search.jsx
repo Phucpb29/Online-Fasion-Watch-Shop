@@ -4,6 +4,7 @@ import productApi from "../../../../api/productApi";
 import LoadingOverplay from "../../../../components/loading/loading";
 import ReactLoading from "react-loading";
 import "./css/product-search.css";
+import Error from "../../../../components/error/error";
 
 ProductSearch.propTypes = {
   keyword: PropTypes.string,
@@ -79,19 +80,7 @@ function ProductSearch(props) {
         <div className="product">
           <div className="product__search">
             {productList.length <= 0 ? (
-              <div className="product__box">
-                <div className="product__box-error">
-                  <div className="error__text">
-                    <span>KHÔNG TÌM THẤY SẢN PHẨM TƯƠNG ỨNG</span>
-                    <span>XIN THỬ LẠI</span>
-                  </div>
-                  <div className="error__back">
-                    <a href="/" className="error__back-btn">
-                      <span>QUAY LẠI TRANG CHỦ</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <Error text={"KHÔNG TÌM THẤY SẢN PHẨM TƯƠNG ỨNG"} />
             ) : (
               <>
                 <div className="product__box">

@@ -5,26 +5,47 @@ import ProductDetail from "./detail";
 import PropTypes from "prop-types";
 
 WrapProductDetai.prototype = {
-  handleAddProduct: PropTypes.func,
+  statusToken: PropTypes.bool,
+  cartChange: PropTypes.bool,
+  openCart: PropTypes.func,
+  handleChangeCart: PropTypes.func,
   handleLikeProduct: PropTypes.func,
 };
 
 WrapProductDetai.DefaultPropTypes = {
-  handleAddProduct: null,
+  statusToken: false,
+  cartChange: false,
+  openCart: null,
+  handleChangeCart: null,
   handleLikeProduct: null,
 };
 
 function WrapProductDetai(props) {
-  const { handleAddProduct, handleLikeProduct } = props;
+  const {
+    statusToken,
+    cartChange,
+    openCart,
+    handleChangeCart,
+    handleLikeProduct,
+  } = props;
   const params = useParams();
   var intParams = Number(params.id);
 
-  function addProduct() {
-    if (handleAddProduct) {
-      handleAddProduct();
+  // mở giỏ hàng
+  function handleOpenCart() {
+    if (openCart) {
+      openCart();
     }
   }
 
+  // thay đổi giỏ hàng
+  function changeCart() {
+    if (handleChangeCart) {
+      handleChangeCart();
+    }
+  }
+
+  // yêu thích sảng phẩm
   function likeProduct() {
     if (handleLikeProduct) {
       handleLikeProduct();
@@ -38,7 +59,10 @@ function WrapProductDetai(props) {
       ) : (
         <ProductDetail
           id={intParams}
-          addProduct={addProduct}
+          statusToken={statusToken}
+          cartChange={cartChange}
+          handleOpenCart={handleOpenCart}
+          changeCart={changeCart}
           likeProduct={likeProduct}
         />
       )}

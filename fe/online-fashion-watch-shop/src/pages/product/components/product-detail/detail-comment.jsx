@@ -1,18 +1,30 @@
 import PropTypes from "prop-types";
 import React from "react";
+import ReactStars from "react-rating-stars-component";
 
 DetailComment.propTypes = {
   commentList: PropTypes.array,
   countComment: PropTypes.number,
+  page: PropTypes.number,
   handleFirstPage: PropTypes.func,
   handleChangePage: PropTypes.func,
   handleLastPage: PropTypes.func,
+};
+
+DetailComment.DefaultPropTypes = {
+  commentList: [],
+  countComment: 0,
+  page: 0,
+  handleFirstPage: null,
+  handleChangePage: null,
+  handleLastPage: null,
 };
 
 function DetailComment(props) {
   const {
     countComment,
     commentList,
+    page,
     handleFirstPage,
     handleChangePage,
     handleLastPage,
@@ -48,6 +60,13 @@ function DetailComment(props) {
               <div className="comment__box" key={index}>
                 <div className="comment__detail">
                   <div className="comment__detail-date">
+                    <ReactStars
+                      size={15}
+                      count={5}
+                      value={item.rate}
+                      edit={false}
+                      isHalf={true}
+                    />
                     <span>{item.created_date}</span>
                   </div>
                   <div className="comment__detail-title">
@@ -74,11 +93,15 @@ function DetailComment(props) {
             <ul className="pagination__list">
               {[...Array(countComment).keys()].map((index) => (
                 <li
-                  className="pagination__list-item"
+                  className={
+                    index === page
+                      ? "pagination__list-item pagination__active"
+                      : "pagination__list-item"
+                  }
                   key={index}
                   onClick={() => handleClickPageComment(index)}
                 >
-                  <button>{index}</button>
+                  {index + 1}
                 </li>
               ))}
             </ul>

@@ -2,7 +2,6 @@ import "boxicons";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import cartApi from "../../api/cartApi";
 import userApi from "../../api/userApi";
 import logoDw from "../../assets/image/dw-logo.jpg";
 import Imgleft from "../../assets/image/img-login.jpg";
@@ -105,10 +104,6 @@ function Login(props) {
               <a href="/quenmatkhau" className="span">
                 Quên mật khẩu?
               </a>
-            </div>
-            <div className="forget">
-              <input type="checkbox" />
-              Remember me
             </div>
             <button className="button" onClick={handleClickLogin}>
               ĐĂNG NHẬP

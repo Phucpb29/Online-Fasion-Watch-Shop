@@ -12,7 +12,7 @@ const wishlistApi = {
   },
 
   unLike(idWishList) {
-    const url = `/removeProcut/${idWishList}`;
+    const url = `/removeProduct/${idWishList}`;
     return axiosWishListhClient.delete(url);
   },
 };

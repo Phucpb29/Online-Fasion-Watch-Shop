@@ -58,14 +58,14 @@ function Header(props) {
       <div className="header__main">
         <div className="header__main-left">
           <h1 className="header__logo">
-            <a href="/" className="header__logo-link">
+            <Link to="/" className="header__logo-link">
               <img src={logo} className="logo" alt="" />
-            </a>
+            </Link>
           </h1>
           <ul className="header__category">
             <li className="category__item">
-              <a
-                href="/sanpham/gioitinh/nam"
+              <Link
+                to="/sanpham/gioitinh/nam"
                 className={
                   activeLink === "nam"
                     ? "item__link item__active"
@@ -73,17 +73,17 @@ function Header(props) {
                 }
               >
                 ĐỒNG HỒ NAM
-              </a>
+              </Link>
             </li>
             <li className="category__item">
-              <a
-                href="/sanpham/gioitinh/nu"
+              <Link
+                to="/sanpham/gioitinh/nu"
                 className={
                   activeLink === "nu" ? "item__link item__active" : "item__link"
                 }
               >
                 ĐỒNG HỒ NỮ
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -107,13 +107,13 @@ function Header(props) {
           onMouseLeave={() => setIsShowUser(false)}
         >
           <div className="header__icon header__user">
-            <a href="/" className="header__icon-link">
+            <Link to="/" className="header__icon-link">
               <box-icon
                 name="user"
                 className="icon"
                 onMouseEnter={() => setIsShowUser(true)}
               ></box-icon>
-            </a>
+            </Link>
           </div>
           <div
             className={
@@ -124,21 +124,21 @@ function Header(props) {
           >
             {statusToken ? (
               <div className="dropdown__item">
-                <a href="/thongtintaikhoan" className="dropdown__item-link">
+                <Link to="/thongtintaikhoan" className="dropdown__item-link">
                   <span>TÀI KHOẢN</span>
-                </a>
+                </Link>
               </div>
             ) : (
               <>
                 <div className="dropdown__item">
-                  <a href="/dangnhap" className="dropdown__item-link">
+                  <Link to="/dangnhap" className="dropdown__item-link">
                     <span>ĐĂNG NHẬP</span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="dropdown__item">
-                  <a href="/dangky" className="dropdown__item-link">
+                  <Link to="/dangky" className="dropdown__item-link">
                     <span>ĐĂNG KÝ</span>
-                  </a>
+                  </Link>
                 </div>
               </>
             )}
@@ -150,29 +150,13 @@ function Header(props) {
             <span className="cart__amount">{cartListSize}</span>
           </div>
           <div className="header__icon header__wishlist">
-            <a href="/sanphamyeuthich" className="header__icon-link">
+            <Link to="/sanphamyeuthich" className="header__icon-link">
               <box-icon name="heart" className="icon"></box-icon>
               <span className="wishlist__amount">{wishListSize}</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
-      {/* <div className="header__sub">
-        <nav className="navbar nav__bar-watches">
-          <ul className="navbar__item">
-            <li className="item">
-              <a href="/" className="item__link">
-                ĐỒNG HỒ NAM
-              </a>
-            </li>
-            <li className="item">
-              <a href="/" className="item__link">
-                ĐỒNG HỒ NỮ
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
     </header>
   );
 }

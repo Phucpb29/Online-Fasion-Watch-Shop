@@ -109,6 +109,12 @@
   letter-spacing: 0.3rem;
 }
 
+.main__product .product__detail .product__info .product__info-group .product__rate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .main__product .product__detail .product__info .product__info-group .product__brand {
   -webkit-box-flex: 1;
       -ms-flex: 1 1;
@@ -352,9 +358,9 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .main__product .product__comment .comment__content .comment__box .comment__detail .comment__detail-title {
@@ -394,7 +400,6 @@
 .main__product .product__comment .pagination .pagination__prev,
 .main__product .product__comment .pagination .pagination__next {
   cursor: pointer;
-  font-weight: bold;
   padding: 0 20px;
   color: var(--color-white);
   border: 0 !important;
@@ -407,27 +412,20 @@
   display: flex;
 }
 
+.main__product .product__comment .pagination .pagination__list .pagination__active {
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
 .main__product .product__comment .pagination .pagination__list .pagination__list-item {
-  padding: 10px 10px;
+  padding: 10px 20px;
   margin: 0 10px;
-  font-weight: bold;
   border: 1px solid var(--color-gray);
   cursor: pointer;
 }
 
-.main__product .product__comment .pagination .pagination__list .pagination__list-item button {
-  border: 0 !important;
-  background: none;
-  color: var(--color-black);
-  cursor: pointer;
-}
-
 .main__product .product__comment .pagination .pagination__list .pagination__list-item:hover {
-  background-color: var(--color-success);
-  border: 1px solid var(--color-success);
-}
-
-.main__product .product__comment .pagination .pagination__list .pagination__list-item:hover button:hover {
   color: var(--color-white);
+  background-color: var(--color-black);
 }
 /*# sourceMappingURL=detail.css.map */

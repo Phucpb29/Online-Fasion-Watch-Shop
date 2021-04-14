@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
+  NavLink,
   useRouteMatch,
 } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -16,38 +16,58 @@ import AccountDetail from "./components/account-detail/account-detail";
 import AccountError from "./components/account-error/account-error";
 import AccountOrder from "./components/account-order/account-order";
 import AccountPassword from "./components/account-password/account-password";
+import DialogComment from "./components/dialog-comment/dialog";
 import "./css/account.css";
 
 Account.propTypes = {
-  openDialog: PropTypes.func,
-  handleLogout: PropTypes.func,
   statusToken: PropTypes.bool,
 };
 
 Account.DefaultPropTypes = {
-  openDialog: null,
-  handleLogout: null,
   statusToken: false,
 };
 
 function Account(props) {
-  const { statusToken, openDialog, handleLogout } = props;
+  const { statusToken } = props;
   const { path } = useRouteMatch();
   const [user, setUser] = useState({});
+  const [orderList, setOrderList] = useState([]);
+  const [orderInfo, setOrderInfo] = useState({});
+  const [statusDialog, setStatusDialog] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // lấy thông tin user khi đăng nhập
+  /* tương tác đóng mở đánh giá sản phẩm */
+  // mở dialog
+  const openDialog = () => {
+    setStatusDialog(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  // đóng dialog
+  const closeDialog = () => {
+    setStatusDialog(false);
+    document.body.style.overflow = "unset";
+  };
+
+  // mở dialog đánh giá sản phẩm
+  function handleOpenDialog(product) {
+    setOrderInfo(product);
+  }
+  /* tương tác đóng mở đánh giá sản phẩm */
+
+  // lấy thông tin user và lịch sử order khi đăng nhập
   useEffect(() => {
     const fetchData = async () => {
       if (statusToken) {
-        const response = await dashboardApi.getInfo();
-        setUser(response.data);
+        const responseInfo = await dashboardApi.getInfo();
+        const responseOrder = await dashboardApi.viewOrderHistory();
+        setUser(responseInfo.data);
+        setOrderList(responseOrder.data);
         setLoading(false);
       }
     };
     fetchData();
   }, [statusToken]);
-
-  const [loading, setLoading] = useState(true);
 
   // đăng xuất tài khoản
   const handleClickLogout = () => {
@@ -143,27 +163,39 @@ function Account(props) {
           <div className="account__banner">
             <img src={banner} alt="" />
             <div className="banner__text">
-              <p>Xin chào, Thầy</p>
-              <p className="text2">Quản lý tài khoản của bạn</p>
+              <p>Xin chào, {user.fullname}</p>
+              <p className="banner__text-sub">Quản lý tài khoản của bạn</p>
             </div>
           </div>
           <div className="account__navlink">
             <ul className="navlink__list">
-              <li className="link__item">
-                <Link to={path} className="link">
+              <NavLink
+                to={`${path}/thongtincanhan`}
+                className="link__item"
+                activeClassName="link__active"
+              >
+                <div className="link">
                   <span>Thông tin cá nhân</span>
-                </Link>
-              </li>
-              <li className="link__item">
-                <Link to={`${path}/lichsumuahang`} className="link">
+                </div>
+              </NavLink>
+              <NavLink
+                to={`${path}/lichsumuahang`}
+                className="link__item"
+                activeClassName="link__active"
+              >
+                <div className="link">
                   <span>Lịch sử mua hàng</span>
-                </Link>
-              </li>
-              <li className="link__item">
-                <Link to={`${path}/doimatkhau`} className="link">
+                </div>
+              </NavLink>
+              <NavLink
+                to={`${path}/doimatkhau`}
+                className="link__item"
+                activeClassName="link__active"
+              >
+                <div className="link">
                   <span>Đổi mật khẩu</span>
-                </Link>
-              </li>
+                </div>
+              </NavLink>
             </ul>
             <div className="navlink__logout">
               {statusToken && (
@@ -180,23 +212,34 @@ function Account(props) {
                 {loading ? (
                   <LoadingOverplay />
                 ) : (
-                  <Switch>
-                    <Route exact path={path}>
-                      <AccountDetail
-                        user={user}
-                        handleUpdateUserInfo={handleUpdateUserInfo}
-                      />
-                    </Route>
-                    <Route exact path={`${path}/lichsumuahang`}>
-                      <AccountOrder openDialog={openDialog} />
-                    </Route>
-                    <Route exact path={`${path}/doimatkhau`}>
-                      <AccountPassword />
-                    </Route>
-                    <Route>
-                      <Error />
-                    </Route>
-                  </Switch>
+                  <>
+                    <DialogComment
+                      orderInfo={orderInfo}
+                      statusDialog={statusDialog}
+                      closeDialog={closeDialog}
+                    />
+                    <Switch>
+                      <Route exact path={`${path}/thongtincanhan`}>
+                        <AccountDetail
+                          user={user}
+                          handleUpdateUserInfo={handleUpdateUserInfo}
+                        />
+                      </Route>
+                      <Route exact path={`${path}/lichsumuahang`}>
+                        <AccountOrder
+                          orderList={orderList}
+                          openDialog={openDialog}
+                          handleOpenDialog={handleOpenDialog}
+                        />
+                      </Route>
+                      <Route exact path={`${path}/doimatkhau`}>
+                        <AccountPassword />
+                      </Route>
+                      <Route>
+                        <Error />
+                      </Route>
+                    </Switch>
+                  </>
                 )}
               </>
             ) : (

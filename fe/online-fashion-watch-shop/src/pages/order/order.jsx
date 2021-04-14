@@ -8,17 +8,21 @@ import dashboardApi from "../../api/dashboardApi";
 import cartApi from "../../api/cartApi";
 import LoadingOverplay from "../../components/loading/loading";
 import PropTypes from "prop-types";
+import Error from "../../components/error/error";
+import OrderLoad from "./components/order-load";
 
 Order.prototype = {
-  handleOrderCart: PropTypes.func,
+  cartChange: PropTypes.bool,
+  handleChangeCart: PropTypes.func,
 };
 
 Order.DefaultPropTypes = {
-  handleOrderCart: null,
+  cartChange: false,
+  handleChangeCart: null,
 };
 
 function Order(props) {
-  const { handleOrderCart } = props;
+  const { cartChange, handleChangeCart } = props;
   const [user, setUser] = useState({
     isdelete: false,
     id: "",
@@ -34,11 +38,13 @@ function Order(props) {
     gender: false,
   });
   const [cart, setCart] = useState([]);
+  const [orderLoading, setOrderLoading] = useState(false);
   const [loading, setLoading] = useState(true);
 
   // đặt hàng
   function handleOrderSubmit(id, name, phone, address) {
     try {
+      setOrderLoading(true);
       checkoutApi
         .order(id, {
           name: name,
@@ -47,6 +53,7 @@ function Order(props) {
         })
         .then(function (response) {
           if (response.status === 200) {
+            setOrderLoading(false);
             Swal.fire({
               title: "THÔNG BÁO",
               text: "ĐẶT HÀNG THÀNH CÔNG",
@@ -54,12 +61,13 @@ function Order(props) {
               showConfirmButton: true,
             }).then((result) => {
               if (result.isConfirmed) {
-                handleOrderCart();
+                handleChangeCart();
                 window.location.replace("/");
               }
             });
           }
           if (response.status === 400) {
+            setOrderLoading(false);
             Swal.fire({
               title: "THÔNG BÁO",
               text: "ĐẶT HÀNG KHÔNG THÀNH CÔNG",
@@ -69,6 +77,7 @@ function Order(props) {
           }
         });
     } catch (error) {
+      setOrderLoading(false);
       Swal.fire({
         title: "THÔNG BÁO",
         text: "ĐẶT HÀNG KHÔNG THÀNH CÔNG",
@@ -78,7 +87,7 @@ function Order(props) {
     }
   }
 
-  // lấy dữ liệu user khi đăng nhập và giỏ hàng
+  // lấy dữ liệu user và giỏ hàng khi đăng nhập
   useEffect(() => {
     const fetchData = async () => {
       const dataToken = sessionStorage.getItem("accessToken");
@@ -92,7 +101,7 @@ function Order(props) {
       }
     };
     fetchData();
-  }, []);
+  }, [cartChange]);
 
   return (
     <>
@@ -100,6 +109,7 @@ function Order(props) {
         <LoadingOverplay />
       ) : (
         <>
+          {orderLoading && <OrderLoad orderLoading={orderLoading} />}
           {cart.length > 0 ? (
             <div className="row">
               <div className="col-1">
@@ -117,16 +127,7 @@ function Order(props) {
               </div>
             </div>
           ) : (
-            <div className="order__content">
-              <div className="order__text">
-                <span>BẠN CHƯA CÓ GIỎ HÀNG</span>
-              </div>
-              <div className="order__back">
-                <a href="/" className="order__back-link">
-                  <span>QUAY LẠI TRANG CHỦ</span>
-                </a>
-              </div>
-            </div>
+            <Error text={"BẠN CHƯA CÓ GIỎ HÀNG"} />
           )}
         </>
       )}
