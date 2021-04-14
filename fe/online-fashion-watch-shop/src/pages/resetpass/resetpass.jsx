@@ -47,10 +47,6 @@ function Resetpass() {
               text: response.data,
               icon: "error",
               showConfirmButton: true,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                window.location.replace("/quenmatkhau");
-              }
             });
           }
         });

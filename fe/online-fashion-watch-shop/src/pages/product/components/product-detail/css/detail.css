@@ -80,6 +80,10 @@
   border-radius: 50%;
 }
 
+.main__product .product__detail .product__img .img__thumbnail .thumbnail__list .thumbnail__list-item:last-child {
+  display: none;
+}
+
 .main__product .product__detail .product__info {
   -webkit-box-flex: 1;
       -ms-flex: 1 1;

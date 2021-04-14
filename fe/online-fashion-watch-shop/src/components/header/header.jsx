@@ -10,27 +10,19 @@ Header.prototype = {
   statusToken: PropTypes.bool,
   cartListSize: PropTypes.array,
   wishListSize: PropTypes.array,
-  handleSearchKeyword: PropTypes.func,
 };
 
 Header.DefaultPropTypes = {
   statusToken: false,
   cartListSize: [],
   wishListSize: [],
-  handleSearchKeyword: null,
 };
 
 function Header(props) {
   const { pathname } = useLocation();
   const history = useHistory();
   const activeLink = pathname.slice(pathname.lastIndexOf("/") + 1);
-  const {
-    openCart,
-    statusToken,
-    cartListSize,
-    wishListSize,
-    handleSearchKeyword,
-  } = props;
+  const { openCart, statusToken, cartListSize, wishListSize } = props;
   const [isShowUser, setIsShowUser] = useState(false);
   const [keyWord, setKeyWord] = useState("");
 
@@ -49,7 +41,6 @@ function Header(props) {
   // submit input
   const handleSubmitInput = (e) => {
     e.preventDefault();
-    handleSearchKeyword(keyWord);
     history.replace(`/timkiemsanpham/${keyWord}`);
   };
 
