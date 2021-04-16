@@ -115,4 +115,22 @@
   object-fit: cover;
 }
 
+.register__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: all .5s ease-in-out;
+}
+
+.register__loading-active {
+  opacity: 1;
+}
 /*# sourceMappingURL=register.css.map */

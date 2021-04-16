@@ -110,7 +110,7 @@ function Login(props) {
             </button>
             <div className="login__link">
               <span className="span"> Bạn chưa có tài khoản? </span>
-              <a className="space" href="/dangky">
+              <a className="space" href="/dang-ky">
                 Đăng ký ngay
               </a>
             </div>
