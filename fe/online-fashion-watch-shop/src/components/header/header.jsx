@@ -115,19 +115,22 @@ function Header(props) {
           >
             {statusToken ? (
               <div className="dropdown__item">
-                <Link to="/thongtintaikhoan" className="dropdown__item-link">
+                <Link
+                  to="/thong-tin-tai-khoan/thong-tin-ca-nhan"
+                  className="dropdown__item-link"
+                >
                   <span>TÀI KHOẢN</span>
                 </Link>
               </div>
             ) : (
               <>
                 <div className="dropdown__item">
-                  <Link to="/dangnhap" className="dropdown__item-link">
+                  <Link to="/dang-nhap" className="dropdown__item-link">
                     <span>ĐĂNG NHẬP</span>
                   </Link>
                 </div>
                 <div className="dropdown__item">
-                  <Link to="/dangky" className="dropdown__item-link">
+                  <Link to="/dang-ky" className="dropdown__item-link">
                     <span>ĐĂNG KÝ</span>
                   </Link>
                 </div>

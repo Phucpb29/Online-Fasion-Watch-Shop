@@ -10,20 +10,22 @@ DetailInfo.propTypes = {
   productInfo: PropTypes.object,
   statusToken: PropTypes.bool,
   cartList: PropTypes.array,
+  wishList: PropTypes.array,
   commentList: PropTypes.array,
   openCart: PropTypes.func,
   handleChangeCart: PropTypes.func,
-  handleLikeProduct: PropTypes.func,
+  handleChangeWishList: PropTypes.func,
 };
 
 DetailInfo.DefaultPropTypes = {
   productInfo: {},
   statusToken: false,
   cartList: [],
+  wishList: [],
   commentList: [],
   openCart: null,
   handleChangeCart: null,
-  handleLikeProduct: null,
+  handleChangeWishList: null,
 };
 
 function DetailInfo(props) {
@@ -31,13 +33,16 @@ function DetailInfo(props) {
     productInfo,
     statusToken,
     cartList,
+    wishList,
     commentList,
     openCart,
     handleChangeCart,
-    handleLikeProduct,
+    handleChangeWishList,
   } = props;
   const { product, brand, indexImage, addtionalImages } = productInfo;
   const [rate, setRate] = useState(0);
+  const [isLike, setIsLike] = useState(false);
+  const [isAdd, setIsAdd] = useState(false);
   const [countDone, setCountDone] = useState(false);
 
   // tổng số rate start sản phẩm
@@ -55,12 +60,25 @@ function DetailInfo(props) {
     fetchTotalRate();
   }, []);
 
+  // kiểm tra sản phẩm đã có trong danh sách yêu thích chưa
+  useEffect(() => {
+    const checkExist = async () => {
+      const item = wishList.filter(
+        (item) => item.wishlist_product.product.id === product.id
+      );
+      if (item.length > 0) {
+        setIsLike(true);
+      }
+    };
+    checkExist();
+  }, []);
+
   /**
    * kiểm tra sản phẩm trong giỏ hàng
    * không có thì thêm vào giỏ hàng
    * có thì tăng số lượng lên một
    */
-  function handleCheckProductExist(product) {
+  function addOrUpdate(product) {
     const item = cartList.filter((item) => item.product.id === product.id);
     if (item.length > 0) {
       updateProduct(item[0]);
@@ -69,7 +87,26 @@ function DetailInfo(props) {
     }
   }
 
-  // thêm sản phẩm
+  /**
+   * kiểm tra sản phẩm trong danh sách yêu thích
+   * không có thì cho thích sản phẩm
+   * có thì cho bỏ thích sản phẩm
+   */
+  function likeOrUnlike(id) {
+    const item = wishList.filter(
+      (item) => item.wishlist_product.product.id === id
+    );
+    if (isLike) {
+      unlikeProduct(item[0].wishlist_product.id);
+    } else {
+      likeProduct(id);
+    }
+  }
+
+  // thêm sản phẩm khi chưa đăng nhập
+  function addProductWithoutLogin(product) {}
+
+  // thêm sản phẩm khi đăng nhập
   function addProduct(product) {
     try {
       cartApi
@@ -156,20 +193,13 @@ function DetailInfo(props) {
               showConfirmButton: true,
             }).then((result) => {
               if (result.isConfirmed) {
-                handleLikeProduct();
+                setIsLike(true);
+                handleChangeWishList();
               }
-            });
-          } else {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "error",
-              showConfirmButton: true,
             });
           }
         });
       } catch (error) {
-        console.log(error);
         Swal.fire({
           title: "THÔNG BÁO",
           text: "XẢY RA LỖI! VUI LÒNG THỬ LẠI.",
@@ -185,8 +215,48 @@ function DetailInfo(props) {
         showConfirmButton: true,
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.replace("/dangnhap");
+          window.location.replace("/dang-nhap");
         }
+      });
+    }
+  }
+
+  // bỏ yêu thích sản phẩm
+  function unlikeProduct(id) {
+    try {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "BẠN CÓ MUỐN BỎ THÍCH SẢN PHẨM",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "BỎ THÍCH",
+      }).then((confirm) => {
+        if (confirm.isConfirmed) {
+          wishlistApi.unLike(id).then(function (response) {
+            if (response.status === 200) {
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: response.data,
+                icon: "success",
+                showConfirmButton: true,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  setIsLike(false);
+                  handleChangeWishList();
+                }
+              });
+            }
+          });
+        }
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "XẢY RA LỖI! VUI LÒNG THỬ LẠI.",
+        icon: "error",
+        showConfirmButton: true,
       });
     }
   }
@@ -266,17 +336,28 @@ function DetailInfo(props) {
               </div>
               <div className="product__info-group">
                 <button
-                  className="product__button-like product__like"
-                  onClick={() => likeProduct(product.id)}
+                  className={
+                    isLike
+                      ? "product__button-like product__unlike"
+                      : "product__button-like product__like"
+                  }
+                  onClick={() => likeOrUnlike(product.id)}
                 >
-                  <span>
+                  <span className="icon__like">
                     <box-icon name="heart" type="solid"></box-icon>
+                  </span>
+                  <span className="icon__unlike">
+                    <box-icon
+                      name="heart"
+                      type="solid"
+                      color="#ffffff"
+                    ></box-icon>
                   </span>
                 </button>
                 {product.quantity > 0 && (
                   <button
                     className="product__button product__add"
-                    onClick={() => handleCheckProductExist(product)}
+                    onClick={() => addOrUpdate(product)}
                   >
                     <span>THÊM VÀO GIỎ HÀNG</span>
                   </button>

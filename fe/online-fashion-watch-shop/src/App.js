@@ -79,13 +79,8 @@ function App() {
     fetchData();
   });
 
-  // yêu thích sản phẩm
-  function handleLikeProduct() {
-    setWishChange(!wishChange);
-  }
-
-  // bỏ thích sản phẩm
-  function handleUnlikeProduct() {
+  // thay đổi danh sách yêu thích sản phẩm (like, unlike)
+  function handleChangeWishList() {
     setWishChange(!wishChange);
   }
   /* sản phẩm yêu thích */
@@ -107,6 +102,7 @@ function App() {
   function handleChangeCart() {
     setCartChange(!cartChange);
   }
+
   /* giỏ hàng */
 
   return (
@@ -133,16 +129,16 @@ function App() {
           <Redirect from="/trangchu" to="/">
             <Home />
           </Redirect>
-          <Route exact path="/dangnhap">
+          <Route exact path="/dang-nhap">
             <Login handleLogin={handleLogin} />
           </Route>
-          <Route exact path="/dangky">
+          <Route exact path="/dang-ky">
             <Register />
           </Route>
           <Route exact path="/quenmatkhau">
             <Forgotpass />
           </Route>
-          <Route path="/thongtintaikhoan">
+          <Route path="/thong-tin-tai-khoan">
             <Account statusToken={statusToken} handleLogout={handleLogout} />
           </Route>
           <Route exact path="/sanpham/gioitinh/nam">
@@ -155,16 +151,17 @@ function App() {
             <WrapProductDetai
               statusToken={statusToken}
               cartChange={cartChange}
+              wishChange={wishChange}
               openCart={openCart}
               handleChangeCart={handleChangeCart}
-              handleLikeProduct={handleLikeProduct}
+              handleChangeWishList={handleChangeWishList}
             />
           </Route>
           <Route exact path="/sanphamyeuthich">
             <WishList
               statusToken={statusToken}
               wishChange={wishChange}
-              handleUnlikeProduct={handleUnlikeProduct}
+              handleChangeWishList={handleChangeWishList}
             />
           </Route>
           <Route exact path="/timkiemsanpham/:keyword">
@@ -183,7 +180,7 @@ function App() {
             />
           </Route>
           <Route>
-            <Error />
+            <Error text={"KHÔNG TÌM THẤY TRANG. VUI LÒNG THỬ LẠI"} />
           </Route>
         </Switch>
       </div>

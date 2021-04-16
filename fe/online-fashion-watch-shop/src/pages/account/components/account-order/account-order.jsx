@@ -78,7 +78,6 @@ function AccountOrder(props) {
                 <button className="button__DG" onClick={() => handleOpen(item)}>
                   ĐÁNH GIÁ
                 </button>
-                <button className="button__CT">XEM CHI TIẾT</button>
               </div>
             </div>
           </div>

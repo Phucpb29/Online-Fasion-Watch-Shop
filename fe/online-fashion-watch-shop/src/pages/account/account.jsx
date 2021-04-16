@@ -170,7 +170,7 @@ function Account(props) {
           <div className="account__navlink">
             <ul className="navlink__list">
               <NavLink
-                to={`${path}/thongtincanhan`}
+                to={`${path}/thong-tin-ca-nhan`}
                 className="link__item"
                 activeClassName="link__active"
               >
@@ -179,7 +179,7 @@ function Account(props) {
                 </div>
               </NavLink>
               <NavLink
-                to={`${path}/lichsumuahang`}
+                to={`${path}/lich-su-mua-hang`}
                 className="link__item"
                 activeClassName="link__active"
               >
@@ -188,7 +188,7 @@ function Account(props) {
                 </div>
               </NavLink>
               <NavLink
-                to={`${path}/doimatkhau`}
+                to={`${path}/doi-mat-khau`}
                 className="link__item"
                 activeClassName="link__active"
               >
@@ -219,20 +219,20 @@ function Account(props) {
                       closeDialog={closeDialog}
                     />
                     <Switch>
-                      <Route exact path={`${path}/thongtincanhan`}>
+                      <Route exact path={`${path}/thong-tin-ca-nhan`}>
                         <AccountDetail
                           user={user}
                           handleUpdateUserInfo={handleUpdateUserInfo}
                         />
                       </Route>
-                      <Route exact path={`${path}/lichsumuahang`}>
+                      <Route exact path={`${path}/lich-su-mua-hang`}>
                         <AccountOrder
                           orderList={orderList}
                           openDialog={openDialog}
                           handleOpenDialog={handleOpenDialog}
                         />
                       </Route>
-                      <Route exact path={`${path}/doimatkhau`}>
+                      <Route exact path={`${path}/doi-mat-khau`}>
                         <AccountPassword />
                       </Route>
                       <Route>

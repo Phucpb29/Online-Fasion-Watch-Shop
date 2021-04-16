@@ -14,18 +14,20 @@ ProductDetail.prototype = {
   id: PropTypes.string,
   statusToken: PropTypes.bool,
   cartChange: PropTypes.bool,
+  wishChange: PropTypes.bool,
   handleOpenCart: PropTypes.func,
   changeCart: PropTypes.func,
-  likeProduct: PropTypes.func,
+  changeWishList: PropTypes.func,
 };
 
 ProductDetail.DefaultPropTypes = {
   id: "",
   statusToken: false,
   cartChange: false,
+  wishChange: false,
   handleOpenCart: null,
   changeCart: null,
-  likeProduct: null,
+  changeWishList: null,
 };
 
 function ProductDetail(props) {
@@ -33,9 +35,10 @@ function ProductDetail(props) {
     id,
     statusToken,
     cartChange,
+    wishChange,
     handleOpenCart,
     changeCart,
-    likeProduct,
+    changeWishList,
   } = props;
   const size = 6;
   const [page, setPage] = useState(0);
@@ -45,6 +48,7 @@ function ProductDetail(props) {
   const [commentList, setCommentList] = useState([]); // danh sách đánh giá sản phẩm
   const [countComment, setCountComment] = useState(0); // tổng số đánh giá sản phẩm
   const [cartList, setCartList] = useState([]); // danh sách giỏ hàng
+  const [wishList, setWishList] = useState([]); // danh sách sản phẩm yêu thích
 
   // thông tin chi tiết sản phẩm
   useEffect(() => {
@@ -72,6 +76,18 @@ function ProductDetail(props) {
       fecthProductDetailData();
     };
   }, [id, loading, page, size]);
+
+  // danh sách sản phẩm yêu thích
+  useEffect(() => {
+    const fetchData = async () => {
+      if (statusToken) {
+        const response = await wishlistApi.getAll();
+        const data = response.data;
+        setWishList(data);
+      }
+    };
+    fetchData();
+  }, [statusToken, wishChange]);
 
   // danh sách giỏ hàng
   useEffect(() => {
@@ -115,9 +131,9 @@ function ProductDetail(props) {
   }
 
   // yêu thích sản phẩm
-  function handleLikeProduct() {
-    if (likeProduct) {
-      likeProduct();
+  function handleChangeWishList() {
+    if (changeWishList) {
+      changeWishList();
     }
   }
 
@@ -131,10 +147,11 @@ function ProductDetail(props) {
             productInfo={productInfo}
             statusToken={statusToken}
             cartList={cartList}
+            wishList={wishList}
             commentList={commentList}
             openCart={openCart}
             handleChangeCart={handleChangeCart}
-            handleLikeProduct={handleLikeProduct}
+            handleChangeWishList={handleChangeWishList}
           />
           <DetailProperty propertyList={propertyDetailList} />
           <DetailComment

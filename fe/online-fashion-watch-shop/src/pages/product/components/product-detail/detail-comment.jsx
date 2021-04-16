@@ -69,9 +69,6 @@ function DetailComment(props) {
                     />
                     <span>{item.created_date}</span>
                   </div>
-                  <div className="comment__detail-title">
-                    <h3>Title</h3>
-                  </div>
                   <div className="comment__detail-content">
                     <span>{item.content}</span>
                   </div>
@@ -83,35 +80,37 @@ function DetailComment(props) {
               </div>
             ))}
           </div>
-          <div className="pagination">
-            <button
-              className="pagination__prev"
-              onClick={handleClickFirstPageComment}
-            >
-              First
-            </button>
-            <ul className="pagination__list">
-              {[...Array(countComment).keys()].map((index) => (
-                <li
-                  className={
-                    index === page
-                      ? "pagination__list-item pagination__active"
-                      : "pagination__list-item"
-                  }
-                  key={index}
-                  onClick={() => handleClickPageComment(index)}
-                >
-                  {index + 1}
-                </li>
-              ))}
-            </ul>
-            <button
-              className="pagination__next"
-              onClick={handleClickLastPageComment}
-            >
-              Last
-            </button>
-          </div>
+          {countComment > 1 && (
+            <div className="pagination">
+              <button
+                className="pagination__prev"
+                onClick={handleClickFirstPageComment}
+              >
+                First
+              </button>
+              <ul className="pagination__list">
+                {[...Array(countComment).keys()].map((index) => (
+                  <li
+                    className={
+                      index === page
+                        ? "pagination__list-item pagination__active"
+                        : "pagination__list-item"
+                    }
+                    key={index}
+                    onClick={() => handleClickPageComment(index)}
+                  >
+                    {index + 1}
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="pagination__next"
+                onClick={handleClickLastPageComment}
+              >
+                Last
+              </button>
+            </div>
+          )}
         </>
       ) : (
         <div className="comment__error">
