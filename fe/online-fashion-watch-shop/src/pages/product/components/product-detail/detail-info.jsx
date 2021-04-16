@@ -1,10 +1,10 @@
+import "boxicons";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
 import cartApi from "../../../../api/cartApi";
-import "boxicons";
 import wishlistApi from "../../../../api/wishlistApi";
-import ReactStars from "react-rating-stars-component";
 
 DetailInfo.propTypes = {
   productInfo: PropTypes.object,
@@ -42,7 +42,7 @@ function DetailInfo(props) {
   const { product, brand, indexImage, addtionalImages } = productInfo;
   const [rate, setRate] = useState(0);
   const [isLike, setIsLike] = useState(false);
-  const [isAdd, setIsAdd] = useState(false);
+  const [price, setPrice] = useState(0);
   const [countDone, setCountDone] = useState(false);
 
   // tổng số rate start sản phẩm
@@ -108,13 +108,19 @@ function DetailInfo(props) {
 
   // thêm sản phẩm khi đăng nhập
   function addProduct(product) {
+    let priceItem = 0;
+    if (product.issale) {
+      priceItem = product.price_sale;
+    } else {
+      priceItem = product.price;
+    }
     try {
       cartApi
         .insertProduct({
           product_id: product.id,
-          total: product.price * 1,
+          total: priceItem * 1,
           quantity: 1,
-          product_price: product.price,
+          product_price: priceItem,
         })
         .then(function (response) {
           if (response.status === 200) {
@@ -311,15 +317,33 @@ function DetailInfo(props) {
                 </div>
               </div>
               <div className="product__info-group">
-                <div className="product__price">
-                  <span className="product__title">Giá sản phẩm:</span>
-                  <span>
-                    {new Intl.NumberFormat("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                    }).format(product.price)}
-                  </span>
-                </div>
+                {product.issale ? (
+                  <div className="product__price product__price-sale">
+                    <span className="product__title">Giá sản phẩm:</span>
+                    <span className="price">
+                      {new Intl.NumberFormat("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      }).format(product.price)}
+                    </span>
+                    <span className="price__sale">
+                      {new Intl.NumberFormat("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      }).format(product.price_sale)}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="product__price">
+                    <span className="product__title">Giá sản phẩm:</span>
+                    <span className="product__price">
+                      {new Intl.NumberFormat("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      }).format(product.price)}
+                    </span>
+                  </div>
+                )}
               </div>
               <div className="product__info-group">
                 <div className="product__status">

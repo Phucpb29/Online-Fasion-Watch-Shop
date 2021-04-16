@@ -34,10 +34,31 @@ function ProductList(props) {
                     <p>{item.product.name}</p>
                   </div>
                   <div className="product__price">
-                    {new Intl.NumberFormat("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                    }).format(item.product.price)}
+                    {item.product.issale ? (
+                      <>
+                        <span className="price">
+                          {new Intl.NumberFormat("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          }).format(item.product.price)}
+                        </span>
+                        <span className="price__sale">
+                          {new Intl.NumberFormat("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          }).format(item.product.price_sale)}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span>
+                          {new Intl.NumberFormat("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          }).format(item.product.price)}
+                        </span>
+                      </>
+                    )}
                   </div>
                   <div className="product__button">
                     <a

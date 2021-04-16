@@ -67,6 +67,16 @@
             padding: 5px 10px;
             letter-spacing: 0.1rem;
             font-size: 0.9rem;
+
+            .price {
+              text-decoration-line: line-through;
+              margin: 0 10px;
+            }
+
+            .price__sale {
+              color: var(--color-dangerous);
+              font-weight: bold;
+            }
           }
 
           .product__button {

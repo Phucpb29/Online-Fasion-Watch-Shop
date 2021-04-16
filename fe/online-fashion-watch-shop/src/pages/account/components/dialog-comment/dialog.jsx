@@ -62,6 +62,17 @@ function DialogComment(props) {
                 closeDialog();
               }
             });
+          } else {
+            Swal.fire({
+              title: "THÔNG BÁO",
+              text: response.data,
+              icon: "error",
+              showConfirmButton: true,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                closeDialog();
+              }
+            });
           }
         });
       setRate(0);

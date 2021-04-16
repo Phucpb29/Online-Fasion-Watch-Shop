@@ -63,7 +63,23 @@ function AccountOrder(props) {
             </div>
             <div className="box__right">
               <div className="status">
-                <span className="status-product">ĐÃ GIAO</span>
+                {item.history_purchase.invoice.status === 0 && (
+                  <span className="status-product status">ĐANG CHỜ XỬ LÍ</span>
+                )}
+                {item.history_purchase.invoice.status === 1 && (
+                  <span className="status-product status">ĐANG XỬ LÍ</span>
+                )}
+                {item.history_purchase.invoice.status === 2 && (
+                  <span className="status-product status-waiting">
+                    ĐANG VẬN CHUYỂN
+                  </span>
+                )}
+                {item.history_purchase.invoice.status === 3 && (
+                  <span className="status-product status-success">ĐÃ GIAO</span>
+                )}
+                {item.history_purchase.invoice.status === 4 && (
+                  <span className="status-product status-cancel">ĐÃ HUỶ</span>
+                )}
               </div>
               <div className="tongtien">
                 <p>Tổng tiền :</p>
@@ -74,11 +90,16 @@ function AccountOrder(props) {
                   }).format(item.history_purchase.total)}
                 </span>
               </div>
-              <div className="button">
-                <button className="button__DG" onClick={() => handleOpen(item)}>
-                  ĐÁNH GIÁ
-                </button>
-              </div>
+              {item.history_purchase.invoice.status === 3 && (
+                <div className="button">
+                  <button
+                    className="button__DG"
+                    onClick={() => handleOpen(item)}
+                  >
+                    ĐÁNH GIÁ
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         ))}

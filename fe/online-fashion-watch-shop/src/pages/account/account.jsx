@@ -63,6 +63,7 @@ function Account(props) {
         const responseOrder = await dashboardApi.viewOrderHistory();
         setUser(responseInfo.data);
         setOrderList(responseOrder.data);
+        console.log(responseOrder.data);
         setLoading(false);
       }
     };

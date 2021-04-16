@@ -79,7 +79,7 @@ function OrderCart(props) {
                     {new Intl.NumberFormat("vi-VN", {
                       style: "currency",
                       currency: "VND",
-                    }).format(item.product.price * item.quantity)}
+                    }).format(item.totalPrice)}
                   </span>
                 )}
               </div>

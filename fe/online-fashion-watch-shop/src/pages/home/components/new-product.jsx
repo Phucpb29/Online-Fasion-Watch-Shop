@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import newsProduct from "../../../../assets/image/news-product-home.png";
+import newsProduct from "../../../assets/image/news-product-home.png";
 
-function ProductNews(props) {
+function ProductNews() {
   return (
     <div className="home__news">
       <div className="news__box news__img">

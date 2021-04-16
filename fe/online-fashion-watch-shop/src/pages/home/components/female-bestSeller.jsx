@@ -28,12 +28,29 @@ function FemaleBestSeller(props) {
               <h3>{item.product.name}</h3>
             </div>
             <div className="product__price">
-              <span>
-                {new Intl.NumberFormat("vi-VN", {
-                  style: "currency",
-                  currency: "VND",
-                }).format(item.product.price)}
-              </span>
+              {item.product.issale ? (
+                <>
+                  <span className="price">
+                    {new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(item.product.price)}
+                  </span>
+                  <span className="price__sale">
+                    {new Intl.NumberFormat("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    }).format(item.product.price_sale)}
+                  </span>
+                </>
+              ) : (
+                <p>
+                  {new Intl.NumberFormat("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                  }).format(item.product.price)}
+                </p>
+              )}
             </div>
             <div className="product__button">
               <Link

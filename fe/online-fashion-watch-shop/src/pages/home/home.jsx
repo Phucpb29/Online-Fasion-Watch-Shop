@@ -1,13 +1,12 @@
 import "boxicons";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import productApi from "../../api/productApi";
-import wishlistApi from "../../api/wishlistApi";
 import LoadingOverplay from "../../components/loading/loading";
 import About from "./components/about";
 import FemaleBestSeller from "./components/female-bestSeller";
 import MaleBestSeller from "./components/male-bestSeller";
+import ProductNews from "./components/new-product";
 import "./css/home.css";
 
 function Home() {
@@ -62,6 +61,7 @@ function Home() {
             </div>
           </div>
           <MaleBestSeller productList={listProductMale} />
+          <ProductNews />
           <FemaleBestSeller productList={listProductFemale} />
           <About />
         </div>

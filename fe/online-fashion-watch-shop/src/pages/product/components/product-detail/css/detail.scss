@@ -81,6 +81,30 @@
           flex: 1 1;
         }
 
+        .product__price {
+          span {
+            font-size: 0.9rem;
+            text-align: center;
+          }
+
+          .price {
+            text-decoration-line: line-through;
+            margin: 0 10px;
+            letter-spacing: 0.2rem;
+          }
+
+          .price__sale {
+            color: var(--color-dangerous);
+            font-weight: bold;
+            margin: 0 10px;
+            letter-spacing: 0.2rem;
+          }
+
+          .product__price {
+            letter-spacing: 0.2rem;
+          }
+        }
+
         .product__button {
           position: relative;
           padding: 20px 50px;

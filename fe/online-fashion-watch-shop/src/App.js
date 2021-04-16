@@ -129,6 +129,9 @@ function App() {
           <Redirect from="/trangchu" to="/">
             <Home />
           </Redirect>
+          <Redirect from="/trang-chu" to="/">
+            <Home />
+          </Redirect>
           <Route exact path="/dang-nhap">
             <Login handleLogin={handleLogin} />
           </Route>

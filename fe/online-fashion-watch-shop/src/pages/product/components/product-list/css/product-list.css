@@ -99,6 +99,17 @@
   font-size: 0.9rem;
 }
 
+.product__body .list__product .product__item .product__card .product__card-detail .product__price .price {
+  -webkit-text-decoration-line: line-through;
+          text-decoration-line: line-through;
+  margin: 0 10px;
+}
+
+.product__body .list__product .product__item .product__card .product__card-detail .product__price .price__sale {
+  color: var(--color-dangerous);
+  font-weight: bold;
+}
+
 .product__body .list__product .product__item .product__card .product__card-detail .product__button {
   display: -webkit-box;
   display: -ms-flexbox;

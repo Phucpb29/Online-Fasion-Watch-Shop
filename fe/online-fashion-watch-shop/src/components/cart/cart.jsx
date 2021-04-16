@@ -217,15 +217,33 @@ function CartModal(props) {
                           </button>
                         </div>
                       </div>
-                      <div className="detail__right">
-                        <span className="product__price">
-                          x
-                          {new Intl.NumberFormat("vi-VN", {
-                            style: "currency",
-                            currency: "VND",
-                          }).format(item.product.price)}
-                        </span>
-                      </div>
+                      {item.product.issale ? (
+                        <div className="detail__right-sale">
+                          <span className="product__price">
+                            x
+                            {new Intl.NumberFormat("vi-VN", {
+                              style: "currency",
+                              currency: "VND",
+                            }).format(item.product.price)}
+                          </span>
+                          <span className="product__sale">
+                            {new Intl.NumberFormat("vi-VN", {
+                              style: "currency",
+                              currency: "VND",
+                            }).format(item.product.price_sale)}
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="detail__right">
+                          <span className="product__price">
+                            x
+                            {new Intl.NumberFormat("vi-VN", {
+                              style: "currency",
+                              currency: "VND",
+                            }).format(item.product.price)}
+                          </span>
+                        </div>
+                      )}
                     </div>
                     <div className="item__button">
                       <box-icon

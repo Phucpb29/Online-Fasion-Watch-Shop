@@ -75,16 +75,21 @@
     flex-direction: column;
     align-items: flex-end;
 }
+.account__order-box .box__right .status {
+    margin-top: 10px;
+}
 .account__order-box .box__right .status .status-product{
     font-weight: bolder;
     font-size: 18px;
 }
 .account__order-box .box__right .status .status-success{
-    color:#CCCC99;
+    color: var(--color-success);
 }
-
 .account__order-box .box__right .status .status-waiting{
-    color:#FF0000;
+    color: var(--color-warning);
+}
+.account__order-box .box__right .status .status-cancel{
+    color: var(--color-dangerous);
 }
 
 .account__order-box .box__right  .tongtien {
@@ -105,7 +110,7 @@
     letter-spacing: 0.1rem;
 }
 .account__order-box .box__right .button{
-    padding-top: 70px;
+    padding-top: 50px;
     position: relative;
     
 }
@@ -140,36 +145,6 @@
     width: 120%;
     cursor: pointer;
 }
-.account__order-box .box__right .button .button__CT{
-    position: relative;
-    padding: 10px 30px;
-    margin:0 15px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 0.1rem;
-    border: 0 !important;
-    background-color: black;
-    color: white;
-    z-index: 1;
-    font-weight: bolder;
-    overflow: hidden;
-    cursor: pointer;
-}
-.account__order-box .box__right .button .button__CT::before{
-    position: absolute;
-    content: "";
-    top: 0;
-    left: -10%;
-    width: 0%;
-    height: 100%;
-    z-index: -1;
-    transform: skewX(-25deg);
-    background-color: var(--color-success);
-    transition: width 0.7s ease-in-out;
-    cursor: pointer;
-}
-.account__order-box .box__right .button .button__CT:hover:before{
-    width: 120%;
-    cursor: pointer;
-}
+
 
 

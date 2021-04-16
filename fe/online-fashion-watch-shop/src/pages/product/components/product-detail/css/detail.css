@@ -125,6 +125,29 @@
           flex: 1 1;
 }
 
+.main__product .product__detail .product__info .product__info-group .product__price span {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.main__product .product__detail .product__info .product__info-group .product__price .price {
+  -webkit-text-decoration-line: line-through;
+          text-decoration-line: line-through;
+  margin: 0 10px;
+  letter-spacing: 0.2rem;
+}
+
+.main__product .product__detail .product__info .product__info-group .product__price .price__sale {
+  color: var(--color-dangerous);
+  font-weight: bold;
+  margin: 0 10px;
+  letter-spacing: 0.2rem;
+}
+
+.main__product .product__detail .product__info .product__info-group .product__price .product__price {
+  letter-spacing: 0.2rem;
+}
+
 .main__product .product__detail .product__info .product__info-group .product__button {
   position: relative;
   padding: 20px 50px;
