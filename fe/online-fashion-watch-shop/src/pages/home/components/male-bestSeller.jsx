@@ -37,7 +37,7 @@ function MaleBestSeller(props) {
             </div>
             <div className="product__button">
               <Link
-                to={`/sanphamchitiet/${item.product.id}`}
+                to={`/san-pham-chi-tiet/${item.product.id}`}
                 className="product__button-link"
               >
                 <span>XEM SẢN PHẨM</span>

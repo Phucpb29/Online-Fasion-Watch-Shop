@@ -133,7 +133,7 @@ function WishList(props) {
                               </div>
                               <div className="item__button">
                                 <a
-                                  href={`/sanphamchitiet/${item.wishlist_product.product.id}`}
+                                  href={`/san-pham-chi-tiet/${item.wishlist_product.product.id}`}
                                   className="button__more-detail"
                                 >
                                   XEM SẢN PHẨM

@@ -48,14 +48,14 @@ function Home() {
           <div className="home__shop">
             <div className="shop__link shop__man">
               <p className="link__title">ĐỒNG HỒ NAM</p>
-              <Link to="/sanpham/gioitinh/nam" className="link__product">
+              <Link to="/san-pham/gioi-tinh/nam" className="link__product">
                 <span>MUA NGAY</span>
                 <box-icon name="right-arrow-alt" color="#ffffff"></box-icon>
               </Link>
             </div>
             <div className="shop__link shop__woman">
               <p className="link__title">ĐỒNG HỒ NỮ</p>
-              <Link to="/sanpham/gioitinh/nu" className="link__product">
+              <Link to="/san-pham/gioi-tinh/nu" className="link__product">
                 <span>MUA NGAY</span>
                 <box-icon name="right-arrow-alt" color="#ffffff"></box-icon>
               </Link>

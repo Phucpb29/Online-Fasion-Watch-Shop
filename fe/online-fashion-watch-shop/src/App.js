@@ -135,19 +135,19 @@ function App() {
           <Route exact path="/dang-ky">
             <Register />
           </Route>
-          <Route exact path="/quenmatkhau">
+          <Route exact path="/quen-mat-khau">
             <Forgotpass />
           </Route>
           <Route path="/thong-tin-tai-khoan">
             <Account statusToken={statusToken} handleLogout={handleLogout} />
           </Route>
-          <Route exact path="/sanpham/gioitinh/nam">
+          <Route exact path="/san-pham/gioi-tinh/nam">
             <Product />
           </Route>
-          <Route exact path="/sanpham/gioitinh/nu">
+          <Route exact path="/san-pham/gioi-tinh/nu">
             <Product />
           </Route>
-          <Route exact path="/sanphamchitiet/:id">
+          <Route exact path="/san-pham-chi-tiet/:id">
             <WrapProductDetai
               statusToken={statusToken}
               cartChange={cartChange}
@@ -157,14 +157,14 @@ function App() {
               handleChangeWishList={handleChangeWishList}
             />
           </Route>
-          <Route exact path="/sanphamyeuthich">
+          <Route exact path="/san-pham-yeu-thich">
             <WishList
               statusToken={statusToken}
               wishChange={wishChange}
               handleChangeWishList={handleChangeWishList}
             />
           </Route>
-          <Route exact path="/timkiemsanpham/:keyword">
+          <Route exact path="/tim-kiem-san-pham/:keyword">
             <WrapProductSearch />
           </Route>
           <Route exact path="/maxacnhan">
@@ -173,7 +173,7 @@ function App() {
           <Route path="/resetpass/*">
             <Resetpass />
           </Route>
-          <Route exact path="/thanhtoan">
+          <Route exact path="/thanh-toan">
             <Order
               cartChange={cartChange}
               handleChangeCart={handleChangeCart}

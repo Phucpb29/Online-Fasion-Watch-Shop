@@ -101,7 +101,7 @@ function Login(props) {
                   onChange={handleChangePassword}
                 />
               </div>
-              <a href="/quenmatkhau" className="span">
+              <a href="/quen-mat-khau" className="span">
                 Quên mật khẩu?
               </a>
             </div>

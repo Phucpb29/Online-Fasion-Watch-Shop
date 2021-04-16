@@ -251,7 +251,7 @@ function CartModal(props) {
                 </div>
                 <div className="total__button">
                   <Link
-                    to="/thanhtoan"
+                    to="/thanh-toan"
                     className="button__checkout"
                     onClick={handleCloseCart}
                   >

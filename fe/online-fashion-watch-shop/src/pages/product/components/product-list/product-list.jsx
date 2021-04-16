@@ -41,7 +41,7 @@ function ProductList(props) {
                   </div>
                   <div className="product__button">
                     <a
-                      href={`/sanphamchitiet/${item.product.id}`}
+                      href={`/san-pham-chi-tiet/${item.product.id}`}
                       className="button__link"
                     >
                       <span>XEM SẢN PHẨM</span>

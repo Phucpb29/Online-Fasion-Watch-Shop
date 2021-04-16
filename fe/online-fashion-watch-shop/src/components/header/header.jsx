@@ -41,7 +41,7 @@ function Header(props) {
   // submit input
   const handleSubmitInput = (e) => {
     e.preventDefault();
-    history.replace(`/timkiemsanpham/${keyWord}`);
+    history.replace(`/tim-kiem-san-pham/${keyWord}`);
   };
 
   return (
@@ -56,7 +56,7 @@ function Header(props) {
           <ul className="header__category">
             <li className="category__item">
               <Link
-                to="/sanpham/gioitinh/nam"
+                to="/san-pham/gioi-tinh/nam"
                 className={
                   activeLink === "nam"
                     ? "item__link item__active"
@@ -68,7 +68,7 @@ function Header(props) {
             </li>
             <li className="category__item">
               <Link
-                to="/sanpham/gioitinh/nu"
+                to="/san-pham/gioi-tinh/nu"
                 className={
                   activeLink === "nu" ? "item__link item__active" : "item__link"
                 }
@@ -144,7 +144,7 @@ function Header(props) {
             <span className="cart__amount">{cartListSize}</span>
           </div>
           <div className="header__icon header__wishlist">
-            <Link to="/sanphamyeuthich" className="header__icon-link">
+            <Link to="/san-pham-yeu-thich" className="header__icon-link">
               <box-icon name="heart" className="icon"></box-icon>
               <span className="wishlist__amount">{wishListSize}</span>
             </Link>
