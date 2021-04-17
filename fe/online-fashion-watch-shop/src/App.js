@@ -26,21 +26,25 @@ import Resetpass from "./pages/resetpass/resetpass";
 import WishList from "./pages/wishlist/wishlist";
 
 function App() {
-  const [cartListSize, setCartListSize] = useState(0);
-  const [wishListSize, setWishListSize] = useState(0);
+  const [cartList, setCartList] = useState([]); // giỏ hàng database
+  const [cartLocal, setCartLocal] = useState([]); // giỏ hàng local storage
   const [cartChange, setCartChange] = useState(false);
-  const [wishChange, setWishChange] = useState(false);
   const [statusCart, setStatusCart] = useState(false);
+  const [cartListSize, setCartListSize] = useState(0);
+
+  // danh sách yêu thích
+  const [wishList, setWishList] = useState([]);
+  const [wishChange, setWishChange] = useState(false);
+  const [wishListSize, setWishListSize] = useState(0);
+
+  // token
   const [statusToken, setStatusToken] = useState(false);
 
   /* tương tác đóng mở giỏ hàng */
-  // mở giỏ hàng
   const openCart = () => {
     setStatusCart(true);
     document.body.style.overflow = "hidden";
   };
-
-  // đóng giỏ hàng
   const closeCart = () => {
     setStatusCart(false);
     document.body.style.overflow = "unset";
@@ -48,17 +52,13 @@ function App() {
   /* tương tác đóng mở giỏ hàng */
 
   /* đăng nhập và đăng xuất */
-  // đăng nhập tài khoản
   function handleLogin() {
     setStatusToken(true);
   }
-
-  // đăng xuất tài khoản
   function handleLogout() {
     setStatusToken(false);
   }
-
-  // render lại value khi token thay đổi
+  // render lại value token khi statusToken thay đổi
   useEffect(() => {
     const response = sessionStorage.getItem("accessToken");
     const data = response !== null ? true : false;
@@ -66,43 +66,34 @@ function App() {
   }, [statusToken]);
   /* đăng nhập và đăng xuất */
 
-  /* sản phẩm yêu thích */
-  // render lại số lượng sản phẩm yêu thích khi wishChange thay đổi
-  useEffect(() => {
-    const fetchData = async () => {
-      if (statusToken) {
-        const response = await wishlistApi.getAll();
-        const data = response.data;
-        setWishListSize(data.length);
-      }
-    };
-    fetchData();
-  });
-
-  // thay đổi danh sách yêu thích sản phẩm (like, unlike)
-  function handleChangeWishList() {
-    setWishChange(!wishChange);
-  }
-  /* sản phẩm yêu thích */
-
   /* giỏ hàng */
-  // render lại số lượng giỏ hàng khi cartChange thay đổi
+  // tạo giỏ hàng khi vào trang
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = localStorage.getItem("cartLocal");
+      const data = response !== null ? JSON.parse(response) : [];
+      setCartLocal(data);
+    };
+    fetchData();
+  }, []);
+
+  // render giỏ hàng khi đăng nhập
   useEffect(() => {
     const fetchData = async () => {
       if (statusToken) {
-        const response = await cartApi.viewCart();
-        const data = response.data;
-        setCartListSize(data.length);
+        const responseCart = await cartApi.viewCart();
+        if (responseCart !== null) {
+          const data = responseCart.data;
+          setCartList(data);
+        } else {
+          const responseCart = await cartApi.createCart();
+          const data = responseCart.data;
+          setCartList(data);
+        }
       }
     };
     fetchData();
-  }, [statusToken, cartChange]);
-
-  // thay đổi giỏ hàng (thêm, xoá, sửa, thanh toán)
-  function handleChangeCart() {
-    setCartChange(!cartChange);
-  }
-
+  }, [statusToken]);
   /* giỏ hàng */
 
   return (
@@ -115,11 +106,13 @@ function App() {
       />
       <OverPlay statusCart={statusCart} closeCart={closeCart} />
       <CartModal
+        cartList={cartList}
+        cartLocal={cartLocal}
         statusCart={statusCart}
-        closeCart={closeCart}
-        statusToken={statusToken}
         cartChange={cartChange}
-        handleChangeCart={handleChangeCart}
+        statusToken={statusToken}
+        closeCart={closeCart}
+        // handleChangeCart={handleChangeCart}
       />
       <div className="main">
         <Switch>
@@ -156,15 +149,15 @@ function App() {
               cartChange={cartChange}
               wishChange={wishChange}
               openCart={openCart}
-              handleChangeCart={handleChangeCart}
-              handleChangeWishList={handleChangeWishList}
+              // handleChangeCart={handleChangeCart}
+              // handleChangeWishList={handleChangeWishList}
             />
           </Route>
           <Route exact path="/san-pham-yeu-thich">
             <WishList
               statusToken={statusToken}
               wishChange={wishChange}
-              handleChangeWishList={handleChangeWishList}
+              // handleChangeWishList={handleChangeWishList}
             />
           </Route>
           <Route exact path="/tim-kiem-san-pham/:keyword">
@@ -179,7 +172,7 @@ function App() {
           <Route exact path="/thanh-toan">
             <Order
               cartChange={cartChange}
-              handleChangeCart={handleChangeCart}
+              // handleChangeCart={handleChangeCart}
             />
           </Route>
           <Route>

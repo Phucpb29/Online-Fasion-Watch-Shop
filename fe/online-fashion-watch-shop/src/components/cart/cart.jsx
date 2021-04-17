@@ -7,28 +7,31 @@ import cartApi from "../../api/cartApi";
 import "./css/cart.css";
 
 CartModal.propTypes = {
+  cartList: PropTypes.array,
+  cartLocal: PropTypes.array,
   statusCart: PropTypes.bool,
-  closeCart: PropTypes.func,
-  statusToken: PropTypes.bool,
   cartChange: PropTypes.bool,
-  handleChangeCart: PropTypes.func,
+  statusToken: PropTypes.bool,
+  closeCart: PropTypes.func,
 };
 
 CartModal.DefaultPropTypes = {
+  cartList: [],
+  cartLocal: [],
   statusCart: false,
-  closeCart: false,
-  statusToken: false,
   cartChange: false,
-  handleChangeCart: null,
+  statusToken: false,
+  closeCart: false,
 };
 
 function CartModal(props) {
   const {
+    cartList,
+    cartLocal,
     statusCart,
-    closeCart,
-    statusToken,
     cartChange,
-    handleChangeCart,
+    statusToken,
+    closeCart,
   } = props;
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -39,119 +42,119 @@ function CartModal(props) {
   };
 
   // lấy giỏ hàng khi user đăng nhập
-  useEffect(() => {
-    const fetchData = async () => {
-      if (statusToken) {
-        const response = await cartApi.viewCart();
-        if (response.status === 200) {
-          setCart(response.data);
-        } else {
-          await cartApi.createCart();
-          setCart([]);
-        }
-      }
-    };
-    fetchData();
-  }, [statusToken, cartChange]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (statusToken) {
+  //       const response = await cartApi.viewCart();
+  //       if (response.status === 200) {
+  //         setCart(response.data);
+  //       } else {
+  //         await cartApi.createCart();
+  //         setCart([]);
+  //       }
+  //     }
+  //   };
+  //   fetchData();
+  // }, [statusToken, cartChange]);
 
-  // re-render lại tổng tiền giỏ hàng
-  useEffect(() => {
-    const fetchTotalPrice = async () => {
-      if (cart.length > 0) {
-        const newTotalPrice = await cart.reduce(
-          (total, item) => Number(total) + Number(item.totalPrice),
-          0
-        );
-        setTotalPrice(newTotalPrice);
-      }
-    };
-    fetchTotalPrice();
-  }, [cart]);
+  // // re-render lại tổng tiền giỏ hàng
+  // useEffect(() => {
+  //   const fetchTotalPrice = async () => {
+  //     if (cart.length > 0) {
+  //       const newTotalPrice = await cart.reduce(
+  //         (total, item) => Number(total) + Number(item.totalPrice),
+  //         0
+  //       );
+  //       setTotalPrice(newTotalPrice);
+  //     }
+  //   };
+  //   fetchTotalPrice();
+  // }, [cart]);
 
   // tăng số lượng sản phẩm
-  const handleIncrease = (cartDetailID, quantity) => {
-    try {
-      if (quantity < 10) {
-        quantity = quantity + 1;
-        cartApi.updateProduct(cartDetailID, quantity).then(function (response) {
-          if (response.status === 200) {
-            handleChangeCart();
-          }
-        });
-      } else {
-        Swal.fire({
-          title: "THÔNG BÁO",
-          text: "SỐ LƯỢNG SẢN PHẨM TỐI ĐA LÀ 10",
-          icon: "error",
-          showConfirmButton: true,
-        });
-      }
-    } catch (error) {
-      Swal.fire({
-        title: "THÔNG BÁO",
-        text: "LỖI! XIN VUI LÒNG THỬ LẠI",
-        icon: "error",
-        showConfirmButton: true,
-      });
-    }
-  };
+  // const handleIncrease = (cartDetailID, quantity) => {
+  //   try {
+  //     if (quantity < 10) {
+  //       quantity = quantity + 1;
+  //       cartApi.updateProduct(cartDetailID, quantity).then(function (response) {
+  //         if (response.status === 200) {
+  //           handleChangeCart();
+  //         }
+  //       });
+  //     } else {
+  //       Swal.fire({
+  //         title: "THÔNG BÁO",
+  //         text: "SỐ LƯỢNG SẢN PHẨM TỐI ĐA LÀ 10",
+  //         icon: "error",
+  //         showConfirmButton: true,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     Swal.fire({
+  //       title: "THÔNG BÁO",
+  //       text: "LỖI! XIN VUI LÒNG THỬ LẠI",
+  //       icon: "error",
+  //       showConfirmButton: true,
+  //     });
+  //   }
+  // };
 
   // giảm số lượng sản phẩm
-  const handleDecrease = (cartDetailID, quantity) => {
-    try {
-      if (quantity > 1) {
-        quantity = quantity - 1;
-        cartApi.updateProduct(cartDetailID, quantity).then(function (response) {
-          if (response.status === 200) {
-            handleChangeCart();
-          }
-        });
-      } else {
-        Swal.fire({
-          title: "THÔNG BÁO",
-          text: "SỐ LƯỢNG SẢN PHẨM TỐI THIỂU LÀ 1",
-          icon: "error",
-          showConfirmButton: true,
-        });
-      }
-    } catch (error) {
-      Swal.fire({
-        title: "THÔNG BÁO",
-        text: "LỖI! XIN VUI LÒNG THỬ LẠI",
-        icon: "error",
-        showConfirmButton: true,
-      });
-    }
-  };
+  // const handleDecrease = (cartDetailID, quantity) => {
+  //   try {
+  //     if (quantity > 1) {
+  //       quantity = quantity - 1;
+  //       cartApi.updateProduct(cartDetailID, quantity).then(function (response) {
+  //         if (response.status === 200) {
+  //           handleChangeCart();
+  //         }
+  //       });
+  //     } else {
+  //       Swal.fire({
+  //         title: "THÔNG BÁO",
+  //         text: "SỐ LƯỢNG SẢN PHẨM TỐI THIỂU LÀ 1",
+  //         icon: "error",
+  //         showConfirmButton: true,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     Swal.fire({
+  //       title: "THÔNG BÁO",
+  //       text: "LỖI! XIN VUI LÒNG THỬ LẠI",
+  //       icon: "error",
+  //       showConfirmButton: true,
+  //     });
+  //   }
+  // };
 
   // xoá sản phẩm
-  const handleDelete = (id) => {
-    try {
-      cartApi.deleteProduct(id).then(function (response) {
-        if (response.status === 200) {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: response.data,
-            icon: "success",
-            showConfirmButton: true,
-          }).then((value) => {
-            if (value.value) {
-              handleChangeCart();
-            }
-          });
-        } else {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: response.data,
-            icon: "error",
-            showConfirmButton: true,
-          });
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleDelete = (id) => {
+  //   try {
+  //     cartApi.deleteProduct(id).then(function (response) {
+  //       if (response.status === 200) {
+  //         Swal.fire({
+  //           title: "THÔNG BÁO",
+  //           text: response.data,
+  //           icon: "success",
+  //           showConfirmButton: true,
+  //         }).then((value) => {
+  //           if (value.value) {
+  //             handleChangeCart();
+  //           }
+  //         });
+  //       } else {
+  //         Swal.fire({
+  //           title: "THÔNG BÁO",
+  //           text: response.data,
+  //           icon: "error",
+  //           showConfirmButton: true,
+  //         });
+  //       }
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className={statusCart ? "cart cart__active" : "cart"}>
@@ -166,7 +169,7 @@ function CartModal(props) {
             </button>
           </div>
         </div>
-        {cart.length <= 0 ? (
+        {/* {cart.length <= 0 ? (
           <div className="cart__notfound">
             <div className="cart__notfound-message">
               Hiện tại chưa có sản phẩm nào trong giỏ hàng của bạn
@@ -194,9 +197,9 @@ function CartModal(props) {
                         <div className="product__quantity">
                           <button
                             className="product__button"
-                            onClick={() =>
-                              handleDecrease(item.cartDetailID, item.quantity)
-                            }
+                            // onClick={() =>
+                            //   // handleDecrease(item.cartDetailID, item.quantity)
+                            // }
                           >
                             -
                           </button>
@@ -209,9 +212,9 @@ function CartModal(props) {
                           />
                           <button
                             className="product__button"
-                            onClick={() =>
-                              handleIncrease(item.cartDetailID, item.quantity)
-                            }
+                            // onClick={() =>
+                            //   handleIncrease(item.cartDetailID, item.quantity)
+                            // }
                           >
                             +
                           </button>
@@ -249,7 +252,7 @@ function CartModal(props) {
                       <box-icon
                         type="solid"
                         name="coffee-togo"
-                        onClick={() => handleDelete(item.cartDetailID)}
+                        // onClick={() => handleDelete(item.cartDetailID)}
                       ></box-icon>
                     </div>
                   </li>
@@ -279,7 +282,7 @@ function CartModal(props) {
               </div>
             </div>
           </>
-        )}
+        )} */}
         <div className="cart__footer">
           <div className="cart__footer-policy">
             <box-icon name="check-shield"></box-icon>
