@@ -176,15 +176,19 @@
           }
 
           .detail__right-sale {
-            padding-top: 60px;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+
             .product__price {
               text-decoration-line: line-through;
+              letter-spacing: 0.1rem;
             }
 
             .product__sale {
               color: var(--color-dangerous);
               font-weight: bold;
-              margin-left: 20px;
+              letter-spacing: 0.1rem;
             }
           }
         }
@@ -237,6 +241,7 @@
           color: var(--color-white);
           overflow: hidden;
           z-index: 1;
+          border: 0 !important;
           background-color: var(--color-black);
         }
 
@@ -251,6 +256,10 @@
           z-index: -1;
           background-color: var(--color-success);
           transition: width 0.7s ease-in-out;
+        }
+
+        .button__checkout:hover {
+          cursor: pointer;
         }
 
         .button__checkout:hover::before {

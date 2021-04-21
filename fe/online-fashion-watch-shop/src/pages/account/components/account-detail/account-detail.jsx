@@ -1,48 +1,62 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 import "./css/detail.css";
 
 AccountDetail.prototype = {
-  user: PropTypes.object,
+  fullname: PropTypes.string,
+  gender: PropTypes.bool,
+  birthday: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.string,
+  address: PropTypes.string,
+  handleChangeName: PropTypes.func,
+  handleChangePhone: PropTypes.func,
+  handleChangeEmail: PropTypes.func,
+  handleChangeGender: PropTypes.func,
+  handleChangeAddress: PropTypes.func,
+  handleChangeBirthday: PropTypes.func,
   handleUpdateUserInfo: PropTypes.func,
 };
 
 AccountDetail.DefaultPropTypes = {
-  user: {},
   handleUpdateUserInfo: null,
 };
 
 function AccountDetail(props) {
-  const { user, handleUpdateUserInfo } = props;
-  const [fullname, setFullName] = useState(user.fullname);
-  const [gender, setGender] = useState(user.gender);
-  const [birthday, setBirthday] = useState(user.birthday);
-  const [email, setEmail] = useState(user.email);
-  const [phone, setPhone] = useState(user.phone);
-  const [address, setAddress] = useState(user.address);
+  const { fullname, gender, birthday, email, phone, address } = props;
+  const {
+    handleChangeName,
+    handleChangePhone,
+    handleChangeEmail,
+    handleChangeGender,
+    handleChangeAddress,
+    handleChangeBirthday,
+    handleUpdateUserInfo,
+  } = props;
+  console.log(gender);
+  const changeName = (e) => {
+    handleChangeName(e.target.value);
+  };
+  const changeGender = (e) => {
+    handleChangeGender(e.target.value);
+  };
+  const changeBirthday = (e) => {
+    handleChangeBirthday(e.target.value);
+  };
+  const changePhone = (e) => {
+    handleChangePhone(e.target.value);
+  };
+  const changeAddress = (e) => {
+    handleChangeAddress(e.target.value);
+  };
+  const changeEmail = (e) => {
+    handleChangeEmail(e.target.value);
+  };
 
-  const handleChangeName = async (e) => {
-    setFullName(e.target.value);
-  };
-  const handleChangeGender = (e) => {
-    setGender(e.target.value);
-  };
-  const handleChangeBirthday = (e) => {
-    setBirthday(e.target.value);
-  };
-  const handleChangePhone = (e) => {
-    setPhone(e.target.value);
-  };
-  const handleChangeAddress = (e) => {
-    setAddress(e.target.value);
-  };
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
   const handleSummitForm = (e) => {
     e.preventDefault();
     if (handleUpdateUserInfo) {
-      handleUpdateUserInfo(fullname, gender, phone, birthday, email, address);
+      handleUpdateUserInfo();
     }
   };
 
@@ -59,7 +73,7 @@ function AccountDetail(props) {
                 type="text"
                 name="fullname"
                 value={fullname}
-                onChange={handleChangeName}
+                onChange={changeName}
                 required
               />
             </div>
@@ -72,17 +86,17 @@ function AccountDetail(props) {
               <input
                 type="radio"
                 name="gender"
-                value={gender}
-                checked={gender === true}
-                onChange={handleChangeGender}
+                value="true"
+                checked={gender === "true" || gender === true}
+                onChange={changeGender}
               />
               <span>Nam</span>
               <input
                 type="radio"
                 name="gender"
-                value={gender}
-                checked={gender === false}
-                onChange={handleChangeGender}
+                value="false"
+                checked={gender === "false" || gender === false}
+                onChange={changeGender}
               />
               <span>Nữ</span>
             </div>
@@ -96,7 +110,7 @@ function AccountDetail(props) {
                 type="date"
                 name="birthday"
                 value={birthday}
-                onChange={handleChangeBirthday}
+                onChange={changeBirthday}
                 required
               />
             </div>
@@ -110,7 +124,7 @@ function AccountDetail(props) {
                 type="text"
                 name="phone"
                 value={phone}
-                onChange={handleChangePhone}
+                onChange={changePhone}
                 required
               />
             </div>
@@ -124,7 +138,7 @@ function AccountDetail(props) {
                 type="text"
                 name="address"
                 value={address}
-                onChange={handleChangeAddress}
+                onChange={changeAddress}
                 required
               />
             </div>
@@ -138,7 +152,7 @@ function AccountDetail(props) {
                 type="text"
                 name="email"
                 value={email}
-                onChange={handleChangeEmail}
+                onChange={changeEmail}
                 required
                 disabled
               />

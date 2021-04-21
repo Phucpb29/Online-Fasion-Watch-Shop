@@ -44,11 +44,11 @@ function Login(props) {
               text: "ĐĂNG NHẬP THÀNH CÔNG",
               icon: "success",
               showConfirmButton: true,
-            }).then((value) => {
+            }).then((result) => {
               const { accessToken } = response.data;
               sessionStorage.setItem("accessToken", accessToken);
               handleLogin();
-              if (value.value === true) {
+              if (result.isConfirmed === true) {
                 window.location.replace("/");
               }
             });
@@ -63,7 +63,12 @@ function Login(props) {
           }
         });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "CÓ LỖI XẢY RA! VUI LÒNG THỬ LẠI.",
+        icon: "error",
+        showConfirmButton: true,
+      });
     }
   };
 

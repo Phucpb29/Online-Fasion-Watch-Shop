@@ -8,13 +8,13 @@ import "./css/header.css";
 Header.prototype = {
   openCart: PropTypes.func,
   statusToken: PropTypes.bool,
-  cartListSize: PropTypes.array,
+  cartSize: PropTypes.array,
   wishListSize: PropTypes.array,
 };
 
 Header.DefaultPropTypes = {
   statusToken: false,
-  cartListSize: [],
+  cartSize: [],
   wishListSize: [],
 };
 
@@ -22,7 +22,7 @@ function Header(props) {
   const { pathname } = useLocation();
   const history = useHistory();
   const activeLink = pathname.slice(pathname.lastIndexOf("/") + 1);
-  const { openCart, statusToken, cartListSize, wishListSize } = props;
+  const { openCart, statusToken, cartSize, wishListSize } = props;
   const [isShowUser, setIsShowUser] = useState(false);
   const [keyWord, setKeyWord] = useState("");
 
@@ -141,7 +141,7 @@ function Header(props) {
             <button className="header__icon-btn">
               <box-icon name="cart" className="icon"></box-icon>
             </button>
-            <span className="cart__amount">{cartListSize}</span>
+            <span className="cart__amount">{cartSize}</span>
           </div>
           <div className="header__icon header__wishlist">
             <Link to="/san-pham-yeu-thich" className="header__icon-link">

@@ -1,18 +1,45 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import dashboardApi from "../../../api/dashboardApi";
 
 OrderForm.prototype = {
-  user: PropTypes.object,
+  statusToken: PropTypes.bool,
   handleOrderSubmit: PropTypes.func,
 };
 
+OrderForm.DefaultPropTypes = {
+  statusToken: false,
+  handleOrderSubmit: null,
+};
+
 function OrderForm(props) {
-  const { user, handleOrderSubmit } = props;
-  const [id, setId] = useState(user.id);
-  const [name, setName] = useState(user.fullname);
-  const [email, setEmail] = useState(user.email);
-  const [phone, setPhone] = useState(user.phone);
-  const [address, setAddress] = useState(user.address);
+  const { statusToken, handleOrderSubmit } = props;
+  const [user, setUser] = useState([]);
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
+  // lấy thông tin user
+  useEffect(() => {
+    const fetchData = async () => {
+      if (statusToken) {
+        const response = await dashboardApi.getInfo();
+        setUser(response.data);
+      }
+    };
+    fetchData();
+  }, [statusToken]);
+
+  // truyền giá trị vào các biến
+  useEffect(() => {
+    setId(user.id);
+    setName(user.fullname);
+    setEmail(user.email);
+    setPhone(user.phone);
+    setAddress(user.address);
+  }, [user]);
 
   const handleChangeName = (e) => {
     setName(e.target.value);

@@ -5,7 +5,9 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import Swal from "sweetalert2";
 import cartApi from "./api/cartApi";
+import dashboardApi from "./api/dashboardApi";
 import wishlistApi from "./api/wishlistApi";
 import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
@@ -26,11 +28,10 @@ import Resetpass from "./pages/resetpass/resetpass";
 import WishList from "./pages/wishlist/wishlist";
 
 function App() {
-  const [cartList, setCartList] = useState([]); // giỏ hàng database
-  const [cartLocal, setCartLocal] = useState([]); // giỏ hàng local storage
-  const [cartChange, setCartChange] = useState(false);
+  const [cart, setCart] = useState([]); // giỏ hàng database
+  const [cartChange, setCartChange] = useState(false); // giỏ hàng database thay đổi
   const [statusCart, setStatusCart] = useState(false);
-  const [cartListSize, setCartListSize] = useState(0);
+  const [cartSize, setCartSize] = useState(0);
 
   // danh sách yêu thích
   const [wishList, setWishList] = useState([]);
@@ -66,34 +67,237 @@ function App() {
   }, [statusToken]);
   /* đăng nhập và đăng xuất */
 
-  /* giỏ hàng */
-  // tạo giỏ hàng khi vào trang
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = localStorage.getItem("cartLocal");
-      const data = response !== null ? JSON.parse(response) : [];
-      setCartLocal(data);
-    };
-    fetchData();
-  }, []);
-
-  // render giỏ hàng khi đăng nhập
+  /* danh sách yêu thích sản phẩm */
+  // lấy danh sách yêu thích sản phẩm khi đăng nhập
   useEffect(() => {
     const fetchData = async () => {
       if (statusToken) {
-        const responseCart = await cartApi.viewCart();
-        if (responseCart !== null) {
-          const data = responseCart.data;
-          setCartList(data);
+        const response = await wishlistApi.getAll();
+        setWishList(response.data);
+      }
+    };
+    fetchData();
+  }, [statusToken, wishChange]);
+
+  // lấy số lượng sản phẩm trong danh sách yêu thích
+  useEffect(() => {
+    const fetchData = () => {
+      setWishListSize(wishList.length);
+    };
+    fetchData();
+  }, [wishList]);
+
+  // thay đổi danh sách yêu thích sản phẩm
+  function handleChangeWishList() {
+    setWishChange(!wishChange);
+  }
+  /* danh sách yêu thích sản phẩm */
+
+  /* giỏ hàng */
+  // tạo giỏ hàng khi vào trang
+  useEffect(() => {
+    const fetchData = () => {
+      if (statusToken === false) {
+        const response = localStorage.getItem("cart");
+        const data = response !== null ? JSON.parse(response) : [];
+        setCart(data);
+      }
+    };
+    fetchData();
+  }, []);
+  /**
+   * lấy giỏ hàng từ database (nếu không có tạo giỏ hàng)
+   * xoá tất cả sản phẩm ở giỏ hàng nếu local storage có sản phẩm
+   * thêm sản phẩm từ local storage vào giỏ hàng
+   * lấy lại giỏ hàng khi đã thêm hết sản phẩm từ local storage
+   * truyền sản phẩm từ giỏ hàng vào local storage
+   */
+  useEffect(() => {
+    const fetchData = async () => {
+      if (statusToken) {
+        let response = await cartApi.viewCart();
+        if (response !== null) {
+          if (cart.length > 0) {
+            await cartApi.clearCart();
+            await cartApi.createCart();
+          } else {
+            setCart(response.data);
+          }
         } else {
-          const responseCart = await cartApi.createCart();
-          const data = responseCart.data;
-          setCartList(data);
+          await cartApi.createCart();
         }
+        cart.map((item) => handleAddProduct(item));
       }
     };
     fetchData();
   }, [statusToken]);
+  // render số lượng giỏ hàng
+  useEffect(() => {
+    const fetchData = () => {
+      setCartSize(cart.length);
+    };
+    fetchData();
+  }, [cart]);
+  // render lại giỏ hàng
+  useEffect(() => {
+    const fetchData = () => {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    };
+    fetchData();
+  }, [cart]);
+  // thêm sản phẩm hoặc update số lượng sản phẩm vào giò hàng
+  async function handleAddItem(item) {
+    const itemExist = cart.some((i) => i.product.id === item.product.id);
+    if (statusToken && statusToken === true) {
+      handleAddWithLogin(itemExist);
+    } else {
+      handleAddWithoutLogin(item, itemExist);
+    }
+  }
+  // cập nhật sản phẩm trong
+  async function handleAddWithoutLogin(item, itemExist) {
+    if (itemExist && itemExist === true) {
+      setCart(
+        cart.map((x) => {
+          if (item.product.id === x.product.id) {
+            x.quantity = x.quantity + 1;
+            if (x.product.issale) {
+              x.totalPrice = x.product.price_sale * x.quantity;
+            } else {
+              x.totalPrice = x.product.price * x.quantity;
+            }
+          }
+          return x;
+        })
+      );
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "CẬP NHẬT SỐ LƯỢNG SẢN PHẨM THÀNH CÔNG",
+        icon: "success",
+        showConfirmButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setStatusCart(true);
+        }
+      });
+    } else {
+      let price = 0;
+      if (item.product.issale && item.product.issale === true) {
+        price = item.product.price_sale;
+      } else {
+        price = item.product.price;
+      }
+      setCart([
+        ...cart,
+        Object.assign(item, { quantity: 1, totalPrice: price }),
+      ]);
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "THÊM SẢN PHẨM VÀO GIỎ HÀNG THÀNH CÔNG",
+        icon: "success",
+        showConfirmButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setStatusCart(true);
+        }
+      });
+    }
+  }
+  async function handleAddWithLogin(itemExist) {
+    if (itemExist && itemExist === true) {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "CẬP NHẬT SỐ LƯỢNG SẢN PHẨM THÀNH CÔNG",
+        icon: "success",
+        showConfirmButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setStatusCart(true);
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "THÊM SẢN PHẨM VÀO GIỎ HÀNG THÀNH CÔNG",
+        icon: "success",
+        showConfirmButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setStatusCart(true);
+        }
+      });
+    }
+    const response = await cartApi.viewCart();
+    setCart(response.data);
+  }
+  // tăng số lượng sản phẩm giỏ hàng
+  function handleIncreaseItem(item) {
+    setCart(
+      cart.map((x) => {
+        if (item.product.id === x.product.id) {
+          x.quantity = x.quantity + 1;
+          if (x.product.issale) {
+            x.totalPrice = x.product.price_sale * x.quantity;
+          } else {
+            x.totalPrice = x.product.price * x.quantity;
+          }
+        }
+        return x;
+      })
+    );
+  }
+  // giảm số lượng sản phẩm giỏ hàng
+  function handleDecreaseItem(item) {
+    setCart(
+      cart.map((x) => {
+        if (item.product.id === x.product.id) {
+          x.quantity = x.quantity - 1;
+          if (x.product.issale) {
+            x.totalPrice = x.product.price_sale * x.quantity;
+          } else {
+            x.totalPrice = x.product.price * x.quantity;
+          }
+        }
+        return x;
+      })
+    );
+  }
+  // xoá sản phẩm giỏ hàng
+  function handleRemoveItem(item) {
+    setCart(() => {
+      const index = cart.lastIndexOf(item);
+      const newCart = [...cart];
+      newCart.splice(index, 1);
+      return newCart;
+    });
+  }
+  // thêm sản phẩm vào giỏ hàng database
+  async function handleAddProduct(item) {
+    const { product, quantity, totalPrice } = item;
+    let product_price = 0;
+    if (product.issale) {
+      product_price = product.price_sale;
+    } else {
+      product_price = product.price;
+    }
+    try {
+      await cartApi.insertProduct({
+        product_id: product.id,
+        total: totalPrice,
+        quantity: quantity,
+        product_price: product_price,
+      });
+      const response = await cartApi.viewCart();
+      setCart(response.data);
+    } catch (error) {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "Có lỗi xảy ra! Vui lòng thử lại",
+        icon: "error",
+        showConfirmButton: true,
+      });
+    }
+  }
   /* giỏ hàng */
 
   return (
@@ -101,18 +305,19 @@ function App() {
       <Header
         openCart={openCart}
         statusToken={statusToken}
-        cartListSize={cartListSize}
+        cartSize={cartSize}
         wishListSize={wishListSize}
       />
       <OverPlay statusCart={statusCart} closeCart={closeCart} />
       <CartModal
-        cartList={cartList}
-        cartLocal={cartLocal}
+        cart={cart}
         statusCart={statusCart}
         cartChange={cartChange}
         statusToken={statusToken}
         closeCart={closeCart}
-        // handleChangeCart={handleChangeCart}
+        handleIncreaseItem={handleIncreaseItem}
+        handleDecreaseItem={handleDecreaseItem}
+        handleRemoveItem={handleRemoveItem}
       />
       <div className="main">
         <Switch>
@@ -135,7 +340,7 @@ function App() {
             <Forgotpass />
           </Route>
           <Route path="/thong-tin-tai-khoan">
-            <Account statusToken={statusToken} handleLogout={handleLogout} />
+            <Account statusToken={statusToken} />
           </Route>
           <Route exact path="/san-pham/gioi-tinh/nam">
             <Product />
@@ -149,16 +354,12 @@ function App() {
               cartChange={cartChange}
               wishChange={wishChange}
               openCart={openCart}
-              // handleChangeCart={handleChangeCart}
-              // handleChangeWishList={handleChangeWishList}
+              handleAddItem={handleAddItem}
+              handleChangeWishList={handleChangeWishList}
             />
           </Route>
           <Route exact path="/san-pham-yeu-thich">
-            <WishList
-              statusToken={statusToken}
-              wishChange={wishChange}
-              // handleChangeWishList={handleChangeWishList}
-            />
+            <WishList statusToken={statusToken} wishChange={wishChange} />
           </Route>
           <Route exact path="/tim-kiem-san-pham/:keyword">
             <WrapProductSearch />
@@ -170,10 +371,7 @@ function App() {
             <Resetpass />
           </Route>
           <Route exact path="/thanh-toan">
-            <Order
-              cartChange={cartChange}
-              // handleChangeCart={handleChangeCart}
-            />
+            <Order cart={cart} statusToken={statusToken} />
           </Route>
           <Route>
             <Error text={"KHÔNG TÌM THẤY TRANG. VUI LÒNG THỬ LẠI"} />

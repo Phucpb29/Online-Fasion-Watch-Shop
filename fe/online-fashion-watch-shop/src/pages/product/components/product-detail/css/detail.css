@@ -154,6 +154,8 @@
   border: 0 !important;
   z-index: 0;
   overflow: hidden;
+  width: 50%;
+  border-radius: 0;
   color: var(--color-white);
   background-color: var(--color-black);
   -webkit-transition: color 0.7s ease-in-out;
@@ -192,6 +194,10 @@
 
 .main__product .product__detail .product__info .product__info-group .product__add {
   margin-left: 20px;
+}
+
+.main__product .product__detail .product__info .product__info-group .product__button-like-unlike {
+  width: 7%;
 }
 
 .main__product .product__detail .product__info .product__info-group .product__like {

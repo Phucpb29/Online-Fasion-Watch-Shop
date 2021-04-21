@@ -4,16 +4,16 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  NavLink,
   useRouteMatch,
 } from "react-router-dom";
 import Swal from "sweetalert2";
 import dashboardApi from "../../api/dashboardApi";
-import banner from "../../assets/image/banner.jpg";
 import Error from "../../components/error/error";
 import LoadingOverplay from "../../components/loading/loading";
+import AccountBanner from "./components/account-banner/account-banner";
 import AccountDetail from "./components/account-detail/account-detail";
 import AccountError from "./components/account-error/account-error";
+import Navbar from "./components/account-navbar/account-navbar";
 import AccountOrder from "./components/account-order/account-order";
 import AccountPassword from "./components/account-password/account-password";
 import DialogComment from "./components/dialog-comment/dialog";
@@ -30,11 +30,23 @@ Account.DefaultPropTypes = {
 function Account(props) {
   const { statusToken } = props;
   const { path } = useRouteMatch();
+
+  // user
   const [user, setUser] = useState({});
+  const [fullname, setFullName] = useState("");
+  const [gender, setGender] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
+  // comment
   const [orderList, setOrderList] = useState([]);
   const [orderInfo, setOrderInfo] = useState({});
   const [statusDialog, setStatusDialog] = useState(false);
-  const [loading, setLoading] = useState(false);
+
+  // loading
+  const [loading, setLoading] = useState(true);
 
   /* tương tác đóng mở đánh giá sản phẩm */
   // mở dialog
@@ -42,14 +54,12 @@ function Account(props) {
     setStatusDialog(true);
     document.body.style.overflow = "hidden";
   };
-
   // đóng dialog
   const closeDialog = () => {
     setStatusDialog(false);
     document.body.style.overflow = "unset";
   };
-
-  // mở dialog đánh giá sản phẩm
+  // đánh giá sản phẩm
   function handleOpenDialog(product) {
     setOrderInfo(product);
   }
@@ -59,66 +69,41 @@ function Account(props) {
   useEffect(() => {
     const fetchData = async () => {
       if (statusToken) {
-        const responseInfo = await dashboardApi.getInfo();
+        const responseUser = await dashboardApi.getInfo();
         const responseOrder = await dashboardApi.viewOrderHistory();
-        setUser(responseInfo.data);
+        setUser(responseUser.data);
         setOrderList(responseOrder.data);
-        console.log(responseOrder.data);
         setLoading(false);
       }
     };
     fetchData();
   }, [statusToken]);
 
-  // đăng xuất tài khoản
-  const handleClickLogout = () => {
-    Swal.fire({
-      title: "THÔNG BÁO",
-      text: "BẠN CÓ MUỐN ĐĂNG XUẤT TÀI KHOẢN",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "ĐĂNG XUẤT",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "THÔNG BÁO",
-          text: "Đăng xuất thành công. Hẹn gặp lại bạn sau!!!",
-          icon: "success",
-          showConfirmButton: true,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            sessionStorage.removeItem("accessToken");
-            window.location.replace("/");
-          }
-        });
-      }
-    });
-  };
+  // truyền thông tin user vào từng biến
+  useEffect(() => {
+    setFullName(user.fullname);
+    setGender(user.gender);
+    setBirthday(user.birthday);
+    setEmail(user.email);
+    setPhone(user.phone);
+    setAddress(user.address);
+  }, [user]);
+
+  //  lấy ngày hiện tài
+  function getDate() {
+    let newDate = new Date();
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+    let nowDate = `${year}-${month < 10 ? `0${month}` : `${month}`}-${
+      date < 10 ? `0${date}` : `${date}`
+    }`;
+    return nowDate;
+  }
 
   // cập nhật thông tin
-  const handleUpdateUserInfo = (
-    fullname,
-    gender,
-    birthday,
-    phone,
-    email,
-    address
-  ) => {
-    user.fullname = fullname;
-    user.gender = gender;
-    user.birthday = birthday;
-    user.phone = phone;
-    user.email = email;
-    user.address = address;
-    // let newDate = new Date();
-    // let date = newDate.getDate();
-    // let month = newDate.getMonth() + 1;
-    // let year = newDate.getFullYear();
-    // console.log(year);
-    // console.log(`${month < 10 ? `0${month}` : `${month}`}`);
-    // console.log(`${date < 10 ? `0${date}` : `${date}`}`);
+  function handleUpdateUserInfo() {
+    const updateDate = getDate();
     dashboardApi
       .updateInfo({
         isdelete: user.isdelete,
@@ -129,7 +114,7 @@ function Account(props) {
         email: email,
         password: user.password,
         phone: phone,
-        update_date: user.update_date,
+        update_date: updateDate,
         created_date: user.created_date,
         username: email,
         gender: gender,
@@ -143,7 +128,9 @@ function Account(props) {
             showConfirmButton: true,
           }).then((result) => {
             if (result.isConfirm === true) {
-              window.localtion.replace("/thongtintaikhoan");
+              window.localtion.replace(
+                "/thong-tin-tai-khoan/thong-tin-ca-nhan"
+              );
             }
           });
         } else {
@@ -155,58 +142,33 @@ function Account(props) {
           });
         }
       });
-  };
+  }
+
+  function handleChangeName(value) {
+    setFullName(value);
+  }
+  function handleChangeGender(value) {
+    setGender(value);
+  }
+  function handleChangeBirthday(value) {
+    setBirthday(value);
+  }
+  function handleChangePhone(value) {
+    setPhone(value);
+  }
+  function handleChangeAddress(value) {
+    setAddress(value);
+  }
+  function handleChangeEmail(value) {
+    setEmail(value);
+  }
 
   return (
     <div>
       <Router>
         <div className="account">
-          <div className="account__banner">
-            <img src={banner} alt="" />
-            <div className="banner__text">
-              <p>Xin chào, {user.fullname}</p>
-              <p className="banner__text-sub">Quản lý tài khoản của bạn</p>
-            </div>
-          </div>
-          <div className="account__navlink">
-            <ul className="navlink__list">
-              <NavLink
-                to={`${path}/thong-tin-ca-nhan`}
-                className="link__item"
-                activeClassName="link__active"
-              >
-                <div className="link">
-                  <span>Thông tin cá nhân</span>
-                </div>
-              </NavLink>
-              <NavLink
-                to={`${path}/lich-su-mua-hang`}
-                className="link__item"
-                activeClassName="link__active"
-              >
-                <div className="link">
-                  <span>Lịch sử mua hàng</span>
-                </div>
-              </NavLink>
-              <NavLink
-                to={`${path}/doi-mat-khau`}
-                className="link__item"
-                activeClassName="link__active"
-              >
-                <div className="link">
-                  <span>Đổi mật khẩu</span>
-                </div>
-              </NavLink>
-            </ul>
-            <div className="navlink__logout">
-              {statusToken && (
-                <button className="btn__logout" onClick={handleClickLogout}>
-                  <span>Đăng xuất</span>
-                  <box-icon name="log-in-circle"></box-icon>
-                </button>
-              )}
-            </div>
-          </div>
+          <AccountBanner />
+          <Navbar statusToken={statusToken} path={path} />
           <div className="account__box">
             {statusToken ? (
               <>
@@ -222,7 +184,18 @@ function Account(props) {
                     <Switch>
                       <Route exact path={`${path}/thong-tin-ca-nhan`}>
                         <AccountDetail
-                          user={user}
+                          fullname={fullname}
+                          gender={gender}
+                          birthday={birthday}
+                          email={email}
+                          phone={phone}
+                          address={address}
+                          handleChangeName={handleChangeName}
+                          handleChangePhone={handleChangePhone}
+                          handleChangeEmail={handleChangeEmail}
+                          handleChangeGender={handleChangeGender}
+                          handleChangeAddress={handleChangeAddress}
+                          handleChangeBirthday={handleChangeBirthday}
                           handleUpdateUserInfo={handleUpdateUserInfo}
                         />
                       </Route>

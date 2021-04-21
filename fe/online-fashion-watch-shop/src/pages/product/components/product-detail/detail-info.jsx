@@ -5,6 +5,7 @@ import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
 import cartApi from "../../../../api/cartApi";
 import wishlistApi from "../../../../api/wishlistApi";
+import { Rabbit as Button } from "react-button-loaders";
 
 DetailInfo.propTypes = {
   productInfo: PropTypes.object,
@@ -13,7 +14,7 @@ DetailInfo.propTypes = {
   wishList: PropTypes.array,
   commentList: PropTypes.array,
   openCart: PropTypes.func,
-  handleChangeCart: PropTypes.func,
+  handleAddItem: PropTypes.func,
   handleChangeWishList: PropTypes.func,
 };
 
@@ -24,7 +25,7 @@ DetailInfo.DefaultPropTypes = {
   wishList: [],
   commentList: [],
   openCart: null,
-  handleChangeCart: null,
+  handleAddItem: null,
   handleChangeWishList: null,
 };
 
@@ -36,14 +37,15 @@ function DetailInfo(props) {
     wishList,
     commentList,
     openCart,
-    handleChangeCart,
+    handleAddItem,
     handleChangeWishList,
   } = props;
   const { product, brand, indexImage, addtionalImages } = productInfo;
   const [rate, setRate] = useState(0);
   const [isLike, setIsLike] = useState(false);
-  const [price, setPrice] = useState(0);
   const [countDone, setCountDone] = useState(false);
+  const [addLoading, setAddLoading] = useState("");
+  const [wishLoading, setWishLoading] = useState("");
 
   // tổng số rate start sản phẩm
   useEffect(() => {
@@ -73,18 +75,28 @@ function DetailInfo(props) {
     checkExist();
   }, []);
 
-  /**
-   * kiểm tra sản phẩm trong giỏ hàng
-   * không có thì thêm vào giỏ hàng
-   * có thì tăng số lượng lên một
-   */
-  function addOrUpdate(product) {
-    const item = cartList.filter((item) => item.product.id === product.id);
-    if (item.length > 0) {
-      updateProduct(item[0]);
-    } else {
-      addProduct(product);
+  //  thêm sản phẩm vào giỏ hàng
+  async function addItem(item) {
+    setAddLoading("loading");
+    if (statusToken && statusToken === true) {
+      const { product } = item;
+      let price = 0;
+      if (product.issale) {
+        price = product.price_sale;
+      } else {
+        price = product.price;
+      }
+      await cartApi.insertProduct({
+        product_id: product.id,
+        total: price * 1,
+        quantity: 1,
+        product_price: price,
+      });
     }
+    if (handleAddItem) {
+      handleAddItem(item);
+    }
+    setAddLoading("");
   }
 
   /**
@@ -103,95 +115,14 @@ function DetailInfo(props) {
     }
   }
 
-  // thêm sản phẩm khi chưa đăng nhập
-  function addProductWithoutLogin(product) {}
-
-  // thêm sản phẩm khi đăng nhập
-  function addProduct(product) {
-    let priceItem = 0;
-    if (product.issale) {
-      priceItem = product.price_sale;
-    } else {
-      priceItem = product.price;
-    }
-    try {
-      cartApi
-        .insertProduct({
-          product_id: product.id,
-          total: priceItem * 1,
-          quantity: 1,
-          product_price: priceItem,
-        })
-        .then(function (response) {
-          if (response.status === 200) {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "success",
-              showConfirmButton: true,
-            }).then((value) => {
-              if (value.value === true) {
-                handleChangeCart();
-                openCart();
-              }
-            });
-          } else {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "error",
-              showConfirmButton: true,
-            });
-          }
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  // cập nhất số lượng sản phẩm
-  function updateProduct(product) {
-    try {
-      cartApi
-        .updateProduct(product.cartDetailID, product.quantity + 1)
-        .then(function (response) {
-          if (response.status === 200) {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: "CẬP NHẬT SỐ LƯỢNG SẢN PHẨM THÀNH CÔNG",
-              icon: "success",
-              showConfirmButton: true,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                handleChangeCart();
-                openCart();
-              }
-            });
-          } else {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: "CÓ LỖI XẢY RA! VUI LÒNG THỬ LẠI",
-              icon: "error",
-              showConfirmButton: true,
-            });
-          }
-        });
-    } catch (error) {
-      Swal.fire({
-        title: "THÔNG BÁO",
-        text: "CÓ LỖI XẢY RA! VUI LÒNG THỬ LẠI",
-        icon: "error",
-        showConfirmButton: true,
-      });
-    }
-  }
-
   // yêu thích sản phẩm
   function likeProduct(id) {
     if (statusToken) {
+      setWishLoading("loading");
       try {
         wishlistApi.like(id).then(function (response) {
           if (response.status === 200) {
+            setWishLoading("");
             Swal.fire({
               title: "THÔNG BÁO",
               text: response.data,
@@ -240,7 +171,9 @@ function DetailInfo(props) {
         confirmButtonText: "BỎ THÍCH",
       }).then((confirm) => {
         if (confirm.isConfirmed) {
+          setWishLoading("loading");
           wishlistApi.unLike(id).then(function (response) {
+            setWishLoading("");
             if (response.status === 200) {
               Swal.fire({
                 title: "THÔNG BÁO",
@@ -359,12 +292,13 @@ function DetailInfo(props) {
                 </div>
               </div>
               <div className="product__info-group">
-                <button
+                <Button
                   className={
                     isLike
-                      ? "product__button-like product__unlike"
-                      : "product__button-like product__like"
+                      ? "product__button-like-unlike product__unlike"
+                      : "product__button-like-unlike product__like"
                   }
+                  state={wishLoading}
                   onClick={() => likeOrUnlike(product.id)}
                 >
                   <span className="icon__like">
@@ -377,14 +311,16 @@ function DetailInfo(props) {
                       color="#ffffff"
                     ></box-icon>
                   </span>
-                </button>
+                </Button>
                 {product.quantity > 0 && (
-                  <button
+                  <Button
                     className="product__button product__add"
-                    onClick={() => addOrUpdate(product)}
+                    state={addLoading}
+                    bgLoading="#000"
+                    onClick={() => addItem({ product, indexImage })}
                   >
                     <span>THÊM VÀO GIỎ HÀNG</span>
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>

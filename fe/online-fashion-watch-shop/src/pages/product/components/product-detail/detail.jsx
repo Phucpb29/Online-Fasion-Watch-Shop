@@ -16,7 +16,7 @@ ProductDetail.prototype = {
   cartChange: PropTypes.bool,
   wishChange: PropTypes.bool,
   handleOpenCart: PropTypes.func,
-  changeCart: PropTypes.func,
+  addItem: PropTypes.func,
   changeWishList: PropTypes.func,
 };
 
@@ -26,7 +26,7 @@ ProductDetail.DefaultPropTypes = {
   cartChange: false,
   wishChange: false,
   handleOpenCart: null,
-  changeCart: null,
+  addItem: null,
   changeWishList: null,
 };
 
@@ -37,7 +37,7 @@ function ProductDetail(props) {
     cartChange,
     wishChange,
     handleOpenCart,
-    changeCart,
+    addItem,
     changeWishList,
   } = props;
   const size = 6;
@@ -123,17 +123,16 @@ function ProductDetail(props) {
     setPage(countComment);
   }
 
-  // thay đổi giỏ hàng
-  function handleChangeCart() {
-    if (changeCart) {
-      changeCart();
-    }
-  }
-
   // yêu thích sản phẩm
   function handleChangeWishList() {
     if (changeWishList) {
       changeWishList();
+    }
+  }
+
+  function handleAddItem(item) {
+    if (addItem) {
+      addItem(item);
     }
   }
 
@@ -150,7 +149,7 @@ function ProductDetail(props) {
             wishList={wishList}
             commentList={commentList}
             openCart={openCart}
-            handleChangeCart={handleChangeCart}
+            handleAddItem={handleAddItem}
             handleChangeWishList={handleChangeWishList}
           />
           <DetailProperty propertyList={propertyDetailList} />

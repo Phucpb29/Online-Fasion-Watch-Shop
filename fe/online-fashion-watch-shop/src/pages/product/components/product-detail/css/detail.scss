@@ -111,6 +111,8 @@
           border: 0 !important;
           z-index: 0;
           overflow: hidden;
+          width: 50%;
+          border-radius: 0;
           color: var(--color-white);
           background-color: var(--color-black);
           transition: color 0.7s ease-in-out;
@@ -145,6 +147,10 @@
 
         .product__add {
           margin-left: 20px;
+        }
+
+        .product__button-like-unlike {
+          width: 7%;
         }
 
         .product__like {

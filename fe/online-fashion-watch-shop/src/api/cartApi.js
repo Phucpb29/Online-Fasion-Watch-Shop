@@ -11,6 +11,11 @@ const cartApi = {
     return axiosCartClient.get(url);
   },
 
+  clearCart() {
+    const url = "/clearCart";
+    return axiosCartClient.delete(url);
+  },
+
   insertProduct(body) {
     const url = "/addProduct";
     return axiosCartClient.put(url, body);
