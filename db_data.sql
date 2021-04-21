@@ -12,7 +12,7 @@
  Target Server Version : 13001601
  File Encoding         : 65001
 
- Date: 12/04/2021 01:40:15
+ Date: 17/04/2021 04:42:45
 */
 
 
@@ -46,16 +46,28 @@ GO
 SET IDENTITY_INSERT [dbo].[admin] ON
 GO
 
-INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'1', NULL, N'2021-03-04', N'1234567', NULL, NULL, N'admin@gmail.com', N'0', N'0')
+INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'1', NULL, N'2021-03-04', N'1234567', NULL, NULL, N'admin@gmail.com', N'0', N'1')
 GO
 
-INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'2', N'admin@gmail.com', N'2021-03-04', N'1234567', N'admin@gmail.com', N'2021-03-04', N'admin1@gmail.com', N'0', N'0')
+INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'2', N'admin@gmail.com', N'2021-03-04', N'1234567', N'admin@gmail.com', N'2021-04-16', N'admin1@gmail.com', N'0', N'0')
 GO
 
 INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'3', N'admin@gmail.com', N'2021-03-04', N'1234567', N'admin@gmail.com', N'2021-03-04', N'admin2@gmail.com', N'0', N'0')
 GO
 
 INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'4', N'admin@gmail.com', N'2021-03-04', N'1234567', N'admin@gmail.com', N'2021-03-04', N'admin3@gmail.com', N'1', N'0')
+GO
+
+INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'5', N'admin@gmail.com', N'2021-04-14', N'123456789', NULL, NULL, N'phamphuc@gmail.com', N'0', N'1')
+GO
+
+INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'6', N'admin@gmail.com', N'2021-04-17', N'1234567', NULL, NULL, N'minhquang10ks@gmail.com', N'0', N'1')
+GO
+
+INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'7', N'admin@gmail.com', N'2021-04-17', N'1234567', NULL, NULL, N'nguyentienanh@gmail.com', N'0', N'1')
+GO
+
+INSERT INTO [dbo].[admin] ([id], [create_by], [created_date], [password], [update_by], [updated_date], [username], [isdelete], [role]) VALUES (N'8', N'admin@gmail.com', N'2021-04-17', N'1234567', NULL, NULL, N'nguyencuuquangtuan@gmail.com', N'0', N'1')
 GO
 
 SET IDENTITY_INSERT [dbo].[admin] OFF
@@ -94,10 +106,19 @@ GO
 INSERT INTO [dbo].[cart] ([id], [created_date], [total], [update_date], [user_id]) VALUES (N'5', N'2021-04-02', N'11160000', N'2021-04-02', N'2')
 GO
 
-INSERT INTO [dbo].[cart] ([id], [created_date], [total], [update_date], [user_id]) VALUES (N'11', N'2021-04-10', N'0', N'2021-04-10', N'22')
+INSERT INTO [dbo].[cart] ([id], [created_date], [total], [update_date], [user_id]) VALUES (N'13', N'2021-04-14', N'83220000', N'2021-04-15', N'22')
 GO
 
-INSERT INTO [dbo].[cart] ([id], [created_date], [total], [update_date], [user_id]) VALUES (N'12', N'2021-04-11', N'1011160064', N'2021-04-11', N'1')
+INSERT INTO [dbo].[cart] ([id], [created_date], [total], [update_date], [user_id]) VALUES (N'19', N'2021-04-16', N'5340000', N'2021-04-16', N'24')
+GO
+
+INSERT INTO [dbo].[cart] ([id], [created_date], [total], [update_date], [user_id]) VALUES (N'26', N'2021-04-17', N'0', N'2021-04-17', N'34')
+GO
+
+INSERT INTO [dbo].[cart] ([id], [created_date], [total], [update_date], [user_id]) VALUES (N'28', N'2021-04-17', N'0', N'2021-04-17', N'29')
+GO
+
+INSERT INTO [dbo].[cart] ([id], [created_date], [total], [update_date], [user_id]) VALUES (N'29', N'2021-04-17', N'0', N'2021-04-17', N'1')
 GO
 
 SET IDENTITY_INSERT [dbo].[cart] OFF
@@ -141,7 +162,10 @@ GO
 INSERT INTO [dbo].[cart_detail] ([id], [product_price], [quantity], [total], [update_date], [cart_id], [product_id]) VALUES (N'11', N'5420000', N'1', N'5420000', N'2021-04-02', N'5', N'82')
 GO
 
-INSERT INTO [dbo].[cart_detail] ([id], [product_price], [quantity], [total], [update_date], [cart_id], [product_id]) VALUES (N'35', N'14870000', N'9', N'133830000', N'2021-04-11', N'12', N'87')
+INSERT INTO [dbo].[cart_detail] ([id], [product_price], [quantity], [total], [update_date], [cart_id], [product_id]) VALUES (N'38', N'9200000', N'3', N'27600000', N'2021-04-15', N'13', N'99')
+GO
+
+INSERT INTO [dbo].[cart_detail] ([id], [product_price], [quantity], [total], [update_date], [cart_id], [product_id]) VALUES (N'50', N'5340000', N'1', N'5340000', N'2021-04-16', N'19', N'82')
 GO
 
 SET IDENTITY_INSERT [dbo].[cart_detail] OFF
@@ -225,13 +249,16 @@ GO
 INSERT INTO [dbo].[comment] ([id], [content], [created_date], [rate], [update_date], [isdelete], [user_id], [product_id]) VALUES (N'17', N'Mọi thứ đều tốt', N'2021-03-30', N'5', NULL, N'0', N'21', N'2')
 GO
 
-INSERT INTO [dbo].[comment] ([id], [content], [created_date], [rate], [update_date], [isdelete], [user_id], [product_id]) VALUES (N'18', N'Sản phẩm chất lượng tốt', N'2021-04-10', N'0', N'2021-04-10', N'0', N'22', NULL)
+INSERT INTO [dbo].[comment] ([id], [content], [created_date], [rate], [update_date], [isdelete], [user_id], [product_id]) VALUES (N'18', N'Sản phẩm chất lượng tốt', N'2021-04-10', N'0', N'2021-04-10', N'0', N'22', N'2')
 GO
 
 INSERT INTO [dbo].[comment] ([id], [content], [created_date], [rate], [update_date], [isdelete], [user_id], [product_id]) VALUES (N'19', N'Giao hàng nhanh, nhân viên thân thiện', N'2021-04-10', N'0', N'2021-04-10', N'0', N'22', N'6')
 GO
 
 INSERT INTO [dbo].[comment] ([id], [content], [created_date], [rate], [update_date], [isdelete], [user_id], [product_id]) VALUES (N'20', N'Chất lượng sản phẩm tốt, giá rẻ, bảo hành uy tín', N'2021-04-10', N'5', N'2021-04-10', N'0', N'22', N'2')
+GO
+
+INSERT INTO [dbo].[comment] ([id], [content], [created_date], [rate], [update_date], [isdelete], [user_id], [product_id]) VALUES (N'21', N'Sản phẩm chất lượng, giao hàng nhanh, nhân viên nhiệt tình', N'2021-04-16', N'3', N'2021-04-16', N'0', N'24', N'32')
 GO
 
 SET IDENTITY_INSERT [dbo].[comment] OFF
@@ -317,16 +344,16 @@ GO
 INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'1', N'HD01', N'2021-03-04', N'Trực Tiếp', N'4', N'10000000', N'2021-03-04', N'admin@gmail.com', N'0', N'1', N'1')
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'2', N'HD01', N'2021-03-04', N'Thẻ', N'3', N'9000000', N'2021-03-04', N'admin@gmail.com', N'0', N'1', NULL)
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'2', N'HD02', N'2021-03-04', N'Thẻ', N'3', N'9000000', N'2021-03-04', N'admin@gmail.com', N'0', N'1', NULL)
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'3', N'HD01', N'2021-03-04', N'Thẻ', N'1', N'9000000', N'2021-03-04', N'admin@gmail.com', N'0', N'2', N'1')
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'3', N'HD03', N'2021-03-04', N'Thẻ', N'3', N'9000000', N'2021-04-13', N'admin@gmail.com', N'0', N'2', N'1')
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'4', N'HD01', N'2021-03-04', N'Trực Tiếp', N'2', N'9000000', N'2021-03-04', N'admin@gmail.com', N'0', N'2', NULL)
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'4', N'HD04', N'2021-03-04', N'Trực Tiếp', N'2', N'9000000', N'2021-03-04', N'admin@gmail.com', N'0', N'2', NULL)
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'5', NULL, N'2021-03-18', N'Trực tiếp', N'4', N'1000000', N'2021-03-18', N'System', N'0', N'3', N'1')
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'5', N'HD05', N'2021-03-18', N'Trực tiếp', N'4', N'1000000', N'2021-03-18', N'System', N'0', N'3', N'1')
 GO
 
 INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'6', N'HD06', N'2021-03-30', N'Tiền Mặc', N'3', N'10000000', NULL, NULL, N'0', N'10', NULL)
@@ -365,22 +392,55 @@ GO
 INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'17', N'HD17', N'2021-03-30', N'Tiền Mặc', N'3', N'99000000', NULL, NULL, N'0', N'21', NULL)
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'18', NULL, N'2021-03-31', N'Trực tiếp', N'0', N'13849000', N'2021-03-31', N'System', N'0', N'2', NULL)
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'18', NULL, N'2021-03-31', N'Trực tiếp', N'2', N'13849000', N'2021-04-13', NULL, N'0', N'2', NULL)
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'19', NULL, N'2021-04-07', N'Trực tiếp', N'0', N'4794000', N'2021-04-07', N'System', N'0', N'9', NULL)
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'19', NULL, N'2021-04-07', N'Trực tiếp', N'2', N'4794000', N'2021-04-13', N'admin@gmail.com', N'0', N'9', NULL)
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'20', NULL, N'2021-04-08', N'Trực tiếp', N'0', N'17970000', N'2021-04-08', N'System', N'0', N'22', NULL)
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'20', NULL, N'2021-04-08', N'Trực tiếp', N'2', N'17970000', N'2021-04-13', N'admin@gmail.com', N'0', N'22', NULL)
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'21', NULL, N'2021-04-10', N'Trực tiếp', N'0', N'398445984', N'2021-04-10', N'System', N'0', N'22', NULL)
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'21', NULL, N'2021-04-10', N'Trực tiếp', N'4', N'398445984', N'2021-04-13', NULL, N'0', N'22', NULL)
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'22', NULL, N'2021-04-10', N'Trực tiếp', N'0', N'4794000', N'2021-04-10', N'System', N'0', N'22', NULL)
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'22', NULL, N'2021-04-10', N'Trực tiếp', N'4', N'4794000', N'2021-04-13', NULL, N'0', N'22', NULL)
 GO
 
-INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'23', NULL, N'2021-04-11', N'Trực tiếp', N'0', N'26180000', N'2021-04-11', N'System', N'0', N'1', NULL)
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'23', NULL, N'2021-04-11', N'Trực tiếp', N'1', N'26180000', N'2021-04-13', NULL, N'0', N'1', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'24', NULL, N'2021-04-14', N'Trực tiếp', N'2', N'1370279936', N'2021-04-14', N'admin@gmail.com', N'0', N'22', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'25', NULL, N'2021-04-16', N'Trực tiếp', N'3', N'1034790080', N'2021-04-16', N'admin@gmail.com', N'0', N'1', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'26', NULL, N'2021-04-16', N'Trực tiếp', N'3', N'64170000', N'2021-04-16', N'admin@gmail.com', N'0', N'24', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'27', NULL, N'2021-04-16', N'Trực tiếp', N'3', N'4090000', N'2021-04-16', N'admin@gmail.com', N'0', N'24', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'29', N'LvwWK', N'2021-04-16', N'Trực tiếp', N'3', N'72000000', N'2021-04-16', N'admin@gmail.com', N'0', N'24', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'30', N'OiEPv', N'2021-04-16', N'Trực tiếp', N'0', N'213320000', N'2021-04-16', N'System', N'0', N'29', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'31', N'p7zMU', N'2021-04-16', N'Trực tiếp', N'0', N'2844000', N'2021-04-16', N'System', N'0', N'9', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'33', N'kMzeb', N'2021-04-17', N'Trực tiếp', N'0', N'18100000', N'2021-04-17', N'System', N'0', N'34', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'34', N'wtnok', N'2021-04-17', N'Trực tiếp', N'0', N'160740000', N'2021-04-17', N'System', N'0', N'29', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'35', N'DJsPh', N'2021-04-17', N'Trực tiếp', N'0', N'234000000', N'2021-04-17', N'System', N'0', N'29', NULL)
+GO
+
+INSERT INTO [dbo].[invoice] ([id], [code], [created_date], [payment], [status], [total], [update_date], [update_by], [isdelete], [user_id], [voucher_id]) VALUES (N'36', N'8Tbv3', N'2021-04-17', N'Trực tiếp', N'0', N'340000000', N'2021-04-17', N'System', N'0', N'1', NULL)
 GO
 
 SET IDENTITY_INSERT [dbo].[invoice] OFF
@@ -510,6 +570,57 @@ GO
 INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'32', N'2021-04-11', N'14870000', N'1', N'14870000', N'2021-04-11', N'23', N'87', N'0')
 GO
 
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'33', N'2021-04-14', N'12020000', N'10', N'120200000', N'2021-04-14', N'24', N'26', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'34', N'2021-04-16', N'14870000', N'9', N'133830000', N'2021-04-16', N'25', N'87', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'35', N'2021-04-16', N'23630000', N'1', N'23630000', N'2021-04-16', N'25', N'105', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'36', N'2021-04-16', N'5340000', N'1', N'5340000', N'2021-04-16', N'26', N'82', N'5340000')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'37', N'2021-04-16', N'7700000', N'2', N'15400000', N'2021-04-16', N'26', N'91', N'7700000')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'38', N'2021-04-16', N'5740000', N'2', N'11480000', N'2021-04-16', N'26', N'96', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'39', N'2021-04-16', N'4090000', N'1', N'4090000', N'2021-04-16', N'27', N'32', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'41', N'2021-04-16', N'12000000', N'3', N'36000000', N'2021-04-16', N'29', N'36', N'12000000')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'42', N'2021-04-16', N'5740000', N'7', N'40180000', N'2021-04-16', N'30', N'96', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'43', N'2021-04-16', N'9880000', N'2', N'19760000', N'2021-04-16', N'30', N'94', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'44', N'2021-04-16', N'1246000', N'1', N'1246000', N'2021-04-16', N'31', N'8', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'45', N'2021-04-16', N'1598000', N'1', N'1598000', N'2021-04-16', N'31', N'6', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'47', N'2021-04-17', N'12000000', N'1', N'12000000', N'2021-04-17', N'33', N'36', N'12000000')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'48', N'2021-04-17', N'6100000', N'1', N'6100000', N'2021-04-17', N'33', N'81', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'49', N'2021-04-17', N'4230000', N'6', N'25380000', N'2021-04-17', N'34', N'2', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'50', N'2021-04-17', N'6500000', N'8', N'52000000', N'2021-04-17', N'35', N'92', N'0')
+GO
+
+INSERT INTO [dbo].[invoice_detail] ([id], [created_date], [product_price], [quantity], [total], [update_date], [invoice_id], [product_id], [price_sale]) VALUES (N'51', N'2021-04-17', N'13600000', N'6', N'81600000', N'2021-04-17', N'36', N'86', N'13600000')
+GO
+
 SET IDENTITY_INSERT [dbo].[invoice_detail] OFF
 GO
 
@@ -535,7 +646,9 @@ CREATE TABLE [dbo].[product] (
   [gender] bit  NOT NULL,
   [creatd_by] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
   [supplier_id] int  NULL,
-  [quantity] float(53)  NULL
+  [quantity] float(53)  NULL,
+  [update_by] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [updated_date] date  NULL
 )
 GO
 
@@ -549,308 +662,329 @@ GO
 SET IDENTITY_INSERT [dbo].[product] ON
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'1', N'EFR-527L-1AVUDF', N'admin@gmail.com', N'2021-03-04', N'Đồng hồ Casio EFR-527L-1AVUDF dành cho nam giới, thuộc bộ sưu tập Edifice của Casio với tính năng Chronograph giờ thể thao 6 kim chỉ cá tính, dây đeo bằng da đen nam tính và còn có 1 lịch ngày.', N'0', N'CASIO EFR-527L-1AVUDF', N'3196000', N'0', N'0', N'1', N'admin1@gmail.com', N'1', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'1', N'EFR-527L-1AVUDF', N'admin@gmail.com', N'2021-03-04', N'Đồng hồ Casio EFR-527L-1AVUDF dành cho nam giới, thuộc bộ sưu tập Edifice của Casio với tính năng Chronograph giờ thể thao 6 kim chỉ cá tính, dây đeo bằng da đen nam tính và còn có 1 lịch ngày.', N'0', N'CASIO EFR-527L-1AVUDF', N'3196000', N'0', N'0', N'1', N'admin1@gmail.com', N'1', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'2', N'EFR-547D-2AVUDF', N'admin@gmail.com', N'2021-03-04', N'Đồng hồ Casio EFR-547D-2AVUDF với mặt số lớn phong cách thể thao mạnh mẽ, nền xanh sang trọng cùng kim chỉ và vạch số được phủ phản quang nổi bật, đèn LED có độ chiếu sáng cao giúp nhìn rõ trong đêm.', N'0', N'CASIO EFR-547D-2AVUDF', N'4230000', N'0', N'0', N'1', N'admin1@gmail.com', N'3', N'98')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'2', N'EFR-547D-2AVUDF', N'admin@gmail.com', N'2021-03-04', N'Đồng hồ Casio EFR-547D-2AVUDF với mặt số lớn phong cách thể thao mạnh mẽ, nền xanh sang trọng cùng kim chỉ và vạch số được phủ phản quang nổi bật, đèn LED có độ chiếu sáng cao giúp nhìn rõ trong đêm.', N'0', N'CASIO EFR-547D-2AVUDF', N'4230000', N'0', N'0', N'1', N'admin1@gmail.com', N'3', N'97', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'3', N'MTP-E130L-2A2VDF', N'admin@gmail.com', NULL, N'Đồng hồ Casio MTP-1302L-1AVDF có vỏ kim loại được mạ bạc tinh tế quanh nền đen mặt số, kim chỉ và vạch số được phủ phản quang nổi bật, dây đeo da vân đen lịch lãm, nam tính.', N'1', N'CASIO MTP-E130L-2A2VDF', N'1128000', N'1000000', N'0', N'1', NULL, N'4', N'99')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'3', N'MTP-E130L-2A2VDF', N'admin@gmail.com', NULL, N'Đồng hồ Casio MTP-1302L-1AVDF có vỏ kim loại được mạ bạc tinh tế quanh nền đen mặt số, kim chỉ và vạch số được phủ phản quang nổi bật, dây đeo da vân đen lịch lãm, nam tính.', N'1', N'CASIO MTP-E130L-2A2VDF', N'1128000', N'1000000', N'0', N'1', NULL, N'4', N'99', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'4', N'EFB-302JD-1ADR', N'admin@gmail.com', NULL, N'Đồng hồ nam Casio EFB-302JD-1ADR có kiểu dáng với phong cách thể thao, vỏ máy cùng với dây đeo bằng thép không gỉ tạo vẻ chắc chắn, 3 ô phụ với 3 chức năng khác nhau tạo nên vẻ hiện đại.', N'0', N'CASIO EFB-302JD-1ADR', N'10264000', N'0', N'0', N'1', NULL, N'2', N'99')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'4', N'EFB-302JD-1ADR', N'admin@gmail.com', NULL, N'Đồng hồ nam Casio EFB-302JD-1ADR có kiểu dáng với phong cách thể thao, vỏ máy cùng với dây đeo bằng thép không gỉ tạo vẻ chắc chắn, 3 ô phụ với 3 chức năng khác nhau tạo nên vẻ hiện đại.', N'0', N'CASIO EFB-302JD-1ADR', N'10264000', N'0', N'0', N'1', NULL, N'2', N'99', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'5', N'MTP-V006L-1B2UDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio MTP-V006L-1B2UDF phiên bản dây da trẻ trung cho phái mạnh với kiểu da trơn cùng với nền mặt số size 38mm hiện thị chức năng đơn giản 3 kim.', N'0', N'CASIO MTP-V006L-1B2UDF', N'776000', N'0', N'0', N'1', N'admin1@gmail.com', N'5', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'5', N'MTP-V006L-1B2UDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio MTP-V006L-1B2UDF phiên bản dây da trẻ trung cho phái mạnh với kiểu da trơn cùng với nền mặt số size 38mm hiện thị chức năng đơn giản 3 kim.', N'0', N'CASIO MTP-V006L-1B2UDF', N'776000', N'0', N'0', N'1', N'admin1@gmail.com', N'5', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'6', N'A168WG-9WDF', N'admin@gmail.com', N'2021-03-04', N'Đồng hồ Casio A168WG-9WDF với hình dáng truyền thống của hãng, phù hợp cho cả nam lẫn nữ, tông màu vàng chủ đạo từng chi tiết vỏ, mặt số và dây đeo tạo nên thời trang sang trọng, quý phái và thanh lịch.', N'0', N'CASIO A168WG-9WDF', N'1598000', N'0', N'0', N'1', N'admin1@gmail.com', N'1', N'98')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'6', N'A168WG-9WDF', N'admin@gmail.com', N'2021-03-04', N'Đồng hồ Casio A168WG-9WDF với hình dáng truyền thống của hãng, phù hợp cho cả nam lẫn nữ, tông màu vàng chủ đạo từng chi tiết vỏ, mặt số và dây đeo tạo nên thời trang sang trọng, quý phái và thanh lịch.', N'0', N'CASIO A168WG-9WDF', N'1598000', N'0', N'0', N'1', N'admin1@gmail.com', N'1', N'97', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'7', N'MTP-1335D-2A2VDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio MTP-1335D-2A2VDF mặt số xanh size 41mm tone màu thời trang cùng với thiết kế đơn giản chức năng 3 kim.', N'0', N'CASIO MTP-1335D-2A2VDF', N'1363000', N'0', N'0', N'1', N'admin1@gmail.com', N'2', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'7', N'MTP-1335D-2A2VDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio MTP-1335D-2A2VDF mặt số xanh size 41mm tone màu thời trang cùng với thiết kế đơn giản chức năng 3 kim.', N'0', N'CASIO MTP-1335D-2A2VDF', N'1363000', N'0', N'0', N'1', N'admin1@gmail.com', N'2', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'8', N'MTP-1170A-2ARDF', N'admin@gmail.com', N'2021-03-04', N'Trẻ trung nam tính với mẫu Casio MTP-1170A-2ARDF ẩn mình với vẻ ngoài giản dị của chiếc đồng hồ 3 kim thời trang với nền mặt số được phủ tông màu xanh nổi bật.', N'0', N'CASIO MTP-1170G-7ARDF', N'1246000', N'0', N'0', N'1', N'admin1@gmail.com', N'4', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'8', N'MTP-1170A-2ARDF', N'admin@gmail.com', N'2021-03-04', N'Trẻ trung nam tính với mẫu Casio MTP-1170A-2ARDF ẩn mình với vẻ ngoài giản dị của chiếc đồng hồ 3 kim thời trang với nền mặt số được phủ tông màu xanh nổi bật.', N'0', N'CASIO MTP-1170G-7ARDF', N'1246000', N'0', N'0', N'1', N'admin1@gmail.com', N'4', N'99', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'9', N'MTP-1170G-7ARDF', N'admin@gmail.com', N'2021-03-04', N'Trẻ trung nam tính với mẫu Casio MTP-1170A-2ARDF ẩn mình với vẻ ngoài giản dị của chiếc đồng hồ 3 kim thời trang với nền mặt số được phủ tông màu xanh nổi bật.', N'1', N'CASIO MTP-1170A-2ARDF', N'1034000', N'999000', N'0', N'1', N'admin1@gmail.com', N'3', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'9', N'MTP-1170G-7ARDF', N'admin@gmail.com', N'2021-03-04', N'Trẻ trung nam tính với mẫu Casio MTP-1170A-2ARDF ẩn mình với vẻ ngoài giản dị của chiếc đồng hồ 3 kim thời trang với nền mặt số được phủ tông màu xanh nổi bật.', N'1', N'CASIO MTP-1170A-2ARDF', N'1034000', N'999000', N'0', N'1', N'admin1@gmail.com', N'3', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'10', N'MRW-200HD-1BVDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio MRW-200HD-1BVDF phiên bản thể thao với khả năng chống nước vượt trội 10ATM, nền cọc số học trò tạo hình dày dặn tone màu trắng nổi bật trên mặt số size 44mm.', N'0', N'CASIO MRW-200HD-1BVDF', N'1246000', N'0', N'0', N'1', N'admin1@gmail.com', N'4', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'10', N'MRW-200HD-1BVDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio MRW-200HD-1BVDF phiên bản thể thao với khả năng chống nước vượt trội 10ATM, nền cọc số học trò tạo hình dày dặn tone màu trắng nổi bật trên mặt số size 44mm.', N'0', N'CASIO MRW-200HD-1BVDF', N'1246000', N'0', N'0', N'1', N'admin1@gmail.com', N'4', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'11', N'MRW-200HD-7BVDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio MRW-200HD-7BVDF mặt số trắng size lớn 44mm nối bật với thiết kế viền Bezel cọc số dày dặn nam tính dễ quan sát cùng khả năng chịu nước lên đến 10atm.', N'0', N'CASIO MRW-200HD-7BVDF', N'1246000', N'0', N'0', N'1', N'admin1@gmail.com', N'1', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'11', N'MRW-200HD-7BVDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio MRW-200HD-7BVDF mặt số trắng size lớn 44mm nối bật với thiết kế viền Bezel cọc số dày dặn nam tính dễ quan sát cùng khả năng chịu nước lên đến 10atm.', N'0', N'CASIO MRW-200HD-7BVDF', N'1246000', N'0', N'0', N'1', N'admin1@gmail.com', N'1', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'12', N'AW-90H-9EVDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio AW-90H-9EVDF phiên bản dây vỏ nhựa chịu va đập phối tone đen năng động, mặt số đen size 38mm chức năng kim chỉ phối cùng ô số điện tử tính năng Dual time.', N'0', N'CASIO AW-90H-9EVDF', N'870000', N'0', N'0', N'1', N'admin1@gmail.com', N'2', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'12', N'AW-90H-9EVDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio AW-90H-9EVDF phiên bản dây vỏ nhựa chịu va đập phối tone đen năng động, mặt số đen size 38mm chức năng kim chỉ phối cùng ô số điện tử tính năng Dual time.', N'0', N'CASIO AW-90H-9EVDF', N'870000', N'0', N'0', N'1', N'admin1@gmail.com', N'2', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'13', N'LTP-V005D-4B2UDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio LTP-V005D-4B2UDF thiết kế đơn giản trẻ trung 3 kim trên nền mặt số size 28mm được phối tone màu hồng, cùng với chi tiết các cọc vạch số tạo nét thanh mảnh nữ tính.', N'1', N'CASIO LTP-V005D-4B2UDF', N'729000', N'620000', N'0', N'0', N'admin1@gmail.com', N'5', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'13', N'LTP-V005D-4B2UDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio LTP-V005D-4B2UDF thiết kế đơn giản trẻ trung 3 kim trên nền mặt số size 28mm được phối tone màu hồng, cùng với chi tiết các cọc vạch số tạo nét thanh mảnh nữ tính.', N'1', N'CASIO LTP-V005D-4B2UDF', N'729000', N'620000', N'0', N'0', N'admin1@gmail.com', N'5', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'14', N'SHE-4055PGL-7BUDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio SHE-4055PGL-7BUDF phiên bản đính pha lê tương ứng với các múi giờ trên mặt số trắng size 30mm tạo nên vẻ đẹp sang trọng trẻ trung khi kết hợp cùng vỏ máy vàng hồng.', N'0', N'CASIO SHE-4055PGL-7BUDF', N'4113000', N'0', N'0', N'0', N'admin1@gmail.com', N'1', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'14', N'SHE-4055PGL-7BUDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio SHE-4055PGL-7BUDF phiên bản đính pha lê tương ứng với các múi giờ trên mặt số trắng size 30mm tạo nên vẻ đẹp sang trọng trẻ trung khi kết hợp cùng vỏ máy vàng hồng.', N'0', N'CASIO SHE-4055PGL-7BUDF', N'4113000', N'0', N'0', N'0', N'admin1@gmail.com', N'1', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'15', N'SHE-4533D-7AUDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio SHE-4533D-7AUDF thời trang sang trọng với thiết kế đính pha lê tại vị trí 9 giờ tạo nên điểm nhấn nổi bật trên mặt số size 30mm.', N'0', N'CASIO SHE-4533D-7AUDF', N'3220000', N'0', N'0', N'0', N'admin1@gmail.com', N'2', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'15', N'SHE-4533D-7AUDF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio SHE-4533D-7AUDF thời trang sang trọng với thiết kế đính pha lê tại vị trí 9 giờ tạo nên điểm nhấn nổi bật trên mặt số size 30mm.', N'0', N'CASIO SHE-4533D-7AUDF', N'3220000', N'0', N'0', N'0', N'admin1@gmail.com', N'2', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'16', N'LTP-E157MR-9ADF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio LTP-E157MR-9ADF dây đeo kim loại mạ vàng hồng phiên bản dây lưới thời trang kết hợp cùng lối thiết kế đơn giản chức năng 3 kim.', N'0', N'CASIO LTP-E157MR-9ADF', N'2867000', N'0', N'0', N'0', N'admin1@gmail.com', N'3', N'100')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'16', N'LTP-E157MR-9ADF', N'admin@gmail.com', N'2021-03-04', N'Mẫu Casio LTP-E157MR-9ADF dây đeo kim loại mạ vàng hồng phiên bản dây lưới thời trang kết hợp cùng lối thiết kế đơn giản chức năng 3 kim.', N'0', N'CASIO LTP-E157MR-9ADF', N'2867000', N'0', N'0', N'0', N'admin1@gmail.com', N'3', N'100', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'17', N'EFR-559SG-7AVUDF', NULL, N'2021-03-29', N'Mẫu Casio EFR-559SG-7AVUDF phiên bản thiết kế 3 núm vặn mạ bạc điều chỉnh tính năng đo thời gian Chrnograph hiện thị trên nền mặt số lớn size 49mm.', N'0', N'CASIO EFR-559SG-7AVUDF', N'1610000', N'0', N'0', N'1', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'17', N'EFR-559SG-7AVUDF', NULL, N'2021-03-29', N'Mẫu Casio EFR-559SG-7AVUDF phiên bản thiết kế 3 núm vặn mạ bạc điều chỉnh tính năng đo thời gian Chrnograph hiện thị trên nền mặt số lớn size 49mm.', N'0', N'CASIO EFR-559SG-7AVUDF', N'1610000', N'0', N'0', N'1', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'18', N'EFR-559SG-7AVUDF', NULL, N'2021-03-29', N'Mẫu Casio LTP-E157MRB-1BDF dây đeo kim loại phiên bản dây lưới phối tone màu đen thời trang, vỏ máy pin mạ tone màu vàng hồng cùng với thiết kế mỏng chỉ 8mm.', N'1', N'CASIO EFR-559SG-7AVUDF', N'2867000', N'2800000', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'18', N'EFR-559SG-7AVUDF', NULL, N'2021-03-29', N'Mẫu Casio LTP-E157MRB-1BDF dây đeo kim loại phiên bản dây lưới phối tone màu đen thời trang, vỏ máy pin mạ tone màu vàng hồng cùng với thiết kế mỏng chỉ 8mm.', N'1', N'CASIO EFR-559SG-7AVUDF', N'2867000', N'2800000', N'0', N'0', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'19', N'LA690WEMB-1BDF', NULL, N'2021-03-29', N'Mẫu Casio LA690WEMB-1BDF dây lưới tone màu đen phiên bản trẻ trung cá tính dành cho các bạn nữ với thiết kế mặt số điện tử hiện thị đa chức năng.', N'0', N'CASIO LA690WEMB-1BDF', N'2303000', N'0', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'19', N'LA690WEMB-1BDF', NULL, N'2021-03-29', N'Mẫu Casio LA690WEMB-1BDF dây lưới tone màu đen phiên bản trẻ trung cá tính dành cho các bạn nữ với thiết kế mặt số điện tử hiện thị đa chức năng.', N'0', N'CASIO LA690WEMB-1BDF', N'2303000', N'0', N'0', N'0', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'20', N'MTD-1079D-1A3VDF', NULL, N'2021-03-29', N'Lịch lãm nam tính cùng mẫu Casio MTD-1079D-1A3VDF với vẻ ngoài giản dị của chiếc đồng hồ 3 kim ẩn chứa bên trong sự mạnh mẽ đầy cuốn hút với các chi tiết vạch số tạo nét dày dặn cùng khả năng chịu nước lên đến 10 ATM.', N'1', N'CASIO MTD-1079D-1A3VDF', N'3455000', N'3400000', N'0', N'1', NULL, N'5', N'12')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'20', N'MTD-1079D-1A3VDF', NULL, N'2021-03-29', N'Lịch lãm nam tính cùng mẫu Casio MTD-1079D-1A3VDF với vẻ ngoài giản dị của chiếc đồng hồ 3 kim ẩn chứa bên trong sự mạnh mẽ đầy cuốn hút với các chi tiết vạch số tạo nét dày dặn cùng khả năng chịu nước lên đến 10 ATM.', N'1', N'CASIO MTD-1079D-1A3VDF', N'3455000', N'3400000', N'0', N'1', NULL, N'5', N'12', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'21', N'SRPC57K1', NULL, N'2021-03-29', N'Đặc điểm nổi trội như phần vỏ viền ngoài tạo hình viền số chữ trắng nổi bật trên tông nền đen, vẻ ngoài dày dặn với khả năng chịu nước 10ATM phù hợp cho những hoạt động ngoài trời, tạo nên mẫu đồng hồ thể thao Seiko SRPC57K1.', N'0', N'SEIKO SRPC57K1', N'7340000', N'0', N'0', N'1', NULL, N'3', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'21', N'SRPC57K1', NULL, N'2021-03-29', N'Đặc điểm nổi trội như phần vỏ viền ngoài tạo hình viền số chữ trắng nổi bật trên tông nền đen, vẻ ngoài dày dặn với khả năng chịu nước 10ATM phù hợp cho những hoạt động ngoài trời, tạo nên mẫu đồng hồ thể thao Seiko SRPC57K1.', N'0', N'SEIKO SRPC57K1', N'7340000', N'0', N'0', N'1', NULL, N'3', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'22', N'SNE485P1 ', NULL, N'2021-03-29', N'Mẫu Seiko SNE485P1 vẻ ngoài sang trọng trẻ trung với mẫu dây đeo mạ vàng demi, điểm nhấn nổi bật kiểu máy pin trang bị công nghệ Solar (Năng Lượng Ánh Sáng).', N'0', N'SEIKO SNE485P1 ', N'6470000', N'0', N'0', N'1', NULL, N'3', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'22', N'SNE485P1 ', NULL, N'2021-03-29', N'Mẫu Seiko SNE485P1 vẻ ngoài sang trọng trẻ trung với mẫu dây đeo mạ vàng demi, điểm nhấn nổi bật kiểu máy pin trang bị công nghệ Solar (Năng Lượng Ánh Sáng).', N'0', N'SEIKO SNE485P1 ', N'6470000', N'0', N'0', N'1', NULL, N'3', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'23', N'SSA812J1', NULL, N'2021-03-29', N'Mang đến cho phái đẹp với thiết kế độc đáo cùng ô chân kính trong suốt phô diễn ra 1 phần bên trong của bộ máy cơ chứa đựng cả một trải nghiệm thú vị dành cho mẫu Seiko SSA812J1.', N'1', N'SEIKO SSA812J1', N'16420000', N'16400000', N'0', N'0', NULL, N'3', N'11')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'23', N'SSA812J1', NULL, N'2021-03-29', N'Mang đến cho phái đẹp với thiết kế độc đáo cùng ô chân kính trong suốt phô diễn ra 1 phần bên trong của bộ máy cơ chứa đựng cả một trải nghiệm thú vị dành cho mẫu Seiko SSA812J1.', N'1', N'SEIKO SSA812J1', N'16420000', N'16400000', N'0', N'0', NULL, N'3', N'11', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'24', N'SNE485P1', NULL, N'2021-03-29', N'Mẫu Seiko SNE485P1 vẻ ngoài sang trọng trẻ trung với mẫu dây đeo mạ vàng demi, điểm nhấn nổi bật kiểu máy pin trang bị công nghệ Solar (Năng Lượng Ánh Sáng).', N'0', N'SEIKO SNE485P1', N'6470000', N'0', N'0', N'1', NULL, N'3', N'11')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'24', N'SNE485P1', NULL, N'2021-03-29', N'Mẫu Seiko SNE485P1 vẻ ngoài sang trọng trẻ trung với mẫu dây đeo mạ vàng demi, điểm nhấn nổi bật kiểu máy pin trang bị công nghệ Solar (Năng Lượng Ánh Sáng).', N'0', N'SEIKO SNE485P1', N'6470000', N'0', N'1', N'1', NULL, N'3', N'11', N'admin@gmail.com', N'2021-04-15')
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'25', N'SRPD73K1', NULL, N'2021-03-29', N'Mẫu Seiko SRPD73K1 nổi bật với chi tiết cọc chấm tròn trắng dạ quang trên nền mặt đen size 42mm, thiết kế vỏ máy dày dặn nam tính thời trang với phiên bản dây lưới.', N'0', N'SEIKO SRPD73K1', N'8810000', N'0', N'0', N'1', NULL, N'3', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'25', N'SRPD73K1', NULL, N'2021-03-29', N'Mẫu Seiko SRPD73K1 nổi bật với chi tiết cọc chấm tròn trắng dạ quang trên nền mặt đen size 42mm, thiết kế vỏ máy dày dặn nam tính thời trang với phiên bản dây lưới.', N'0', N'SEIKO SRPD73K1', N'8810000', N'0', N'0', N'1', NULL, N'3', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'26', N'SRPE15J1', NULL, N'2021-03-29', N'Mẫu Seiko SRPE15J1 phiên bản Presage với nền mặt số xanh size 40mm tone màu trẻ trung phối cùng họa tiết Guilloché tạo nên vẻ thời trang độc đáo.', N'0', N'SEIKO SRPE15J1', N'12020000', N'0', N'0', N'1', NULL, N'3', N'11')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'26', N'SRPE15J1', NULL, N'2021-03-29', N'Mẫu Seiko SRPE15J1 phiên bản Presage với nền mặt số xanh size 40mm tone màu trẻ trung phối cùng họa tiết Guilloché tạo nên vẻ thời trang độc đáo.', N'0', N'SEIKO SRPE15J1', N'12020000', N'0', N'0', N'1', NULL, N'3', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'27', N'SNP141P1', NULL, N'2021-03-29', N'Mẫu Seiko SNP141P1 thiết kế độc đáo với phần năng lượng đồng hồ trang bị công nghệ Kinetic (Vừa Pin – Vừa Tự Động), kim chỉ cọc số mạ bạc sang trọng trước nền kính Sapphire.', N'1', N'SEIKO SNP141P1', N'22090000', N'22000000', N'0', N'1', NULL, N'5', N'7')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'27', N'SNP141P1', NULL, N'2021-03-29', N'Mẫu Seiko SNP141P1 thiết kế độc đáo với phần năng lượng đồng hồ trang bị công nghệ Kinetic (Vừa Pin – Vừa Tự Động), kim chỉ cọc số mạ bạc sang trọng trước nền kính Sapphire.', N'1', N'SEIKO SNP141P1', N'22090000', N'22000000', N'0', N'1', NULL, N'5', N'7', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'28', N'SSB355P1', NULL, N'2021-03-29', N'Mẫu Seiko SSB355P1 nổi bật với tính năng đo thời gian Chronograph tạo nên kiểu dáng đồng hồ 6 kim, phiên bản kim chỉ đỏ tone màu nổi bật trên nền mặt số đen size 45mm.', N'0', N'SEIKO SSB355P1', N'6120000', N'0', N'0', N'1', NULL, N'2', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'28', N'SSB355P1', NULL, N'2021-03-29', N'Mẫu Seiko SSB355P1 nổi bật với tính năng đo thời gian Chronograph tạo nên kiểu dáng đồng hồ 6 kim, phiên bản kim chỉ đỏ tone màu nổi bật trên nền mặt số đen size 45mm.', N'0', N'SEIKO SSB355P1', N'6120000', N'0', N'0', N'1', NULL, N'2', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'29', N'SRPD71K1', NULL, N'2021-03-29', N'Mẫu Seiko SRPD71K1 phiên bản đồng hồ lặn với thiết kế máy cơ phần vỏ dày dặn 13mm mạ bạc sang sang trọng đầy trẻ trung khi phối cùng bộ dây lưới.', N'0', N'SEIKO SRPD71K1', N'8810000', N'0', N'0', N'1', NULL, N'2', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'29', N'SRPD71K1', NULL, N'2021-03-29', N'Mẫu Seiko SRPD71K1 phiên bản đồng hồ lặn với thiết kế máy cơ phần vỏ dày dặn 13mm mạ bạc sang sang trọng đầy trẻ trung khi phối cùng bộ dây lưới.', N'0', N'SEIKO SRPD71K1', N'8810000', N'0', N'0', N'1', NULL, N'2', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'30', N'SRPD42J1', NULL, N'2021-03-29', N'Mẫu Seiko SRPD42J1 sang trọng trẻ trung với tone màu vàng hồng bao phủ trên chi tiết vỏ máy, kim chỉ cùng vạch số tạo hình mỏng trên mặt số trắng size 41mm. ', N'0', N'SEIKO SRPD42J1', N'17120000', N'0', N'0', N'1', NULL, N'2', N'11')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'30', N'SRPD42J1', NULL, N'2021-03-29', N'Mẫu Seiko SRPD42J1 sang trọng trẻ trung với tone màu vàng hồng bao phủ trên chi tiết vỏ máy, kim chỉ cùng vạch số tạo hình mỏng trên mặt số trắng size 41mm. ', N'0', N'SEIKO SRPD42J1', N'17120000', N'0', N'0', N'1', NULL, N'2', N'11', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'31', N'SRW791P1', NULL, N'2021-03-29', N'Mẫu Seiko SRW791P1 phiên bản thời trang cho phái đẹp mẫu dây da xanh bản nhỏ, nền cọc số la mã tạo hình mỏng cách điệu nữ tính trên mặt số 6 kim kèm chức năng Chronograph.', N'1', N'SEIKO SRW791P1', N'8170000', N'8000000', N'0', N'0', NULL, N'2', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'31', N'SRW791P1', NULL, N'2021-03-29', N'Mẫu Seiko SRW791P1 phiên bản thời trang cho phái đẹp mẫu dây da xanh bản nhỏ, nền cọc số la mã tạo hình mỏng cách điệu nữ tính trên mặt số 6 kim kèm chức năng Chronograph.', N'1', N'SEIKO SRW791P1', N'8170000', N'8000000', N'1', N'0', NULL, N'2', N'10', N'admin@gmail.com', N'2021-04-15')
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'32', N'SUP369P1', NULL, N'2021-03-29', N'Vẻ đẹp thanh lịch đến từ mẫu dây da đen có vân ẩn chứa với vẻ ngoài giản dị của chiếc đồng hồ Seiko SUP369P1 nhưng lại mang trên mình một vẻ đẹp hiện đại dành cho phái đẹp được trang bị công nghệ Solar (Năng Lượng Ánh Sáng).', N'0', N'SEIKO SUP369P1', N'4090000', N'0', N'0', N'0', NULL, N'5', N'11')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'32', N'SUP369P1', NULL, N'2021-03-29', N'Vẻ đẹp thanh lịch đến từ mẫu dây da đen có vân ẩn chứa với vẻ ngoài giản dị của chiếc đồng hồ Seiko SUP369P1 nhưng lại mang trên mình một vẻ đẹp hiện đại dành cho phái đẹp được trang bị công nghệ Solar (Năng Lượng Ánh Sáng).', N'0', N'SEIKO SUP369P1', N'4090000', N'0', N'0', N'0', NULL, N'5', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'33', N'SRZ520P1', NULL, N'2021-03-29', N'Phiên bản Seiko SRZ520P1 vẻ ngoài thời trang với thiết kế mỏng máy pin 7mm, sang trọng nổi bật dành cho phái đẹp với phần dây vỏ kim loại mạ vàng.', N'0', N'SEIKO SRZ520P1', N'6840000', N'0', N'0', N'0', NULL, N'2', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'33', N'SRZ520P1', NULL, N'2021-03-29', N'Phiên bản Seiko SRZ520P1 vẻ ngoài thời trang với thiết kế mỏng máy pin 7mm, sang trọng nổi bật dành cho phái đẹp với phần dây vỏ kim loại mạ vàng.', N'0', N'SEIKO SRZ520P1', N'6840000', N'0', N'0', N'0', NULL, N'2', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'34', N'SUR638P1', NULL, N'2021-03-29', N'Mẫu Seiko SUR638P1 phiên bản dây da nâu tạo hình vân thanh lịch không kém cạnh trẻ trung với thiết kế đơn giản chức năng 3 kim trên nền mặt số trắng size 29mm.', N'0', N'SEIKO SUR638P1', N'5140000', N'0', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'34', N'SUR638P1', NULL, N'2021-03-29', N'Mẫu Seiko SUR638P1 phiên bản dây da nâu tạo hình vân thanh lịch không kém cạnh trẻ trung với thiết kế đơn giản chức năng 3 kim trên nền mặt số trắng size 29mm.', N'0', N'SEIKO SUR638P1', N'5140000', N'0', N'0', N'0', NULL, N'1', N'9', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'35', N'SRZ519P1', NULL, N'2021-03-29', N'Mẫu Seiko SRZ519P1 phiên bản nền cọc số la mã tạo nét cách điệu phối tone màu đen thời trang trên nền mặt trắng size nhỏ 29mm dành cho phái đẹp.', N'0', N'SEIKO SRZ519P1', N'5670000', N'0', N'0', N'0', NULL, N'5', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'35', N'SRZ519P1', NULL, N'2021-03-29', N'Mẫu Seiko SRZ519P1 phiên bản nền cọc số la mã tạo nét cách điệu phối tone màu đen thời trang trên nền mặt trắng size nhỏ 29mm dành cho phái đẹp.', N'0', N'SEIKO SRZ519P1', N'5670000', N'0', N'0', N'0', NULL, N'5', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'36', N'SUT387J1', NULL, N'2021-03-29', N'Mẫu Seiko SUT387J1 phiên bản đặc biệt với bộ máy pin trang bị công nghệ Solar (Năng Lượng Ánh Sáng), kim chỉ đỏ tone màu thời trang nổi bật trên mặt số size 33mm.', N'1', N'SEIKO SUT387J1', N'12240000', N'12000000', N'0', N'0', NULL, N'5', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'36', N'SUT387J1', NULL, N'2021-03-29', N'Mẫu Seiko SUT387J1 phiên bản đặc biệt với bộ máy pin trang bị công nghệ Solar (Năng Lượng Ánh Sáng), kim chỉ đỏ tone màu thời trang nổi bật trên mặt số size 33mm.', N'1', N'SEIKO SUT387J1', N'12240000', N'12000000', N'0', N'0', NULL, N'5', N'8', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'37', N'SXDG76P1', NULL, N'2021-03-29', N'Mẫu đồng hồ Seiko SXDG76P1 ấn tượng với vỏ viền ngoài thiết kế gia công tinh xảo đính kèm các viên pha lê theo phong cách thời trang trẻ trung, tạo điểm nhấn cho vẻ đẹp đầy sang trọng với vỏ máy cùng dây đeo mạ vàng.', N'0', N'SEIKO SXDG76P1', N'6430000', N'0', N'0', N'0', NULL, N'1', N'15')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'37', N'SXDG76P1', NULL, N'2021-03-29', N'Mẫu đồng hồ Seiko SXDG76P1 ấn tượng với vỏ viền ngoài thiết kế gia công tinh xảo đính kèm các viên pha lê theo phong cách thời trang trẻ trung, tạo điểm nhấn cho vẻ đẹp đầy sang trọng với vỏ máy cùng dây đeo mạ vàng.', N'0', N'SEIKO SXDG76P1', N'6430000', N'0', N'0', N'0', NULL, N'1', N'15', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'38', N'SRW869P1', NULL, N'2021-03-29', N'Đồng hồ Seiko SRW869P1 có nền số màu hồng duyên dáng, kim chỉ và vạch số được thiết kế tinh tế nổi bật, dây đeo kim loại mạ bạc đem lại vẻ đẹp thanh lịch quý phái dành riêng cho phái nữ.', N'0', N'SEIKO SRW869P1', N'8020000', N'0', N'0', N'0', NULL, N'3', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'38', N'SRW869P1', NULL, N'2021-03-29', N'Đồng hồ Seiko SRW869P1 có nền số màu hồng duyên dáng, kim chỉ và vạch số được thiết kế tinh tế nổi bật, dây đeo kim loại mạ bạc đem lại vẻ đẹp thanh lịch quý phái dành riêng cho phái nữ.', N'0', N'SEIKO SRW869P1', N'8020000', N'0', N'0', N'0', NULL, N'3', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'39', N' SRP857J1', NULL, N'2021-03-29', N'Mẫu Seiko SRP857J1 một vẻ đẹp quý phái ẩn mình với vẻ ngoài giản dị của chiếc đồng hồ 3 kim với phiên bản kim loại bạc sang trọng trẻ trung cùng nền cọc số la mã tạo nét mỏng cách tân.', N'0', N'SEIKO SRP857J1', N'9820000', N'0', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'39', N' SRP857J1', NULL, N'2021-03-29', N'Mẫu Seiko SRP857J1 một vẻ đẹp quý phái ẩn mình với vẻ ngoài giản dị của chiếc đồng hồ 3 kim với phiên bản kim loại bạc sang trọng trẻ trung cùng nền cọc số la mã tạo nét mỏng cách tân.', N'0', N'SEIKO SRP857J1', N'9820000', N'0', N'0', N'0', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'40', N'SRW856P1', NULL, N'2021-03-29', N'Đồng hồ Seiko SRW856P1 thuộc bộ sưu tập Lukia dành riêng cho phái nữ, viền kim loại được phủ màu đồng quyến rũ bao quanh nền số màu hồng, kim chỉ phản quang kết hợp với vạch giờ được cách điệu độc đáo.', N'1', N'SEIKO ', N'10790000', N'10000000', N'0', N'0', NULL, N'5', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'40', N'SRW856P1', NULL, N'2021-03-29', N'Đồng hồ Seiko SRW856P1 thuộc bộ sưu tập Lukia dành riêng cho phái nữ, viền kim loại được phủ màu đồng quyến rũ bao quanh nền số màu hồng, kim chỉ phản quang kết hợp với vạch giờ được cách điệu độc đáo.', N'1', N'SEIKO ', N'10790000', N'10000000', N'0', N'0', NULL, N'5', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'41', N'AR1135-10E', NULL, N'2021-03-29', N'Mẫu Citizen AR1135-10E nổi bật với đồng hồ sử dụng công nghệ hiện đại Eco-Drive (Năng Lượng Ánh Sáng), ấn tượng với thiết kế đầy nam tính kết hợp giữa vỏ máy cùng dây đeo bằng da đen đầy lịch lãm.', N'0', N'CITIZEN AR1135-10E', N'6900000', N'0', N'0', N'1', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'41', N'AR1135-10E', NULL, N'2021-03-29', N'Mẫu Citizen AR1135-10E nổi bật với đồng hồ sử dụng công nghệ hiện đại Eco-Drive (Năng Lượng Ánh Sáng), ấn tượng với thiết kế đầy nam tính kết hợp giữa vỏ máy cùng dây đeo bằng da đen đầy lịch lãm.', N'0', N'CITIZEN AR1135-10E', N'6900000', N'0', N'0', N'1', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'42', N'NH8353-00H', NULL, N'2021-03-29', N'Đồng hồ nam Citizen NH8353-00H có vỏ kim loại tạo vẻ chắc chắn, kim chỉ và vạch số la mã nổi bật trên nền đen, kết hợp với dây đeo bằng chất liệu da màu nâu đem lại phong cách cổ điển lịch lãm, nam tính cho phái mạnh.', N'0', N'CITIZEN NH8353-00H', N'5500000', N'0', N'0', N'1', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'42', N'NH8353-00H', NULL, N'2021-03-29', N'Đồng hồ nam Citizen NH8353-00H có vỏ kim loại tạo vẻ chắc chắn, kim chỉ và vạch số la mã nổi bật trên nền đen, kết hợp với dây đeo bằng chất liệu da màu nâu đem lại phong cách cổ điển lịch lãm, nam tính cho phái mạnh.', N'0', N'CITIZEN NH8353-00H', N'5500000', N'0', N'0', N'1', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'43', N'BI5006-81L', NULL, N'2021-03-29', N'Mẫu Citizen BI5006-81L phiên bản mặt số xanh size 39mm tone màu thời trang sang trọng với chi tiết cọc vạch số mạ vàng nổi bật.', N'0', N'CITIZEN BI5006-81L', N'3050000', N'0', N'0', N'1', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'43', N'BI5006-81L', NULL, N'2021-03-29', N'Mẫu Citizen BI5006-81L phiên bản mặt số xanh size 39mm tone màu thời trang sang trọng với chi tiết cọc vạch số mạ vàng nổi bật.', N'0', N'CITIZEN BI5006-81L', N'3050000', N'0', N'0', N'1', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'44', N'NY0088-11E', NULL, N'2021-03-29', N'Mẫu Citizen NY0088-11E thiết kế dày dặn nam tính vỏ máy kim loại mạ bạc chứa đựng bên trong trải nghiệm đến từ bộ máy cơ với bề dày 12mm, khả năng chịu nước 20ATM là tính năng vượt trội.
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'44', N'NY0088-11E', NULL, N'2021-03-29', N'Mẫu Citizen NY0088-11E thiết kế dày dặn nam tính vỏ máy kim loại mạ bạc chứa đựng bên trong trải nghiệm đến từ bộ máy cơ với bề dày 12mm, khả năng chịu nước 20ATM là tính năng vượt trội.
 
-', N'1', N'CITIZEN NY0088-11E', N'8050000', N'8000000', N'0', N'1', NULL, N'1', N'12')
+', N'1', N'CITIZEN NY0088-11E', N'8050000', N'8000000', N'0', N'1', NULL, N'1', N'12', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'45', N'FC8008-88D', NULL, N'2021-03-29', N'Mẫu Citizen FC8008-88D điểm nhấn nổi bật mẫu dây đeo demi mạ vàng kết hợp với mặt số trắng xà cừ size 35mm mang lại vẻ ngoài thời trang dành cho phái đẹp.', N'0', N'CITIZEN FC8008-88D', N'11550000', N'0', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'45', N'FC8008-88D', NULL, N'2021-03-29', N'Mẫu Citizen FC8008-88D điểm nhấn nổi bật mẫu dây đeo demi mạ vàng kết hợp với mặt số trắng xà cừ size 35mm mang lại vẻ ngoài thời trang dành cho phái đẹp.', N'0', N'CITIZEN FC8008-88D', N'11550000', N'0', N'0', N'0', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'46', N'NH8396-82E', NULL, N'2021-03-29', N'Mẫu Citizen C7 NH8396-82E phiên bản dây đeo dạng lưới tone màu đen trẻ trung nhưng không phần sang trọng với chi tiết cọc vạch số cùng kim chỉ mạ vàng hồng.', N'0', N'CITIZEN NH8396-82E', N'9177000', N'0', N'0', N'1', NULL, N'5', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'46', N'NH8396-82E', NULL, N'2021-03-29', N'Mẫu Citizen C7 NH8396-82E phiên bản dây đeo dạng lưới tone màu đen trẻ trung nhưng không phần sang trọng với chi tiết cọc vạch số cùng kim chỉ mạ vàng hồng.', N'0', N'CITIZEN NH8396-82E', N'9177000', N'0', N'0', N'1', NULL, N'5', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'47', N'NH8363-14A', NULL, N'2021-03-29', N'Đồng hồ nam Citizen NH8363-14A phong cách hoài cổ từ bộ máy cơ cho đến chữ số với font chữ la mã cổ điển, lịch ngày thứ ở vị trí 3 giờ với kiểu dáng giản dị.', N'0', N'CITIZEN NH8363-14A', N'5500000', N'0', N'0', N'1', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'47', N'NH8363-14A', NULL, N'2021-03-29', N'Đồng hồ nam Citizen NH8363-14A phong cách hoài cổ từ bộ máy cơ cho đến chữ số với font chữ la mã cổ điển, lịch ngày thứ ở vị trí 3 giờ với kiểu dáng giản dị.', N'0', N'CITIZEN NH8363-14A', N'5500000', N'0', N'0', N'1', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'48', N'NH8360-80L', NULL, N'2021-03-29', N'Đồng hồ nam Citizen NH8360-80L thiết kế theo phong cách cổ điển với bô máy cơ, mặt đồng hồ kiểu tròn giản dị với chức năng lịch ngày thứ ở vị trí 3 giờ, nền đồng hồ màu xanh đem lại vẻ trẻ trung cho phái mạnh.', N'0', N'CITIZEN NH8360-80L', N'5520000', N'0', N'0', N'1', NULL, N'3', N'12')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'48', N'NH8360-80L', NULL, N'2021-03-29', N'Đồng hồ nam Citizen NH8360-80L thiết kế theo phong cách cổ điển với bô máy cơ, mặt đồng hồ kiểu tròn giản dị với chức năng lịch ngày thứ ở vị trí 3 giờ, nền đồng hồ màu xanh đem lại vẻ trẻ trung cho phái mạnh.', N'0', N'CITIZEN NH8360-80L', N'5520000', N'0', N'0', N'1', NULL, N'3', N'12', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'49', N'EM0763-07A', NULL, N'2021-03-29', N'Mẫu Citizen EM0763-07A dây da phiên bản da trơn phối tone màu xanh thời trang trẻ trung cùng với các chi tiết kim chỉ cùng cọc vạch số tạo nét thanh mảnh.', N'0', N'CITIZEN EM0763-07A', N'5970000', N'0', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'49', N'EM0763-07A', NULL, N'2021-03-29', N'Mẫu Citizen EM0763-07A dây da phiên bản da trơn phối tone màu xanh thời trang trẻ trung cùng với các chi tiết kim chỉ cùng cọc vạch số tạo nét thanh mảnh.', N'0', N'CITIZEN EM0763-07A', N'5970000', N'0', N'0', N'0', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'50', N'BI5000-10E', NULL, N'2021-03-29', N'Mẫu Citizen BI5000-10E trẻ trung đơn giản chức năng 3 kim 1 lịch trên nền mặt số size 39mm, thiết kế mỏng trên phần vỏ máy pin với độ dày chỉ 8mm mạ bạc sang trọng.', N'0', N'CITIZEN BI5000-10E', N'3000000', N'0', N'0', N'1', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'50', N'BI5000-10E', NULL, N'2021-03-29', N'Mẫu Citizen BI5000-10E trẻ trung đơn giản chức năng 3 kim 1 lịch trên nền mặt số size 39mm, thiết kế mỏng trên phần vỏ máy pin với độ dày chỉ 8mm mạ bạc sang trọng.', N'0', N'CITIZEN BI5000-10E', N'3000000', N'0', N'0', N'1', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'51', N'BM7375-18H', NULL, N'2021-03-29', N'Mẫu Citizen BM7375-18H theo lối thiết kế phong cách thời trang với sự kết hợp hài hòa giữa mặt số cùng mẫu dây da phối chung tông màu xám hướng đến vẻ nam tính trẻ trung.', N'1', N'CITIZEN BM7375-18H', N'7500000', N'7300000', N'0', N'1', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'51', N'BM7375-18H', NULL, N'2021-03-29', N'Mẫu Citizen BM7375-18H theo lối thiết kế phong cách thời trang với sự kết hợp hài hòa giữa mặt số cùng mẫu dây da phối chung tông màu xám hướng đến vẻ nam tính trẻ trung.', N'1', N'CITIZEN BM7375-18H', N'7500000', N'7300000', N'0', N'1', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'52', N'CA0610-52A', NULL, N'2021-03-29', N'Đồng hồ Citizen CA0610-52A có mặt số tròn to, kim chỉ và vạch số sắc nét nổi bật trên nền số màu trắng trang nhã, dây đeo kim loại màu bạc đem lại phong cách lịch lãm, sang trọng cho phái mạnh.', N'0', N'CITIZEN CA0610-52A', N'7900000', N'0', N'0', N'1', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'52', N'CA0610-52A', NULL, N'2021-03-29', N'Đồng hồ Citizen CA0610-52A có mặt số tròn to, kim chỉ và vạch số sắc nét nổi bật trên nền số màu trắng trang nhã, dây đeo kim loại màu bạc đem lại phong cách lịch lãm, sang trọng cho phái mạnh.', N'0', N'CITIZEN CA0610-52A', N'7900000', N'0', N'0', N'1', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'53', N'NP1010-01A', NULL, N'2021-03-29', N'Mẫu Citizen NP1010-01A mang đến vẻ ngoài lịch lãm của phái mạnh với mẫu dây đeo da phối tông màu nâu, nổi bật lên vẻ độc đáo bên dưới mặt kính Sapphire thiết kế ô chân kính phô ra 1 phần trải nghiệm của bộ máy cơ đặc trưng nam tính.', N'1', N'CITIZEN NP1010-01A', N'12200000', N'1200000', N'0', N'1', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'53', N'NP1010-01A', NULL, N'2021-03-29', N'Mẫu Citizen NP1010-01A mang đến vẻ ngoài lịch lãm của phái mạnh với mẫu dây đeo da phối tông màu nâu, nổi bật lên vẻ độc đáo bên dưới mặt kính Sapphire thiết kế ô chân kính phô ra 1 phần trải nghiệm của bộ máy cơ đặc trưng nam tính.', N'1', N'CITIZEN NP1010-01A', N'12200000', N'1200000', N'0', N'1', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'54', N'NP1010-51E', NULL, N'2021-03-29', N'Mẫu Citizen NP1010-51E thiết kế tạo nên sự độc đáo dành cho phái mạnh với mặt đồng hồ bên dưới mặt kính Sapphire với 1 ô chân kính phô diễn ra 1 phần của bộ máy cơ đặc trưng nam tính kết hợp cùng các chi tiết vạch số dày dặn.', N'0', N'CITIZEN NP1010-51E', N'12700000', N'0', N'0', N'1', NULL, N'5', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'54', N'NP1010-51E', NULL, N'2021-03-29', N'Mẫu Citizen NP1010-51E thiết kế tạo nên sự độc đáo dành cho phái mạnh với mặt đồng hồ bên dưới mặt kính Sapphire với 1 ô chân kính phô diễn ra 1 phần của bộ máy cơ đặc trưng nam tính kết hợp cùng các chi tiết vạch số dày dặn.', N'0', N'CITIZEN NP1010-51E', N'12700000', N'0', N'0', N'1', NULL, N'5', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'55', N' EZ7000-50A', NULL, N'2021-03-29', N'Mẫu Citizen EZ7000-50A phiên bản máy pin với thiết kế kiểu dáng mỏng chỉ 6mm phong cách thời trang phối cùng mẫu dây đeo kim loại dạng lưới.', N'0', N'CITIZEN EZ7000-50A', N'3990000', N'0', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'55', N' EZ7000-50A', NULL, N'2021-03-29', N'Mẫu Citizen EZ7000-50A phiên bản máy pin với thiết kế kiểu dáng mỏng chỉ 6mm phong cách thời trang phối cùng mẫu dây đeo kim loại dạng lưới.', N'0', N'CITIZEN EZ7000-50A', N'3990000', N'0', N'0', N'0', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'56', N'EQ9060-53A', NULL, N'2021-03-29', N'Mẫu Citizen EQ9060-53A chức năng kim giây thiết kế độc đáo không đồng trục trên nền mặt số trắng size 34mm, vỏ máy pin mạ bạc phiên bản kiểu dáng mỏng chỉ 7mm.', N'0', N'CITIZEN EQ9060-53A', N'3600000', N'0', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'56', N'EQ9060-53A', NULL, N'2021-03-29', N'Mẫu Citizen EQ9060-53A chức năng kim giây thiết kế độc đáo không đồng trục trên nền mặt số trắng size 34mm, vỏ máy pin mạ bạc phiên bản kiểu dáng mỏng chỉ 7mm.', N'0', N'CITIZEN EQ9060-53A', N'3600000', N'0', N'0', N'0', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'57', N'EW3252-07A', NULL, N'2021-03-29', N'Mẫu đồng hồ nữ Citizen EW3252-07A thiết kế theo lối giản dị đầy ấn tượng mạnh với đồng hồ được sử dụng công nghệ hiện đại Eco-Drive (Năng Lượng Ánh Sáng), kết hợp cùng bộ dây đeo bằng da với tông màu nâu thanh lịch cho phái đẹp.', N'0', N'CITIZEN EW3252-07A', N'6600000', N'0', N'0', N'0', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'57', N'EW3252-07A', NULL, N'2021-03-29', N'Mẫu đồng hồ nữ Citizen EW3252-07A thiết kế theo lối giản dị đầy ấn tượng mạnh với đồng hồ được sử dụng công nghệ hiện đại Eco-Drive (Năng Lượng Ánh Sáng), kết hợp cùng bộ dây đeo bằng da với tông màu nâu thanh lịch cho phái đẹp.', N'0', N'CITIZEN EW3252-07A', N'6600000', N'0', N'0', N'0', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'58', N'EU6092-08A', NULL, N'2021-03-29', N'Mẫu Citizen EU6092-08A dây da nâu tạo hình vân phiên bản thanh lịch trẻ trung cho phái đẹp khi kết hợp cùng lối thiết kế đơn giản chức năng 3 kim.', N'0', N'CITIZEN EU6092-08A', N'3630000', N'350000', N'0', N'0', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'58', N'EU6092-08A', NULL, N'2021-03-29', N'Mẫu Citizen EU6092-08A dây da nâu tạo hình vân phiên bản thanh lịch trẻ trung cho phái đẹp khi kết hợp cùng lối thiết kế đơn giản chức năng 3 kim.', N'0', N'CITIZEN EU6092-08A', N'3630000', N'350000', N'0', N'0', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'59', N'EU6012-58E', NULL, N'2021-03-29', N'Đồng hồ nữ Citizen EU6012-58E có vỏ máy kim loại bằng thép không gỉ được mạ vàng sang trọng, kim chỉ và vạch số được làm thanh mảnh nhẹ nhàng, dây đeo kim loại cùng tông màu mạ vàng sang trọng.
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'59', N'EU6012-58E', NULL, N'2021-03-29', N'Đồng hồ nữ Citizen EU6012-58E có vỏ máy kim loại bằng thép không gỉ được mạ vàng sang trọng, kim chỉ và vạch số được làm thanh mảnh nhẹ nhàng, dây đeo kim loại cùng tông màu mạ vàng sang trọng.
 
-', N'0', N'CITIZEN EU6012-58E', N'2650000', N'0', N'0', N'0', NULL, N'1', N'50')
+', N'0', N'CITIZEN EU6012-58E', N'2650000', N'0', N'0', N'0', NULL, N'1', N'50', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'60', N'EM0600-87A', NULL, N'2021-03-29', N'Mẫu Citizen EM0600-87A vẻ ngoài trang nhã thanh mảnh tựa như hình của một cô gái với chi tiết kim chỉ gia công với dáng vẻ mỏng kết hợp mặt số tông nền trắng mang lại sự tinh tế trên nền mặt kính Sapphire.', N'0', N'CITIZEN EM0600-87A', N'11600000', N'0', N'0', N'0', NULL, N'1', N'40')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'60', N'EM0600-87A', NULL, N'2021-03-29', N'Mẫu Citizen EM0600-87A vẻ ngoài trang nhã thanh mảnh tựa như hình của một cô gái với chi tiết kim chỉ gia công với dáng vẻ mỏng kết hợp mặt số tông nền trắng mang lại sự tinh tế trên nền mặt kính Sapphire.', N'0', N'CITIZEN EM0600-87A', N'11600000', N'0', N'0', N'0', NULL, N'1', N'40', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'61', N'FAC00003W0', NULL, N'2021-03-29', N'Đồng hồ nam Orient FAC00003W0 có vỏ kim loại màu vàng sáng bóng, kim chỉ và vạch số thiết kế to rõ nổi bật trên nền trắng trang trọng, kết hợp với dây đeo bằng chất liệu da nâu đem lại phong cách lịch lãm nam tính.', N'0', N'ORIENT FAC00003W0', N'6170000', N'0', N'0', N'1', NULL, N'1', N'40')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'61', N'FAC00003W0', NULL, N'2021-03-29', N'Đồng hồ nam Orient FAC00003W0 có vỏ kim loại màu vàng sáng bóng, kim chỉ và vạch số thiết kế to rõ nổi bật trên nền trắng trang trọng, kết hợp với dây đeo bằng chất liệu da nâu đem lại phong cách lịch lãm nam tính.', N'0', N'ORIENT FAC00003W0', N'6170000', N'0', N'0', N'1', NULL, N'1', N'40', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'62', N'RA-AA0B01G19B', NULL, N'2021-03-29', N'Mẫu Orient RA-AA0B01G19B phiên bản mạ vàng trên mẫu kim chỉ trên mặt số size 41.7mm đi kèm thiết kế 2 núm vặn điều chỉnh, vỏ máy kim loại mạ bạc kiểu dáng dày dặn của bô máy cơ.', N'0', N'ORIENT RA-AA0B01G19B', N'6800000', N'0', N'0', N'1', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'62', N'RA-AA0B01G19B', NULL, N'2021-03-29', N'Mẫu Orient RA-AA0B01G19B phiên bản mạ vàng trên mẫu kim chỉ trên mặt số size 41.7mm đi kèm thiết kế 2 núm vặn điều chỉnh, vỏ máy kim loại mạ bạc kiểu dáng dày dặn của bô máy cơ.', N'0', N'ORIENT RA-AA0B01G19B', N'6800000', N'0', N'0', N'1', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'63', N'RA-AA0B02R19B', NULL, N'2021-03-29', N'Mẫu Orient RA-AA0B02R19B phiên bản mạ vàng với mẫu kim chỉ nổi bật trên mặt số size 41.7mm đi kèm thiết kế 2 núm vặn điều chỉnh, vỏ máy kim loại mạ bạc kiểu dáng dày dặn của bô máy cơ.', N'1', N'ORIENT RA-AA0B02R19B', N'6800000', N'6600000', N'0', N'1', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'63', N'RA-AA0B02R19B', NULL, N'2021-03-29', N'Mẫu Orient RA-AA0B02R19B phiên bản mạ vàng với mẫu kim chỉ nổi bật trên mặt số size 41.7mm đi kèm thiết kế 2 núm vặn điều chỉnh, vỏ máy kim loại mạ bạc kiểu dáng dày dặn của bô máy cơ.', N'1', N'ORIENT RA-AA0B02R19B', N'6800000', N'6600000', N'0', N'1', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'64', N'FUNG8003D0', NULL, N'2021-03-29', N'Đồng hồ nam Orient FUNG8003D0 với thiết kế theo phong cách nam tính, kim chỉ và vạch số kiẻu dáng đơn giản nổi bật trên nền xanh thời trang, kết hợp với dây đeo kim loại tạo vẻ trẻ trung.', N'0', N'ORIENT FUNG8003D0', N'4180000', N'0', N'0', N'1', NULL, N'1', N'40')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'64', N'FUNG8003D0', NULL, N'2021-03-29', N'Đồng hồ nam Orient FUNG8003D0 với thiết kế theo phong cách nam tính, kim chỉ và vạch số kiẻu dáng đơn giản nổi bật trên nền xanh thời trang, kết hợp với dây đeo kim loại tạo vẻ trẻ trung.', N'0', N'ORIENT FUNG8003D0', N'4180000', N'0', N'0', N'1', NULL, N'1', N'40', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'65', N'RA-AS0102S10B', NULL, N'2021-03-29', N'Mẫu Orient RA-AS0102S10B phiên bản máy cơ lộ tim thiết kế độc đáo trên nền mặt số trắng size 41mm phối cùng mẫu dây da tạo hình vân lịch lãm.', N'1', N'ORIENT RA-AS0102S10B', N'9900000', N'9750000', N'0', N'1', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'65', N'RA-AS0102S10B', NULL, N'2021-03-29', N'Mẫu Orient RA-AS0102S10B phiên bản máy cơ lộ tim thiết kế độc đáo trên nền mặt số trắng size 41mm phối cùng mẫu dây da tạo hình vân lịch lãm.', N'1', N'ORIENT RA-AS0102S10B', N'9900000', N'9750000', N'0', N'1', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'66', N'FUNG2003B0', NULL, N'2021-03-29', N'Mẫu Orient FUNG2003B0 kiểu dáng đơn giản 3 kim trẻ trung trên mặt số trắng size 42mm, thiết kế vỏ máy dày dặn thời trang nam tính với phiên bản dây vải.', N'0', N'ORIENT FUNG2003B0', N'2700000', N'0', N'0', N'1', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'66', N'FUNG2003B0', NULL, N'2021-03-29', N'Mẫu Orient FUNG2003B0 kiểu dáng đơn giản 3 kim trẻ trung trên mặt số trắng size 42mm, thiết kế vỏ máy dày dặn thời trang nam tính với phiên bản dây vải.', N'0', N'ORIENT FUNG2003B0', N'2700000', N'0', N'0', N'1', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'67', N'RE-DK0001L00B', NULL, N'2021-03-29', N'Mẫu Orient RE-DK0001L00B số lượng giới hạn, với thiết kế máy cơ lộ tim phiên bản độc đáo trên nền mặt số size 41mm phối tone màu xanh thời trang nối bật.', N'0', N'ORIENT RE-DK0001L00B', N'18150000', N'0', N'0', N'1', NULL, N'1', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'67', N'RE-DK0001L00B', NULL, N'2021-03-29', N'Mẫu Orient RE-DK0001L00B số lượng giới hạn, với thiết kế máy cơ lộ tim phiên bản độc đáo trên nền mặt số size 41mm phối tone màu xanh thời trang nối bật.', N'0', N'ORIENT RE-DK0001L00B', N'18150000', N'0', N'0', N'1', NULL, N'1', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'68', N'RA-AA0001B19B', NULL, N'2021-03-29', N'Mẫu Orient RA-AA0001B19B kiểu dáng đồng hồ lặn mức chống nước 20atm vượt trội, vỏ máy cơ thiết kế dày dặn 13mm đi cùng với phần viền số bezel chữ số to rõ dễ nhìn kiểu dáng thể thao đầy nam tính.', N'0', N'ORIENT RA-AA0001B19B', N'9260000', N'0', N'0', N'1', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'68', N'RA-AA0001B19B', NULL, N'2021-03-29', N'Mẫu Orient RA-AA0001B19B kiểu dáng đồng hồ lặn mức chống nước 20atm vượt trội, vỏ máy cơ thiết kế dày dặn 13mm đi cùng với phần viền số bezel chữ số to rõ dễ nhìn kiểu dáng thể thao đầy nam tính.', N'0', N'ORIENT RA-AA0001B19B', N'9260000', N'0', N'0', N'1', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'69', N'RA-AB0E08L19B', NULL, N'2021-03-29', N'Mẫu Orient RA-AB0E08L19B phiên bản mặt số xanh tone màu thời trang nổi bật với các chi tiết kim chỉ cùng cọc vạch số mạ vàng sang trọng.', N'0', N'ORIENT RA-AB0E08L19B', N'3630000', N'0', N'0', N'1', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'69', N'RA-AB0E08L19B', NULL, N'2021-03-29', N'Mẫu Orient RA-AB0E08L19B phiên bản mặt số xanh tone màu thời trang nổi bật với các chi tiết kim chỉ cùng cọc vạch số mạ vàng sang trọng.', N'0', N'ORIENT RA-AB0E08L19B', N'3630000', N'0', N'0', N'1', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'70', N'RA-AR0005Y10B', NULL, N'2021-03-29', N'Mẫu Orient RA-AR0005Y10B phiên bản thiết kế máy cơ lộ độc đáo trên nền mặt số size 40mm tone màu nâu trẻ trung lịch lãm phối cùng bộ dây da tạo hình vân.', N'1', N'ORIENT RA-AR0005Y10B', N'7810000', N'770000', N'0', N'1', NULL, N'3', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'70', N'RA-AR0005Y10B', NULL, N'2021-03-29', N'Mẫu Orient RA-AR0005Y10B phiên bản thiết kế máy cơ lộ độc đáo trên nền mặt số size 40mm tone màu nâu trẻ trung lịch lãm phối cùng bộ dây da tạo hình vân.', N'1', N'ORIENT RA-AR0005Y10B', N'7810000', N'770000', N'0', N'1', NULL, N'3', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'71', N'SSZ3W001W0', NULL, N'2021-03-29', N'Đồng hồ Orient SSZ3W001W0 có mặt số tròn nhỏ nhắn, kim chỉ và vạch số thanh mãnh phủ màu vàng nổi bật trên nền số màu trắng trang nhã, ô lịch ngày vị trí 3h tinh tế, dây đeo kim loại demi quyến rũ cho phái nữ.', N'0', N'ORIENT SSZ3W001W0', N'2810000', N'0', N'0', N'0', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'71', N'SSZ3W001W0', NULL, N'2021-03-29', N'Đồng hồ Orient SSZ3W001W0 có mặt số tròn nhỏ nhắn, kim chỉ và vạch số thanh mãnh phủ màu vàng nổi bật trên nền số màu trắng trang nhã, ô lịch ngày vị trí 3h tinh tế, dây đeo kim loại demi quyến rũ cho phái nữ.', N'0', N'ORIENT SSZ3W001W0', N'2810000', N'0', N'0', N'0', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'72', N'FQC0M002W0', NULL, N'2021-03-29', N'Đồng hồ nữ thời trang sang trọng Orient FQC0M002W0 với kiểu dáng được thiết kế theo phong cách hiện đại, mặt nền trắng xà cừ, ở mặt đồng hồ có viền đính hạt pha lê tinh tế và có 3 kim chỉ nhỏ.', N'1', N'ORIENT FQC0M002W0', N'4630000', N'4500000', N'0', N'0', NULL, N'5', N'10')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'72', N'FQC0M002W0', NULL, N'2021-03-29', N'Đồng hồ nữ thời trang sang trọng Orient FQC0M002W0 với kiểu dáng được thiết kế theo phong cách hiện đại, mặt nền trắng xà cừ, ở mặt đồng hồ có viền đính hạt pha lê tinh tế và có 3 kim chỉ nhỏ.', N'1', N'ORIENT FQC0M002W0', N'4630000', N'4500000', N'0', N'0', NULL, N'5', N'10', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'73', N'FUNG7003W0', NULL, N'2021-03-29', N'Đồng hồ Orient FUNG7003W0 với kiểu dáng dành cho người yêu thích sự giản dị, chức năng lịch ngày được sắp ở vị trí tinh tế múi 3 giở, các vạch số với thiết kế thanh mảnh nữ tính trên nền mặt kính Sapphire.', N'0', N'ORIENT FUNG7003W0', N'3720000', N'0', N'0', N'0', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'73', N'FUNG7003W0', NULL, N'2021-03-29', N'Đồng hồ Orient FUNG7003W0 với kiểu dáng dành cho người yêu thích sự giản dị, chức năng lịch ngày được sắp ở vị trí tinh tế múi 3 giở, các vạch số với thiết kế thanh mảnh nữ tính trên nền mặt kính Sapphire.', N'0', N'ORIENT FUNG7003W0', N'3720000', N'0', N'0', N'0', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'74', N'FUNG7002W0', NULL, N'2021-03-29', N'Đồng hồ nữ Orient FUNG7002W0 có vỏ kim loại được phủ bạc sáng bóng, kim chỉ và vạch số thiết kế đơn giản nền trắng trang trọng, kết hợp dây đeo demi kim loại màu vàng.', N'1', N'ORIENT FUNG7002W0', N'4360000', N'4200000', N'0', N'0', NULL, N'5', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'74', N'FUNG7002W0', NULL, N'2021-03-29', N'Đồng hồ nữ Orient FUNG7002W0 có vỏ kim loại được phủ bạc sáng bóng, kim chỉ và vạch số thiết kế đơn giản nền trắng trang trọng, kết hợp dây đeo demi kim loại màu vàng.', N'1', N'ORIENT FUNG7002W0', N'4360000', N'4200000', N'0', N'0', NULL, N'5', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'75', N'FQC10002W0', NULL, N'2021-03-29', N'Đồng hồ thời trang nữ Orient FQC10002W0 được thiết kế rất sang trọng với mặt đồng hồ nền trắng xà cừ và viền đính hạt pha lê tinh tế, dây đeo demi thời trang.', N'0', N'ORIENT FQC10002W', N'5390000', N'0', N'0', N'0', NULL, N'4', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'75', N'FQC10002W0', NULL, N'2021-03-29', N'Đồng hồ thời trang nữ Orient FQC10002W0 được thiết kế rất sang trọng với mặt đồng hồ nền trắng xà cừ và viền đính hạt pha lê tinh tế, dây đeo demi thời trang.', N'0', N'ORIENT FQC10002W', N'5390000', N'0', N'0', N'0', NULL, N'4', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'76', N'SSZ3W003B0', NULL, N'2021-03-29', N'Mẫu Orient SSZ3W003B0 phiên bản Swimmer khả năng chịu nước lên đến 10atm, thiết kế đơn giản trẻ trung với chức năng 3 kim trên nền mặt số đen size 27mm.', N'0', N'ORIENT SSZ3W003B0', N'2630000', N'0', N'0', N'0', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'76', N'SSZ3W003B0', NULL, N'2021-03-29', N'Mẫu Orient SSZ3W003B0 phiên bản Swimmer khả năng chịu nước lên đến 10atm, thiết kế đơn giản trẻ trung với chức năng 3 kim trên nền mặt số đen size 27mm.', N'0', N'ORIENT SSZ3W003B0', N'2630000', N'0', N'0', N'0', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'77', N'RF-QD0001S10B', NULL, N'2021-03-29', N'Mẫu Orient RF-QD0001S10B thiết kế mỏng trẻ trung với phần vỏ máy pin chỉ 7mm mạ vàng hồng thời trang sang trọng cho phái mạnh.', N'1', N'ORIENT RF-QD0001S10B', N'3180000', N'3000000', N'0', N'1', NULL, N'5', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'77', N'RF-QD0001S10B', NULL, N'2021-03-29', N'Mẫu Orient RF-QD0001S10B thiết kế mỏng trẻ trung với phần vỏ máy pin chỉ 7mm mạ vàng hồng thời trang sang trọng cho phái mạnh.', N'1', N'ORIENT RF-QD0001S10B', N'3180000', N'3000000', N'0', N'1', NULL, N'5', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'78', N'RA-AC0E04L10B', NULL, N'2021-03-29', N'Mẫu Orient RA-AC0E04L10B mặt số xanh size 40mm tone màu thời trang cùng với thiết kế đơn giản 3 kim, phối cùng với bộ dây da tạo hình vân lịch lãm.', N'0', N'ORIENT RA-AC0E04L10B', N'5170000', N'0', N'0', N'1', NULL, N'2', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'78', N'RA-AC0E04L10B', NULL, N'2021-03-29', N'Mẫu Orient RA-AC0E04L10B mặt số xanh size 40mm tone màu thời trang cùng với thiết kế đơn giản 3 kim, phối cùng với bộ dây da tạo hình vân lịch lãm.', N'0', N'ORIENT RA-AC0E04L10B', N'5170000', N'0', N'0', N'1', NULL, N'2', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'79', N'FER2A005Y0', NULL, N'2021-03-29', N'Đồng hồ Orient FER2A005Y0 mang thiết kế thể thao năng động, với mặt số tròn, kim chỉ có phản quang và vạch số với chữ số to rõ được phu màu đen nổi bật trền nền vàng trắng tinh xảo.', N'0', N'ORIENT FER2A005Y0', N'4950000', N'0', N'0', N'1', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'79', N'FER2A005Y0', NULL, N'2021-03-29', N'Đồng hồ Orient FER2A005Y0 mang thiết kế thể thao năng động, với mặt số tròn, kim chỉ có phản quang và vạch số với chữ số to rõ được phu màu đen nổi bật trền nền vàng trắng tinh xảo.', N'0', N'ORIENT FER2A005Y0', N'4950000', N'0', N'0', N'1', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'80', N'FEV0V004SH', NULL, N'2021-03-29', N'Đồng hồ Orient FEV0V004SH có vỏ kim loại bao quanh nền số màu trắng giản đơn, kim chỉ được phủ màu xanh, và vạch số được phản quang nổi bật trên nền số, lịch ngày và lịch thứ được sắp xếp tinh tế.', N'0', N'ORIENT FEV0V004SH', N'6540000', N'0', N'0', N'1', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'80', N'FEV0V004SH', NULL, N'2021-03-29', N'Đồng hồ Orient FEV0V004SH có vỏ kim loại bao quanh nền số màu trắng giản đơn, kim chỉ được phủ màu xanh, và vạch số được phản quang nổi bật trên nền số, lịch ngày và lịch thứ được sắp xếp tinh tế.', N'0', N'ORIENT FEV0V004SH', N'6540000', N'0', N'0', N'1', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'81', N'KLEIN K8S211C1', NULL, N'2021-03-30', N'Mẫu K8S211C1 mang đến một vẻ ngoài giản dị với đồng hồ 3 kim cùng với thiết kế kiểu dáng mỏng mang lại một phong cách thời trang dành cho phái nam đến từ thương hiệu Calvin Klein, kết hợp cùng mẫu dây đeo da trơn.', N'0', N'CALVIN KLEIN K8S211C1', N'6100000', N'0', N'0', N'1', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'81', N'KLEIN K8S211C1', NULL, N'2021-03-30', N'Mẫu K8S211C1 mang đến một vẻ ngoài giản dị với đồng hồ 3 kim cùng với thiết kế kiểu dáng mỏng mang lại một phong cách thời trang dành cho phái nam đến từ thương hiệu Calvin Klein, kết hợp cùng mẫu dây đeo da trơn.', N'0', N'CALVIN KLEIN K8S211C1', N'6100000', N'0', N'0', N'1', NULL, N'1', N'19', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'82', N'KLEIN K3M21BZ6', NULL, N'2021-03-30', N'Mẫu Calvin Klein K3M21BZ6 đơn giản 2 kim phong cách trẻ trung cùng với logo chữ CK được in nổi bật tone vàng hồng trên nền mặt số size 40mm.', N'1', N'CALVIN KLEIN K3M21BZ6', N'5420000', N'5340000', N'0', N'1', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'82', N'KLEIN K3M21BZ6', NULL, N'2021-03-30', N'Mẫu Calvin Klein K3M21BZ6 đơn giản 2 kim phong cách trẻ trung cùng với logo chữ CK được in nổi bật tone vàng hồng trên nền mặt số size 40mm.', N'1', N'CALVIN KLEIN K3M21BZ6', N'5420000', N'5340000', N'0', N'1', NULL, N'1', N'19', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'83', N'KLEIN K3M22T26', NULL, N'2021-03-30', N'Mẫu đồng hồ K3M22T26 phiên bản dây lưới kim loại mạ bạc thời trang cho phái đẹp, kiểu dáng 2 kim mạ bạc trên mặt số phong cách đơn giản đặc trưng từ thương hiệu Calvin Klein.', N'0', N'CALVIN KLEIN K3M22T26', N'5990000', N'0', N'0', N'0', NULL, N'1', N'29')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'83', N'KLEIN K3M22T26', NULL, N'2021-03-30', N'Mẫu đồng hồ K3M22T26 phiên bản dây lưới kim loại mạ bạc thời trang cho phái đẹp, kiểu dáng 2 kim mạ bạc trên mặt số phong cách đơn giản đặc trưng từ thương hiệu Calvin Klein.', N'0', N'CALVIN KLEIN K3M22T26', N'5990000', N'0', N'0', N'0', NULL, N'1', N'29', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'84', N'K9N115GH', NULL, N'2021-03-30', N'Mẫu Calvin Klein K9N115GH sang trọng và lịch lãm với sự kết hợp giữa bộ dây nâu cùng vỏ máy kim loại mạ vàng với tone màu vàng nhạt đem đến vẻ trẻ trung cho phái mạnh.', N'0', N'CALVIN KLEIN K9N115GH', N'6530000', N'0', N'0', N'1', NULL, N'3', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'84', N'K9N115GH', NULL, N'2021-03-30', N'Mẫu Calvin Klein K9N115GH sang trọng và lịch lãm với sự kết hợp giữa bộ dây nâu cùng vỏ máy kim loại mạ vàng với tone màu vàng nhạt đem đến vẻ trẻ trung cho phái mạnh.', N'0', N'CALVIN KLEIN K9N115GH', N'6530000', N'0', N'0', N'1', NULL, N'3', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'85', N'K9N115GH', NULL, N'2021-03-30', N'Mẫu Calvin Klein K9N115GH sang trọng và lịch lãm với sự kết hợp giữa bộ dây nâu cùng vỏ máy kim loại mạ vàng với tone màu vàng nhạt đem đến vẻ trẻ trung cho phái mạnh.', N'0', N'CALVIN KLEIN K9N115GH', N'6530000', N'0', N'0', N'1', NULL, N'3', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'85', N'K9N115GH', NULL, N'2021-03-30', N'Mẫu Calvin Klein K9N115GH sang trọng và lịch lãm với sự kết hợp giữa bộ dây nâu cùng vỏ máy kim loại mạ vàng với tone màu vàng nhạt đem đến vẻ trẻ trung cho phái mạnh.', N'0', N'CALVIN KLEIN K9N115GH', N'6530000', N'0', N'0', N'1', NULL, N'3', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'86', N'K8N2364W', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8N2364W phiên bản tone màu vàng hồng thời trang cho các chi tiết dây vỏ lẫn núm vặn, mẫu dây lắc tăng thêm vẻ trẻ trung cho phái đẹp.', N'1', N'CALVIN KLEIN K8N2364W', N'13790000', N'13600000', N'0', N'0', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'86', N'K8N2364W', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8N2364W phiên bản tone màu vàng hồng thời trang cho các chi tiết dây vỏ lẫn núm vặn, mẫu dây lắc tăng thêm vẻ trẻ trung cho phái đẹp.', N'1', N'CALVIN KLEIN K8N2364W', N'13790000', N'13600000', N'0', N'0', NULL, N'1', N'29', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'87', N'KLEIN K5S3414Y', NULL, N'2021-03-30', N'Mẫu Calvin Klein K5S3414Y phiên bản mặt kính chất liệu Sapphire với kiểu dáng đơn giản 3 kim 1 lịch trên mặt số size 42mm, kiểu máy cơ với thiết kế mỏng thời trang với độ dày chỉ 9mm.', N'0', N'CALVIN KLEIN K5S3414Y', N'14870000', N'0', N'0', N'1', NULL, N'5', N'28')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'87', N'KLEIN K5S3414Y', NULL, N'2021-03-30', N'Mẫu Calvin Klein K5S3414Y phiên bản mặt kính chất liệu Sapphire với kiểu dáng đơn giản 3 kim 1 lịch trên mặt số size 42mm, kiểu máy cơ với thiết kế mỏng thời trang với độ dày chỉ 9mm.', N'0', N'CALVIN KLEIN K5S3414Y', N'14870000', N'0', N'0', N'1', NULL, N'5', N'27', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'88', N'K3M22B26', NULL, N'2021-03-30', N'Mẫu Calvin Klein K3M22B26 phiên bản vàng hồng tone màu thời trang trên chi tiết kim chỉ, mặt số đơn giản trẻ trung cùng với thiết kế mỏng trên phần vỏ máy pin chỉ 6mm.', N'0', N'CALVIN KLEIN K3M22B26', N'6500000', N'0', N'0', N'0', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'88', N'K3M22B26', NULL, N'2021-03-30', N'Mẫu Calvin Klein K3M22B26 phiên bản vàng hồng tone màu thời trang trên chi tiết kim chỉ, mặt số đơn giản trẻ trung cùng với thiết kế mỏng trên phần vỏ máy pin chỉ 6mm.', N'0', N'CALVIN KLEIN K3M22B26', N'6500000', N'0', N'0', N'0', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'89', N'K3M23U26', NULL, N'2021-03-30', N'Mẫu Calvin Klein K3M23U26 phiên bản vàng hồng phối cùng mẫu dây lưới phong cách thời trang dành cho phái đẹp, mặt số đặc trưng đơn giản 2 kim với kích thước mặt 24mm.', N'0', N'CALVIN KLEIN K3M23U26', N'7540000', N'0', N'0', N'0', NULL, N'1', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'89', N'K3M23U26', NULL, N'2021-03-30', N'Mẫu Calvin Klein K3M23U26 phiên bản vàng hồng phối cùng mẫu dây lưới phong cách thời trang dành cho phái đẹp, mặt số đặc trưng đơn giản 2 kim với kích thước mặt 24mm.', N'0', N'CALVIN KLEIN K3M23U26', N'7540000', N'0', N'0', N'0', NULL, N'1', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'90', N'KLEIN K3M23V26', NULL, N'2021-03-30', N'Mẫu Calvin Klein K3M23V26 phiên bản mạ vàng sang trọng cùng với thiết kế mỏng phần vỏ máy pin chỉ 6mm, mẫu dây đeo thiết kế dạng lưới đem đến vẻ ngoài thời trang cho phái đẹp.', N'1', N'CALVIN KLEIN K3M23V26', N'8030000', N'7999000', N'0', N'0', NULL, N'3', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'90', N'KLEIN K3M23V26', NULL, N'2021-03-30', N'Mẫu Calvin Klein K3M23V26 phiên bản mạ vàng sang trọng cùng với thiết kế mỏng phần vỏ máy pin chỉ 6mm, mẫu dây đeo thiết kế dạng lưới đem đến vẻ ngoài thời trang cho phái đẹp.', N'1', N'CALVIN KLEIN K3M23V26', N'8030000', N'7999000', N'0', N'0', NULL, N'3', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'91', N'K8M21421', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8M21421 phiên bản chi tiết kim chỉ vạch số vàng hồng thời trang nổi bật trên mặt số tone nền đen cá tính với kích thước mặt 40mm.', N'1', N'CALVIN KLEIN K8M21421', N'7830000', N'7700000', N'0', N'1', NULL, N'5', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'91', N'K8M21421', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8M21421 phiên bản chi tiết kim chỉ vạch số vàng hồng thời trang nổi bật trên mặt số tone nền đen cá tính với kích thước mặt 40mm.', N'1', N'CALVIN KLEIN K8M21421', N'7830000', N'7700000', N'0', N'1', NULL, N'5', N'18', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'92', N'K7W2S116', NULL, N'2021-03-30', N'Mẫu đồng hồ nữ K7W2S116 một phong cách thời trang với mẫu dây đeo kim loại thiết kế kiểu cách tông màu bạc cùng với mặt số nhỏ nhắn đầy nữ tính trẻ trung đến từ thương hiệu Calvin Klein.', N'0', N'CALVIN KLEIN K7W2S116', N'6500000', N'0', N'0', N'0', NULL, N'4', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'92', N'K7W2S116', NULL, N'2021-03-30', N'Mẫu đồng hồ nữ K7W2S116 một phong cách thời trang với mẫu dây đeo kim loại thiết kế kiểu cách tông màu bạc cùng với mặt số nhỏ nhắn đầy nữ tính trẻ trung đến từ thương hiệu Calvin Klein.', N'0', N'CALVIN KLEIN K7W2S116', N'6500000', N'0', N'0', N'0', NULL, N'4', N'19', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'93', N'KLEIN K9E211K6', NULL, N'2021-03-30', N'Mẫu Calvin Klein K9E211K6 thiết kế đơn giản trẻ trung chức năng 3 kim hiện thị trên mặt số size 40mm, các chi tiết vạch số được tạo hình mỏng cách tân.', N'0', N'CALVIN KLEIN K9E211K6', N'7040000', N'0', N'0', N'1', NULL, N'5', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'93', N'KLEIN K9E211K6', NULL, N'2021-03-30', N'Mẫu Calvin Klein K9E211K6 thiết kế đơn giản trẻ trung chức năng 3 kim hiện thị trên mặt số size 40mm, các chi tiết vạch số được tạo hình mỏng cách tân.', N'0', N'CALVIN KLEIN K9E211K6', N'7040000', N'0', N'0', N'1', NULL, N'5', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'94', N'K2Y236K6', NULL, N'2021-03-30', N'Mẫu Calvin Klein K2Y236K6 phiên bản dây da trắng màu thời trang phối cùng vỏ máy pin kiểu dáng mỏng phối tone vàng hồng.', N'0', N'CALVIN KLEIN K2Y236K6', N'9880000', N'0', N'0', N'0', NULL, N'2', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'94', N'K2Y236K6', NULL, N'2021-03-30', N'Mẫu Calvin Klein K2Y236K6 phiên bản dây da trắng màu thời trang phối cùng vỏ máy pin kiểu dáng mỏng phối tone vàng hồng.', N'0', N'CALVIN KLEIN K2Y236K6', N'9880000', N'0', N'0', N'0', NULL, N'2', N'19', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'95', N'K7N236K2', NULL, N'2021-03-30', N'Mẫu K7N236K2 phong cách đầy giản dị cùng với logo thương hiệu Calvin Klein nổi bật trên nền mặt số trắng trang nhã, tạo nên sự ấn tượng với phần vỏ máy màu vàng hồng mang lại vẻ thời trang trẻ trung đầy thanh lịch cho phái nữ.', N'0', N'CALVIN KLEIN K7N236K2', N'7470000', N'0', N'0', N'0', NULL, N'1', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'95', N'K7N236K2', NULL, N'2021-03-30', N'Mẫu K7N236K2 phong cách đầy giản dị cùng với logo thương hiệu Calvin Klein nổi bật trên nền mặt số trắng trang nhã, tạo nên sự ấn tượng với phần vỏ máy màu vàng hồng mang lại vẻ thời trang trẻ trung đầy thanh lịch cho phái nữ.', N'0', N'CALVIN KLEIN K7N236K2', N'7470000', N'0', N'0', N'0', NULL, N'1', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'96', N'K8M211CN', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8M211CN mặt số xanh tone màu thời trang cùng các chi tiết đồng hồ thiết mỏng với phần vỏ máy kim loại mạ bạc độ mỏng 7mm.', N'0', N'CALVIN KLEIN K8M211CN', N'5740000', N'0', N'0', N'1', NULL, N'4', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'96', N'K8M211CN', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8M211CN mặt số xanh tone màu thời trang cùng các chi tiết đồng hồ thiết mỏng với phần vỏ máy kim loại mạ bạc độ mỏng 7mm.', N'0', N'CALVIN KLEIN K8M211CN', N'5740000', N'0', N'0', N'1', NULL, N'4', N'28', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'97', N'KLEIN K7A23141', NULL, N'2021-03-30', N'Mẫu Calvin Klein K7A23141 kích thước mặt số to 38mm phần vỏ máy mạ bạc sang trọng kết hợp cùng mẫu dây đeo bản nhỏ tạo nên mẫu đồng hồ thời trang trẻ trung cho phái đẹp.', N'0', N'CALVIN KLEIN K7A23141', N'6260000', N'0', N'0', N'0', NULL, N'5', N'20')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'97', N'KLEIN K7A23141', NULL, N'2021-03-30', N'Mẫu Calvin Klein K7A23141 kích thước mặt số to 38mm phần vỏ máy mạ bạc sang trọng kết hợp cùng mẫu dây đeo bản nhỏ tạo nên mẫu đồng hồ thời trang trẻ trung cho phái đẹp.', N'0', N'CALVIN KLEIN K7A23141', N'6260000', N'0', N'0', N'0', NULL, N'5', N'20', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'98', N'K5N2M526', NULL, N'2021-03-30', N'Mẫu Calvin Klein K5N2M526 phiên bản dây đeo kiểu dây lắc tạo nên vẻ thời trang cho phái đẹp cùng với lối thiết kế đơn giản chức năng 2 kim trên nền mặt số trắng size 27mm.', N'0', N'CALVIN KLEIN K5N2M526', N'9630000', N'0', N'0', N'0', NULL, N'5', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'98', N'K5N2M526', NULL, N'2021-03-30', N'Mẫu Calvin Klein K5N2M526 phiên bản dây đeo kiểu dây lắc tạo nên vẻ thời trang cho phái đẹp cùng với lối thiết kế đơn giản chức năng 2 kim trên nền mặt số trắng size 27mm.', N'0', N'CALVIN KLEIN K5N2M526', N'9630000', N'0', N'0', N'0', NULL, N'5', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'99', N'K8M27121', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8M27121 thiết kế Chronograph với đặc trưng 3 núm vặn điều chỉnh các chức năng đo thời gian, vỏ máy kim loại mạ bạc với kích thước mặt số 43mm.', N'1', N'CALVIN KLEIN K8M27121', N'9410000', N'9200000', N'0', N'1', NULL, N'3', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'99', N'K8M27121', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8M27121 thiết kế Chronograph với đặc trưng 3 núm vặn điều chỉnh các chức năng đo thời gian, vỏ máy kim loại mạ bạc với kích thước mặt số 43mm.', N'1', N'CALVIN KLEIN K8M27121', N'9410000', N'9200000', N'0', N'1', NULL, N'3', N'30', NULL, NULL)
 GO
 
-INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity]) VALUES (N'100', N'K8Y236Z6', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8Y236Z6 phiên bản mặt số lớn size 42mm phối cùng mẫu dây da bản nhỏ tone vàng hồng nổi bật lên vẻ thời trang thanh lịch dành cho phái đẹp.', N'0', N'CALVIN KLEIN K8Y236Z6', N'6750000', N'0', N'0', N'0', NULL, N'5', N'30')
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'100', N'K8Y236Z6', NULL, N'2021-03-30', N'Mẫu Calvin Klein K8Y236Z6 phiên bản mặt số lớn size 42mm phối cùng mẫu dây da bản nhỏ tone vàng hồng nổi bật lên vẻ thời trang thanh lịch dành cho phái đẹp.', N'0', N'CALVIN KLEIN K8Y236Z6', N'6750000', N'0', N'0', N'0', NULL, N'5', N'30', NULL, NULL)
+GO
+
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'101', N'DW-E10710-2AV707', N'admin@gmail.com', N'2021-04-14', N'Đồng hồ thương hiệu SEIKO, chất liệu bền bỉ. Được trải qua một quá trình thiết kế theo quy chuẩn để tạo ra một sản phẩm mang đến đẳng cấp cho phái mạnh', N'1', N'MOVADO GOLD NOBLE', N'7000000', N'6700000', N'0', N'1', NULL, N'2', N'20', NULL, NULL)
+GO
+
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'102', N'M027.426.16.018.00', N'admin@gmail.com', N'2021-04-15', N'Mẫu Mido M027.426.16.018.00 phiên bản kim giây tone xanh nổi bật lên vẻ thời trang cho phái mạnh trên nền mặt trắng size 40mm, vẻ ngoài lịch lãm cùng mẫu dây da tạo hình vân.', N'0', N'MIDO M027.426.16.018.00', N'22790000', N'22500000', N'0', N'1', NULL, N'4', N'20', NULL, NULL)
+GO
+
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'103', N'M005.430.11.031.80', N'admin@gmail.com', N'2021-04-15', N'Mẫu Mido M005.430.11.031.80 thiết kế nam tính sang trọng với phần dây đeo kim loại mạ bạc, nắp lưng trong suốt lộ ra thiết kế hoạt động từ bộ máy cơ tạo nên vẻ độc đáo.', N'0', N'MIDO M005.430.11.031.80', N'21380000', N'0', N'0', N'1', NULL, N'5', N'20', NULL, NULL)
+GO
+
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'104', N'M8600.4.18.1', N'admin@gmail.com', N'2021-04-15', N'Mẫu Mido M8600.4.18.1 mặt đen size 38mm tone màu nam tính đi cùng thiết kế đơn giản 3 kim cùng các vạch số được tạo nét mỏng mạ bạc mang lại vẻ trẻ trung.', N'1', N'MIDO M8600.4.18.1', N'20250000', N'20000000', N'0', N'1', NULL, N'2', N'20', NULL, NULL)
+GO
+
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'105', N'M8600.9.76.1', N'admin@gmail.com', N'2021-04-16', N'Mẫu Mido M8600.9.76.1 phiên bản trẻ trung với mẫu dây đeo vàng demi, kết hợp cùng các chi tiết vạch số tạo nét mỏng tinh tế sang trọng cho phái mạnh.', N'0', N'MIDO M8600.9.76.1', N'23630000', N'0', N'0', N'1', NULL, N'3', N'19', NULL, NULL)
+GO
+
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'106', N'M7600.4.21.1', N'admin@gmail.com', N'2021-04-16', N'Mẫu Mido M7600.4.21.1 phiên bản cọc số chữ la mã kiểu dáng mỏng được phối tone xanh thời trang cho phái đẹp trên nền mặt trắng size 29mm.', N'1', N'MIDO M7600.4.21.1', N'20250000', N'20000000', N'0', N'0', NULL, N'1', N'20', NULL, NULL)
+GO
+
+INSERT INTO [dbo].[product] ([id], [code], [created_by], [created_date], [description], [issale], [name], [price], [price_sale], [isdelete], [gender], [creatd_by], [supplier_id], [quantity], [update_by], [updated_date]) VALUES (N'107', N'M024.207.11.031.00', N'admin@gmail.com', N'2021-04-16', N'Mẫu Mido M024.207.11.031.00 thiết kế mỏng thời trang cho phái đẹp với các chi tiết vạch số lẫn kim chỉ được tạo nét thanh mảnh mạ bạc góp phần tạo nên vẻ sang trọng.', N'0', N'MIDO M024.207.11.031.00', N'21380000', N'0', N'0', N'0', NULL, N'1', N'20', NULL, NULL)
 GO
 
 SET IDENTITY_INSERT [dbo].[product] OFF
@@ -2117,9 +2251,6 @@ GO
 INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'412', NULL, N'2021-03-30', N'82_anh_1617076480365anh5.jpg', N'0', NULL, NULL, N'0', N'82')
 GO
 
-INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'413', NULL, N'2021-03-30', N'83_anh_1617076803958anh1.jpg', N'1', NULL, NULL, N'0', N'83')
-GO
-
 INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'414', NULL, N'2021-03-30', N'83_anh_1617076812681anh2.jpg', N'0', NULL, NULL, N'0', N'83')
 GO
 
@@ -2367,6 +2498,120 @@ INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [
 GO
 
 INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'496', NULL, N'2021-03-30', N'100_anh_1617082616902anh5.jpg', N'0', NULL, NULL, N'0', N'100')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'497', N'admin@gmail.com', N'2021-04-14', N'101_anh_1618406835099tissot.jpg', N'1', N'admin@gmail.com', N'2021-04-14', N'0', N'101')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'498', N'admin@gmail.com', N'2021-04-15', N'84_anh_1618473871485anh1.jpg', N'1', NULL, NULL, N'0', N'84')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'499', N'admin@gmail.com', N'2021-04-15', N'84_anh_1618473901149anh2.jpeg', N'0', NULL, NULL, N'0', N'84')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'500', N'admin@gmail.com', N'2021-04-15', N'84_anh_1618473912280anh3.jpeg', N'0', NULL, NULL, N'0', N'84')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'501', N'admin@gmail.com', N'2021-04-15', N'84_anh_1618473936847anh4.jpg', N'0', NULL, NULL, N'0', N'84')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'502', N'admin@gmail.com', N'2021-04-15', N'84_anh_1618473947082anh5.jpg', N'0', NULL, NULL, N'0', N'84')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'504', N'admin@gmail.com', N'2021-04-15', N'83_anh_1618474357733anh1.jpg', N'1', N'admin@gmail.com', N'2021-04-15', N'0', N'83')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'505', N'admin@gmail.com', N'2021-04-15', N'91_anh_1618474880774anh5.jpg', N'0', NULL, NULL, N'0', N'91')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'506', N'admin@gmail.com', N'2021-04-15', N'102_anh_1618477957378anh1.jpg', N'1', NULL, NULL, N'0', N'102')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'507', N'admin@gmail.com', N'2021-04-15', N'102_anh_1618477967267anh2.jpg', N'0', NULL, NULL, N'0', N'102')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'508', N'admin@gmail.com', N'2021-04-15', N'102_anh_1618477977848anh3.jpg', N'0', NULL, NULL, N'0', N'102')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'509', N'admin@gmail.com', N'2021-04-15', N'102_anh_1618477991324anh4.jpg', N'0', NULL, NULL, N'0', N'102')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'510', N'admin@gmail.com', N'2021-04-15', N'102_anh_1618478000889anh5.jpg', N'0', NULL, NULL, N'0', N'102')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'511', N'admin@gmail.com', N'2021-04-15', N'103_anh_1618478529332anh1.jpg', N'1', NULL, NULL, N'0', N'103')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'512', N'admin@gmail.com', N'2021-04-15', N'103_anh_1618478537629anh2.jpg', N'0', NULL, NULL, N'0', N'103')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'513', N'admin@gmail.com', N'2021-04-15', N'103_anh_1618478545863anh3.jpg', N'0', NULL, NULL, N'0', N'103')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'514', N'admin@gmail.com', N'2021-04-15', N'103_anh_1618478554350anh4.jpg', N'0', NULL, NULL, N'0', N'103')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'515', N'admin@gmail.com', N'2021-04-15', N'103_anh_1618478564633anh5.jpg', N'0', NULL, NULL, N'0', N'103')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'516', N'admin@gmail.com', N'2021-04-15', N'104_anh_1618479286644anh1.jpg', N'1', NULL, NULL, N'0', N'104')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'517', N'admin@gmail.com', N'2021-04-15', N'104_anh_1618479296187anh2.jpg', N'0', NULL, NULL, N'0', N'104')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'518', N'admin@gmail.com', N'2021-04-15', N'104_anh_1618479305855anh3.jpg', N'0', NULL, NULL, N'0', N'104')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'519', N'admin@gmail.com', N'2021-04-15', N'104_anh_1618479313958anh4.jpg', N'0', NULL, NULL, N'0', N'104')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'520', N'admin@gmail.com', N'2021-04-15', N'104_anh_1618479323828anh5.jpg', N'0', NULL, NULL, N'0', N'104')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'521', N'admin@gmail.com', N'2021-04-16', N'105_anh_1618557697485anh1.jpg', N'1', NULL, NULL, N'0', N'105')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'522', N'admin@gmail.com', N'2021-04-16', N'105_anh_1618557708077anh2.jpg', N'0', NULL, NULL, N'0', N'105')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'523', N'admin@gmail.com', N'2021-04-16', N'105_anh_1618557718732anh3.jpg', N'0', NULL, NULL, N'0', N'105')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'524', N'admin@gmail.com', N'2021-04-16', N'105_anh_1618557728907anh4.jpg', N'0', NULL, NULL, N'0', N'105')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'525', N'admin@gmail.com', N'2021-04-16', N'105_anh_1618557741324anh5.jpg', N'0', NULL, NULL, N'0', N'105')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'526', N'admin@gmail.com', N'2021-04-16', N'106_anh_1618559729344anh1.jpg', N'1', NULL, NULL, N'0', N'106')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'527', N'admin@gmail.com', N'2021-04-16', N'106_anh_1618559741640anh2.jpg', N'0', NULL, NULL, N'0', N'106')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'528', N'admin@gmail.com', N'2021-04-16', N'106_anh_1618559754960anh3.jpg', N'0', NULL, NULL, N'0', N'106')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'529', N'admin@gmail.com', N'2021-04-16', N'106_anh_1618559764668anh4.jpg', N'0', NULL, NULL, N'0', N'106')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'530', N'admin@gmail.com', N'2021-04-16', N'106_anh_1618559823324anh5.jpg', N'0', NULL, NULL, N'0', N'106')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'531', N'admin@gmail.com', N'2021-04-16', N'107_anh_1618563463793anh1.jpg', N'1', NULL, NULL, N'0', N'107')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'532', N'admin@gmail.com', N'2021-04-16', N'107_anh_1618563475021anh2.jpg', N'0', NULL, NULL, N'0', N'107')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'533', N'admin@gmail.com', N'2021-04-16', N'107_anh_1618563489526anh3.jpg', N'0', NULL, NULL, N'0', N'107')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'534', N'admin@gmail.com', N'2021-04-16', N'107_anh_1618563502216anh4.jpg', N'0', NULL, NULL, N'0', N'107')
+GO
+
+INSERT INTO [dbo].[product_image] ([id], [create_by], [created_date], [image], [proiority], [update_by], [updated_date], [isdelete], [product_id]) VALUES (N'535', N'admin@gmail.com', N'2021-04-16', N'107_anh_1618563515379anh5.jpg', N'0', NULL, NULL, N'0', N'107')
 GO
 
 SET IDENTITY_INSERT [dbo].[product_image] OFF
@@ -6165,6 +6410,237 @@ GO
 INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1264', NULL, N'2021-03-30', N'CASIO', NULL, NULL, N'16', N'13')
 GO
 
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1265', N'admin@gmail.com', N'2021-04-15', N'Mido', NULL, NULL, N'102', N'13')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1266', N'admin@gmail.com', N'2021-04-15', N'M027.426.16.018.00', NULL, NULL, N'102', N'1')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1267', N'admin@gmail.com', N'2021-04-15', N'Thụy Sỹ', NULL, NULL, N'102', N'2')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1268', N'admin@gmail.com', N'2021-04-15', N'Sapphire (Kính Chống Trầy)', NULL, NULL, N'102', N'3')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1269', N'admin@gmail.com', N'2021-04-15', N'Automatic (Tự Động)', NULL, NULL, N'102', N'4')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1270', N'admin@gmail.com', N'2021-04-15', N'2 Năm', NULL, NULL, N'102', N'5')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1271', N'admin@gmail.com', N'2021-04-15', N'40 mm', NULL, NULL, N'102', N'6')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1272', N'admin@gmail.com', N'2021-04-15', N'10.38 mm', NULL, NULL, N'102', N'7')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1273', N'admin@gmail.com', N'2021-04-15', N'Thép Không Gỉ', NULL, NULL, N'102', N'8')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1274', N'admin@gmail.com', N'2021-04-15', N'Dây Da Chính Hãng', NULL, NULL, N'102', N'9')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1275', N'admin@gmail.com', N'2021-04-15', N'Trắng', NULL, NULL, N'102', N'10')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1276', N'admin@gmail.com', N'2021-04-15', N'3 ATM', NULL, NULL, N'102', N'11')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1277', N'admin@gmail.com', N'2021-04-15', N'Lịch Ngày', NULL, NULL, N'102', N'12')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1278', N'admin@gmail.com', N'2021-04-15', N'Mido', NULL, NULL, N'103', N'13')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1279', N'admin@gmail.com', N'2021-04-15', N'M005.430.11.031.80', NULL, NULL, N'103', N'1')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1280', N'admin@gmail.com', N'2021-04-15', N'Thụy Sỹ', NULL, NULL, N'103', N'2')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1281', N'admin@gmail.com', N'2021-04-15', N'Sapphire (Kính Chống Trầy)', NULL, NULL, N'103', N'3')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1282', N'admin@gmail.com', N'2021-04-15', N'Automatic (Tự Động)', NULL, NULL, N'103', N'4')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1283', N'admin@gmail.com', N'2021-04-15', N'2 Năm', NULL, NULL, N'103', N'5')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1284', N'admin@gmail.com', N'2021-04-15', N'42 mm', NULL, NULL, N'103', N'6')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1285', N'admin@gmail.com', N'2021-04-15', N'10.95 mm', NULL, NULL, N'103', N'7')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1286', N'admin@gmail.com', N'2021-04-15', N'Thép Không Gỉ', NULL, NULL, N'103', N'8')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1287', N'admin@gmail.com', N'2021-04-15', N'Thép Không Gỉ', NULL, NULL, N'103', N'9')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1288', N'admin@gmail.com', N'2021-04-15', N'Trắng', NULL, NULL, N'103', N'10')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1289', N'admin@gmail.com', N'2021-04-15', N'5 ATM', NULL, NULL, N'103', N'11')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1290', N'admin@gmail.com', N'2021-04-15', N'Lịch Ngày – Lịch Thứ', NULL, NULL, N'103', N'12')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1291', N'admin@gmail.com', N'2021-04-15', N'Mido', NULL, NULL, N'104', N'13')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1292', N'admin@gmail.com', N'2021-04-15', N'M8600.4.18.1', NULL, NULL, N'104', N'1')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1293', N'admin@gmail.com', N'2021-04-15', N'Thụy Sỹ', NULL, NULL, N'104', N'2')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1294', N'admin@gmail.com', N'2021-04-15', N'Sapphire (Kính Chống Trầy)', NULL, NULL, N'104', N'3')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1295', N'admin@gmail.com', N'2021-04-15', N'Automatic (Tự Động)', NULL, NULL, N'104', N'4')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1296', N'admin@gmail.com', N'2021-04-15', N'2 Năm', NULL, NULL, N'104', N'5')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1297', N'admin@gmail.com', N'2021-04-15', N'38 mm', NULL, NULL, N'104', N'6')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1298', N'admin@gmail.com', N'2021-04-15', N'9.1 mm', NULL, NULL, N'104', N'7')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1299', N'admin@gmail.com', N'2021-04-15', N'Thép Không Gỉ', NULL, NULL, N'104', N'8')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1300', N'admin@gmail.com', N'2021-04-15', N'Thép Không Gỉ', NULL, NULL, N'104', N'9')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1301', N'admin@gmail.com', N'2021-04-15', N'Đen', NULL, NULL, N'104', N'10')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1302', N'admin@gmail.com', N'2021-04-15', N'5 ATM', NULL, NULL, N'104', N'11')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1303', N'admin@gmail.com', N'2021-04-15', N'Lịch Ngày', NULL, NULL, N'104', N'12')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1304', N'admin@gmail.com', N'2021-04-16', N'Mido', NULL, NULL, N'105', N'13')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1305', N'admin@gmail.com', N'2021-04-16', N'M8600.9.76.1', NULL, NULL, N'105', N'1')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1306', N'admin@gmail.com', N'2021-04-16', N'Thụy Sỹ', NULL, NULL, N'105', N'2')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1307', N'admin@gmail.com', N'2021-04-16', N'Sapphire (Kính Chống Trầy)', NULL, NULL, N'105', N'3')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1308', N'admin@gmail.com', N'2021-04-16', N'2 Năm', NULL, NULL, N'105', N'5')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1309', N'admin@gmail.com', N'2021-04-16', N'38 mm', NULL, NULL, N'105', N'6')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1310', N'admin@gmail.com', N'2021-04-16', N'9.1 mm', NULL, NULL, N'105', N'7')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1311', N'admin@gmail.com', N'2021-04-16', N'Thép Không Gỉ', NULL, NULL, N'105', N'8')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1312', N'admin@gmail.com', N'2021-04-16', N'Thép Không Gỉ', NULL, NULL, N'105', N'9')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1313', N'admin@gmail.com', N'2021-04-16', N'Trắng', NULL, NULL, N'105', N'10')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1314', N'admin@gmail.com', N'2021-04-16', N'5 ATM', NULL, NULL, N'105', N'11')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1315', N'admin@gmail.com', N'2021-04-16', N'Lịch Ngày', NULL, NULL, N'105', N'12')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1316', N'admin@gmail.com', N'2021-04-16', N'Mido', NULL, NULL, N'106', N'13')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1317', N'admin@gmail.com', N'2021-04-16', N'M7600.4.21.1', NULL, NULL, N'106', N'1')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1318', N'admin@gmail.com', N'2021-04-16', N'Thụy Sỹ', NULL, NULL, N'106', N'2')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1319', N'admin@gmail.com', N'2021-04-16', N'Sapphire (Kính Chống Trầy)', NULL, NULL, N'106', N'3')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1320', N'admin@gmail.com', N'2021-04-16', N'Automatic (Tự Động)', NULL, NULL, N'106', N'4')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1321', N'admin@gmail.com', N'2021-04-16', N'2 Năm', NULL, NULL, N'106', N'5')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1322', N'admin@gmail.com', N'2021-04-16', N'29 mm', NULL, NULL, N'106', N'6')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1323', N'admin@gmail.com', N'2021-04-16', N'8.65 mm', NULL, NULL, N'106', N'7')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1324', N'admin@gmail.com', N'2021-04-16', N'Thép Không Gỉ', NULL, NULL, N'106', N'8')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1325', N'admin@gmail.com', N'2021-04-16', N'Thép Không Gỉ', NULL, NULL, N'106', N'9')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1326', N'admin@gmail.com', N'2021-04-16', N'Trắng', NULL, NULL, N'106', N'10')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1327', N'admin@gmail.com', N'2021-04-16', N'5 ATM', NULL, NULL, N'106', N'11')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1328', N'admin@gmail.com', N'2021-04-16', N'Lịch Ngày', NULL, NULL, N'106', N'12')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1329', N'admin@gmail.com', N'2021-04-16', N'Mido', NULL, NULL, N'107', N'13')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1330', N'admin@gmail.com', N'2021-04-16', N'M024.207.11.031.00', NULL, NULL, N'107', N'1')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1331', N'admin@gmail.com', N'2021-04-16', N'Thụy Sỹ', NULL, NULL, N'107', N'2')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1332', N'admin@gmail.com', N'2021-04-16', N'Sapphire (Kính Chống Trầy)', NULL, NULL, N'107', N'3')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1333', N'admin@gmail.com', N'2021-04-16', N'Automatic (Tự Động)', NULL, NULL, N'107', N'4')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1334', N'admin@gmail.com', N'2021-04-16', N'2 Năm', NULL, NULL, N'107', N'5')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1335', N'admin@gmail.com', N'2021-04-16', N'33 mm', NULL, NULL, N'107', N'6')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1336', N'admin@gmail.com', N'2021-04-16', N'9.95 mm', NULL, NULL, N'107', N'7')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1337', N'admin@gmail.com', N'2021-04-16', N'Thép Không Gỉ', NULL, NULL, N'107', N'8')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1338', N'admin@gmail.com', N'2021-04-16', N'Thép Không Gỉ', NULL, NULL, N'107', N'9')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1339', N'admin@gmail.com', N'2021-04-16', N'Trắng', NULL, NULL, N'107', N'10')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1340', N'admin@gmail.com', N'2021-04-16', N'5 ATM', NULL, NULL, N'107', N'11')
+GO
+
+INSERT INTO [dbo].[product_property_detail] ([id], [create_by], [created_date], [description], [update_by], [updated_date], [product_id], [product_property_id]) VALUES (N'1341', N'admin@gmail.com', N'2021-04-16', N'Lịch Ngày', NULL, NULL, N'107', N'12')
+GO
+
 SET IDENTITY_INSERT [dbo].[product_property_detail] OFF
 GO
 
@@ -6252,10 +6728,10 @@ GO
 SET IDENTITY_INSERT [dbo].[users] ON
 GO
 
-INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'1', N'195 Nam Kì Khởi Nghĩa, Phường 7, Quận 3', N'1998-02-21', N'2021-03-04', N'user@gmail.com', N'Luong Xuan Truong', N'1', N'123456789', N'1234567890', N'2021-03-04', N'user@gmail.com', N'0')
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'1', N'195 Nam Kì Khởi Nghĩa, Phường 7, Quận 3', N'1998-02-21', N'2021-03-04', N'user@gmail.com', N'Luong Xuan Truong', N'1', N'1234567', N'1234567890', N'2021-04-13', N'user@gmail.com', N'0')
 GO
 
-INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'2', N'123 Lý Chính Thắng, Phường 7, Quận 3', N'1998-02-18', N'2021-02-26', N'thuyan@gmail.com', N'Nguyễn Lê Thuỳ An', N'0', N'123456789', N'1970-01-18', N'2021-02-26', N'thuyan@gmail.com', N'0')
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'2', N'123 Lý Chính Thắng, Phường 7, Quận 3', N'1998-02-18', N'2021-02-26', N'thuyan@gmail.com', N'Nguyễn Lê Thuỳ An', N'0', N'123456789', N'1234567890', N'2021-02-26', N'thuyan@gmail.com', N'0')
 GO
 
 INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'3', N'195 Nam Kì Khởi Nghĩa, Phường 7, Quận 3', N'1998-02-21', N'2021-03-04', N'user2@gmail.com', N'Luong Xuan Truong', N'0', N'123456789', N'1234567890', N'2021-03-04', N'user2@gmail.com', N'0')
@@ -6267,13 +6743,13 @@ GO
 INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'6', NULL, NULL, N'2021-03-18', N'123456789@gmail.com', N'1234567890', N'0', N'123456789', NULL, N'2021-03-18', N'123456789@gmail.com', N'0')
 GO
 
-INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'9', N'Xóm Chùa', NULL, N'2021-03-18', N'impactdestination8@gmail.com', N'Anh Nguyen', N'0', N'1234567890', N'648684648', N'2021-03-18', N'impactdestination8@gmail.com', N'0')
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'9', N'Xóm Chùa', NULL, N'2021-03-18', N'impactdestination8@gmail.com', N'Anh Nguyen', N'0', N'123456789', N'648684648', N'2021-03-18', N'impactdestination8@gmail.com', N'0')
 GO
 
-INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'10', N' ', N'1999-01-04', N'2021-03-30', N'phucpbps10710@fpt.edu.vn', N'Phạm Bá Phúc', N'1', N'123456', N'0923463748', NULL, N'phucpbps10710@fpt.edu.vn', N'0')
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'10', N' ', N'1999-01-04', N'2021-03-30', N'phucpbps107102@fpt.edu.vn', N'Phạm Bá Phúc', N'1', N'123456', N'0923463748', N'2021-04-16', N'phucpbps107102@fpt.edu.vn', N'1')
 GO
 
-INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'11', N'195 Nam Kì Khởi Nghĩa, Phường 8, Quận 3', N'2021-09-21', N'2021-03-30', N'minhquang10ks@gmail.com', N'Nguyễn Minh Quang', N'1', N'0923650183', N'0923106340', N'2021-03-30', N'minhquang10ks@gmail.com', N'0')
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'11', N'195 Nam Kì Khởi Nghĩa, Phường 8, Quận 3', N'2021-09-21', N'2021-03-30', N'minhquang10ks@gmail.com', N'Nguyễn Minh Quang', N'1', N'0923650183', N'0923106340', N'2021-04-16', N'minhquang10ks@gmail.com', N'1')
 GO
 
 INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'12', N'12 Trần Đại Nghĩa, Phường 1, Quận Bình Tân', N'2000-03-07', N'2021-03-30', N'nguyenngoctuan2801@gmail.com', N'Nguyễn Ngọc Tuấn', N'1', N'037475853', N'0926364710', NULL, N'nguyenngoctuan2801@gmail.com', N'0')
@@ -6306,7 +6782,31 @@ GO
 INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'21', N'330 Trường Chinh, Phường 7, Quận Tân Bình', N'1998-11-26', N'2021-03-30', N'nguyenhuuthanh@gmail.com', N'Nguyễn Hữu Thành', N'1', N'0364729394', N'0926378832', NULL, N'nguyenhuuthanh@gmail.com', N'0')
 GO
 
-INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'22', N'Hồ chí minh', NULL, N'2021-03-31', N'phambaphuc1999@gmail.com', N'Phạm Bá Phúc', N'0', N'123456789', N'938697503', N'2021-03-31', N'phambaphuc1999@gmail.com', N'0')
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'22', N'Hồ chí minh', N'1969-12-31', N'2021-03-30', N'phambaphuc1999@gmail.com', N'Phạm Bá Phúc', N'0', N'123456789', N'0938697503', N'2021-04-16', N'phambaphuc1999@gmail.com', N'1')
+GO
+
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'24', N'Hồ chí minh', NULL, N'2021-04-16', N'phucpbps10710@fpt.edu.vn', N'Phạm Bá Phúc', N'0', N'1234567', N'938697503', N'2021-04-16', N'phucpbps10710@fpt.edu.vn', N'0')
+GO
+
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'29', N'4/32 Lưu Chí Hiếu', NULL, N'2021-04-16', N'nghiemn@fpt.edu.vn', N'Nguyễn Nghiệm', N'1', N'123456', N'913745789', N'2021-04-17', N'nghiemn@fpt.edu.vn', N'0')
+GO
+
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'30', N'11 Lê Lợi, Phường 11, Quận Gò vấp', N'1998-02-09', N'2021-04-17', N'nguyenthanhlong@gmail.com', N'Nguyễn Thành Long', N'1', N'1234567', N'0926364738', NULL, N'nguyenthanhlong@gmail.com', N'0')
+GO
+
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'31', N'12 Hoàng Văn Thụ, Phường 3, Quận Phú Nhuận', N'1998-01-05', N'2021-04-17', N'nguyenthanhnhan09@gmail.com', N'Nguyễn Thành Nhân', N'1', N'12345667', N'0927374922', NULL, N'nguyenthanhnhan09@gmail.com', N'0')
+GO
+
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'32', N'27/9 Huỳnh Tịnh Của, Phường 7, Quận 3', N'1999-02-16', N'2021-04-17', N'nguyenphuongbinh123@gmail.com', N'Nguyễn Phương Bình', N'1', N'1234567', N'09237463839', NULL, N'nguyenphuongbinh123@gmail.com', N'0')
+GO
+
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'33', N'33 Cộng Hòa, Phường 1, Quận Tân Bình', N'1999-07-06', N'2021-04-17', N'trinhthanhnam99@gmail.com', N'Trịnh Thanh Nam', N'1', N'1234567', N'0974838492', NULL, N'trinhthanhnam99@gmail.com', N'0')
+GO
+
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'34', N'27/9 Huỳnh Tịnh Của', NULL, N'2021-04-17', N'quangnmps10741@fpt.edu.vn', N'Minh Quang', N'0', N'1234567', N'923828383', N'2021-04-17', N'quangnmps10741@fpt.edu.vn', N'0')
+GO
+
+INSERT INTO [dbo].[users] ([id], [address], [birthday], [created_date], [email], [fullname], [gender], [password], [phone], [update_date], [username], [isdelete]) VALUES (N'37', NULL, NULL, N'2021-04-17', N'minhquang10ks@gmail.com', N'1234567890', N'0', N'123456789', NULL, N'2021-04-17', N'minhquang10ks@gmail.com', N'0')
 GO
 
 SET IDENTITY_INSERT [dbo].[users] OFF
@@ -6359,10 +6859,22 @@ GO
 INSERT INTO [dbo].[users_token] ([id], [account_status], [email_confirm_token], [password_reminder_expire], [password_reminder_token], [registration_time], [user_id]) VALUES (N'10', N'1', NULL, NULL, NULL, N'2021-03-18', N'9')
 GO
 
-INSERT INTO [dbo].[users_token] ([id], [account_status], [email_confirm_token], [password_reminder_expire], [password_reminder_token], [registration_time], [user_id]) VALUES (N'11', N'1', N'', NULL, NULL, N'2021-03-31', N'22')
+INSERT INTO [dbo].[users_token] ([id], [account_status], [email_confirm_token], [password_reminder_expire], [password_reminder_token], [registration_time], [user_id]) VALUES (N'11', N'1', NULL, NULL, NULL, N'2021-03-31', N'22')
 GO
 
 INSERT INTO [dbo].[users_token] ([id], [account_status], [email_confirm_token], [password_reminder_expire], [password_reminder_token], [registration_time], [user_id]) VALUES (N'12', N'1', NULL, NULL, NULL, N'2021-04-08', N'10')
+GO
+
+INSERT INTO [dbo].[users_token] ([id], [account_status], [email_confirm_token], [password_reminder_expire], [password_reminder_token], [registration_time], [user_id]) VALUES (N'19', N'1', NULL, NULL, NULL, N'2021-04-16', N'29')
+GO
+
+INSERT INTO [dbo].[users_token] ([id], [account_status], [email_confirm_token], [password_reminder_expire], [password_reminder_token], [registration_time], [user_id]) VALUES (N'20', N'1', NULL, NULL, NULL, N'2021-04-17', N'34')
+GO
+
+INSERT INTO [dbo].[users_token] ([id], [account_status], [email_confirm_token], [password_reminder_expire], [password_reminder_token], [registration_time], [user_id]) VALUES (N'21', N'1', NULL, NULL, NULL, N'2021-04-17', N'24')
+GO
+
+INSERT INTO [dbo].[users_token] ([id], [account_status], [email_confirm_token], [password_reminder_expire], [password_reminder_token], [registration_time], [user_id]) VALUES (N'24', N'0', N'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNyIsImlhdCI6MTYxODY1OTUwNywiZXhwIjoxNjE5MjY0MzA3fQ.t2dH834FFEhjOw9G9OrkLKODz-_HVgGDGeE7cQvooF0dimuB5ZK7QTIWEMqX7ofmGOCJSCPHuygVwrinE61Duw', NULL, NULL, N'2021-04-17', N'37')
 GO
 
 SET IDENTITY_INSERT [dbo].[users_token] OFF
@@ -6406,10 +6918,10 @@ GO
 INSERT INTO [dbo].[voucher] ([id], [code], [create_by], [created_date], [expiration_date], [limit_use], [status], [update_by], [updated_date], [value]) VALUES (N'2', N'Voucher1', N'admin@gmail.com', N'2021-03-04', N'2021-03-11', N'4', N'0', N'admin@gmail.com', N'2021-03-04', N'100000')
 GO
 
-INSERT INTO [dbo].[voucher] ([id], [code], [create_by], [created_date], [expiration_date], [limit_use], [status], [update_by], [updated_date], [value]) VALUES (N'3', N'Voucher1', N'admin@gmail.com', N'2021-03-04', N'2021-03-11', N'1', N'0', N'admin@gmail.com', N'2021-03-04', N'90000')
+INSERT INTO [dbo].[voucher] ([id], [code], [create_by], [created_date], [expiration_date], [limit_use], [status], [update_by], [updated_date], [value]) VALUES (N'3', N'Voucher11', N'admin@gmail.com', N'2021-03-04', N'2021-03-11', N'1', N'0', N'admin@gmail.com', N'2021-04-16', N'90000')
 GO
 
-INSERT INTO [dbo].[voucher] ([id], [code], [create_by], [created_date], [expiration_date], [limit_use], [status], [update_by], [updated_date], [value]) VALUES (N'4', N'Voucher1', N'admin@gmail.com', N'2021-03-04', N'2021-03-11', N'1', N'0', N'admin@gmail.com', N'2021-03-04', N'90000')
+INSERT INTO [dbo].[voucher] ([id], [code], [create_by], [created_date], [expiration_date], [limit_use], [status], [update_by], [updated_date], [value]) VALUES (N'4', N'Voucher12', N'admin@gmail.com', N'2021-03-04', N'2021-03-11', N'1', N'0', N'admin@gmail.com', N'2021-04-16', N'90000')
 GO
 
 SET IDENTITY_INSERT [dbo].[voucher] OFF
@@ -6451,16 +6963,13 @@ GO
 INSERT INTO [dbo].[wishlish] ([id], [created_date], [update_date], [user_id], [product_id]) VALUES (N'12', N'2021-04-09', N'2021-04-09', N'22', N'82')
 GO
 
-INSERT INTO [dbo].[wishlish] ([id], [created_date], [update_date], [user_id], [product_id]) VALUES (N'13', N'2021-04-09', N'2021-04-09', N'22', N'93')
-GO
-
-INSERT INTO [dbo].[wishlish] ([id], [created_date], [update_date], [user_id], [product_id]) VALUES (N'14', N'2021-04-09', N'2021-04-09', N'22', N'99')
-GO
-
-INSERT INTO [dbo].[wishlish] ([id], [created_date], [update_date], [user_id], [product_id]) VALUES (N'15', N'2021-04-09', N'2021-04-09', N'22', N'12')
-GO
-
 INSERT INTO [dbo].[wishlish] ([id], [created_date], [update_date], [user_id], [product_id]) VALUES (N'17', N'2021-04-11', N'2021-04-11', N'1', N'87')
+GO
+
+INSERT INTO [dbo].[wishlish] ([id], [created_date], [update_date], [user_id], [product_id]) VALUES (N'18', N'2021-04-15', N'2021-04-15', N'22', N'6')
+GO
+
+INSERT INTO [dbo].[wishlish] ([id], [created_date], [update_date], [user_id], [product_id]) VALUES (N'26', N'2021-04-17', N'2021-04-17', N'34', N'81')
 GO
 
 SET IDENTITY_INSERT [dbo].[wishlish] OFF
@@ -6470,7 +6979,7 @@ GO
 -- ----------------------------
 -- Auto increment value for admin
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[admin]', RESEED, 4)
+DBCC CHECKIDENT ('[dbo].[admin]', RESEED, 8)
 GO
 
 
@@ -6486,7 +6995,7 @@ GO
 -- ----------------------------
 -- Auto increment value for cart
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[cart]', RESEED, 12)
+DBCC CHECKIDENT ('[dbo].[cart]', RESEED, 29)
 GO
 
 
@@ -6502,7 +7011,7 @@ GO
 -- ----------------------------
 -- Auto increment value for cart_detail
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[cart_detail]', RESEED, 35)
+DBCC CHECKIDENT ('[dbo].[cart_detail]', RESEED, 60)
 GO
 
 
@@ -6518,7 +7027,7 @@ GO
 -- ----------------------------
 -- Auto increment value for comment
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[comment]', RESEED, 20)
+DBCC CHECKIDENT ('[dbo].[comment]', RESEED, 21)
 GO
 
 
@@ -6550,7 +7059,7 @@ GO
 -- ----------------------------
 -- Auto increment value for invoice
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[invoice]', RESEED, 23)
+DBCC CHECKIDENT ('[dbo].[invoice]', RESEED, 36)
 GO
 
 
@@ -6566,7 +7075,7 @@ GO
 -- ----------------------------
 -- Auto increment value for invoice_detail
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[invoice_detail]', RESEED, 32)
+DBCC CHECKIDENT ('[dbo].[invoice_detail]', RESEED, 51)
 GO
 
 
@@ -6582,7 +7091,7 @@ GO
 -- ----------------------------
 -- Auto increment value for product
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[product]', RESEED, 100)
+DBCC CHECKIDENT ('[dbo].[product]', RESEED, 107)
 GO
 
 
@@ -6598,7 +7107,7 @@ GO
 -- ----------------------------
 -- Auto increment value for product_image
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[product_image]', RESEED, 496)
+DBCC CHECKIDENT ('[dbo].[product_image]', RESEED, 535)
 GO
 
 
@@ -6630,7 +7139,7 @@ GO
 -- ----------------------------
 -- Auto increment value for product_property_detail
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[product_property_detail]', RESEED, 1264)
+DBCC CHECKIDENT ('[dbo].[product_property_detail]', RESEED, 1341)
 GO
 
 
@@ -6662,7 +7171,7 @@ GO
 -- ----------------------------
 -- Auto increment value for users
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[users]', RESEED, 22)
+DBCC CHECKIDENT ('[dbo].[users]', RESEED, 37)
 GO
 
 
@@ -6678,7 +7187,7 @@ GO
 -- ----------------------------
 -- Auto increment value for users_token
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[users_token]', RESEED, 12)
+DBCC CHECKIDENT ('[dbo].[users_token]', RESEED, 24)
 GO
 
 
@@ -6710,7 +7219,7 @@ GO
 -- ----------------------------
 -- Auto increment value for wishlish
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[wishlish]', RESEED, 17)
+DBCC CHECKIDENT ('[dbo].[wishlish]', RESEED, 26)
 GO
 
 
