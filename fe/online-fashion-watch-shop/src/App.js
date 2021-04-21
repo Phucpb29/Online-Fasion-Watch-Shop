@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Swal from "sweetalert2";
 import cartApi from "./api/cartApi";
-import dashboardApi from "./api/dashboardApi";
 import wishlistApi from "./api/wishlistApi";
 import CartModal from "./components/cart/cart";
 import Error from "./components/error/error";
