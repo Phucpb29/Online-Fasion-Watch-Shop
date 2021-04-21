@@ -14,15 +14,17 @@ import "./css/order.css";
 Order.prototype = {
   cart: PropTypes.array,
   statusToken: PropTypes.bool,
+  handleOrder: PropTypes.func,
 };
 
 Order.DefaultPropTypes = {
   cart: [],
   statusToken: false,
+  handleOrder: null,
 };
 
 function Order(props) {
-  const { cart, statusToken } = props;
+  const { cart, statusToken, handleOrder } = props;
   const [orderLoading, setOrderLoading] = useState(false);
 
   // đặt hàng
@@ -38,6 +40,7 @@ function Order(props) {
         .then(function (response) {
           if (response.status === 200) {
             setOrderLoading(false);
+            handleOrder();
             Swal.fire({
               title: "THÔNG BÁO",
               text: "ĐẶT HÀNG THÀNH CÔNG",
@@ -45,7 +48,6 @@ function Order(props) {
               showConfirmButton: true,
             }).then((result) => {
               if (result.isConfirmed) {
-                localStorage.setItem("cart", JSON.stringify([]));
                 window.location.replace(
                   "/thong-tin-tai-khoan/lich-su-mua-hang"
                 );

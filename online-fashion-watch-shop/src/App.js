@@ -144,6 +144,12 @@ function App() {
     };
     fetchData();
   }, [cart]);
+  // tạo lại giỏ hàng khi thanh toán
+  async function handleOrder() {
+    await cartApi.createCart();
+    const response = await cartApi.viewCart();
+    setCart(response.data);
+  }
   // thêm sản phẩm hoặc update số lượng sản phẩm vào giò hàng
   async function handleAddItem(item) {
     const itemExist = cart.some((i) => i.product.id === item.product.id);
@@ -370,7 +376,11 @@ function App() {
             <Resetpass />
           </Route>
           <Route exact path="/thanh-toan">
-            <Order cart={cart} statusToken={statusToken} />
+            <Order
+              cart={cart}
+              statusToken={statusToken}
+              handleOrder={handleOrder}
+            />
           </Route>
           <Route>
             <Error text={"KHÔNG TÌM THẤY TRANG. VUI LÒNG THỬ LẠI"} />
