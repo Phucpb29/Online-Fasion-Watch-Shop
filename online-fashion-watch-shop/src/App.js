@@ -364,7 +364,11 @@ function App() {
             />
           </Route>
           <Route exact path="/san-pham-yeu-thich">
-            <WishList statusToken={statusToken} wishChange={wishChange} />
+            <WishList
+              statusToken={statusToken}
+              wishChange={wishChange}
+              handleChangeWishList={handleChangeWishList}
+            />
           </Route>
           <Route exact path="/tim-kiem-san-pham/:keyword">
             <WrapProductSearch />

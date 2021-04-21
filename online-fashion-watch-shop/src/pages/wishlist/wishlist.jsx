@@ -9,11 +9,13 @@ import "./css/wishlist.css";
 WishList.prototype = {
   statusToken: PropTypes.bool,
   wishChange: PropTypes.bool,
+  handleChangeWishList: PropTypes.func,
 };
 
 WishList.DefaultPropTypes = {
   statusToken: false,
   wishChange: false,
+  handleChangeWishList: null,
 };
 
 function WishList(props) {
