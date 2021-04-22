@@ -113,23 +113,26 @@ function App() {
    */
   useEffect(() => {
     const fetchData = async () => {
-      if (statusToken) {
+      if (statusToken && statusToken === true) {
         let response = await cartApi.viewCart();
-        if (response !== null) {
+        let data = response.data;
+        if (data.length > 0) {
           if (cart.length > 0) {
             await cartApi.clearCart();
             await cartApi.createCart();
+            cart.map((item) => handleAddProduct(item));
           } else {
-            setCart(response.data);
+            setCart(data);
           }
         } else {
           await cartApi.createCart();
+          setCart([]);
         }
-        cart.map((item) => handleAddProduct(item));
       }
     };
     fetchData();
   }, [statusToken]);
+
   // render số lượng giỏ hàng
   useEffect(() => {
     const fetchData = () => {
