@@ -35,8 +35,12 @@ function CartModal(props) {
 
   // đóng giỏ hàng
   function handleCloseCart() {
+    closeCart();
+  }
+
+  // thanh toán
+  function handleOrder() {
     if (statusToken && statusToken === true) {
-      closeCart();
       window.location.replace("/thanh-toan");
     } else {
       Swal.fire({
@@ -122,19 +126,9 @@ function CartModal(props) {
 
   // xoá sản phẩm
   async function removeItem(item, cartDetailID) {
-    if (handleRemoveItem) {
-      handleRemoveItem(item);
-    }
     if (statusToken && statusToken === true) {
       try {
-        await cartApi.deleteProduct(cartDetailID).then(function () {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: "BỎ SẢN PHẨM KHỎI GIỎ HÀNG THÀNH CÔNG",
-            icon: "success",
-            showConfirmButton: true,
-          });
-        });
+        await cartApi.deleteProduct(cartDetailID);
       } catch (error) {
         Swal.fire({
           title: "THÔNG BÁO",
@@ -143,6 +137,15 @@ function CartModal(props) {
           showConfirmButton: true,
         });
       }
+    }
+    if (handleRemoveItem) {
+      handleRemoveItem(item);
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "BỎ SẢN PHẨM KHỎI GIỎ HÀNG THÀNH CÔNG",
+        icon: "success",
+        showConfirmButton: true,
+      });
     }
   }
 
@@ -277,7 +280,7 @@ function CartModal(props) {
                       <div className="total__button">
                         <button
                           className="button__checkout"
-                          onClick={handleCloseCart}
+                          onClick={handleOrder}
                         >
                           ĐẶT HÀNG
                         </button>
