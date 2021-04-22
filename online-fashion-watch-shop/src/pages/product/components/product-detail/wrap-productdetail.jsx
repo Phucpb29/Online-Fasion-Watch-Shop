@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 
 WrapProductDetai.prototype = {
   statusToken: PropTypes.bool,
-  cartChange: PropTypes.bool,
   wishChange: PropTypes.bool,
   openCart: PropTypes.func,
   handleAddItem: PropTypes.func,
@@ -15,7 +14,6 @@ WrapProductDetai.prototype = {
 
 WrapProductDetai.DefaultPropTypes = {
   statusToken: false,
-  cartChange: false,
   wishChange: false,
   openCart: null,
   handleAddItem: null,
@@ -25,7 +23,6 @@ WrapProductDetai.DefaultPropTypes = {
 function WrapProductDetai(props) {
   const {
     statusToken,
-    cartChange,
     wishChange,
     openCart,
     handleAddItem,
@@ -62,7 +59,6 @@ function WrapProductDetai(props) {
         <ProductDetail
           id={intParams}
           statusToken={statusToken}
-          cartChange={cartChange}
           wishChange={wishChange}
           handleOpenCart={handleOpenCart}
           addItem={addItem}

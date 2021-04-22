@@ -13,7 +13,6 @@ import cartApi from "../../../../api/cartApi";
 ProductDetail.prototype = {
   id: PropTypes.string,
   statusToken: PropTypes.bool,
-  cartChange: PropTypes.bool,
   wishChange: PropTypes.bool,
   handleOpenCart: PropTypes.func,
   addItem: PropTypes.func,
@@ -23,7 +22,6 @@ ProductDetail.prototype = {
 ProductDetail.DefaultPropTypes = {
   id: "",
   statusToken: false,
-  cartChange: false,
   wishChange: false,
   handleOpenCart: null,
   addItem: null,
@@ -89,18 +87,6 @@ function ProductDetail(props) {
     fetchData();
   }, [statusToken, wishChange]);
 
-  // danh sách giỏ hàng
-  useEffect(() => {
-    const fetchData = async () => {
-      if (statusToken) {
-        const response = await cartApi.viewCart();
-        const data = response.data;
-        setCartList(data);
-      }
-    };
-    fetchData();
-  }, [statusToken, cartChange]);
-
   // mở giỏ hàng
   function openCart() {
     if (handleOpenCart) {
@@ -145,10 +131,8 @@ function ProductDetail(props) {
           <DetailInfo
             productInfo={productInfo}
             statusToken={statusToken}
-            cartList={cartList}
             wishList={wishList}
             commentList={commentList}
-            openCart={openCart}
             handleAddItem={handleAddItem}
             handleChangeWishList={handleChangeWishList}
           />

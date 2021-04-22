@@ -1,19 +1,17 @@
 import "boxicons";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
+import { Rabbit as Button } from "react-button-loaders";
 import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
 import cartApi from "../../../../api/cartApi";
 import wishlistApi from "../../../../api/wishlistApi";
-import { Rabbit as Button } from "react-button-loaders";
 
 DetailInfo.propTypes = {
   productInfo: PropTypes.object,
   statusToken: PropTypes.bool,
-  cartList: PropTypes.array,
   wishList: PropTypes.array,
   commentList: PropTypes.array,
-  openCart: PropTypes.func,
   handleAddItem: PropTypes.func,
   handleChangeWishList: PropTypes.func,
 };
@@ -21,10 +19,8 @@ DetailInfo.propTypes = {
 DetailInfo.DefaultPropTypes = {
   productInfo: {},
   statusToken: false,
-  cartList: [],
   wishList: [],
   commentList: [],
-  openCart: null,
   handleAddItem: null,
   handleChangeWishList: null,
 };
@@ -33,10 +29,8 @@ function DetailInfo(props) {
   const {
     productInfo,
     statusToken,
-    cartList,
     wishList,
     commentList,
-    openCart,
     handleAddItem,
     handleChangeWishList,
   } = props;

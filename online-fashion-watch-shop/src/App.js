@@ -25,10 +25,10 @@ import Product from "./pages/product/product";
 import Register from "./pages/register/register";
 import Resetpass from "./pages/resetpass/resetpass";
 import WishList from "./pages/wishlist/wishlist";
+import ScrollToTop from "./components/scroll/scroll";
 
 function App() {
   const [cart, setCart] = useState([]); // giỏ hàng database
-  const [cartChange, setCartChange] = useState(false); // giỏ hàng database thay đổi
   const [statusCart, setStatusCart] = useState(false);
   const [cartSize, setCartSize] = useState(0);
 
@@ -51,12 +51,9 @@ function App() {
   };
   /* tương tác đóng mở giỏ hàng */
 
-  /* đăng nhập và đăng xuất */
+  /* đăng nhập */
   function handleLogin() {
     setStatusToken(true);
-  }
-  function handleLogout() {
-    setStatusToken(false);
   }
   // render lại value token khi statusToken thay đổi
   useEffect(() => {
@@ -103,7 +100,7 @@ function App() {
       }
     };
     fetchData();
-  }, []);
+  }, [statusToken]);
   /**
    * lấy giỏ hàng từ database (nếu không có tạo giỏ hàng)
    * xoá tất cả sản phẩm ở giỏ hàng nếu local storage có sản phẩm
@@ -320,7 +317,6 @@ function App() {
       <CartModal
         cart={cart}
         statusCart={statusCart}
-        cartChange={cartChange}
         statusToken={statusToken}
         closeCart={closeCart}
         handleIncreaseItem={handleIncreaseItem}
@@ -328,71 +324,72 @@ function App() {
         handleRemoveItem={handleRemoveItem}
       />
       <div className="main">
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Redirect from="/trangchu" to="/">
-            <Home />
-          </Redirect>
-          <Redirect from="/trang-chu" to="/">
-            <Home />
-          </Redirect>
-          <Route exact path="/dang-nhap">
-            <Login handleLogin={handleLogin} />
-          </Route>
-          <Route exact path="/dang-ky">
-            <Register />
-          </Route>
-          <Route exact path="/quen-mat-khau">
-            <Forgotpass />
-          </Route>
-          <Route path="/thong-tin-tai-khoan">
-            <Account statusToken={statusToken} />
-          </Route>
-          <Route exact path="/san-pham/gioi-tinh/nam">
-            <Product />
-          </Route>
-          <Route exact path="/san-pham/gioi-tinh/nu">
-            <Product />
-          </Route>
-          <Route exact path="/san-pham-chi-tiet/:id">
-            <WrapProductDetai
-              statusToken={statusToken}
-              cartChange={cartChange}
-              wishChange={wishChange}
-              openCart={openCart}
-              handleAddItem={handleAddItem}
-              handleChangeWishList={handleChangeWishList}
-            />
-          </Route>
-          <Route exact path="/san-pham-yeu-thich">
-            <WishList
-              statusToken={statusToken}
-              wishChange={wishChange}
-              handleChangeWishList={handleChangeWishList}
-            />
-          </Route>
-          <Route exact path="/tim-kiem-san-pham/:keyword">
-            <WrapProductSearch />
-          </Route>
-          <Route exact path="/maxacnhan">
-            <Maxacnhan />
-          </Route>
-          <Route path="/resetpass/*">
-            <Resetpass />
-          </Route>
-          <Route exact path="/thanh-toan">
-            <Order
-              cart={cart}
-              statusToken={statusToken}
-              handleOrder={handleOrder}
-            />
-          </Route>
-          <Route>
-            <Error text={"KHÔNG TÌM THẤY TRANG. VUI LÒNG THỬ LẠI"} />
-          </Route>
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Redirect from="/trangchu" to="/">
+              <Home />
+            </Redirect>
+            <Redirect from="/trang-chu" to="/">
+              <Home />
+            </Redirect>
+            <Route exact path="/dang-nhap">
+              <Login handleLogin={handleLogin} />
+            </Route>
+            <Route exact path="/dang-ky">
+              <Register />
+            </Route>
+            <Route exact path="/quen-mat-khau">
+              <Forgotpass />
+            </Route>
+            <Route path="/thong-tin-tai-khoan">
+              <Account statusToken={statusToken} />
+            </Route>
+            <Route exact path="/san-pham/gioi-tinh/nam">
+              <Product />
+            </Route>
+            <Route exact path="/san-pham/gioi-tinh/nu">
+              <Product />
+            </Route>
+            <Route exact path="/san-pham-chi-tiet/:id">
+              <WrapProductDetai
+                statusToken={statusToken}
+                wishChange={wishChange}
+                openCart={openCart}
+                handleAddItem={handleAddItem}
+                handleChangeWishList={handleChangeWishList}
+              />
+            </Route>
+            <Route exact path="/san-pham-yeu-thich">
+              <WishList
+                statusToken={statusToken}
+                wishChange={wishChange}
+                handleChangeWishList={handleChangeWishList}
+              />
+            </Route>
+            <Route exact path="/tim-kiem-san-pham/:keyword">
+              <WrapProductSearch />
+            </Route>
+            <Route exact path="/maxacnhan">
+              <Maxacnhan />
+            </Route>
+            <Route path="/resetpass/*">
+              <Resetpass />
+            </Route>
+            <Route exact path="/thanh-toan">
+              <Order
+                cart={cart}
+                statusToken={statusToken}
+                handleOrder={handleOrder}
+              />
+            </Route>
+            <Route>
+              <Error text={"KHÔNG TÌM THẤY TRANG. VUI LÒNG THỬ LẠI"} />
+            </Route>
+          </Switch>
+        </ScrollToTop>
       </div>
       <Footer />
     </Router>
