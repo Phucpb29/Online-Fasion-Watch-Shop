@@ -104,6 +104,8 @@ function Account(props) {
   // cập nhật thông tin
   function handleUpdateUserInfo() {
     const updateDate = getDate();
+    console.log(fullname, gender, birthday, updateDate);
+    // const updateDate = getDate();
     dashboardApi
       .updateInfo({
         isdelete: user.isdelete,

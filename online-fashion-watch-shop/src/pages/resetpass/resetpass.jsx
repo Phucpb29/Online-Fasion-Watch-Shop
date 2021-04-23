@@ -38,7 +38,7 @@ function Resetpass() {
               showConfirmButton: true,
             }).then((result) => {
               if (result.isConfirmed) {
-                window.location.replace("/dangnhap");
+                window.location.replace("/dang-nhap");
               }
             });
           } else {
