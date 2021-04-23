@@ -19,6 +19,18 @@ AccountDetail.prototype = {
 };
 
 AccountDetail.DefaultPropTypes = {
+  fullname: "",
+  gender: false,
+  birthday: "",
+  email: "",
+  phone: "",
+  address: "",
+  handleChangeName: null,
+  handleChangePhone: null,
+  handleChangeEmail: null,
+  handleChangeGender: null,
+  handleChangeAddress: null,
+  handleChangeBirthday: null,
   handleUpdateUserInfo: null,
 };
 
@@ -33,7 +45,6 @@ function AccountDetail(props) {
     handleChangeBirthday,
     handleUpdateUserInfo,
   } = props;
-  console.log(gender);
   const changeName = (e) => {
     handleChangeName(e.target.value);
   };

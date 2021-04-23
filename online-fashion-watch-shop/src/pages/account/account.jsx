@@ -70,9 +70,14 @@ function Account(props) {
     const fetchData = async () => {
       if (statusToken) {
         const responseUser = await dashboardApi.getInfo();
-        const responseOrder = await dashboardApi.viewOrderHistory();
+        await dashboardApi.viewOrderHistory().then((response) => {
+          if (response.status === 200) {
+            setOrderList(response.data);
+          } else {
+            setOrderList([]);
+          }
+        });
         setUser(responseUser.data);
-        setOrderList(responseOrder.data);
         setLoading(false);
       }
     };
@@ -81,12 +86,12 @@ function Account(props) {
 
   // truyền thông tin user vào từng biến
   useEffect(() => {
-    setFullName(user.fullname);
-    setGender(user.gender);
-    setBirthday(user.birthday);
-    setEmail(user.email);
-    setPhone(user.phone);
-    setAddress(user.address);
+    setFullName(user.fullname !== "undefined" ? user.fullname : "");
+    setGender(user.gender !== "undefined" ? user.gender : false);
+    setBirthday(user.birthday !== "undefined" ? user.birthday : "");
+    setEmail(user.email !== "undefined" ? user.email : "");
+    setPhone(user.phone !== "undefined" ? user.phone : "");
+    setAddress(user.address !== "undefined" ? user.address : "");
   }, [user]);
 
   //  lấy ngày hiện tài

@@ -23,9 +23,9 @@ function Error(props) {
         <p>Nhấp nút quay lại để trở về trang chủ</p>
       </div>
       <div className="main__error-box main__error-back">
-        <Link to="/" className="back__link">
+        <a href="/" className="back__link">
           <span>QUAY LẠI</span>
-        </Link>
+        </a>
       </div>
     </div>
   );
