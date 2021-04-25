@@ -18,44 +18,84 @@ function Register() {
   };
 
   const handleChangePassword = (e) => {
-    setPassword(e.target.value);
+    setPassword(e.target.value.trim());
   };
   const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
+    setEmail(e.target.value.trim());
   };
+
+  function validateLength(name, email, password) {
+    if (name.length > 0 && email.length > 0 && password.lenght > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function validateEmail(email) {
+    const emailRegex = "^[\\w\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    if (email.match(emailRegex)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   const handleRegister = (e) => {
     e.preventDefault();
-    try {
-      setRegisterLoading(true);
-      userApi
-        .register({
-          name: name,
-          email: email,
-          password: password,
-        })
-        .then(function (response) {
-          if (response.status === 202) {
-            setRegisterLoading(false);
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text:
-                "ĐĂNG KÝ THÀNH CÔNG! VUI LÒNG KIỂM TRA EMAIL ĐỂ KÍCH HOẠT TÀI KHOẢN",
-              icon: "success",
-              showConfirmButton: true,
+    if (validateLength(name, email, password)) {
+      if (validateEmail(email)) {
+        try {
+          setRegisterLoading(true);
+          userApi
+            .register({
+              name: name,
+              email: email,
+              password: password,
+            })
+            .then(function (response) {
+              if (response.status === 202) {
+                setRegisterLoading(false);
+                Swal.fire({
+                  title: "THÔNG BÁO",
+                  text:
+                    "ĐĂNG KÝ THÀNH CÔNG! VUI LÒNG KIỂM TRA EMAIL ĐỂ KÍCH HOẠT TÀI KHOẢN",
+                  icon: "success",
+                  showConfirmButton: true,
+                });
+              }
+              if (response.status === 400) {
+                Swal.fire({
+                  title: "THÔNG BÁO",
+                  text: response.data,
+                  icon: "error",
+                  showConfirmButton: true,
+                });
+              }
             });
-          }
-          if (response.status === 400) {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "error",
-              showConfirmButton: true,
-            });
-          }
+        } catch (error) {
+          Swal.fire({
+            title: "THÔNG BÁO",
+            text: "Có lỗi xảy ra! Vui lòng thử lại.",
+            icon: "error",
+            showConfirmButton: true,
+          });
+        }
+      } else {
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "Email không đúng định dạng",
+          icon: "warning",
+          showConfirmButton: true,
         });
-    } catch (error) {
-      console.log(error);
+      }
+    } else {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "Vui lòng nhập đầy đủ thông tin",
+        icon: "warning",
+        showConfirmButton: true,
+      });
     }
   };
 

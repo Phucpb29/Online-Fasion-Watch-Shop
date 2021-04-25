@@ -2,6 +2,7 @@ import "boxicons";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 import logo from "../../dw-logo.jpg";
 import "./css/header.css";
 
@@ -41,7 +42,16 @@ function Header(props) {
   // submit input
   const handleSubmitInput = (e) => {
     e.preventDefault();
-    history.replace(`/tim-kiem-san-pham/${keyWord}`);
+    if (keyWord.length > 0) {
+      history.replace(`/tim-kiem-san-pham/${keyWord}`);
+    } else {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "Vui lòng nhập vào tên sản phẩm hoặc thương hiệu",
+        icon: "warning",
+        showConfirmButton: true,
+      });
+    }
   };
 
   return (
@@ -87,8 +97,7 @@ function Header(props) {
                 name="search"
                 value={keyWord}
                 onChange={handleChangeInput}
-                placeholder="Tìm kiếm ..."
-                required
+                placeholder="Nhập tên sản phẩm hoặc thương hiệu"
               />
             </div>
           </form>

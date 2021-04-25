@@ -307,24 +307,24 @@ function App() {
 
   return (
     <Router>
-      <Header
-        openCart={openCart}
-        statusToken={statusToken}
-        cartSize={cartSize}
-        wishListSize={wishListSize}
-      />
-      <OverPlay statusCart={statusCart} closeCart={closeCart} />
-      <CartModal
-        cart={cart}
-        statusCart={statusCart}
-        statusToken={statusToken}
-        closeCart={closeCart}
-        handleIncreaseItem={handleIncreaseItem}
-        handleDecreaseItem={handleDecreaseItem}
-        handleRemoveItem={handleRemoveItem}
-      />
-      <div className="main">
-        <ScrollToTop>
+      <ScrollToTop>
+        <Header
+          openCart={openCart}
+          statusToken={statusToken}
+          cartSize={cartSize}
+          wishListSize={wishListSize}
+        />
+        <OverPlay statusCart={statusCart} closeCart={closeCart} />
+        <CartModal
+          cart={cart}
+          statusCart={statusCart}
+          statusToken={statusToken}
+          closeCart={closeCart}
+          handleIncreaseItem={handleIncreaseItem}
+          handleDecreaseItem={handleDecreaseItem}
+          handleRemoveItem={handleRemoveItem}
+        />
+        <div className="main">
           <Switch>
             <Route exact path="/">
               <Home />
@@ -389,9 +389,9 @@ function App() {
               <Error text={"KHÔNG TÌM THẤY TRANG. VUI LÒNG THỬ LẠI"} />
             </Route>
           </Switch>
-        </ScrollToTop>
-      </div>
-      <Footer />
+        </div>
+        <Footer />
+      </ScrollToTop>
     </Router>
   );
 }

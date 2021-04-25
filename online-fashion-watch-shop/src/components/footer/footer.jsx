@@ -16,31 +16,59 @@ function Footer() {
     setEmail(e.target.value);
   };
 
+  function validateEmail(email) {
+    const emailRegex = "^[\\w\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    if (email.match(emailRegex)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    try {
-      emailApi.registerEmail({ email: email }).then(function (response) {
-        console.clear();
-        if (response.status === 200) {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: response.data,
-            icon: "success",
-            showConfirmButton: true,
+    if (email.length > 0) {
+      if (validateEmail(email)) {
+        try {
+          emailApi.registerEmail({ email: email }).then(function (response) {
+            console.clear();
+            if (response.status === 200) {
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: response.data,
+                icon: "success",
+                showConfirmButton: true,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.replace("/");
+                }
+              });
+            }
+            if (response.status === 400) {
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: response.data,
+                icon: "error",
+                showConfirmButton: true,
+              });
+            }
           });
-          setEmail("");
-        }
-        if (response.status === 400) {
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: response.data,
-            icon: "error",
-            showConfirmButton: true,
-          });
-        }
+        } catch (error) {}
+      } else {
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "Email không đúng định dạng",
+          icon: "warning",
+          showConfirmButton: true,
+        });
+      }
+    } else {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "Vui lòng nhập đầy đủ email",
+        icon: "warning",
+        showConfirmButton: true,
       });
-    } catch (error) {
-      // console.log("Lỗi đăng ký nhận tin: ", error);
     }
   };
 
@@ -70,12 +98,11 @@ function Footer() {
         <form className="footer__newsletter-form" onSubmit={handleSubmitForm}>
           <div className="form-control">
             <input
-              type="email"
+              type="text"
               name="email"
               value={email}
               onChange={handleChangeEmail}
               placeholder="Nhập email để nhận các tin khuyến mãi"
-              required
             />
             <button className="form__button">ĐĂNG KÝ</button>
           </div>

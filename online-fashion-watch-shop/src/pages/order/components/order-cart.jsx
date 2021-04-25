@@ -3,24 +3,34 @@ import React, { useEffect, useState } from "react";
 
 OrderCart.prototype = {
   cart: PropTypes.array,
+  voucherPrice: PropTypes.number,
+  handleGetVoucherPrice: PropTypes.func,
 };
 
 OrderCart.DefaultPropTypes = {
   cart: [],
+  voucherPrice: 0,
+  handleGetVoucherPrice: null,
 };
 
 function OrderCart(props) {
-  const { cart } = props;
+  const { cart, voucherPrice, handleGetVoucherPrice } = props;
   const [totalPrice, setTotalPrice] = useState(0);
+  const [voucher, setVoucher] = useState("");
 
   // re-render lại tổng tiền giỏ hàng
   useEffect(() => {
     const fetchTotalPrice = async () => {
-      const newTotalPrice = await cart.reduce(
+      let newTotalPrice = await cart.reduce(
         (total, item) => Number(total) + Number(item.totalPrice),
         0
       );
-
+      if (voucherPrice > 0 && voucherPrice <= 100) {
+        newTotalPrice -= newTotalPrice * (voucherPrice / 100);
+      }
+      if (voucherPrice > 100) {
+        newTotalPrice -= voucherPrice;
+      }
       setTotalPrice(
         new Intl.NumberFormat("vi-VN", {
           style: "currency",
@@ -29,10 +39,18 @@ function OrderCart(props) {
       );
     };
     fetchTotalPrice();
-    return () => {
-      setTotalPrice(0);
-    };
-  }, [cart]);
+  }, [cart, voucherPrice]);
+
+  const handleChangeVoucher = (e) => {
+    setVoucher(e.target.value);
+  };
+
+  function handleGetVoucher(e) {
+    e.preventDefault();
+    if (handleGetVoucherPrice) {
+      handleGetVoucherPrice(voucher);
+    }
+  }
 
   return (
     <>
@@ -96,7 +114,8 @@ function OrderCart(props) {
                 placeholder="Nhập mã giảm giá"
                 className="couponCode-couponCodeEntryField-39M textInput-input-3vj field-input"
                 name="couponCode"
-                // style={{}}
+                value={voucher}
+                onChange={handleChangeVoucher}
               />
             </span>
             <span className="fieldIcons-before-3Wt" />
@@ -107,10 +126,8 @@ function OrderCart(props) {
         <div className="field-root-3Y5">
           <button
             className="couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd"
-            type="submit"
-            // style={{}}
+            onClick={handleGetVoucher}
           >
-            {/* <span className="button-content-3AN" style={{}}> */}
             <span className="button-content-3AN">Sử dụng</span>
           </button>
         </div>
@@ -120,25 +137,25 @@ function OrderCart(props) {
           <span className="priceSummary-lineItemLabel-3q-">Thành tiền</span>
           <span className="priceSummary-price-2_b typography-headline2-2Vd">
             <span>{totalPrice}</span>
-            {/* <span>.</span>
-            <span>000</span> */}
           </span>
-          {/* <span class="priceSummary-lineItemLabel-3q-">Giảm giá</span>
-          <span class="priceSummary-price-2_b typography-headline2-2Vd priceSummary-priceDiscount-1lC">
-            -<span>59</span>
-            <span>.</span>
-            <span>800</span>
-            <span>&nbsp;</span>
-            <span>₫</span>
-          </span> */}
+          {voucherPrice > 0 && (
+            <>
+              <span className="priceSummary-lineItemLabel-3q-">Giảm giá</span>
+              <span className="priceSummary-price-2_b typography-headline2-2Vd priceSummary-priceDiscount-1lC">
+                -{" "}
+                {new Intl.NumberFormat("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                }).format(voucherPrice)}
+              </span>
+            </>
+          )}
           <div className="priceSummary-dividerTotal-20D priceSummary-divider-3Iz" />
           <span className="priceSummary-totalLabel-3bk priceSummary-lineItemLabel-3q-">
             Tổng
           </span>
           <span className="priceSummary-totalPrice-2pP typography-headline1-1o-">
             <span>{totalPrice}</span>
-            {/* <span>.</span>
-            <span>000</span> */}
           </span>
         </div>
       </div>

@@ -94,12 +94,43 @@ function AccountOrder(props) {
                   </div>
                   <div className="tongtien">
                     <p>Tổng tiền :</p>
-                    <span>
-                      {new Intl.NumberFormat("vi-VN", {
-                        style: "currency",
-                        currency: "VND",
-                      }).format(item.history_purchase.total)}
-                    </span>
+                    <>
+                      {item.history_purchase.invoice.voucher === null ? (
+                        <span>
+                          {new Intl.NumberFormat("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          }).format(item.history_purchase.total)}
+                        </span>
+                      ) : (
+                        <>
+                          {item.history_purchase.invoice.voucher.value > 100 ? (
+                            <span>
+                              {new Intl.NumberFormat("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              }).format(
+                                item.history_purchase.total -
+                                  item.history_purchase.invoice.voucher.value
+                              )}
+                            </span>
+                          ) : (
+                            <span>
+                              {new Intl.NumberFormat("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                              }).format(
+                                item.history_purchase.total -
+                                  item.history_purchase.total *
+                                    (item.history_purchase.invoice.voucher
+                                      .value /
+                                      100)
+                              )}
+                            </span>
+                          )}
+                        </>
+                      )}
+                    </>
                   </div>
                   {item.history_purchase.invoice.status === 3 && (
                     <div className="button">
