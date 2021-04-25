@@ -1,16 +1,10 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  NavLink,
-  useRouteMatch,
-} from "react-router-dom";
 import PropTypes from "prop-types";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 
 Navbar.propTypes = {
-  statusToken: PropTypes.func,
+  statusToken: PropTypes.bool,
   path: PropTypes.string,
 };
 
@@ -19,36 +13,36 @@ Navbar.DefaultPropTypes = {
   path: "",
 };
 
-// đăng xuất tài khoản
-const handleClickLogout = () => {
-  Swal.fire({
-    title: "THÔNG BÁO",
-    text: "BẠN CÓ MUỐN ĐĂNG XUẤT TÀI KHOẢN",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "ĐĂNG XUẤT",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "THÔNG BÁO",
-        text: "Đăng xuất thành công. Hẹn gặp lại bạn sau!!!",
-        icon: "success",
-        showConfirmButton: true,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          localStorage.removeItem("cart");
-          sessionStorage.removeItem("accessToken");
-          window.location.replace("/");
-        }
-      });
-    }
-  });
-};
-
 function Navbar(props) {
   const { statusToken, path } = props;
+
+  // đăng xuất tài khoản
+  const handleClickLogout = () => {
+    Swal.fire({
+      title: "THÔNG BÁO",
+      text: "BẠN CÓ MUỐN ĐĂNG XUẤT TÀI KHOẢN",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "ĐĂNG XUẤT",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "Đăng xuất thành công. Hẹn gặp lại bạn sau!!!",
+          icon: "success",
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem("cart");
+            sessionStorage.removeItem("accessToken");
+            window.location.replace("/");
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="account__navlink">
       <ul className="navlink__list">

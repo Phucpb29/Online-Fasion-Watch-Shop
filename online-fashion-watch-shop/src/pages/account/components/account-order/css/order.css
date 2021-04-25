@@ -24,6 +24,8 @@
     width: 45%;
 }
 .account__order-box .box__mid .box__mid-name {
+    display: flex;
+    flex-direction: column;
     padding: 30px 0;
     padding-bottom: 30px;
 }
@@ -32,6 +34,14 @@
     font-size: 20px;
     letter-spacing: 0.2rem;
     font-weight: bolder;
+    margin-top: 10px;
+}
+.account__order-box .box__mid .box__mid-name .ivoice__title{
+    color:black;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    margin-right: 10px;
 }
 .account__order-box .box__mid .box__mid-price-quantity{
     color:black;
@@ -60,7 +70,7 @@
     letter-spacing: 0.2rem;
 }
 .account__order-box .box__mid .box__mid-time{
-    margin-top:60px;
+    margin-top:40px;
 }
 .account__order-box .box__mid .box__mid-time .date {
     font-weight: bolder;

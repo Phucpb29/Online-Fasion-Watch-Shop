@@ -16,30 +16,27 @@ OrderCart.DefaultPropTypes = {
 function OrderCart(props) {
   const { cart, voucherPrice, handleGetVoucherPrice } = props;
   const [totalPrice, setTotalPrice] = useState(0);
+  const [total, setTotal] = useState(0);
   const [voucher, setVoucher] = useState("");
 
   // re-render lại tổng tiền giỏ hàng
   useEffect(() => {
-    const fetchTotalPrice = async () => {
-      let newTotalPrice = await cart.reduce(
-        (total, item) => Number(total) + Number(item.totalPrice),
-        0
-      );
-      if (voucherPrice > 0 && voucherPrice <= 100) {
-        newTotalPrice -= newTotalPrice * (voucherPrice / 100);
-      }
-      if (voucherPrice > 100) {
-        newTotalPrice -= voucherPrice;
-      }
-      setTotalPrice(
-        new Intl.NumberFormat("vi-VN", {
-          style: "currency",
-          currency: "VND",
-        }).format(newTotalPrice)
-      );
-    };
-    fetchTotalPrice();
+    const newTotalPrice = cart.reduce(
+      (total, item) => Number(total) + Number(item.totalPrice),
+      0
+    );
+    setTotalPrice(newTotalPrice);
   }, [cart, voucherPrice]);
+
+  // re-render lại tổng tiền
+  useEffect(() => {
+    if (voucherPrice > 0 && voucherPrice <= 100) {
+      setTotal(totalPrice - totalPrice * (voucherPrice / 100));
+    }
+    if (voucherPrice > 100) {
+      setTotal(totalPrice - voucherPrice);
+    }
+  }, [totalPrice, voucherPrice]);
 
   const handleChangeVoucher = (e) => {
     setVoucher(e.target.value);
@@ -82,7 +79,13 @@ function OrderCart(props) {
                 <span className="orderSummaryItem-category-1bK typography-gothicBody-3Gm" />
               </div>
               <div className="col-2-card-price">
-                {item.issale ? (
+                <span>
+                  {new Intl.NumberFormat("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                  }).format(item.totalPrice)}
+                </span>
+                {/* {item.issale ? (
                   <>
                     <span>
                       {new Intl.NumberFormat("vi-VN", {
@@ -99,7 +102,7 @@ function OrderCart(props) {
                       currency: "VND",
                     }).format(item.totalPrice)}
                   </span>
-                )}
+                )} */}
               </div>
             </div>
           </div>
@@ -136,7 +139,12 @@ function OrderCart(props) {
         <div className="priceSummary-lineItems-JOi">
           <span className="priceSummary-lineItemLabel-3q-">Thành tiền</span>
           <span className="priceSummary-price-2_b typography-headline2-2Vd">
-            <span>{totalPrice}</span>
+            <span>
+              {new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(totalPrice)}
+            </span>
           </span>
           {voucherPrice > 0 && (
             <>
@@ -155,7 +163,12 @@ function OrderCart(props) {
             Tổng
           </span>
           <span className="priceSummary-totalPrice-2pP typography-headline1-1o-">
-            <span>{totalPrice}</span>
+            <span>
+              {new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(total)}
+            </span>
           </span>
         </div>
       </div>

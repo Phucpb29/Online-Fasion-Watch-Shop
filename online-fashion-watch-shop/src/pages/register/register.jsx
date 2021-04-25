@@ -18,14 +18,18 @@ function Register() {
   };
 
   const handleChangePassword = (e) => {
-    setPassword(e.target.value.trim());
+    setPassword(e.target.value);
   };
   const handleChangeEmail = (e) => {
-    setEmail(e.target.value.trim());
+    setEmail(e.target.value);
   };
 
   function validateLength(name, email, password) {
-    if (name.length > 0 && email.length > 0 && password.lenght > 0) {
+    if (
+      name.trim().length > 0 &&
+      email.trim().length > 0 &&
+      password.trim().length > 0
+    ) {
       return true;
     } else {
       return false;
@@ -34,7 +38,7 @@ function Register() {
 
   function validateEmail(email) {
     const emailRegex = "^[\\w\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    if (email.match(emailRegex)) {
+    if (email.trim().match(emailRegex)) {
       return true;
     } else {
       return false;
@@ -49,13 +53,12 @@ function Register() {
           setRegisterLoading(true);
           userApi
             .register({
-              name: name,
-              email: email,
-              password: password,
+              name: name.trim(),
+              email: email.trim(),
+              password: password.trim(),
             })
             .then(function (response) {
               if (response.status === 202) {
-                setRegisterLoading(false);
                 Swal.fire({
                   title: "THÔNG BÁO",
                   text:
@@ -81,6 +84,7 @@ function Register() {
             showConfirmButton: true,
           });
         }
+        setRegisterLoading(false);
       } else {
         Swal.fire({
           title: "THÔNG BÁO",

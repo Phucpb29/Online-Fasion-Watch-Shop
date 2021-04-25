@@ -26,6 +26,8 @@ import Register from "./pages/register/register";
 import Resetpass from "./pages/resetpass/resetpass";
 import WishList from "./pages/wishlist/wishlist";
 import ScrollToTop from "./components/scroll/scroll";
+import WrapLogin from "./pages/login/wrap-login";
+import WrapRegister from "./pages/register/wrap-register";
 
 function App() {
   const [cart, setCart] = useState([]); // giỏ hàng database
@@ -336,10 +338,10 @@ function App() {
               <Home />
             </Redirect>
             <Route exact path="/dang-nhap">
-              <Login handleLogin={handleLogin} />
+              <WrapLogin handleLogin={handleLogin} />
             </Route>
             <Route exact path="/dang-ky">
-              <Register />
+              <WrapRegister />
             </Route>
             <Route exact path="/quen-mat-khau">
               <Forgotpass />
