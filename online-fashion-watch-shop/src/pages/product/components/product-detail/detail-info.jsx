@@ -6,6 +6,7 @@ import ReactStars from "react-rating-stars-component";
 import Swal from "sweetalert2";
 import cartApi from "../../../../api/cartApi";
 import wishlistApi from "../../../../api/wishlistApi";
+import ReactImageZoom from "react-image-zoom";
 
 DetailInfo.propTypes = {
   productInfo: PropTypes.object,
@@ -201,7 +202,13 @@ function DetailInfo(props) {
           <div className="product__detail">
             <div className="product__img">
               <div className="img__main">
-                <img src={indexImage} alt="" />
+                <ReactImageZoom
+                  img={indexImage}
+                  width={500}
+                  height={400}
+                  zoomWidth={300}
+                />
+                {/* <img src={indexImage} alt="" /> */}
               </div>
               <div className="img__thumbnail">
                 <ul className="thumbnail__list">

@@ -66,8 +66,12 @@ function AccountOrder(props) {
                   <div className="box__mid-time">
                     <span className="date">Ngày đặt:</span>
                     <span>{item.history_purchase.created_date}</span>
-                    <span className="date">Ngày giao:</span>
-                    <span>04/02/2021 </span>
+                    {item.history_purchase.invoice.status === 3 && (
+                      <>
+                        <span className="date">Ngày giao:</span>
+                        <span>{item.history_purchase.update_Date} </span>
+                      </>
+                    )}
                   </div>
                 </div>
                 <div className="box__right">

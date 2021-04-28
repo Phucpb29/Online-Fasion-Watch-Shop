@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-import productApi from "../../../../api/productApi";
+import React from "react";
 
 DetailProperty.propTypes = {
   propertyList: PropTypes.array,

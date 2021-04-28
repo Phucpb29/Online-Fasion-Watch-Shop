@@ -7,6 +7,8 @@ import About from "./components/about";
 import FemaleBestSeller from "./components/female-bestSeller";
 import MaleBestSeller from "./components/male-bestSeller";
 import ProductNews from "./components/new-product";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 import "./css/home.css";
 
 function Home() {
@@ -35,7 +37,21 @@ function Home() {
         <LoadingOverplay />
       ) : (
         <div className="main__home">
-          <div className="home__banner">
+          <Carousel
+            autoPlay={true}
+            infiniteLoop={true}
+            interval={2000}
+            showStatus={false}
+            showThumbs={false}
+            transitionTime={500}
+          >
+            <div className="home__banner banner-one"></div>
+            <div className="home__banner banner-two"></div>
+            <div className="home__banner banner-three"></div>
+            <div className="home__banner banner-four"></div>
+            <div className="home__banner banner-five"></div>
+          </Carousel>
+          {/* <div className="home__banner">
             <h2 className="banner__title">Rolex</h2>
             <p className="banner__content">A crown for every achievement</p>
             <div className="banner__link">
@@ -43,7 +59,7 @@ function Home() {
                 <span>MUA NGAY</span>
               </Link>
             </div>
-          </div>
+          </div> */}
           <div className="home__shop">
             <div className="shop__link shop__man">
               <p className="link__title">ĐỒNG HỒ NAM</p>

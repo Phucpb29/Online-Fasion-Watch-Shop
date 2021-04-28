@@ -1,23 +1,32 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 OrderCart.prototype = {
   cart: PropTypes.array,
   voucherPrice: PropTypes.number,
   handleGetVoucherPrice: PropTypes.func,
+  handleDeleteVoucherPrice: PropTypes.func,
 };
 
 OrderCart.DefaultPropTypes = {
   cart: [],
   voucherPrice: 0,
   handleGetVoucherPrice: null,
+  handleDeleteVoucherPrice: null,
 };
 
 function OrderCart(props) {
-  const { cart, voucherPrice, handleGetVoucherPrice } = props;
+  const {
+    cart,
+    voucherPrice,
+    handleGetVoucherPrice,
+    handleDeleteVoucherPrice,
+  } = props;
   const [totalPrice, setTotalPrice] = useState(0);
   const [total, setTotal] = useState(0);
   const [voucher, setVoucher] = useState("");
+  const [isUseVoucher, setIsUseVoucher] = useState(false);
 
   // re-render lại tổng tiền giỏ hàng
   useEffect(() => {
@@ -35,6 +44,8 @@ function OrderCart(props) {
     }
     if (voucherPrice > 100) {
       setTotal(totalPrice - voucherPrice);
+    } else {
+      setTotal(totalPrice);
     }
   }, [totalPrice, voucherPrice]);
 
@@ -45,8 +56,25 @@ function OrderCart(props) {
   function handleGetVoucher(e) {
     e.preventDefault();
     if (handleGetVoucherPrice) {
-      handleGetVoucherPrice(voucher);
+      if (voucher.trim().length > 0) {
+        setIsUseVoucher(true);
+        handleGetVoucherPrice(voucher);
+      } else {
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "Vui lòng không để trống thông tin",
+          icon: "warning",
+          showConfirmButton: true,
+        });
+      }
     }
+  }
+
+  function handleDeleteVoucher(e) {
+    e.preventDefault();
+    setVoucher("");
+    setIsUseVoucher(false);
+    handleDeleteVoucherPrice();
   }
 
   return (
@@ -85,24 +113,6 @@ function OrderCart(props) {
                     currency: "VND",
                   }).format(item.totalPrice)}
                 </span>
-                {/* {item.issale ? (
-                  <>
-                    <span>
-                      {new Intl.NumberFormat("vi-VN", {
-                        style: "currency",
-                        currency: "VND",
-                      }).format(item.totalPrice)}
-                    </span>
-                    <span className="orderSummaryItem-priceOriginal-2Gn"></span>
-                  </>
-                ) : (
-                  <span>
-                    {new Intl.NumberFormat("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                    }).format(item.totalPrice)}
-                  </span>
-                )} */}
               </div>
             </div>
           </div>
@@ -118,6 +128,7 @@ function OrderCart(props) {
                 className="couponCode-couponCodeEntryField-39M textInput-input-3vj field-input"
                 name="couponCode"
                 value={voucher}
+                disabled={isUseVoucher}
                 onChange={handleChangeVoucher}
               />
             </span>
@@ -127,12 +138,23 @@ function OrderCart(props) {
           <p className="message-root-2kZ" />
         </div>
         <div className="field-root-3Y5">
-          <button
-            className="couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd"
-            onClick={handleGetVoucher}
-          >
-            <span className="button-content-3AN">Sử dụng</span>
-          </button>
+          {voucherPrice > 0 ? (
+            <>
+              <button
+                className="couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd"
+                onClick={handleDeleteVoucher}
+              >
+                <span className="button-content-3AN">Xoá voucher</span>
+              </button>
+            </>
+          ) : (
+            <button
+              className="couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd couponCode-applyButton-3J3 button-root_normalPriority-3zg button-root-2JQ clickable-root-1G6 typography-headline2-2Vd"
+              onClick={handleGetVoucher}
+            >
+              <span className="button-content-3AN">Sử dụng</span>
+            </button>
+          )}
         </div>
       </form>
       <div className="priceSummary-root-L4M">

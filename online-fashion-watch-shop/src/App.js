@@ -13,26 +13,25 @@ import Error from "./components/error/error";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import OverPlay from "./components/overplay/overplay";
+import ScrollToTop from "./components/scroll/scroll";
 import Account from "./pages/account/account";
 import Forgotpass from "./pages/forgotpass/forgotpass";
 import Home from "./pages/home/home";
-import Login from "./pages/login/login";
+import WrapLogin from "./pages/login/wrap-login";
 import Maxacnhan from "./pages/maxacnhan/maxacnhan";
 import Order from "./pages/order/order";
 import WrapProductDetai from "./pages/product/components/product-detail/wrap-productdetail";
 import WrapProductSearch from "./pages/product/components/product-search/wrap-productsearch";
 import Product from "./pages/product/product";
-import Register from "./pages/register/register";
+import WrapRegister from "./pages/register/wrap-register";
 import Resetpass from "./pages/resetpass/resetpass";
 import WishList from "./pages/wishlist/wishlist";
-import ScrollToTop from "./components/scroll/scroll";
-import WrapLogin from "./pages/login/wrap-login";
-import WrapRegister from "./pages/register/wrap-register";
 
 function App() {
   const [cart, setCart] = useState([]); // giỏ hàng database
   const [statusCart, setStatusCart] = useState(false);
   const [cartSize, setCartSize] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   // danh sách yêu thích
   const [wishList, setWishList] = useState([]);
@@ -115,7 +114,7 @@ function App() {
       if (statusToken && statusToken === true) {
         let response = await cartApi.viewCart();
         let data = response.data;
-        if (data.length > 0) {
+        if (data !== "") {
           if (cart.length > 0) {
             await cartApi.clearCart();
             await cartApi.createCart();
@@ -127,6 +126,7 @@ function App() {
           await cartApi.createCart();
           setCart([]);
         }
+        setLoading(false);
       }
     };
     fetchData();
@@ -384,6 +384,7 @@ function App() {
               <Order
                 cart={cart}
                 statusToken={statusToken}
+                loading={loading}
                 handleOrder={handleOrder}
               />
             </Route>

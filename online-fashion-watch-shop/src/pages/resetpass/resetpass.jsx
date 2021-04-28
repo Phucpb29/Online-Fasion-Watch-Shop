@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import "./css/resetpass.css";
-import logoDw from "../../assets/image/dw-logo.jpg";
 import "boxicons";
-import forgotpassApi from "../../api/forgotpassApi";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import forgotpassApi from "../../api/forgotpassApi";
+import logoDw from "../../assets/image/dw-logo.jpg";
+import "./css/resetpass.css";
 function Resetpass() {
   const { pathname } = useLocation();
   const token = pathname.slice(pathname.lastIndexOf("/") + 1);

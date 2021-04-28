@@ -18,7 +18,7 @@ function ProductSearch(props) {
   const { keyword } = props;
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(16);
+  const size = 16;
   const [sort, setSort] = useState("ASC");
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);

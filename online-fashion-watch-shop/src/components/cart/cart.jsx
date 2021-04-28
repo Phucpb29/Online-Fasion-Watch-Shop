@@ -1,7 +1,6 @@
 import "boxicons";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import cartApi from "../../api/cartApi";
 import "./css/cart.css";
@@ -9,7 +8,6 @@ import "./css/cart.css";
 CartModal.propTypes = {
   cart: PropTypes.array,
   statusCart: PropTypes.bool,
-  cartChange: PropTypes.bool,
   statusToken: PropTypes.bool,
   closeCart: PropTypes.func,
   handleIncreaseItem: PropTypes.func,
@@ -20,7 +18,6 @@ CartModal.propTypes = {
 CartModal.DefaultPropTypes = {
   cart: [],
   statusCart: false,
-  cartChange: false,
   statusToken: false,
   closeCart: false,
   handleIncreaseItem: null,
@@ -29,7 +26,7 @@ CartModal.DefaultPropTypes = {
 };
 
 function CartModal(props) {
-  const { cart, statusCart, cartChange, statusToken, closeCart } = props;
+  const { cart, statusCart, statusToken, closeCart } = props;
   const { handleIncreaseItem, handleDecreaseItem, handleRemoveItem } = props;
   const [totalPrice, setTotalPrice] = useState(0);
 

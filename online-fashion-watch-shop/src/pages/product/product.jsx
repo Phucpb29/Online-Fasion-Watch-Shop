@@ -17,11 +17,11 @@ function Product() {
   const value = pathname.slice(pathname.lastIndexOf("/") + 1);
   const gender = value === "nam" ? "male" : "female";
   //bộ lọc
-  const [size, setSize] = useState(16);
+  const size = 16;
   const [page, setPage] = useState(0);
   const [count, setCount] = useState(0);
   const [min, setMin] = useState(0);
-  const [max, setMax] = useState(50000000);
+  const max = 50000000;
   const [cords, setCords] = useState({});
   const [brands, setBrands] = useState({});
   const [sort, setSort] = useState("ASC");

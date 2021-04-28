@@ -2,19 +2,17 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import commentApi from "../../../../api/commentApi";
 import productApi from "../../../../api/productApi";
+import wishlistApi from "../../../../api/wishlistApi";
 import LoadingOverplay from "../../../../components/loading/loading";
+import "./css/detail.css";
 import DetailComment from "./detail-comment";
 import DetailInfo from "./detail-info";
 import DetailProperty from "./detail-property";
-import "./css/detail.css";
-import wishlistApi from "../../../../api/wishlistApi";
-import cartApi from "../../../../api/cartApi";
 
 ProductDetail.prototype = {
   id: PropTypes.string,
   statusToken: PropTypes.bool,
   wishChange: PropTypes.bool,
-  handleOpenCart: PropTypes.func,
   addItem: PropTypes.func,
   changeWishList: PropTypes.func,
 };
@@ -23,21 +21,12 @@ ProductDetail.DefaultPropTypes = {
   id: "",
   statusToken: false,
   wishChange: false,
-  handleOpenCart: null,
   addItem: null,
   changeWishList: null,
 };
 
 function ProductDetail(props) {
-  const {
-    id,
-    statusToken,
-    cartChange,
-    wishChange,
-    handleOpenCart,
-    addItem,
-    changeWishList,
-  } = props;
+  const { id, statusToken, wishChange, addItem, changeWishList } = props;
   const size = 6;
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -45,7 +34,6 @@ function ProductDetail(props) {
   const [propertyDetailList, setPropertyDetailList] = useState([]); // thông tin thuộc tính sản phẩm
   const [commentList, setCommentList] = useState([]); // danh sách đánh giá sản phẩm
   const [countComment, setCountComment] = useState(0); // tổng số đánh giá sản phẩm
-  const [cartList, setCartList] = useState([]); // danh sách giỏ hàng
   const [wishList, setWishList] = useState([]); // danh sách sản phẩm yêu thích
 
   // thông tin chi tiết sản phẩm
@@ -86,13 +74,6 @@ function ProductDetail(props) {
     };
     fetchData();
   }, [statusToken, wishChange]);
-
-  // mở giỏ hàng
-  function openCart() {
-    if (handleOpenCart) {
-      handleOpenCart();
-    }
-  }
 
   // thay đổi page
   function handleChangePage(page) {
