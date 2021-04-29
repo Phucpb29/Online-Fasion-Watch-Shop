@@ -111,12 +111,18 @@ function AccountOrder(props) {
                   </div>
                   {item.history_purchase.invoice.status === 3 && (
                     <div className="button">
-                      <button
-                        className="button__DG"
-                        onClick={() => handleOpen(item)}
-                      >
-                        ĐÁNH GIÁ
-                      </button>
+                      {item.isCommented ? (
+                        <button className="button__commnet">
+                          BẠN ĐÃ ĐÁNH GIÁ SẢN PHẨM NÀY
+                        </button>
+                      ) : (
+                        <button
+                          className="button__DG"
+                          onClick={() => handleOpen(item)}
+                        >
+                          ĐÁNH GIÁ
+                        </button>
+                      )}
                     </div>
                   )}
                 </div>

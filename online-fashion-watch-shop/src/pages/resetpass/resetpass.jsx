@@ -22,43 +22,77 @@ function Resetpass() {
 
   const handleSubmitRecoverPass = (e) => {
     e.preventDefault();
-    try {
-      forgotpassApi
-        .recoverPass({
-          token: token,
-          newPassword: newPass,
-          confirm: newPassConfirm,
-        })
-        .then(function (response) {
-          if (response.status === 200) {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "success",
-              showConfirmButton: true,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                window.location.replace("/dang-nhap");
+    if (validationLength === true) {
+      if (validationPass === true) {
+        try {
+          forgotpassApi
+            .recoverPass({
+              token: token,
+              newPassword: newPass,
+              confirm: newPassConfirm,
+            })
+            .then(function (response) {
+              if (response.status === 200) {
+                Swal.fire({
+                  title: "THÔNG BÁO",
+                  text: response.data,
+                  icon: "success",
+                  showConfirmButton: true,
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.replace("/dang-nhap");
+                  }
+                });
+              } else {
+                Swal.fire({
+                  title: "THÔNG BÁO",
+                  text: response.data,
+                  icon: "error",
+                  showConfirmButton: true,
+                });
               }
             });
-          } else {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "error",
-              showConfirmButton: true,
-            });
-          }
+        } catch (error) {
+          Swal.fire({
+            title: "THÔNG BÁO",
+            text: "Có lỗi xảy ra. Vui lòng thử lại",
+            icon: "error",
+            showConfirmButton: true,
+          });
+        }
+      } else {
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "Mật khẩu xác nhận phải giống mật khẩu mới",
+          icon: "warning",
+          showConfirmButton: true,
         });
-    } catch (error) {
+      }
+    } else {
       Swal.fire({
         title: "THÔNG BÁO",
-        text: "Có lỗi xảy ra. Vui lòng thử lại",
-        icon: "error",
+        text: "Vui lòng nhập đầy đủ thông tin",
+        icon: "warning",
         showConfirmButton: true,
       });
     }
   };
+
+  function validationLength() {
+    if (newPass.trim().length > 0 && newPassConfirm.trim().length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function validationPass() {
+    if (newPass.trim() === newPassConfirm.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   return (
     <div className="resetpass">

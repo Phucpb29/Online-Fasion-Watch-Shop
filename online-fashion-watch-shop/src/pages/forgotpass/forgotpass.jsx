@@ -16,30 +16,58 @@ function Forgotpass() {
   const handleSubmitEmail = (e) => {
     setLoading(true);
     e.preventDefault();
-    try {
-      forgotpassApi.getLinkRecover(email).then(function (response) {
-        if (response === false) {
-          setLoading(false);
-          Swal.fire({
-            title: "THÔNG BÁO",
-            text: "Email không đúng. Vui lòng nhập lại",
-            icon: "error",
-            showConfirmButton: true,
-          });
-        } else {
-          if (response.data === true) {
+    if (validationLength === true) {
+      try {
+        forgotpassApi.getLinkRecover(email).then(function (response) {
+          if (response === false) {
             setLoading(false);
             Swal.fire({
               title: "THÔNG BÁO",
-              text: "Mã kích hoạt được gửi về email. Vui lòng kiểm tra",
-              icon: "success",
+              text: "Email không đúng. Vui lòng nhập lại",
+              icon: "error",
               showConfirmButton: true,
             });
+          } else {
+            if (response.data === true) {
+              setLoading(false);
+              Swal.fire({
+                title: "THÔNG BÁO",
+                text: "Mã kích hoạt được gửi về email. Vui lòng kiểm tra",
+                icon: "success",
+                showConfirmButton: true,
+              });
+            }
           }
+        });
+      } catch (error) {
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "Có lỗi xảy ra! Vui lòng thử lại.",
+          icon: "error",
+          showConfirmButton: true,
+        });
+      }
+    } else {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "Vui lòng nhập đầy đủ thông tin",
+        icon: "warning",
+        showConfirmButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setLoading(false);
         }
       });
-    } catch (error) {}
+    }
   };
+
+  function validationLength() {
+    if (email.trim().length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   return (
     <div className="forgotpass">

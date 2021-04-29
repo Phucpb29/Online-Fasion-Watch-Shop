@@ -157,4 +157,14 @@
 }
 
 
+.account__order-box .box__right .button .button__commnet {
+    padding: 10px 30px;
+    margin:0 15px;
+    font-weight: bold;
+    border: 0 !important;
+    color: var(--color-white);
+    letter-spacing: 0.1rem;
+    background-color: var(--color-dangerous);
+}
+
 

@@ -50,7 +50,32 @@ function DetailInfo(props) {
           (total, item) => Number(total) + Number(item.rate),
           0
         );
-        setRate(newTotalRate / 6);
+        switch (commentList.length) {
+          case 1:
+            console.log(1);
+            setRate(newTotalRate);
+            break;
+          case 2:
+            console.log(2);
+            setRate(newTotalRate / 2);
+            break;
+          case 3:
+            console.log(3);
+            setRate(newTotalRate / 3);
+            break;
+          case 4:
+            console.log(4);
+            setRate(newTotalRate / 4);
+            break;
+          case 5:
+            console.log(5);
+            setRate(newTotalRate / 5);
+            break;
+          default:
+            console.log(6);
+            setRate(newTotalRate / 6);
+            break;
+        }
       }
       setCountDone(true);
     };

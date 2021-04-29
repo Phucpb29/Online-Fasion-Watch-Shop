@@ -19,36 +19,79 @@ function AccountPassword(props) {
   };
   const handleSubmitPassword = (e) => {
     e.preventDefault();
-    try {
-      dashboardApi
-        .updatePassword({
-          oldPassword: oldPassword,
-          newPassword: newPassword,
-          confirm: confirmPassword,
-        })
-        .then(function (response) {
-          console.log(response.data);
-          if (response.status === 200) {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "success",
-              showConfirmButton: true,
+    if (validationLength === true) {
+      if (validationPass === true) {
+        try {
+          dashboardApi
+            .updatePassword({
+              oldPassword: oldPassword,
+              newPassword: newPassword,
+              confirm: confirmPassword,
+            })
+            .then(function (response) {
+              if (response.status === 200) {
+                Swal.fire({
+                  title: "THÔNG BÁO",
+                  text: response.data,
+                  icon: "success",
+                  showConfirmButton: true,
+                });
+              }
+              if (response.status === 400) {
+                Swal.fire({
+                  title: "THÔNG BÁO",
+                  text: response.data,
+                  icon: "error",
+                  showConfirmButton: true,
+                });
+              }
             });
-          }
-          if (response.status === 400) {
-            Swal.fire({
-              title: "THÔNG BÁO",
-              text: response.data,
-              icon: "error",
-              showConfirmButton: true,
-            });
-          }
+        } catch (error) {
+          Swal.fire({
+            title: "THÔNG BÁO",
+            text: "Có lỗi xảy ra! Vui lòng thử lại.",
+            icon: "error",
+            showConfirmButton: true,
+          });
+        }
+      } else {
+        Swal.fire({
+          title: "THÔNG BÁO",
+          text: "Mật khẩu xác nhận phải giống mật khẩu mới",
+          icon: "error",
+          showConfirmButton: true,
         });
-    } catch (error) {
-      console.log(error);
+      }
+    } else {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "Vui lòng nhập đầy đủ thông tin",
+        icon: "warning",
+        showConfirmButton: true,
+      });
     }
   };
+
+  function validationLength() {
+    if (
+      oldPassword.trim().length > 0 &&
+      newPassword.trim().length > 0 &&
+      confirmPassword.trim().length > 0
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function validationPass() {
+    if (confirmPassword.trim() === newPassword.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   return (
     <div className="account__password">
       <div className="account__password__box">

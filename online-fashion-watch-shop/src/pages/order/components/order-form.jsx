@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 import dashboardApi from "../../../api/dashboardApi";
 
 OrderForm.prototype = {
@@ -58,8 +59,30 @@ function OrderForm(props) {
   };
 
   function handleSubmitOrder(id, name, phone, address) {
-    if (handleOrderSubmit) {
-      handleOrderSubmit(id, name, phone, address);
+    if (validationLength(name, phone, address)) {
+      if (handleOrderSubmit) {
+        handleOrderSubmit(id, name, phone, address);
+      }
+    } else {
+      Swal.fire({
+        title: "THÔNG BÁO",
+        text: "Vui lòng nhập đầy đủ thông tin",
+        icon: "warning",
+        showConfirmButton: true,
+      });
+    }
+  }
+
+  function validationLength(name, phone, address) {
+    if (
+      name.trim().length > 0 &&
+      email.trim().length > 0 &&
+      phone.trim().length > 0 &&
+      address.trim().length > 0
+    ) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -108,6 +131,7 @@ function OrderForm(props) {
                 value={email}
                 onChange={handleChangeEmail}
                 autoComplete="email"
+                disabled
               />
               <label className="label-input100" htmlFor="name">
                 <span>
