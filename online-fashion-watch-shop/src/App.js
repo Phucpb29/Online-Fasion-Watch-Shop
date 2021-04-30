@@ -127,7 +127,7 @@ function App() {
           setCart([]);
         }
       }
-      setLoading(false);
+      setTimeout(setLoading(false), 3000);
     };
     fetchData();
   }, [statusToken]);
@@ -357,6 +357,7 @@ function App() {
             </Route>
             <Route exact path="/san-pham-chi-tiet/:id">
               <WrapProductDetai
+                cart={cart}
                 statusToken={statusToken}
                 wishChange={wishChange}
                 openCart={openCart}

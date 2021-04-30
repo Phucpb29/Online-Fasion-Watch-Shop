@@ -90,62 +90,68 @@ function WishList(props) {
                 </div>
               </div>
               <div className="wishlist__body-box">
-                {wishList.length <= 0 ? (
-                  <Error text={"BẠN CHƯA CÓ SẢN PHẨM YÊU THÍCH"} />
-                ) : (
-                  <>
-                    <div className="wishlist__list">
-                      <ul className="wishlist__list-item">
-                        {wishList.map((item, index) => (
-                          <li className="item__wishlist" key={index}>
-                            <div className="item__unwishlist">
-                              <button
-                                className="item__unwishlist-button"
-                                onClick={() =>
-                                  unlikeProduct(item.wishlist_product.id)
-                                }
-                              >
-                                <box-icon
-                                  name="heart"
-                                  type="solid"
-                                  color="#ffffff"
-                                ></box-icon>
-                              </button>
-                            </div>
-                            <div className="item__wishlist-detail">
-                              <div className="item__img">
-                                <img src={item.indexImage} alt="" />
-                              </div>
-                              <div className="item__name">
-                                <span>
-                                  {item.wishlist_product.product.name}
-                                </span>
-                              </div>
-                              <div className="item__price">
-                                <span>
-                                  {new Intl.NumberFormat("vi-VN", {
-                                    style: "currency",
-                                    currency: "VND",
-                                  }).format(
-                                    item.wishlist_product.product.price
-                                  )}
-                                </span>
-                              </div>
-                              <div className="item__button">
-                                <a
-                                  href={`/san-pham-chi-tiet/${item.wishlist_product.product.id}`}
-                                  className="button__more-detail"
-                                >
-                                  XEM SẢN PHẨM
-                                </a>
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </>
-                )}
+                <>
+                  {wishList !== null && (
+                    <>
+                      {wishList.length <= 0 ? (
+                        <Error text={"BẠN CHƯA CÓ SẢN PHẨM YÊU THÍCH"} />
+                      ) : (
+                        <>
+                          <div className="wishlist__list">
+                            <ul className="wishlist__list-item">
+                              {wishList.map((item, index) => (
+                                <li className="item__wishlist" key={index}>
+                                  <div className="item__unwishlist">
+                                    <button
+                                      className="item__unwishlist-button"
+                                      onClick={() =>
+                                        unlikeProduct(item.wishlist_product.id)
+                                      }
+                                    >
+                                      <box-icon
+                                        name="heart"
+                                        type="solid"
+                                        color="#ffffff"
+                                      ></box-icon>
+                                    </button>
+                                  </div>
+                                  <div className="item__wishlist-detail">
+                                    <div className="item__img">
+                                      <img src={item.indexImage} alt="" />
+                                    </div>
+                                    <div className="item__name">
+                                      <span>
+                                        {item.wishlist_product.product.name}
+                                      </span>
+                                    </div>
+                                    <div className="item__price">
+                                      <span>
+                                        {new Intl.NumberFormat("vi-VN", {
+                                          style: "currency",
+                                          currency: "VND",
+                                        }).format(
+                                          item.wishlist_product.product.price
+                                        )}
+                                      </span>
+                                    </div>
+                                    <div className="item__button">
+                                      <a
+                                        href={`/san-pham-chi-tiet/${item.wishlist_product.product.id}`}
+                                        className="button__more-detail"
+                                      >
+                                        XEM SẢN PHẨM
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </>
+                      )}
+                    </>
+                  )}
+                </>
               </div>
             </div>
           ) : (

@@ -11,6 +11,7 @@ import DetailProperty from "./detail-property";
 
 ProductDetail.prototype = {
   id: PropTypes.string,
+  cart: PropTypes.array,
   statusToken: PropTypes.bool,
   wishChange: PropTypes.bool,
   addItem: PropTypes.func,
@@ -19,6 +20,7 @@ ProductDetail.prototype = {
 
 ProductDetail.DefaultPropTypes = {
   id: "",
+  cart: [],
   statusToken: false,
   wishChange: false,
   addItem: null,
@@ -26,7 +28,7 @@ ProductDetail.DefaultPropTypes = {
 };
 
 function ProductDetail(props) {
-  const { id, statusToken, wishChange, addItem, changeWishList } = props;
+  const { id, cart, statusToken, wishChange, addItem, changeWishList } = props;
   const size = 6;
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -112,6 +114,7 @@ function ProductDetail(props) {
           <DetailInfo
             productInfo={productInfo}
             statusToken={statusToken}
+            cart={cart}
             wishList={wishList}
             commentList={commentList}
             handleAddItem={handleAddItem}

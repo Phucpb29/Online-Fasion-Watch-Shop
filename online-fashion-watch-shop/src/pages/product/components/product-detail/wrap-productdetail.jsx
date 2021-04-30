@@ -5,6 +5,7 @@ import ProductDetail from "./detail";
 import PropTypes from "prop-types";
 
 WrapProductDetai.prototype = {
+  cart: PropTypes.array,
   statusToken: PropTypes.bool,
   wishChange: PropTypes.bool,
   openCart: PropTypes.func,
@@ -13,6 +14,7 @@ WrapProductDetai.prototype = {
 };
 
 WrapProductDetai.DefaultPropTypes = {
+  cart: [],
   statusToken: false,
   wishChange: false,
   openCart: null,
@@ -22,6 +24,7 @@ WrapProductDetai.DefaultPropTypes = {
 
 function WrapProductDetai(props) {
   const {
+    cart,
     statusToken,
     wishChange,
     openCart,
@@ -58,6 +61,7 @@ function WrapProductDetai(props) {
       ) : (
         <ProductDetail
           id={intParams}
+          cart={cart}
           statusToken={statusToken}
           wishChange={wishChange}
           handleOpenCart={handleOpenCart}
