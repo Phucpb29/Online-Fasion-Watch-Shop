@@ -93,13 +93,25 @@ function DetailInfo(props) {
   }, []);
 
   //  thêm sản phẩm vào giỏ hàng
-  function addItem(item) {
+  async function addItem(item) {
     setAddLoading("loading");
     const product = cart.find((i) => i.product.id === item.product.id);
     if (product !== undefined) {
       if (product.quantity < 10) {
         if (statusToken && statusToken === true) {
-          addProduct(item);
+          const { product } = item;
+          let price = 0;
+          if (product.issale) {
+            price = product.price_sale;
+          } else {
+            price = product.price;
+          }
+          await cartApi.insertProduct({
+            product_id: product.id,
+            total: price * 1,
+            quantity: 1,
+            product_price: price,
+          });
         }
         if (handleAddItem) {
           handleAddItem(item);
@@ -114,30 +126,25 @@ function DetailInfo(props) {
       }
     } else {
       if (statusToken && statusToken === true) {
-        addProduct(item);
+        const { product } = item;
+        let price = 0;
+        if (product.issale) {
+          price = product.price_sale;
+        } else {
+          price = product.price;
+        }
+        await cartApi.insertProduct({
+          product_id: product.id,
+          total: price * 1,
+          quantity: 1,
+          product_price: price,
+        });
       }
       if (handleAddItem) {
         handleAddItem(item);
       }
     }
     setAddLoading("");
-  }
-
-  // thêm sản phẩm
-  async function addProduct(item) {
-    const { product } = item;
-    let price = 0;
-    if (product.issale) {
-      price = product.price_sale;
-    } else {
-      price = product.price;
-    }
-    await cartApi.insertProduct({
-      product_id: product.id,
-      total: price * 1,
-      quantity: 1,
-      product_price: price,
-    });
   }
 
   /**

@@ -360,7 +360,6 @@ function App() {
                 cart={cart}
                 statusToken={statusToken}
                 wishChange={wishChange}
-                openCart={openCart}
                 handleAddItem={handleAddItem}
                 handleChangeWishList={handleChangeWishList}
               />
