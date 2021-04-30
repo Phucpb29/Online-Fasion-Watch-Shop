@@ -51,6 +51,13 @@
      object-fit: contain;
 }
 
+.main__product .product__detail .product__img .img__main .js-image-zoom__zoomed-image {
+  z-index: 20 !important;
+  border: 1px solid gainsboro;
+  width: 500px !important;
+  background-color: var(--color-white);
+}
+
 .main__product .product__detail .product__img .img__thumbnail .thumbnail__list {
   display: -webkit-box;
   display: -ms-flexbox;
