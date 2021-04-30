@@ -126,8 +126,8 @@ function App() {
           await cartApi.createCart();
           setCart([]);
         }
-        setLoading(false);
       }
+      setLoading(false);
     };
     fetchData();
   }, [statusToken]);
